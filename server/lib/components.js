@@ -1,11 +1,9 @@
-import { readJSON } from './store.js';
-import { FILES } from './paths.js';
+import { db } from './db.js';
 
 // Normalise components on read. The original spec stores usedBy as a
-// comma-separated string ("A7, A8, A9"); the UI expects an array. Force
-// every entry to an array, split/trim/filter on the way through.
+// comma-separated string ("A7, A8, A9"); the UI expects an array.
 export async function loadComponents() {
-  const arr = await readJSON(FILES.components, []);
+  const arr = (await db.readDoc('components')) || [];
   for (const c of arr) {
     if (typeof c.usedBy === 'string') {
       c.usedBy = c.usedBy.split(',').map((s) => s.trim()).filter(Boolean);

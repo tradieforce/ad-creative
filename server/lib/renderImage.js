@@ -12,6 +12,7 @@
 
 import { promises as fs } from 'node:fs';
 import { extname, basename, dirname } from 'node:path';
+import { loadBuffer, mimeFromRef } from './storage.js';
 
 const GEN_URL  = 'https://api.openai.com/v1/images/generations';
 const EDIT_URL = 'https://api.openai.com/v1/images/edits';
@@ -45,16 +46,16 @@ async function buildEditForm({ model, prompt, size, quality, attachments }) {
 
   let added = 0;
   for (const att of attachments) {
-    const ext = extname(att.path).toLowerCase();
-    if (!SUPPORTED_INPUT_EXTS.has(ext)) {
-      console.warn(`[renderImage] skipping unsupported input image: ${att.path}`);
+    const ref = att.path;   // legacy field name; still works for URLs/keys
+    const lower = ref.toLowerCase();
+    if (!['.png','.jpg','.jpeg','.webp'].some(e => lower.endsWith(e))) {
+      console.warn(`[renderImage] skipping unsupported input image: ${ref}`);
       continue;
     }
-    const buf = await fs.readFile(att.path);
-    const mime = ext === '.png' ? 'image/png'
-               : ext === '.webp' ? 'image/webp'
-               : 'image/jpeg';
-    form.append('image[]', fileFromBuffer(buf, basename(att.path), mime));
+    const buf = await loadBuffer(ref);
+    const mime = mimeFromRef(ref);
+    const filename = basename(ref.split('?')[0]);
+    form.append('image[]', fileFromBuffer(buf, filename, mime));
     added++;
     if (added >= 16) break;
   }

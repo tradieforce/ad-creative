@@ -12,9 +12,13 @@
     "node": ">=18"
   },
   "dependencies": {
+    "@vercel/blob": "^2.3.3",
+    "@vercel/postgres": "^0.10.0",
+    "cookie-parser": "^1.4.7",
     "dotenv": "^17.4.2",
     "express": "^4.21.2",
     "multer": "^2.0.1",
+    "pg": "^8.20.0",
     "sharp": "^0.34.5",
     "zod": "^3.23.8"
   },

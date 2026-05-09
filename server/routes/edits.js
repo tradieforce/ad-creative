@@ -1,113 +1,119 @@
 // Save flattened ad images from the canvas editor + manual best-of-N picks.
 //
 //   POST /api/edits/:adId           multipart with `image` (PNG)
-//                                   → saves as {ad_id}_edited.png + sidecar JSON
+//                                   → saves as {ad_id}_edited.png + updates ad record
 //
-//   POST /api/edits/pick/:adId      JSON body: { candidate_index: 0|1|2 }
-//                                   → swaps the canonical PNG with the chosen alt
+//   POST /api/edits/pick/:adId      JSON body: { candidate_url }
+//                                   → promotes a saved candidate to canonical
+//
+//   POST /api/edits/upscale/:adId   re-runs HD upscale on canonical image
 
 import { Router } from 'express';
-import { promises as fs } from 'node:fs';
-import { join } from 'node:path';
-import { ASSETS_DIR, FILES, ROOT } from '../lib/paths.js';
+import { db } from '../lib/db.js';
+import { storage, loadBuffer } from '../lib/storage.js';
 import { upload } from '../lib/uploads.js';
-import { readJSON, patchJSON } from '../lib/store.js';
 import { upscalePipeline } from '../lib/upscale.js';
 
 export const editsRouter = Router();
 
-// Looks up the ad record; needed to find the file path under generated-ads/{client}/{ad_id}.png.
 async function findAd(adId) {
-  const ads = await readJSON(FILES.ads, []);
+  const ads = await db.listAds();
   return ads.find((a) => a.id === adId) || null;
 }
 
-// Save a flattened-canvas PNG as the user's edited variant.
+// Derive the storage key prefix for an ad (e.g. "generated-ads/sharp_aircon/ad_xyz")
+// from any of its URL fields. Works for both /assets/ and Blob URLs.
+function adKeyBase(ad) {
+  const url = ad.image_url || (ad.candidate_urls && ad.candidate_urls[0]);
+  if (!url) return null;
+  // Strip query string + extension + edit suffix
+  const noQ = url.split('?')[0];
+  // For /assets/ URLs
+  if (noQ.startsWith('/assets/')) {
+    return noQ.slice('/assets/'.length).replace(/(_edited|_2k|_4k|_c\d+)?\.png$/, '');
+  }
+  // For Blob URLs — the pathname after the last slash before any /generated-ads/ segment
+  const m = noQ.match(/generated-ads\/[^/]+\/(ad_[a-z0-9_]+)/i);
+  if (m) {
+    // Try to reconstruct the key from the URL pathname
+    const idx = noQ.indexOf('/generated-ads/');
+    if (idx !== -1) {
+      const tail = noQ.slice(idx + 1).replace(/(_edited|_2k|_4k|_c\d+)?\.png$/, '');
+      return tail;
+    }
+  }
+  return null;
+}
+
 editsRouter.post('/:adId', upload.single('image'), async (req, res, next) => {
   try {
     if (!req.file) return res.status(400).json({ error: 'no image uploaded' });
     const ad = await findAd(req.params.adId);
     if (!ad) return res.status(404).json({ error: 'ad not found' });
 
-    // The canonical .png lives under /assets/generated-ads/{client}/{ad_id}.png.
-    // We save the edited version with _edited suffix.
-    const canonRelPath = ad.image_url; // /assets/generated-ads/{client}/{ad_id}.png
-    const editedRelPath = canonRelPath.replace(/\.png$/, '_edited.png');
-    const editedDisk = join(ROOT, editedRelPath.slice(1));
-    await fs.writeFile(editedDisk, req.file.buffer);
+    const base = adKeyBase(ad);
+    if (!base) return res.status(500).json({ error: 'could not derive ad key from record' });
 
-    // Update the ad record to point at the edited version. Keep canonical
-    // as a sibling so it's recoverable.
-    await patchJSON(FILES.ads, (list) => {
-      const i = (list || []).findIndex((a) => a.id === req.params.adId);
-      if (i >= 0) {
-        list[i].edited_url = editedRelPath;
-        list[i].image_url = editedRelPath;  // promote edited to canonical
-        list[i].edited_at = new Date().toISOString();
-      }
-      return list;
-    }, []);
+    const editedKey = base + '_edited.png';
+    const { url } = await storage.put(editedKey, req.file.buffer, 'image/png');
 
-    res.json({ ok: true, url: editedRelPath });
+    await db.patchAd(ad.id, (current) => ({
+      ...current,
+      edited_url: url,
+      image_url: url,        // promote edited as canonical
+      edited_at: new Date().toISOString(),
+    }));
+
+    res.json({ ok: true, url });
   } catch (e) { next(e); }
 });
 
-// Manual best-of-N pick: swap canonical with one of the saved alts.
-// We assume alts are stored as {ad_id}_alt{n}.png (n = original render index, NOT 0/1/2 per UI).
-// The UI sends a {candidate_url} pointing at the desired alt — we move it to canonical.
 editsRouter.post('/pick/:adId', async (req, res, next) => {
   try {
     const ad = await findAd(req.params.adId);
     if (!ad) return res.status(404).json({ error: 'ad not found' });
     const candidateUrl = (req.body || {}).candidate_url;
     if (!candidateUrl) return res.status(400).json({ error: 'candidate_url required' });
-    if (!candidateUrl.startsWith('/assets/generated-ads/')) {
-      return res.status(400).json({ error: 'candidate_url must be under /assets/generated-ads/' });
-    }
 
-    const candDisk = join(ROOT, candidateUrl.slice(1));
-    const canonRel = ad.image_url.replace(/_edited\.png$/, '.png'); // current or original canonical
-    const canonDisk = join(ROOT, canonRel.slice(1));
+    // Copy chosen candidate bytes onto the canonical key.
+    const buf = await loadBuffer(candidateUrl);
+    const base = adKeyBase(ad);
+    if (!base) return res.status(500).json({ error: 'could not derive ad key' });
+    const canonKey = base + '.png';
+    const { url } = await storage.put(canonKey, buf, 'image/png');
 
-    // If the canonical is the AI-generated version (no _edited), we need to:
-    // (1) move current canonical → an _alt slot
-    // (2) move chosen candidate → canonical
-    // For simplicity we just COPY rather than swap — disk space is cheap, and
-    // we keep all candidates around for re-picking later.
-    const buf = await fs.readFile(candDisk);
-    await fs.writeFile(canonDisk, buf);
+    await db.patchAd(ad.id, (current) => ({
+      ...current,
+      image_url: url,
+      picked_url: candidateUrl,
+      picked_at: new Date().toISOString(),
+    }));
 
-    // Update record
-    await patchJSON(FILES.ads, (list) => {
-      const i = (list || []).findIndex((a) => a.id === req.params.adId);
-      if (i >= 0) {
-        list[i].image_url = canonRel;
-        list[i].picked_url = candidateUrl;
-        list[i].picked_at = new Date().toISOString();
-      }
-      return list;
-    }, []);
-
-    res.json({ ok: true, url: canonRel });
+    res.json({ ok: true, url });
   } catch (e) { next(e); }
 });
 
-// Trigger an HD upscale on demand for an existing ad. Generates _2k.png and
-// (when Replicate is available) _4k.png alongside the canonical.
 editsRouter.post('/upscale/:adId', async (req, res, next) => {
   try {
     const ad = await findAd(req.params.adId);
     if (!ad) return res.status(404).json({ error: 'ad not found' });
-    const canonDisk = join(ROOT, ad.image_url.slice(1));
-    const buf = await fs.readFile(canonDisk);
+    const buf = await loadBuffer(ad.image_url);
+    const base = adKeyBase(ad);
+    if (!base) return res.status(500).json({ error: 'could not derive ad key' });
+
     const { png2160, png4320, method } = await upscalePipeline({ inputBuffer: buf, archetype: ad.archetype });
-    const base = canonDisk.replace(/\.png$/, '');
-    await fs.writeFile(base + '_2k.png', png2160);
-    const out = { ok: true, method, urls: { '2k': ad.image_url.replace(/\.png$/, '_2k.png') } };
+    const out = { ok: true, method, urls: {} };
+
+    const { url: u2k } = await storage.put(base + '_2k.png', png2160, 'image/png');
+    out.urls['2k'] = u2k;
+
     if (png4320) {
-      await fs.writeFile(base + '_4k.png', png4320);
-      out.urls['4k'] = ad.image_url.replace(/\.png$/, '_4k.png');
+      const { url: u4k } = await storage.put(base + '_4k.png', png4320, 'image/png');
+      out.urls['4k'] = u4k;
     }
+
+    await db.patchAd(ad.id, (current) => ({ ...current, hd_urls: out.urls, hd_method: method }));
+
     res.json(out);
   } catch (e) { next(e); }
 });

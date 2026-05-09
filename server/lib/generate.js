@@ -2,30 +2,19 @@
 //
 // PIPELINE STAGES:
 //   1. RESOLVE   — archetype DNA + client + city + price + components + photos
-//   2. ATTACH    — reference ad + gold-output for archetype + components + client photos
+//   2. ATTACH    — reference ad + gold-output + components + client photos
 //   3. COMPOSE   — Claude Opus + extended thinking + gold-standard few-shots → prompt v1
-//   4. CRITIQUE  — Claude reviews its own prompt vs gold + rules + DNA → prompt v2 (refined)
-//   5. RENDER    — gpt-image-2 high quality, n=3 candidates in parallel
-//   6. PICK BEST — Claude vision picks best of 3 with structured JSON judgment
-//   7. UPSCALE   — sharp Lanczos3 1024 → 1080 (HR10)
-//   8. PERSIST   — best PNG + alt PNGs + sidecar JSON + ads.json append + spend log
+//   4. CRITIQUE  — Claude reviews its own prompt vs gold + rules + DNA → prompt v2
+//   5. RENDER    — gpt-image-2 high quality, n=N candidates in parallel
+//   6. PICK BEST — Claude vision picks best with structured JSON judgment
+//   7. UPSCALE   — sharp Lanczos3 (+ Real-ESRGAN if Replicate token set)
+//   8. PERSIST   — best PNG + alt PNGs + sidecar metadata + ads + spend log
 //
-// Inputs (from POST /api/generate):
-//   {
-//     archetype, client_id|client, city,
-//     picks: { headline, sub_headline, value_stack, cta, badge },
-//     component_keys: [...],
-//     attach_client_photos: [...],
-//     quality: "low"|"medium"|"high"|"auto"   (image render quality, default "high")
-//     n_candidates: 1|2|3|4                    (default 3 — best-of-N)
-//     skip_critique: bool                      (default false — set true for fast-but-rough)
-//     compose_only: bool                       (default false — skip render entirely)
-//   }
+// All persistence goes through `db` (FS or Postgres) and `storage` (FS or Blob).
 
-import { promises as fs } from 'node:fs';
-import { join, basename, dirname } from 'node:path';
-import { ASSETS_DIR, DATA_DIR, FILES, ROOT } from './paths.js';
-import { readJSON, readText, patchJSON } from './store.js';
+import { basename } from 'node:path';
+import { db } from './db.js';
+import { storage } from './storage.js';
 import { slugForCode } from './archetypeSlug.js';
 import { composePrompt } from './composePrompt.js';
 import { critiquePromptAndRefine } from './critic.js';
@@ -34,28 +23,10 @@ import { pickBestImage } from './pickBest.js';
 import { upscalePipeline } from './upscale.js';
 import { goldOutputImagePath } from './goldStandards.js';
 
-const SPEND_LOG = join(DATA_DIR, '_cache', 'spend.jsonl');
-
 function nextAdId() {
   return 'ad_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 6);
 }
 function nowIso() { return new Date().toISOString(); }
-
-function urlPathToDisk(urlPath) {
-  if (!urlPath) return null;
-  if (urlPath.startsWith('/assets/')) return join(ROOT, urlPath.slice(1));
-  return urlPath;
-}
-
-async function loadClient(client_id) {
-  return await readJSON(join(FILES.clientsDir, `${client_id}.json`));
-}
-
-async function loadComponentsByKey(keys) {
-  const all = await readJSON(FILES.components, []);
-  const byKey = new Map(all.map((c) => [c.key, c]));
-  return keys.map((k) => byKey.get(k)).filter(Boolean);
-}
 
 function buildUserMessage({ archetype, client, city, picks, components, attach_client_photos, priceRow, hasGoldOutput }) {
   const lines = [];
@@ -106,95 +77,106 @@ function buildUserMessage({ archetype, client, city, picks, components, attach_c
   if (picks.cta)           lines.push(`  CTA:           "${picks.cta}"`);
   if (picks.badge)         lines.push(`  Badge:         "${picks.badge}"`);
   lines.push('');
-  lines.push('ARCHETYPE-SPECIFIC RULES (from data/archetypes.json):');
+  lines.push('ARCHETYPE-SPECIFIC RULES (PRIORITY 1 — these win on conflict):');
   for (const r of (archetype.rules || [])) lines.push(`  - ${r}`);
   lines.push('');
   lines.push('ASSETS ATTACHED (look at them — they are in this message):');
   let n = 1;
-  lines.push(`  - IMAGE ${n++}: Reference ad for ${archetype.code} (style guide for density/hierarchy/feel; do NOT copy specifics)`);
+  lines.push(`  - IMAGE ${n++}: Reference ad for ${archetype.code} (PRIORITY 2: structural template — mirror its composition)`);
   if (hasGoldOutput) {
-    lines.push(`  - IMAGE ${n++}: GOLD-STANDARD OUTPUT for ${archetype.code} — production-approved exemplar showing the quality bar this archetype must meet. Use as a calibration reference, NOT to copy.`);
+    lines.push(`  - IMAGE ${n++}: GOLD STANDARD output for ${archetype.code} — quality bar, calibration only`);
   }
   for (const c of components) {
     lines.push(`  - IMAGE ${n++}: Locked component "${c.key}" (${c.category}) — ${c.description || ''}. Use AS-IS per HR02.`);
   }
   for (const ph of attach_client_photos) {
-    lines.push(`  - IMAGE ${n++}: Client photo "${ph}" — use EXACTLY as provided per HR04 (no AI face modification).`);
+    lines.push(`  - IMAGE ${n++}: Client photo "${ph}" — use EXACTLY as provided per HR04.`);
   }
   lines.push('');
-  lines.push('Compose the ChatGPT-ready image prompt now. Output only the prompt — no preamble, no commentary, no markdown headers, no code fences.');
+  lines.push('Compose the ChatGPT-ready image prompt now. Output only the prompt.');
   return lines.join('\n');
 }
 
-async function logSpend(entry) {
-  await fs.mkdir(join(DATA_DIR, '_cache'), { recursive: true });
-  const line = JSON.stringify({ at: nowIso(), ...entry }) + '\n';
-  await fs.appendFile(SPEND_LOG, line, 'utf8');
+// Resolve "asset reference" used by upload sources (component imagePath, ref
+// ad on disk/Blob, client photo). Returns a "ref" string usable by loadBuffer.
+async function resolveReferenceAd(code) {
+  const slug = slugForCode(code);
+  if (!slug) return null;
+  // Try common extensions in storage.
+  for (const ext of ['png', 'jpg', 'jpeg', 'webp']) {
+    const key = `reference-ads/${slug}/reference.${ext}`;
+    try { await storage.get(key); return key; } catch { /* try next */ }
+  }
+  return null;
+}
+
+async function resolveClientPhotoRefs(client_id, filenames) {
+  if (!client_id || !filenames || filenames.length === 0) return [];
+  const keys = await storage.list(`client-uploads/${client_id}`).catch(() => []);
+  const lookup = new Map();
+  for (const k of keys) lookup.set(basename(k.split('?')[0]), k);
+  const out = [];
+  for (const fname of filenames) {
+    const k = lookup.get(basename(fname));
+    if (k) out.push({ ref: k, filename: basename(fname) });
+  }
+  return out;
 }
 
 export async function generateAd(input) {
   const ad_id = nextAdId();
 
   // ── STAGE 1: RESOLVE ──────────────────────────────────────────────────────
-  const archetypes = await readJSON(FILES.archetypes, []);
-  const archetype = archetypes.find((a) => a.code === input.archetype);
+  const archetypes = await db.readDoc('archetypes');
+  const archetype = (archetypes || []).find((a) => a.code === input.archetype);
   if (!archetype) throw Object.assign(new Error('archetype not found: ' + input.archetype), { status: 400 });
 
   let client = input.client || null;
   if (!client) {
     if (!input.client_id) throw Object.assign(new Error('client_id or inline client required'), { status: 400 });
-    client = await loadClient(input.client_id);
+    client = await db.readClient(input.client_id);
   }
   const city = input.city || client.city || (client.service_areas?.find((a) => a.primary)?.name) || '';
-  const prices = await readJSON(FILES.prices, []);
-  const priceRow = prices.find((p) => p.city === city) || null;
+  const prices = await db.readDoc('prices');
+  const priceRow = (prices || []).find((p) => p.city === city) || null;
 
   // ── STAGE 2: ATTACH ───────────────────────────────────────────────────────
   const attachments = [];
 
-  const refSlug = slugForCode(archetype.code);
-  if (refSlug) {
-    const refDisk = join(ASSETS_DIR, 'reference-ads', refSlug, 'reference.png');
-    try {
-      await fs.access(refDisk);
-      attachments.push({ path: refDisk, label: `IMAGE 1 — Reference ad for ${archetype.code} (style guide; do not copy specifics)` });
-    } catch { console.warn(`[generate] no reference.png for ${archetype.code}`); }
+  const refKey = await resolveReferenceAd(archetype.code);
+  if (refKey) {
+    attachments.push({ path: refKey, label: `IMAGE 1 — Reference ad for ${archetype.code} (PRIORITY 2 structural template)` });
+  } else {
+    console.warn(`[generate] no reference ad found for ${archetype.code}`);
   }
 
-  // Gold-standard output for this archetype, if uploaded.
-  const goldOut = await goldOutputImagePath(archetype.code);
+  // Gold-standard output (if uploaded) — always tried; goldOutputImagePath
+  // currently looks at filesystem only, so it's best-effort.
+  const goldOut = await goldOutputImagePath(archetype.code).catch(() => null);
   let nextImg = 2;
   if (goldOut) {
-    attachments.push({ path: goldOut, label: `IMAGE ${nextImg++} — GOLD STANDARD output for ${archetype.code} (quality bar — calibration only, do not copy)` });
+    attachments.push({ path: goldOut, label: `IMAGE ${nextImg++} — GOLD STANDARD output for ${archetype.code} (quality bar)` });
   }
 
-  const components = await loadComponentsByKey(input.component_keys || []);
+  // Components — imagePath is either a /assets/... URL (FS) or https://blob... (prod).
+  const allComponents = await db.readDoc('components');
+  const componentsByKey = new Map((allComponents || []).map((c) => [c.key, c]));
+  const components = (input.component_keys || []).map((k) => componentsByKey.get(k)).filter(Boolean);
   for (const c of components) {
-    const disk = urlPathToDisk(c.imagePath);
-    if (!disk) continue;
-    try {
-      await fs.access(disk);
-      attachments.push({ path: disk, label: `IMAGE ${nextImg++} — Locked component ${c.key} (${c.category}) · USE AS-IS per HR02` });
-    } catch { console.warn(`[generate] component image missing: ${c.key} → ${disk}`); }
+    if (!c.imagePath) { console.warn(`[generate] component has no imagePath: ${c.key}`); continue; }
+    attachments.push({ path: c.imagePath, label: `IMAGE ${nextImg++} — Locked component ${c.key} (${c.category}) · USE AS-IS per HR02` });
   }
 
+  // Client photos
+  const photoRefs = await resolveClientPhotoRefs(client.id, input.attach_client_photos || []);
   const clientPhotoFilenames = [];
-  if (client.id && Array.isArray(input.attach_client_photos)) {
-    const dir = join(ASSETS_DIR, 'client-uploads', client.id);
-    for (const fname of input.attach_client_photos) {
-      const safe = basename(fname);
-      const disk = join(dir, safe);
-      try {
-        await fs.access(disk);
-        attachments.push({ path: disk, label: `IMAGE ${nextImg++} — Client photo ${safe} · USE EXACTLY AS PROVIDED per HR04` });
-        clientPhotoFilenames.push(safe);
-      } catch { console.warn(`[generate] client photo missing: ${disk}`); }
-    }
+  for (const { ref, filename } of photoRefs) {
+    attachments.push({ path: ref, label: `IMAGE ${nextImg++} — Client photo ${filename} · USE EXACTLY AS PROVIDED per HR04` });
+    clientPhotoFilenames.push(filename);
   }
 
   // ── STAGE 3: COMPOSE (Claude + extended thinking + gold standards) ───────
-  // OR: bypass entirely if prompt_override is set (operator-edited prompt mode).
-  const systemPrompt = await readText(FILES.masterPrompt, '');
+  const systemPrompt = await db.readDoc('master-prompt');
   const userMessage = buildUserMessage({
     archetype, client, city,
     picks: input.picks || {},
@@ -204,36 +186,26 @@ export async function generateAd(input) {
 
   let composeV1, composeV2 = null, composedFinal;
   if (input.prompt_override && input.prompt_override.trim().length > 0) {
-    // Operator-edited prompt — skip Claude entirely. Use the override directly.
     composedFinal = {
       promptText: input.prompt_override,
-      model: 'operator-edited',
-      usage: {},
-      costUsd: 0,
-      stopReason: 'operator_provided',
+      model: 'operator-edited', usage: {}, costUsd: 0, stopReason: 'operator_provided',
     };
-    composeV1 = composedFinal;  // no v1 — they're identical
+    composeV1 = composedFinal;
   } else {
-    composeV1 = await composePrompt({ systemPrompt, userMessage, attachments });
-    await logSpend({
-      ad_id, stage: 'compose_v1', model: composeV1.model,
-      usage: composeV1.usage, costUsd: composeV1.costUsd,
-    });
+    composeV1 = await composePrompt({ systemPrompt: systemPrompt || '', userMessage, attachments });
+    await db.appendSpend({ ad_id, stage: 'compose_v1', model: composeV1.model, usage: composeV1.usage, costUsd: composeV1.costUsd });
     composedFinal = composeV1;
   }
 
-  // ── STAGE 4: CRITIQUE & REFINE (skipped when prompt_override or skip_critique) ──
+  // ── STAGE 4: CRITIQUE & REFINE ────────────────────────────────────────────
   if (!input.prompt_override && !input.skip_critique) {
     composeV2 = await critiquePromptAndRefine({
-      systemPrompt,
+      systemPrompt: systemPrompt || '',
       originalUserMessage: userMessage,
       composedPrompt: composeV1.promptText,
       attachments,
     });
-    await logSpend({
-      ad_id, stage: 'compose_v2_refined', model: composeV2.model,
-      usage: composeV2.usage, costUsd: composeV2.costUsd,
-    });
+    await db.appendSpend({ ad_id, stage: 'compose_v2_refined', model: composeV2.model, usage: composeV2.usage, costUsd: composeV2.costUsd });
     composedFinal = composeV2;
   }
 
@@ -244,12 +216,11 @@ export async function generateAd(input) {
         text: composedFinal.promptText,
         textV1: composeV1.promptText,
         critiqueApplied: !!composeV2,
-        model: composedFinal.model,
-        usage: composedFinal.usage,
+        model: composedFinal.model, usage: composedFinal.usage,
         costUsd: composeV1.costUsd + (composeV2 ? composeV2.costUsd : 0),
       },
       image: null,
-      attachments: attachments.map((a) => ({ label: a.label, path: a.path.replace(ROOT, '') })),
+      attachments: attachments.map((a) => ({ label: a.label, path: a.path })),
       totalCostUsd: composeV1.costUsd + (composeV2 ? composeV2.costUsd : 0),
       userMessage,
     };
@@ -263,7 +234,7 @@ export async function generateAd(input) {
     quality: input.quality || 'high',
     n: nCandidates,
   });
-  await logSpend({
+  await db.appendSpend({
     ad_id, stage: 'render_n', model: renderResult.model,
     quality: renderResult.quality, size: renderResult.size,
     requested: renderResult.requested, succeeded: renderResult.succeeded,
@@ -281,36 +252,28 @@ export async function generateAd(input) {
       goldOutputPath: goldOut,
     });
     bestIndex = pickResult.bestIndex;
-    await logSpend({
-      ad_id, stage: 'pick_best', model: pickResult.model,
-      bestIndex, costUsd: pickResult.costUsd,
-    });
+    await db.appendSpend({ ad_id, stage: 'pick_best', model: pickResult.model, bestIndex, costUsd: pickResult.costUsd });
   }
 
-  // ── STAGE 7: UPSCALE best — full HD pipeline (1080 + 2160 + 4k if Replicate) ──
-  const upscaled = await upscalePipeline({
-    inputBuffer: renderResult.candidates[bestIndex],
-    archetype,
-  });
+  // ── STAGE 7: UPSCALE best (sharp Lanczos3 +/- Real-ESRGAN) ────────────────
+  const upscaled = await upscalePipeline({ inputBuffer: renderResult.candidates[bestIndex], archetype });
 
-  // ── STAGE 8: PERSIST ──────────────────────────────────────────────────────
+  // ── STAGE 8: PERSIST (storage + db) ──────────────────────────────────────
   const clientFolder = client.id || 'adhoc';
-  const outputDir = join(ASSETS_DIR, 'generated-ads', clientFolder);
-  await fs.mkdir(outputDir, { recursive: true });
-  const bestPath = join(outputDir, `${ad_id}.png`);
-  await fs.writeFile(bestPath, upscaled.png1080);
-  // HD sidecars
-  await fs.writeFile(bestPath.replace(/\.png$/, '_2k.png'), upscaled.png2160);
-  if (upscaled.png4320) await fs.writeFile(bestPath.replace(/\.png$/, '_4k.png'), upscaled.png4320);
+  const baseKey = `generated-ads/${clientFolder}/${ad_id}`;
+  const { url: bestUrl } = await storage.put(`${baseKey}.png`, upscaled.png1080, 'image/png');
+  const { url: hd2kUrl } = await storage.put(`${baseKey}_2k.png`, upscaled.png2160, 'image/png');
+  const hdUrls = { '2k': hd2kUrl };
+  if (upscaled.png4320) {
+    const { url } = await storage.put(`${baseKey}_4k.png`, upscaled.png4320, 'image/png');
+    hdUrls['4k'] = url;
+  }
 
-  // Save EVERY candidate at its native render size (not just the alts) so the
-  // operator can manually pick a different one later. Index 0..N-1 in the
-  // order returned by the renderer.
+  // Save EVERY candidate so the operator can manually pick a different one.
   const candidateUrls = [];
   for (let i = 0; i < renderResult.candidates.length; i++) {
-    const candPath = join(outputDir, `${ad_id}_c${i}.png`);
-    await fs.writeFile(candPath, renderResult.candidates[i]);
-    candidateUrls.push(`/assets/generated-ads/${clientFolder}/${ad_id}_c${i}.png`);
+    const { url } = await storage.put(`${baseKey}_c${i}.png`, renderResult.candidates[i], 'image/png');
+    candidateUrls.push(url);
   }
   const altUrls = candidateUrls.filter((_, i) => i !== bestIndex);
 
@@ -320,7 +283,7 @@ export async function generateAd(input) {
     renderResult.costUsd +
     (pickResult ? pickResult.costUsd : 0);
 
-  // Sidecar JSON — full audit trail.
+  // Sidecar metadata as JSON in storage (+ also returned in response).
   const meta = {
     ad_id, created: nowIso(),
     archetype: archetype.code, client_id: client.id || null, city,
@@ -333,7 +296,6 @@ export async function generateAd(input) {
       render: { model: renderResult.model, size: renderResult.size, quality: renderResult.quality, requested: renderResult.requested, succeeded: renderResult.succeeded, costUsd: renderResult.costUsd },
       pick_best: pickResult ? { model: pickResult.model, bestIndex, reasoning: pickResult.reasoning, perCandidate: pickResult.perCandidate, costUsd: pickResult.costUsd } : null,
       upscale: { from: renderResult.size, method: upscaled.method, sizes_written: ['1080', '2160', upscaled.png4320 ? '4320' : null].filter(Boolean) },
-      lessons_learned_injected: !!lessons,
       total_cost_usd: totalCostUsd,
     },
     candidate_urls: candidateUrls,
@@ -341,9 +303,11 @@ export async function generateAd(input) {
     full_prompt_v2_refined: composeV2 ? composeV2.promptText : null,
     full_prompt_used: composedFinal.promptText,
   };
-  await fs.writeFile(bestPath.replace(/\.png$/, '.json'), JSON.stringify(meta, null, 2));
+  await storage.put(`${baseKey}.json`, Buffer.from(JSON.stringify(meta, null, 2)), 'application/json').catch((e) => {
+    console.warn('[generate] sidecar JSON save failed:', e.message);
+  });
 
-  // Append to data/ads.json so it shows in the Ad Database.
+  // Append to ads.
   const adRecord = {
     id: ad_id,
     archetype: archetype.code,
@@ -351,14 +315,12 @@ export async function generateAd(input) {
     city,
     headline: input.picks?.headline || '',
     created: nowIso().slice(0, 10),
-    image_url: `/assets/generated-ads/${clientFolder}/${ad_id}.png`,
+    image_url: bestUrl,
+    candidate_urls: candidateUrls,
+    hd_urls: hdUrls,
     prompt_text: composedFinal.promptText,
   };
-  await patchJSON(FILES.ads, (list) => {
-    const arr = Array.isArray(list) ? list : [];
-    arr.unshift(adRecord);
-    return arr;
-  }, []);
+  await db.appendAd(adRecord);
 
   return {
     ad_id, archetype: archetype.code, client_id: client.id || null, city,
@@ -366,19 +328,13 @@ export async function generateAd(input) {
       text: composedFinal.promptText,
       textV1: composeV1.promptText,
       critiqueApplied: !!composeV2,
-      model: composedFinal.model,
-      usage: composedFinal.usage,
+      model: composedFinal.model, usage: composedFinal.usage,
       costUsd: composeV1.costUsd + (composeV2 ? composeV2.costUsd : 0),
     },
     image: {
-      url: adRecord.image_url,
-      altUrls,
-      candidateUrls,
+      url: bestUrl, altUrls, candidateUrls,
       bestIndex,
-      hdUrls: {
-        '2k': adRecord.image_url.replace(/\.png$/, '_2k.png'),
-        ...(upscaled.png4320 ? { '4k': adRecord.image_url.replace(/\.png$/, '_4k.png') } : {}),
-      },
+      hdUrls,
       upscaleMethod: upscaled.method,
       model: renderResult.model,
       size: '1080x1080 (upscaled from ' + renderResult.size + ' via ' + upscaled.method + ')',
@@ -387,12 +343,9 @@ export async function generateAd(input) {
       costUsd: renderResult.costUsd,
     },
     pickBest: pickResult ? {
-      bestIndex,
-      reasoning: pickResult.reasoning,
-      perCandidate: pickResult.perCandidate,
-      costUsd: pickResult.costUsd,
+      bestIndex, reasoning: pickResult.reasoning, perCandidate: pickResult.perCandidate, costUsd: pickResult.costUsd,
     } : null,
-    attachments: attachments.map((a) => ({ label: a.label, path: a.path.replace(ROOT, '') })),
+    attachments: attachments.map((a) => ({ label: a.label, path: a.path })),
     totalCostUsd,
     userMessage,
   };

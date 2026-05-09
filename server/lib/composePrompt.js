@@ -14,9 +14,9 @@
 //
 // Output: { promptText, usage, costUsd, model, stopReason }
 
-import { promises as fs } from 'node:fs';
 import { extname } from 'node:path';
 import { inlineGoldStandards } from './goldStandards.js';
+import { loadBuffer, mimeFromRef } from './storage.js';
 
 const ANTHROPIC_URL = 'https://api.anthropic.com/v1/messages';
 
@@ -91,11 +91,13 @@ and the structural template are non-negotiable.
 `;
 
 
-async function imageContentBlock(path, label) {
-  const ext = extname(path).toLowerCase();
-  const media_type = MIME_BY_EXT[ext];
-  if (!media_type) throw new Error(`unsupported image extension for Claude: ${ext} (${path})`);
-  const buf = await fs.readFile(path);
+async function imageContentBlock(ref, label) {
+  // ref can be a disk path, a /assets/ URL, an https Blob URL, or a storage key.
+  const media_type = mimeFromRef(ref) || MIME_BY_EXT[extname(ref).toLowerCase()];
+  if (!media_type || media_type === 'application/octet-stream') {
+    throw new Error(`unsupported image type for Claude: ${ref}`);
+  }
+  const buf = await loadBuffer(ref);
   return [
     { type: 'text', text: `[${label}]` },
     { type: 'image', source: { type: 'base64', media_type, data: buf.toString('base64') } },

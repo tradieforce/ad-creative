@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tradie Force — Sign in</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+<style>
+  body { display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; background: var(--bg); }
+  .login-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 40px 36px; max-width: 380px; width: 100%; box-shadow: 0 12px 40px rgba(0,0,0,0.05); }
+  .login-card h1 { font-family: Fraunces, serif; font-size: 26px; margin: 0 0 6px; }
+  .login-card .sub { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-3); margin-bottom: 22px; }
+  .login-card label { display: block; font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-3); margin-bottom: 6px; font-weight: 600; }
+  .login-card input { width: 100%; padding: 11px 13px; border: 1px solid var(--border-2); border-radius: 6px; font-size: 15px; font-family: inherit; background: var(--bg); }
+  .login-card input:focus { border-color: var(--accent); outline: none; }
+  .login-card button { width: 100%; margin-top: 18px; padding: 12px; background: var(--accent); color: white; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: inherit; }
+  .login-card button:hover { background: var(--accent-2); }
+  .login-card button:disabled { opacity: 0.6; cursor: not-allowed; }
+  .err { color: #b91c1c; font-size: 13px; margin-top: 12px; min-height: 18px; }
+</style>
+</head>
+<body>
+<div class="login-card">
+  <h1>Tradie Force</h1>
+  <div class="sub">Internal admin tool</div>
+  <form id="login-form">
+    <label>Password</label>
+    <input id="password" type="password" autofocus autocomplete="current-password">
+    <button type="submit" id="submit-btn">Sign in</button>
+    <div class="err" id="err"></div>
+  </form>
+</div>
+<script>
+document.getElementById('login-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = document.getElementById('submit-btn');
+  const err = document.getElementById('err');
+  err.textContent = '';
+  btn.disabled = true; btn.textContent = '…';
+  try {
+    const r = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ password: document.getElementById('password').value }),
+    });
+    if (r.ok) { window.location.href = '/'; return; }
+    const j = await r.json().catch(() => ({}));
+    err.textContent = j.error || ('HTTP ' + r.status);
+  } catch (ex) {
+    err.textContent = ex.message || 'login failed';
+  }
+  btn.disabled = false; btn.textContent = 'Sign in';
+});
+</script>
+</body>
+</html>

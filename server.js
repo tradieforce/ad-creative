@@ -1,9 +1,13 @@
 import dotenv from 'dotenv';
 // override: true so a stale empty ANTHROPIC_API_KEY in the shell
 // doesn't shadow the real key in .env (we hit this on macOS).
+// On Vercel, env comes from project settings — dotenv.config() is a no-op
+// when no .env file exists.
 dotenv.config({ override: true });
 import express from 'express';
+import cookieParser from 'cookie-parser';
 import { ASSETS_DIR, UI_DIR } from './server/lib/paths.js';
+import { authMiddleware, loginHandler, logoutHandler } from './server/lib/auth.js';
 import { archetypeRouter } from './server/routes/archetypes.js';
 import { globalRulesRouter } from './server/routes/globalRules.js';
 import { componentsRouter } from './server/routes/components.js';
@@ -18,9 +22,18 @@ import { editsRouter } from './server/routes/edits.js';
 const app = express();
 const PORT = Number(process.env.PORT || 3000);
 
-app.use(express.json({ limit: '5mb' }));
+app.use(express.json({ limit: '50mb' }));   // canvas-editor flattens can be large
 // Master prompt PUT may arrive as raw text/markdown.
 app.use(express.text({ type: ['text/*'], limit: '500kb' }));
+app.use(cookieParser());
+
+// Public auth endpoints — no gating.
+app.post('/api/auth/login', loginHandler);
+app.post('/api/auth/logout', logoutHandler);
+app.get('/api/health', (_req, res) => res.json({ ok: true, at: new Date().toISOString() }));
+
+// Everything below this is gated by ADMIN_PASSWORD if set.
+app.use(authMiddleware);
 
 app.use('/api/archetypes', archetypeRouter);
 app.use('/api/global-rules', globalRulesRouter);
@@ -45,7 +58,8 @@ app.use('/assets', express.static(ASSETS_DIR, {
   },
 }));
 
-// UI shell.
+// UI shell — in production Vercel serves /public statically and never reaches here.
+// Locally, this serves the same files for parity.
 app.use(express.static(UI_DIR));
 
 // Final error handler — turn validation errors / lookups into clean JSON.
@@ -57,6 +71,14 @@ app.use((err, _req, res, _next) => {
   res.status(status).json(payload);
 });
 
-app.listen(PORT, () => {
-  console.log(`[tradie-force-admin] listening on http://localhost:${PORT}`);
-});
+// Only listen when run directly (e.g. `npm start`).
+// On Vercel, this module is imported by api/index.js and `app` is exported.
+import { fileURLToPath } from 'node:url';
+const __isMain = fileURLToPath(import.meta.url) === process.argv[1];
+if (__isMain) {
+  app.listen(PORT, () => {
+    console.log(`[tradie-force-admin] listening on http://localhost:${PORT}`);
+  });
+}
+
+export default app;

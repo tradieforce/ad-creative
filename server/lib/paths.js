@@ -4,7 +4,9 @@ import { fileURLToPath } from 'node:url';
 export const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 export const DATA_DIR = join(ROOT, 'data');
 export const ASSETS_DIR = join(ROOT, 'assets');
-export const UI_DIR = join(ROOT, 'ui');
+// UI lives in /public on Vercel (auto-served as static).
+// Locally we keep the same path so dev parity holds.
+export const UI_DIR = join(ROOT, 'public');
 export const DOCS_DIR = join(ROOT, 'docs');
 
 export const FILES = {
