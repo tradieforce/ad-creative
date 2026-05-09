@@ -1,0 +1,26 @@
+{
+  "id": "sharp_aircon",
+  "business_name": "Sharp Air Conditioning",
+  "city": "Central Coast",
+  "postcode": "2250",
+  "state": "NSW",
+  "region": "Central Coast · Newcastle · Hunter Valley",
+  "service_areas": [
+    { "name": "Central Coast", "postcode": "2250", "primary": true,  "notes": "" },
+    { "name": "Newcastle",     "postcode": "2300", "primary": false, "notes": "" },
+    { "name": "Hunter Valley", "postcode": "2320", "primary": false, "notes": "" }
+  ],
+  "brands_sold": ["Daikin", "Mitsubishi Heavy Industries", "Samsung", "Fujitsu", "Hisense"],
+  "google_review_count": 168,
+  "install_guarantee_days": 7,
+  "years_in_business": 11,
+  "default_per_week_price": "55",
+  "current_promo_pct": 30,
+  "team_photos_uploaded": false,
+  "owner_photos_uploaded": false,
+  "van_photos_uploaded": false,
+  "family_owned": true,
+  "australian_owned": true,
+  "onboarded_date": "2026-05-08",
+  "ads_generated": []
+}

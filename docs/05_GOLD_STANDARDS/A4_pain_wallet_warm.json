@@ -1,0 +1,41 @@
+{
+  "archetype": "A4",
+  "archetype_name": "Problem/Solution Urgency",
+  "variant": "wallet (warm/hot audience)",
+  "funnel_stage": "Warm/Hot",
+  "tested_outcome": "Production-ready first pass. Wallet hero landed cinematic and moody, anchor strikethrough clean, $5,799 dominant.",
+  "input_context": {
+    "city": "Brisbane",
+    "state": "QLD",
+    "headline": "DREADING YOUR NEXT POWER BILL?",
+    "headline_split": "First half medium-weight, 'POWER BILL?' oversized in contrasting accent",
+    "solution_line": "THE ANSWER: DUCTED A/C, FULLY INSTALLED, $5,799",
+    "anchor_price": "$9,990 (struck through)",
+    "fixed_price": "$5,799",
+    "cta": "LOCK IN YOUR PRICE",
+    "badge": "40% OFF (slightly tilted)",
+    "urgency_line": "Hurry — Limited Slots",
+    "brands": ["Daikin", "Mitsubishi Heavy Industries", "Samsung"]
+  },
+  "assets_attached": [
+    {"type": "ref", "asset": "A04 reference ad", "instruction": "Match style/density/direct-response feel, do NOT copy headline/hero/colours"}
+  ],
+  "composition_choices_that_worked": [
+    "Wallet shot was photoreal, cinematic, slightly desaturated — financial pain conveyed without people in frame",
+    "Dramatic side-lighting on dark surface — coins falling out of empty wallet is the emotional hit",
+    "Headline split: 'DREADING YOUR NEXT' medium-weight + 'POWER BILL?' oversized accent = pulls eye correctly",
+    "Solution panel as vertical accent block on the right — creates clear problem/solution visual divide",
+    "WAS / NOW anchor structure: 'WAS $9,990' struck through, '$5,799' oversized — communicates discount + savings instantly",
+    "Bottom-left tilted burst badge for discount — feels stamped, not designed in",
+    "'Hurry — Limited Slots' italic urgency line under CTA",
+    "Did NOT specify dark/red palette — said 'pick fresh dark high-contrast palette' and AI chose well"
+  ],
+  "full_prompt_used": "Use the attached image as a strong style and layout reference. Match its visual energy, density, and direct-response feel — but DO NOT copy its headline, hero visual, or specific colours. Generate fresh ones per the brief below.\n\nCreate a square 1080×1080 social media ad for a residential ducted air conditioning installer in Brisbane, Australia.\n\nMOOD & STYLE\nBold, dark, urgent, problem-led. This is a pain ad — it should stop the scroll with discomfort, then deliver a clear fixed-price solution. Choose a fresh dark high-contrast palette of your own with one strong accent colour for the solution/price elements. Pick aggressive bold display typography for the headline. All text must be unmissable at thumbnail size. Don't make it look like a stock template — it should feel direct-response, slightly aggressive, but professional.\n\nLAYOUT (top to bottom)\n\n1. HEADLINE — top third\nThe phrase splits into two parts:\n   - \"DREADING YOUR NEXT\" in medium-weight uppercase\n   - \"POWER BILL?\" oversized bold uppercase in a contrasting accent colour — this is the dominant element\nStack across two lines.\n\n2. HERO VISUAL — middle, roughly 40% of canvas height\nA photo-real close-up of an open empty wallet with coins falling out of it onto a dark surface. Dramatic side-lighting. Convey financial pain, money slipping away. No people in this shot. Cinematic, slightly desaturated, moody.\n\n3. SOLUTION PANEL — right side or below the hero\nA vertical solid-colour accent panel containing stacked text:\n   - Small uppercase caps: \"THE ANSWER:\"\n   - Medium uppercase: \"DUCTED A/C, FULLY INSTALLED\"\n   - Above the price, smaller, struck through: \"WAS $9,990\"\n   - Oversized bold dominant: \"$5,799\"\n\n4. CTA BUTTON — beneath the solution panel\nRounded pill button reading: \"LOCK IN YOUR PRICE\"\nBold uppercase. High-contrast colour that pops against the dark background.\n\n5. DISCOUNT BADGE — bottom-left or top-right corner\nCircular burst badge reading: \"40% OFF\"\nBold contrasting colour, slightly tilted.\n\n6. URGENCY LINE — small text under the CTA\nItalic text: \"Hurry — Limited Slots\"\n\n7. BRAND STRIP — very bottom edge\nThin horizontal strip with three brand logos evenly spaced and rendered in their native brand colours: Daikin, Mitsubishi Heavy Industries, Samsung. Use the real brand logos.\n\nHARD RULES\n- 1080×1080 aspect ratio (square), nothing else\n- All text must be readable at thumbnail size on a phone\n- Maximum 3 brand logos\n- Do NOT add the words \"0% interest\" or \"interest-free\" anywhere\n- Do NOT add any people, faces, or hands beyond what's in the wallet shot\n- Do NOT add review badges or star ratings to this ad\n- Do NOT include any dates, names, or specific identifying details\n- Anchor price ($9,990) must be visibly struck through",
+  "lessons_for_layer_2": [
+    "Pain ads work best with a non-person hero (wallet, bill, calculator) — abstract objects deliver emotion without uncanny-valley faces",
+    "Always describe the lighting and mood ('cinematic, slightly desaturated, moody') — that's how you avoid stock-photo aesthetic",
+    "Anchor + new price structure must be explicit: 'WAS $X struck through' vs '$Y oversized bold' — leave no ambiguity",
+    "Headline split into two parts (smaller setup + oversized payoff) creates eye flow — proven hierarchy pattern",
+    "When briefing dark palette, say 'dark high-contrast palette' not 'black background with red accents' — let AI pick the specific colours"
+  ]
+}

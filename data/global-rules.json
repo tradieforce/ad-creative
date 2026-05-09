@@ -1,0 +1,78 @@
+[
+  {
+    "id": "HR01",
+    "rule": "NEVER include the text \"0% interest\", \"interest-free\", \"interest free finance\", or any variation referring to interest, financing terms, or finance products. \"$0 upfront\" is the only acceptable affordability phrase. Finance offers must not be advertised on the creative."
+  },
+  {
+    "id": "HR02",
+    "rule": "All technical components (condensers, outlets, ducting, controllers, house diagrams) MUST come from the Components Library and be supplied to ChatGPT as locked image attachments. AI never invents these from scratch."
+  },
+  {
+    "id": "HR03",
+    "rule": "Condensers shown MUST be the double-fan ducted version. Single-fan = split system, wrong product."
+  },
+  {
+    "id": "HR04",
+    "rule": "NEVER use AI-generated faces. Use only stock photos from the Components Library or client-uploaded photos."
+  },
+  {
+    "id": "HR05",
+    "rule": "Maximum 3 brand logos in the brand strip for direct-response ads. 2 brand logos for premium/trust positioning. Never the agency or client company logo on the creative."
+  },
+  {
+    "id": "HR06",
+    "rule": "PRICING MIX: Per-week pricing is the default (promotes finance, generates the agency's finance-clip revenue). Layer 2 selects ONE archetype per pack to carry the fixed-price treatment (attracts deal-seekers \u2014 client must be ready to handle the price-related questions). Some trust-led ads carry NO price. Layer 2 balances this mix when composing the pack."
+  },
+  {
+    "id": "HR07",
+    "rule": "Fixed-price ads can only be composed when {{city}} exists in the Healthy Price Library (the city has a fixed price set)."
+  },
+  {
+    "id": "HR08",
+    "rule": "Google review badge appears ONLY when {{google_review_count}} \u2265 30. Trust ad (A10) still fires below 30 reviews \u2014 just without the review badge."
+  },
+  {
+    "id": "HR09",
+    "rule": "Discount % shown on badges MUST match the real promo the client is currently running. Editable per launch."
+  },
+  {
+    "id": "HR10",
+    "rule": "OUTPUT FORMAT: All ads are square 1080\u00d71080 for Meta feed. No portrait or landscape variants \u2014 every archetype outputs at this single dimension."
+  },
+  {
+    "id": "HR11",
+    "rule": "Headline text must be high-contrast, bold, large enough to read at thumbnail size."
+  },
+  {
+    "id": "HR12",
+    "rule": "All copy in Australian English ('colour' not 'color', '$' for AUD)."
+  },
+  {
+    "id": "HR13",
+    "rule": "CLARITY RULE: The product category \u2014 'DUCTED AIR CONDITIONING', 'DUCTED A/C', or 'DUCTED HEATING & COOLING' \u2014 MUST appear prominently in the headline or sub-headline. A scroller must know what's being sold within 1 second. Premium aesthetic does not override this."
+  },
+  {
+    "id": "HR14",
+    "rule": "SAFE-ZONE RULE: Maintain ~60px padding inside all four edges. No headlines, badges, CTAs, or critical text within this margin. Brand strip may sit close to but not touching the bottom edge. Protects against Meta's auto-cropping in feed/Stories/Reels."
+  },
+  {
+    "id": "HR15",
+    "rule": "TEXT SIZE RULE: Every text element must be readable at thumbnail size on mobile. Badges, labels, and supporting text are NOT decorative footnotes \u2014 they must be sized to be read. If text is decorative-small, it has failed."
+  },
+  {
+    "id": "HR16",
+    "rule": "VISION-BASED COMPOSITION: Layer 2 must analyse all attached asset images visually before composing the prompt. For ads with client photos (A10, A2 lifestyle, A3 lifestyle), palette is dictated by what's visible in the photo (client branding, mood, lighting) \u2014 not invented."
+  },
+  {
+    "id": "HR17",
+    "rule": "ALL ARCHETYPES (except A10) ALWAYS FIRE for every client. Holiday variants (A9), seasonal variants (A5, A6), and pricing variants (per-week / fixed / no-price) are all generated upfront from day one. Launch each as the date or season approaches. A10 conditional only on photo availability."
+  },
+  {
+    "id": "HR18",
+    "rule": "WATERMARK REMOVAL: When any image from the Components Library (condensers, controllers, ducting, outlets, brand logos, stock photos, etc.) is used as a reference or fixed asset in an ad, ChatGPT Image 2 MUST remove all visible watermarks (stock-agency watermarks like Greenmill, Adobe Stock, iStock, Westend61, Shutterstock, etc.) before final render. The output ad must contain ZERO watermarks regardless of what was on the source asset."
+  },
+  {
+    "id": "HR19",
+    "rule": "TRUST BADGES \u2014 AI-GENERATED, CONDITIONAL: Trust badges (google_5star, trust_family_owned, trust_aus_owned) are NOT supplied as locked images. ChatGPT Image 2 generates them per the image-gen prompt stored in each badge's slot description. Each badge appears ONLY when the client's corresponding flag is true: google_5star \u2192 {{google_review_count}} \u2265 30 (per HR08), trust_family_owned \u2192 {{family_owned}} === true, trust_aus_owned \u2192 {{australian_owned}} === true. If the flag is false or missing, the badge MUST NOT appear in the ad."
+  }
+]

@@ -1,0 +1,10 @@
+node_modules/
+.env
+.env.local
+.DS_Store
+*.log
+data/_cache/
+assets/generated-ads/*
+!assets/generated-ads/README.md
+_BACKUP_*/
+_archive/

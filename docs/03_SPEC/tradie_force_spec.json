@@ -1,0 +1,1843 @@
+{
+  "archetypes": [
+    {
+      "id": 1,
+      "code": "A1",
+      "name": "Energy Bill Hero",
+      "tagline": "Save-on-bills angle. Calm, authoritative, benefit-led. Universal best-performer.",
+      "when": "Always — runs for every client.",
+      "gating": "None.",
+      "fires": "always",
+      "funnel_stage": "Cold/Warm",
+      "accent": "blue",
+      "exemplar": "A03",
+      "variants": [],
+      "reference_ads": [
+        {
+          "id": "A03",
+          "tier": 1,
+          "headline": "CUT YOUR ENERGY BILLS BY UP TO 30%",
+          "price": "Per-week",
+          "notes": "All-time top performer. The exemplar."
+        }
+      ],
+      "rules": [
+        "Calm, trustworthy mood. NO people in the hero — house diagram or savings-themed visual is the hero.",
+        "Per-week price OR no price. Never fixed price (use A4 for fixed-price pain ads).",
+        "Headline must reference SAVING, REDUCING, or CUTTING bills — never pain framing (that belongs to A4).",
+        "Pick fresh colours, palettes and fonts per generation. Don't lock into one look."
+      ],
+      "variable_inputs": {
+        "Headlines": [
+          "CUT YOUR ENERGY BILLS BY UP TO 30%",
+          "SAVE UP TO 60% ON YOUR POWER BILLS",
+          "LOWER YOUR ENERGY BILLS THIS SEASON",
+          "SLASH YOUR ELECTRICITY BILLS WITH DUCTED A/C",
+          "DUCTED A/C THAT PAYS FOR ITSELF",
+          "THE EASIEST WAY TO LOWER YOUR POWER BILLS",
+          "SAVE $1,000s ON YOUR POWER BILLS",
+          "DROP YOUR POWER BILLS THIS YEAR",
+          "ENERGY EFFICIENT DUCTED A/C — SAVE BIG",
+          "HOW {{city}} HOMEOWNERS ARE BEATING RISING POWER PRICES",
+          "DUCTED A/C THAT WORKS SMARTER, NOT HARDER",
+          "POWER BILLS DROPPING WITH DUCTED A/C",
+          "MAKE YOUR HOME ENERGY-EFFICIENT",
+          "COMFORT YEAR-ROUND, BILLS DOWN ALL YEAR",
+          "THE SMARTEST WAY TO HEAT & COOL YOUR HOME"
+        ],
+        "Value stacks": [
+          "Silent, Seamless, and Smart Cooling | Zoned Control for Maximum Comfort | 5-Year Workmanship Guarantee | $0 Upfront, Interest-Free Finance Available",
+          "Save up to 60% on bills | $1,299 in FREE Bonuses | $0 Upfront Cost | Interest-Free Finance Available",
+          "Energy-Star Rated System | Whole-Home Comfort | Locally Installed | $0 Upfront, Interest-Free Finance Available",
+          "Smart Zoning Technology | Heat or Cool Just the Rooms You Use | 5-Year Workmanship Guarantee | $0 Upfront, Interest-Free Finance Available",
+          "Premium Daikin / Mitsubishi System | Engineered for Aussie Homes | 7-Year Manufacturer Warranty | Interest-Free Finance Available",
+          "Cuts Energy Use by Up to 30% | $1,200 in Free Bonuses | Locally Licensed & Insured | $0 Upfront",
+          "Smart Controls from Your Phone | Run It Only Where You Need It | Interest-Free Finance | 5-Year Guarantee"
+        ],
+        "CTAs": [
+          "REQUEST A FREE QUOTE TODAY!",
+          "GET YOUR FREE QUOTE",
+          "BOOK YOUR FREE QUOTE",
+          "GET PRICING NOW",
+          "SEE IF YOU QUALIFY",
+          "BOOK A FREE ON-SITE QUOTE",
+          "GET A FAST QUOTE",
+          "CHECK YOUR HOME'S PRICE"
+        ],
+        "Badges": [
+          "50% OFF",
+          "40% OFF",
+          "30% OFF",
+          "LIMITED TIME ONLY",
+          "LIMITED SLOTS",
+          "$1,299 IN BONUSES",
+          "ENERGY STAR RATED",
+          "5-YEAR GUARANTEE"
+        ],
+        "Visual hero options": [
+          "3D house diagram with airflow arrows visualising the system",
+          "Person holding up an electricity bill (no AI faces — use stock or upload)",
+          "Bill graphic with downward arrow showing savings",
+          "Side-by-side: traditional A/C unit vs full ducted system",
+          "Home exterior with cool/warm air visualisation",
+          "Energy efficiency rating chart or savings graph"
+        ]
+      },
+      "components": [
+        {
+          "slot": "house diagram",
+          "usage": "house_3d_blue — hero, ~50% canvas height, centred"
+        },
+        {
+          "slot": "brand logos",
+          "usage": "brand_1, brand_2, brand_3 — bottom strip, max 3"
+        }
+      ],
+      "prompt": "Square 1080×1080 ad. Calm, trustworthy mood — pick a fresh colour palette and font pairing each generation. Top third: oversized high-contrast {{headline}}, readable at thumbnail size. Middle: hero visual — typically the attached house-diagram image, centred, ~50% canvas height (or one of the alternative {{visual_hero}} options like a person holding a bill or a savings graph). Below the hero: pill-shaped panel containing 'DUCTED A/C INSTALLED FOR' (small caps), {{per_week_price}} (oversized, dominant), 'PER WEEK' (small caps). Right of the pill: 4 tick-bullets pulled from {{value_stack}}. Bottom-left: rounded CTA button {{cta}}. Bottom strip: brand logos {{brand_1}}, {{brand_2}}, {{brand_3}} on a contrasting band, evenly spaced, in their native colours. NO people in the hero unless using a bill-holder visual. Clean, uncluttered, professional — let the AI pick the specific colours and fonts for visual variety."
+    },
+    {
+      "id": 2,
+      "code": "A2",
+      "name": "Speed Guarantee",
+      "tagline": "Install-time promise + family lifestyle. Plays to the 'I want it now' buyer.",
+      "when": "Always — every client gets a speed-guarantee ad. Install guarantee defaults to 7 days.",
+      "gating": "None — always fires.",
+      "fires": "always",
+      "funnel_stage": "Warm/Hot OR Cold/Warm (Layer 2 picks variant based on pack balance)",
+      "accent": "green",
+      "exemplar": "A02",
+      "variants": [],
+      "reference_ads": [
+        {
+          "id": "A02",
+          "tier": 1,
+          "headline": "Get Your Ducted A/C in just 7 Days!",
+          "price": "Per-week",
+          "notes": "Best-of-class for archetype A2."
+        }
+      ],
+      "rules": [
+        "Family lifestyle photo MUST be the hero visual. Apply a tinted overlay (~15-20% opacity) for headline legibility — colour can vary.",
+        "Guarantee badge is mandatory (top-right, circular, high-contrast). Without it, the archetype loses its identity.",
+        "Pick fresh colours and fonts per generation. Energetic, family-friendly mood."
+      ],
+      "variable_inputs": {
+        "Headlines": [
+          "Get your Ducted A/C in just {{install_guarantee_days}}!",
+          "FAST DUCTED A/C INSTALL — {{install_guarantee_days}} GUARANTEED",
+          "INSTALLED IN {{install_guarantee_days}} OR LESS",
+          "BOOK TODAY, INSTALLED IN {{install_guarantee_days}}",
+          "SKIP THE WAITING LIST — {{install_guarantee_days}} INSTALL",
+          "YOUR DUCTED A/C, INSTALLED IN A WEEK",
+          "WHY WAIT? GET DUCTED A/C THIS WEEK",
+          "COMFORT YOUR HOME IN UNDER {{install_guarantee_days}}",
+          "NEXT-WEEK DUCTED A/C INSTALL",
+          "FROM QUOTE TO COOL IN {{install_guarantee_days}}",
+          "DUCTED A/C THIS WEEK — GUARANTEED",
+          "FASTEST DUCTED A/C IN {{city}}"
+        ],
+        "Value stacks": [
+          "Installed within {{install_guarantee_days}} | $0 Upfront | Interest-Free Finance Available | 5-Year Guarantee",
+          "Same-Week Installation | Locally Licensed & Insured | $0 Upfront, Interest-Free Finance Available",
+          "{{install_guarantee_days}} Install Guarantee | No Hidden Fees | Interest-Free Finance | $1,299 FREE Bonuses",
+          "We Don't Make You Wait | Premium Brands Only | $0 Upfront | 7-Year Warranty",
+          "Quick On-Site Quote | Locally Installed | $0 Upfront | Interest-Free Finance"
+        ],
+        "CTAs": [
+          "Book Now — Limited Availability",
+          "BOOK YOUR INSTALL TODAY",
+          "GET A FAST QUOTE",
+          "LOCK IN YOUR INSTALL DATE",
+          "GET QUOTE",
+          "BOOK ON-SITE QUOTE TODAY",
+          "CHECK AVAILABILITY"
+        ],
+        "Badges": [
+          "FASTEST INSTALL GUARANTEED",
+          "{{install_guarantee_days}} INSTALL",
+          "SAME-WEEK INSTALL",
+          "LIMITED AVAILABILITY",
+          "BOOK FAST",
+          "5-YEAR GUARANTEE",
+          "$0 UPFRONT"
+        ],
+        "Visual hero options": [
+          "Family enjoying their A/C — full-bleed lifestyle photo",
+          "Calendar with installation date highlighted",
+          "Stopwatch or speed-themed visual",
+          "Quick before/after split — uncomfortable home → comfortable home"
+        ]
+      },
+      "components": [
+        {
+          "slot": "stock family photo",
+          "usage": "fam_jumping or similar lifestyle photo — full-bleed background"
+        },
+        {
+          "slot": "brand logos",
+          "usage": "bottom strip"
+        }
+      ],
+      "prompt": "Square 1080×1080 ad. Energetic, family-friendly mood — pick fresh colours and fonts per generation. Background: full-bleed family lifestyle photo (attached). Apply a tinted overlay (~15-20% opacity) for headline legibility — colour up to AI. Top-left third: stacked headline {{headline}} — modifier in medium weight, the timeframe oversized and bold. Top-right: circular badge 'FASTEST INSTALL GUARANTEED', slightly tilted. Lower-left: italic sub-headline 'Enjoy a cool, comfortable home without the wait.' Lower-right: pill block with {{per_week_price}}, three tick-bullets beneath from {{value_stack}}. Bottom-left: small CTA pill {{cta}}."
+    },
+    {
+      "id": 3,
+      "code": "A3",
+      "name": "Luxury Lifestyle",
+      "tagline": "Premium positioning with lifestyle imagery. Pulls qualified leads, not bargain hunters.",
+      "when": "Always for premium variant. Fixed-price variant only if city in price library AND no other fixed-price ad in pack.",
+      "gating": "Premium: always. Fixed-price: city in price library AND no other fixed-price ad in pack.",
+      "fires": "always",
+      "funnel_stage": "Cold/Warm (premium audience)",
+      "accent": "navy",
+      "exemplar": "A01",
+      "variants": [
+        {
+          "key": "premium",
+          "name": "Premium (no price)",
+          "tone": "Aspirational",
+          "fires": "Default for all clients.",
+          "ref": "A01"
+        },
+        {
+          "key": "fixed_price",
+          "name": "Fixed-price luxury",
+          "tone": "Aspirational + offer",
+          "fires": "Only if no other fixed-price ad in pack AND city in price library.",
+          "ref": "A05, A06"
+        },
+        {
+          "key": "value",
+          "name": "Home value angle",
+          "tone": "Investment-focused",
+          "fires": "Default for premium-suburb clients.",
+          "ref": "A07"
+        }
+      ],
+      "reference_ads": [
+        {
+          "id": "A01",
+          "tier": 1,
+          "headline": "Luxury Heating & Cooling — BE WINTER READY",
+          "price": "—",
+          "notes": "Premium positioning, family piggyback photo."
+        },
+        {
+          "id": "A05",
+          "tier": 1,
+          "headline": "LUXURY HEATING for every room — DUCTED A/C $7,899",
+          "price": "Fixed",
+          "notes": "Anchored discount $12,999 → $7,899."
+        },
+        {
+          "id": "A06",
+          "tier": 1,
+          "headline": "LUXURY COOLING for every room — DUCTED A/C $6,495",
+          "price": "Fixed",
+          "notes": "Cooling mirror of A05."
+        },
+        {
+          "id": "A07",
+          "tier": 2,
+          "headline": "Boost Your Home's Value Instantly! — DUCTED A/C $6,495",
+          "price": "Fixed",
+          "notes": "Home-value angle for premium markets."
+        }
+      ],
+      "rules": [
+        "Premium and value variants use NO price OR per-week price. Fixed-price variant uses anchored discount (RRP struck through).",
+        "The word 'LUXURY' should be set in an elegant accent typeface (italic serif works well), contrasting the bold body type. Visual signature.",
+        "Refined, premium mood — pick a fresh sophisticated palette per generation. Avoid bargain-bin colour combinations."
+      ],
+      "variable_inputs": {
+        "Headlines": [
+          "LUXURY DUCTED HEATING & COOLING — EVERY ROOM!",
+          "LUXURY DUCTED A/C FOR EVERY ROOM!",
+          "PREMIUM DUCTED CLIMATE CONTROL FOR EVERY ROOM",
+          "WHOLE-HOME DUCTED A/C — ROOM BY ROOM",
+          "THE PREMIUM WAY TO HEAT & COOL — DUCTED A/C",
+          "INVEST IN HOW YOUR HOME FEELS — PREMIUM DUCTED A/C",
+          "BOOST YOUR HOME'S VALUE — INSTALL DUCTED A/C",
+          "THE COMFORT UPGRADE YOUR HOME DESERVES — DUCTED A/C",
+          "TURN YOUR HOUSE INTO A LUXURY HAVEN WITH DUCTED A/C",
+          "ELEVATE YOUR HOME WITH PREMIUM DUCTED A/C",
+          "THE QUIET LUXURY OF WHOLE-HOME DUCTED A/C",
+          "MAKE EVERY ROOM PERFECT — DUCTED A/C INSTALLED",
+          "FIVE-STAR COMFORT IN EVERY ROOM — DUCTED A/C",
+          "PREMIUM DUCTED CLIMATE FOR DISCERNING HOMES",
+          "WHOLE-HOME DUCTED HEATING & COOLING, DESIGNED FOR YOUR HOME"
+        ],
+        "Value stacks": [
+          "Silent, Seamless, and Smart Cooling | Zoned Control for Maximum Comfort | 5-Year Workmanship Guarantee | $0 Upfront, Interest-Free Finance Available",
+          "Adds Value to Your Property | Luxury Feature Buyers Look For | $0 Upfront, Interest-Free Finance Available",
+          "Premium Daikin / Mitsubishi System | Whisper-Quiet Operation | Smart Phone Control | 7-Year Manufacturer Warranty",
+          "The Ultimate in Home Comfort | Whole-Home Climate | Boost Resale Value | Free Design Consultation",
+          "Effortless Comfort, Every Room | Zoned Control | Interest-Free Finance Available | 5-Year Workmanship Guarantee",
+          "Engineered for Larger Australian Homes | Whisper-Quiet | Premium Brands Only | $1,299 in Free Bonuses",
+          "Designed Around Your Home | Premium Brands | Free Design Consultation | $0 Upfront"
+        ],
+        "CTAs": [
+          "Upgrade Your Home Today!",
+          "BOOK A DESIGN CONSULTATION",
+          "GET A LUXURY QUOTE",
+          "CLAIM YOUR FREE QUOTE",
+          "SEE IF YOUR HOME QUALIFIES",
+          "BOOK A FREE HOME CONSULT"
+        ],
+        "Badges": [
+          "Limited Time Only",
+          "Limited Slots",
+          "BE WINTER READY",
+          "BE SUMMER READY",
+          "50% OFF (fixed-price variant)",
+          "PREMIUM DESIGN-INSTALL",
+          "$1,299 IN BONUSES",
+          "7-YEAR WARRANTY",
+          "EXCLUSIVE PROMO"
+        ],
+        "Visual hero options": [
+          "Family on couch — light/airy summer or warm/cosy winter",
+          "Father piggybacking child in living room",
+          "Couple in bedroom relaxing",
+          "Empty luxury living room with airflow visualisation",
+          "Multi-room split showing different rooms with comfort",
+          "Open-plan home with subtle climate visualisation",
+          "Master bedroom with elegant interiors"
+        ]
+      },
+      "components": [
+        {
+          "slot": "stock family photo",
+          "usage": "fam_couch_summer / fam_couch_winter / fam_piggyback — right half hero"
+        },
+        {
+          "slot": "font",
+          "usage": "elegant accent typeface for the word 'LUXURY' (italic serif works well)"
+        },
+        {
+          "slot": "brand logos",
+          "usage": "bottom strip"
+        }
+      ],
+      "prompt": "[premium] Square 1080×1080 premium ad. Refined, sophisticated mood — pick a fresh elegant colour palette and font pairing per generation. Left half: stacked headline {{headline}}. The word 'LUXURY' set in an elegant accent typeface (italic serif works well), the rest in oversized bold sans-serif. Beneath: 'DUCTED A/C INSTALLED FOR ONLY' small caps, {{per_week_price}} oversized bold. Right half: attached lifestyle photo full-height, right edge bleeding off canvas. Subtle airflow-vector arrows from a small ceiling vent icon above the family. Lower-left: 4-5 value-stack bullets from {{value_stack}}. Bottom-left rounded CTA button {{cta}}. Top-left small badge {{badge}}. Bottom strip: brand logos.\n\n[fixed_price] As premium variant BUT replace per-week pricing with fixed-price block: {{fixed_price}} oversized bold, with {{anchor_price}} struck through above in smaller contrasting text. Bottom-right circular discount badge: {{discount_pct}} OFF.\n\n[value] Square 1080×1080 home-value angle. Headline 'Boost Your Home's Value Instantly!' mixing serif italic and bold sans-serif. Sub: 'DUCTED A/C Installed for' + {{fixed_price}}. Lifestyle photo (man pointing up, or similar) on right half. House diagram small in upper-right corner."
+    },
+    {
+      "id": 4,
+      "code": "A4",
+      "name": "Problem/Solution Urgency",
+      "tagline": "Pain-led. Urgent, high-contrast. Pain question + solution.",
+      "when": "Always — every client gets a pain-led ad. Pricing variant (fixed/per-week/none) is selected by Layer 2 based on pack balance.",
+      "gating": "None — always fires. Layer 2 may choose fixed-price treatment for this archetype if it wins the single fixed-price slot in the pack.",
+      "fires": "always",
+      "funnel_stage": "Warm/Hot (wallet hero) — Cold/Warm (diagram hero variant)",
+      "accent": "red",
+      "exemplar": "A04",
+      "variants": [],
+      "reference_ads": [
+        {
+          "id": "A04",
+          "tier": 1,
+          "headline": "SICK OF HIGH ENERGY BILLS? — DUCTED A/C $5,799",
+          "price": "Fixed",
+          "notes": "Black/red urgency. ONE PER PACK MAX (HR06)."
+        }
+      ],
+      "rules": [
+        "Bold, dark, urgent visual treatment — the mood should communicate threat/problem. Pick fresh high-contrast palette per generation.",
+        "Headline is split into two parts: pain question on top, oversized contrasting accent on the key noun.",
+        "Fixed price + anchor (RRP struck through) is mandatory. ONE PER PACK MAX.",
+        "Strong CTA button + discount badge bottom-right. High-contrast typography."
+      ],
+      "variable_inputs": {
+        "Headlines": [
+          "SICK OF HIGH ENERGY BILLS?",
+          "TIRED OF PAYING TOO MUCH FOR POWER?",
+          "HAD ENOUGH OF HIGH ENERGY BILLS?",
+          "WHY IS YOUR POWER BILL SO HIGH?",
+          "IS YOUR ELECTRICITY BILL DESTROYING YOUR BUDGET?",
+          "DREADING YOUR NEXT POWER BILL?",
+          "PAYING TOO MUCH FOR ENERGY?",
+          "DOES YOUR POWER BILL KEEP CLIMBING?",
+          "BURNT OUT BY HIGH ENERGY BILLS?",
+          "CAN'T AFFORD YOUR ELECTRICITY BILL?",
+          "POWER BILLS GIVING YOU SHOCK?",
+          "YOUR ENERGY BILL'S TOO HIGH",
+          "STOP OVERPAYING FOR POWER"
+        ],
+        "Solution lines": [
+          "THE SOLUTION: DUCTED A/C INSTALLED FOR {{fixed_price}}",
+          "DUCTED A/C INSTALLED FROM {{fixed_price}}",
+          "HERE'S THE FIX — DUCTED A/C FROM {{fixed_price}}",
+          "THE ANSWER: DUCTED A/C, FULLY INSTALLED, {{fixed_price}}",
+          "STOP OVERPAYING — DUCTED A/C, {{fixed_price}}",
+          "TIME TO FIX IT: DUCTED A/C, {{fixed_price}}"
+        ],
+        "CTAs": [
+          "REQUEST A FREE QUOTE TODAY!",
+          "Claim This Offer",
+          "LOCK IN YOUR PRICE",
+          "GET QUOTE NOW",
+          "SEE IF YOU QUALIFY",
+          "CLAIM TODAY"
+        ],
+        "Badges": [
+          "{{discount_pct}} OFF",
+          "*Hurry — Limited Slots*",
+          "LIMITED TIME",
+          "ENDS SOON",
+          "ONLY [X] HOMES PER MONTH",
+          "$0 UPFRONT",
+          "ONCE-A-YEAR PRICING"
+        ],
+        "Visual hero options": [
+          "House diagram (dark/dramatic styling)",
+          "Person looking at bill (shocked/frustrated)",
+          "Bill graphic with '$$$' or upward arrow",
+          "Calculator or receipt scene",
+          "Wallet emptying / coins falling"
+        ]
+      },
+      "components": [
+        {
+          "slot": "house diagram",
+          "usage": "house_3d_dark — centre, large"
+        },
+        {
+          "slot": "brand logos",
+          "usage": "bottom strip"
+        }
+      ],
+      "prompt": "Square 1080×1080 ad. Bold, dark, urgent mood — pick fresh high-contrast colours and fonts per generation that communicate problem/threat. Top: high-contrast intro phrase from the first words of {{headline}} (e.g. 'SICK OF') followed by oversized bold accent-colour ending of {{headline}} (e.g. 'HIGH ENERGY BILLS?'). Centre: place the attached house-diagram image (dark/dramatic styling). Right side mid: vertical accent panel with 'THE SOLUTION:' small caps, the {{solution_line}} filled with {{fixed_price}} oversized bold. Above price: {{anchor_price}} struck through, smaller. Below: rounded button {{cta}}. Bottom-left circular badge: {{discount_pct}} OFF. Bottom strip: brand logos."
+    },
+    {
+      "id": 5,
+      "code": "A5",
+      "name": "Seasonal Pain",
+      "tagline": "Reaction-face hook. Don't melt / Don't freeze. Emotional pain → product as solution.",
+      "when": "Always — auto-rotated by current month + hemisphere.",
+      "gating": "None. Variant picked by current season.",
+      "fires": "always",
+      "funnel_stage": "Cold/Warm",
+      "accent": "red",
+      "exemplar": "A08",
+      "variants": [
+        {
+          "key": "summer",
+          "name": "Don't Melt",
+          "tone": "Visceral pain (heat)",
+          "fires": "Summer months in client hemisphere.",
+          "ref": "A08"
+        },
+        {
+          "key": "winter",
+          "name": "Don't Freeze",
+          "tone": "Visceral pain (cold)",
+          "fires": "Winter months in client hemisphere.",
+          "ref": "A09"
+        }
+      ],
+      "reference_ads": [
+        {
+          "id": "A08",
+          "tier": 2,
+          "headline": "Don't Melt This Summer!",
+          "price": "Per-week",
+          "notes": "Sweating-man reaction shot. $56/week."
+        },
+        {
+          "id": "A09",
+          "tier": 2,
+          "headline": "Don't Freeze This Winter!",
+          "price": "Per-week",
+          "notes": "Family-freezing reaction shot. $56/week."
+        }
+      ],
+      "rules": [
+        "Reaction-face photo from Components Library is the hero. Must clearly read as the relevant seasonal discomfort.",
+        "Visual treatment communicates the SEASON: heat/discomfort for summer, cold/discomfort for winter. Pick fresh palettes per generation that match the mood.",
+        "Per-week price only (no fixed price) — keeps it cheap-feeling, fast scroll-engagement."
+      ],
+      "variable_inputs": {
+        "Headlines (summer)": [
+          "Don't MELT This Summer!",
+          "Don't SWEAT This Heatwave!",
+          "TOO HOT TO SLEEP?",
+          "BEAT THE 40°C DAYS",
+          "SURVIVING SUMMER WITHOUT DUCTED A/C?",
+          "IS YOUR HOUSE AN OVEN?",
+          "THIS IS WHAT 40° FEELS LIKE",
+          "HOT NIGHTS = NO SLEEP",
+          "AUSSIE SUMMER GETTING TO YOU?",
+          "TURN YOUR HOME INTO A COOL OASIS"
+        ],
+        "Headlines (winter)": [
+          "Don't FREEZE This Winter!",
+          "SHIVERING IS NOT NORMAL",
+          "WAKE UP WARM, NOT FROZEN",
+          "COLD HOMES DON'T HAVE TO BE NORMAL",
+          "TIRED OF FREEZING WHEN YOU GET HOME?",
+          "DOES YOUR HOUSE FEEL LIKE A FRIDGE?",
+          "STAY WARM ALL WINTER LONG",
+          "WINTER IS COMING — IS YOUR HOME READY?",
+          "WAKE UP IN A WARM HOME EVERY DAY"
+        ],
+        "Value stacks": [
+          "Interest-Free Finance Available | $1,299 FREE Bonuses | $0 Upfront",
+          "Whole-Home Comfort, All Season | $0 Upfront | 5-Year Guarantee",
+          "Energy Efficient, Always Comfortable | Smart Zoning | $0 Upfront, Interest-Free Finance Available",
+          "Locally Installed by Experts | $0 Upfront, Interest-Free Finance Available | 5-Year Guarantee"
+        ],
+        "CTAs": [
+          "REQUEST A FREE QUOTE TODAY!",
+          "BOOK YOUR FREE QUOTE",
+          "GET RELIEF NOW",
+          "BEAT THE HEAT — GET A QUOTE",
+          "ESCAPE THE COLD — GET A QUOTE",
+          "CHECK YOUR HOME'S PRICE"
+        ],
+        "Badges": [
+          "50% OFF",
+          "LIMITED TIME",
+          "30% OFF",
+          "INTEREST-FREE FINANCE",
+          "$1,299 BONUSES",
+          "$0 UPFRONT"
+        ],
+        "Visual hero options": [
+          "Sweating man with hands up (summer)",
+          "Person fanning themselves (summer)",
+          "Kid melting / overheated (summer)",
+          "Family bundled up freezing (winter)",
+          "Kid shivering in blanket (winter)",
+          "Frosted window from inside (winter)",
+          "Person huddled by tiny heater (winter)"
+        ]
+      },
+      "components": [
+        {
+          "slot": "stock reaction photo",
+          "usage": "react_sweating_man (summer) / react_freezing_fam (winter) — left half hero"
+        },
+        {
+          "slot": "house diagram",
+          "usage": "house_3d_blue — tucked in lower-right area, smaller"
+        }
+      ],
+      "prompt": "[summer] Square 1080×1080. Visual treatment communicates HEAT and discomfort — pick fresh hot-feeling colours and fonts per generation. Top: oversized uppercase headline {{headline}} — the action word ('MELT', 'SWEAT', 'HOT') set oversized in a contrasting accent. Left half: attached sweating-man (or similar) reaction photo full-height. Right half: pill block 'DUCTED A/C INSTALLED FOR' / {{per_week_price}} / 'PER WEEK'. Below pill: short value-stack bullets from {{value_stack}}. Bottom-left circular badge {{badge}}. House diagram tucked smaller in lower area. CTA {{cta}}.\n\n[winter] As summer variant but: visual treatment communicates COLD and discomfort. Headline {{headline}} with action word ('FREEZE', 'SHIVERING') oversized in cold-feeling accent. Attached freezing-family photo as left-half hero."
+    },
+    {
+      "id": 6,
+      "code": "A6",
+      "name": "Seasonal Sale Event",
+      "tagline": "Discount-led seasonal ad. Reaction-model + condenser/diagram + discount badge.",
+      "when": "Always — every client gets one ad per seasonal variant from day one. Launch each as the season comes round.",
+      "gating": "None — all seasonal variants generated upfront. Promo % adjustable per launch.",
+      "fires": "always",
+      "funnel_stage": "Warm/Hot",
+      "accent": "blue",
+      "exemplar": "A13",
+      "variants": [
+        {
+          "key": "winter_sale",
+          "name": "Winter Sale",
+          "tone": "Promotional + season",
+          "fires": "Late autumn → winter.",
+          "ref": "A10, A13"
+        },
+        {
+          "key": "autumn_sale",
+          "name": "Autumn Sale",
+          "tone": "Promotional + season",
+          "fires": "Autumn shoulder.",
+          "ref": "A14"
+        },
+        {
+          "key": "cool_upgrade",
+          "name": "Upgrade Your Cooling",
+          "tone": "Promotional + curiosity gap",
+          "fires": "Late spring → summer.",
+          "ref": "A11"
+        },
+        {
+          "key": "heat_upgrade",
+          "name": "Upgrade Your Heating",
+          "tone": "Promotional + curiosity gap",
+          "fires": "Late autumn → winter.",
+          "ref": "A12"
+        },
+        {
+          "key": "heatwave",
+          "name": "Beat the 40° Days",
+          "tone": "Promotional + heatwave",
+          "fires": "Forecast heatwave week.",
+          "ref": "A15"
+        }
+      ],
+      "reference_ads": [
+        {
+          "id": "A10",
+          "tier": 2,
+          "headline": "STAY WARM THIS WINTER — DUCTED A/C $6,999",
+          "price": "Fixed",
+          "notes": "Cold-woman reaction. Anchored discount."
+        },
+        {
+          "id": "A11",
+          "tier": 2,
+          "headline": "Upgrade Your Cooling! — Before you end up like this... $6,495",
+          "price": "Fixed",
+          "notes": "Curiosity gap. Strong scroll-stopper."
+        },
+        {
+          "id": "A12",
+          "tier": 2,
+          "headline": "Upgrade Your Heating! — Before you end up like this... $6,495",
+          "price": "Fixed",
+          "notes": "Heating mirror of A11."
+        },
+        {
+          "id": "A13",
+          "tier": 2,
+          "headline": "WINTER SALE — Ducted A/C $59 per week",
+          "price": "Per-week",
+          "notes": "Per-week winter variant. Cleaner."
+        },
+        {
+          "id": "A14",
+          "tier": 2,
+          "headline": "AUTUMN SALE — Ducted A/C $56 per week",
+          "price": "Per-week",
+          "notes": "Shoulder season. 35% discount."
+        },
+        {
+          "id": "A15",
+          "tier": 2,
+          "headline": "BEAT THE 40° DAYS WITH DUCTED A/C — $56/week",
+          "price": "Per-week",
+          "notes": "Heatwave-specific. Purple palette."
+        }
+      ],
+      "rules": [
+        "Discount badge is mandatory and must show {{current_promo_pct}}. If promo % is 0 or null, the WHOLE ARCHETYPE is skipped.",
+        "Reaction model is positioned pointing toward or holding the price block (visual draw).",
+        "Visual treatment matches the variant season — pick fresh palettes and fonts per generation."
+      ],
+      "variable_inputs": {
+        "Headlines (winter_sale)": [
+          "WINTER SALE — DUCTED A/C",
+          "STAY WARM THIS WINTER — DUCTED A/C SALE",
+          "WINTER WARMTH SALE — DUCTED HEATING",
+          "WINTER DUCTED HEATING SALE",
+          "WINTER DUCTED A/C — UP TO {{current_promo_pct}} OFF"
+        ],
+        "Headlines (autumn_sale)": [
+          "AUTUMN SALE — DUCTED A/C",
+          "AUTUMN DUCTED A/C SALE",
+          "EARLY-SEASON DUCTED A/C SALE",
+          "BEFORE WINTER HITS — DUCTED A/C SALE"
+        ],
+        "Headlines (cool_upgrade)": [
+          "Upgrade Your Cooling — DUCTED A/C!",
+          "BEFORE SUMMER HITS — UPGRADE TO DUCTED A/C",
+          "GET READY FOR SUMMER — DUCTED A/C INSTALLED",
+          "TIME TO UPGRADE — WHOLE-HOME DUCTED A/C"
+        ],
+        "Headlines (heat_upgrade)": [
+          "Upgrade Your Heating — DUCTED A/C!",
+          "BEFORE WINTER HITS — UPGRADE TO DUCTED A/C",
+          "TIME TO UPGRADE — WHOLE-HOME DUCTED HEATING",
+          "GET READY FOR WINTER — DUCTED HEATING INSTALLED"
+        ],
+        "Headlines (heatwave)": [
+          "BEAT THE 40° DAYS WITH DUCTED A/C",
+          "HEATWAVE INCOMING — UPGRADE TO DUCTED A/C NOW",
+          "{{city}} HEATWAVE? GET DUCTED A/C INSTALLED",
+          "BEAT THE EXTREME HEAT — DUCTED A/C"
+        ],
+        "Value stacks": [
+          "Silent, Seamless, and Smart Cooling | Zoned Control for Maximum Comfort | 5-Year Workmanship Guarantee | $0 Upfront, Interest-Free Finance Available",
+          "Save Big This Season | Free Bonuses Worth $1,299 | $0 Upfront | Interest-Free Finance",
+          "Limited Slots This Season | Premium Brands | 5-Year Guarantee | $0 Upfront",
+          "Beat the Rush | Locally Installed | $0 Upfront | Interest-Free Finance Available"
+        ],
+        "CTAs": [
+          "Claim This Offer",
+          "CHECK IF YOUR HOME QUALIFIES",
+          "BOOK YOUR INSTALL",
+          "GET A QUOTE",
+          "LOCK IN SEASONAL PRICING",
+          "CLAIM TODAY"
+        ],
+        "Badges": [
+          "{{current_promo_pct}} OFF",
+          "SEASONAL DISCOUNT",
+          "ENDS SOON",
+          "LIMITED TIME",
+          "WHILE STOCK LASTS",
+          "$0 UPFRONT"
+        ]
+      },
+      "components": [
+        {
+          "slot": "stock reaction photo",
+          "usage": "varies by variant: react_cold_woman / react_pointing_up / react_sweating_man / react_freezing_fam / react_woman_white"
+        },
+        {
+          "slot": "house diagram or condenser",
+          "usage": "lower corner accent"
+        },
+        {
+          "slot": "outlet",
+          "usage": "outlet_round_1 / outlet_round_2 — heatwave variant uses upper-right close-up"
+        }
+      ],
+      "prompt": "[winter_sale] Square 1080×1080. Visual treatment communicates winter — pick fresh winter-feeling colours and fonts per generation. Top headline {{headline}} bold, eye-catching. Centre-left: reaction model pointing toward price. Centre-right: pill block 'DUCTED A/C INSTALLED FOR' / price. Beneath pill: 4 tick-bullets from {{value_stack}}. Top-right circular badge {{current_promo_pct}} OFF.\n\n[cool_upgrade / heat_upgrade] Visual treatment communicates the relevant season. Headline {{headline}} bold, attention-grabbing. Sub: 'Before you end up like this...' italic, with arrow pointing to reaction photo. {{fixed_price}} large bold, with {{anchor_price}} struck through.\n\n[heatwave] Visual treatment communicates extreme heat — pick fresh hot-feeling palette per generation. Headline {{headline}}. Reaction model right half, large outlet/vent close-up upper-right. Pill block with {{per_week_price}}. CTA 'CHECK IF YOUR HOME QUALIFIES'."
+    },
+    {
+      "id": 7,
+      "code": "A7",
+      "name": "City Massive Sale",
+      "tagline": "Aggressive volume driver. High-contrast, oversized headline, large condenser, per-week price.",
+      "when": "Always — default volume driver. City name in headline.",
+      "gating": "city is provided.",
+      "fires": "always",
+      "funnel_stage": "Warm/Hot (per-week & fixed) — Cold/Warm (zoning)",
+      "accent": "navy",
+      "exemplar": "A19",
+      "variants": [
+        {
+          "key": "per_week",
+          "name": "Per-week massive sale",
+          "tone": "Aggressive direct response",
+          "fires": "Default for archetype A7.",
+          "ref": "A19, A20, A21, A22, A23, A24, A25, A27, A29"
+        },
+        {
+          "key": "fixed_price",
+          "name": "Fixed-price massive sale",
+          "tone": "Aggressive + anchored discount",
+          "fires": "Only if no other fixed-price ad in pack AND city in price library.",
+          "ref": "A26, A28"
+        },
+        {
+          "key": "zoning",
+          "name": "With zoning",
+          "tone": "Feature-led",
+          "fires": "When client targets larger homes (3+ bedrooms).",
+          "ref": "A30, A31"
+        }
+      ],
+      "reference_ads": [
+        {
+          "id": "A19",
+          "tier": 4,
+          "headline": "SYDNEY DUCTED AIRCON MASSIVE SALE — $59/week",
+          "price": "Per-week",
+          "notes": "Aggressive volume-driver. Component grid."
+        },
+        {
+          "id": "A20",
+          "tier": 4,
+          "headline": "NSW DUCTED PACKAGE FULLY INSTALLED — from $56/week",
+          "price": "Per-week",
+          "notes": "State-level variant."
+        },
+        {
+          "id": "A21",
+          "tier": 4,
+          "headline": "MELBOURNE FLASH SALE — $56/week",
+          "price": "Per-week",
+          "notes": "Flash sale framing."
+        },
+        {
+          "id": "A22",
+          "tier": 4,
+          "headline": "MELBOURNE FLASH SALE (alt brands)",
+          "price": "Per-week",
+          "notes": "Variant of A21."
+        },
+        {
+          "id": "A23",
+          "tier": 4,
+          "headline": "There's an easier way to COOL DOWN — $56/week",
+          "price": "Per-week",
+          "notes": "Phone/controller tech angle."
+        },
+        {
+          "id": "A24",
+          "tier": 4,
+          "headline": "SYDNEY HOMEOWNERS — Samsung 10kW from $64/week",
+          "price": "Per-week",
+          "notes": "Single-brand premium positioning."
+        },
+        {
+          "id": "A25",
+          "tier": 4,
+          "headline": "ADELAIDE HOMEOWNERS DUCTED A/C MASSIVE SALE — $64/week",
+          "price": "Per-week",
+          "notes": "Adelaide-localized. 7-year warranty."
+        },
+        {
+          "id": "A26",
+          "tier": 4,
+          "headline": "DUCTED HEATING SALE — $9,990 (was $16,490)",
+          "price": "Fixed",
+          "notes": "Heating-focused massive sale."
+        },
+        {
+          "id": "A27",
+          "tier": 4,
+          "headline": "DUCTED HEATING SALE — $64/week",
+          "price": "Per-week",
+          "notes": "Per-week version of A26."
+        },
+        {
+          "id": "A28",
+          "tier": 4,
+          "headline": "DUCTED A/C SALE — $9,990 39% OFF",
+          "price": "Fixed",
+          "notes": "Generic city-agnostic version."
+        },
+        {
+          "id": "A29",
+          "tier": 4,
+          "headline": "SYDNEY HOMEOWNERS DUCTED AIR CON — $68/week whole home",
+          "price": "Per-week",
+          "notes": "Premium per-week. Controller tech."
+        },
+        {
+          "id": "A30",
+          "tier": 4,
+          "headline": "SYDNEY HOMEOWNERS DUCTED A/CON MASSIVE SALE",
+          "price": "Per-week",
+          "notes": "Hybrid massive-sale + house diagram."
+        },
+        {
+          "id": "A31",
+          "tier": 4,
+          "headline": "SYDNEY HOMEOWNERS DUCTED A/C WITH ZONING — $64/week",
+          "price": "Per-week",
+          "notes": "Feature-led zoning variant."
+        }
+      ],
+      "rules": [
+        "Headline format is FIXED: '{{city}} HOMEOWNERS' top banner, then the offer line. Don't deviate.",
+        "Aggressive direct-response mood — high-contrast palette and bold display fonts. Pick fresh combinations per generation but always feel urgent and unmissable.",
+        "Condenser image is the hero visual on the right side, ~40% of canvas width."
+      ],
+      "variable_inputs": {
+        "Headlines": [
+          "{{city}} HOMEOWNERS DUCTED A/C SALE",
+          "{{city}} DUCTED AIRCON MASSIVE SALE",
+          "{{city}} DUCTED A/C FLASH SALE",
+          "{{city}} DUCTED HEATING SALE",
+          "{{city}} DUCTED A/C WITH ZONING",
+          "ATTENTION {{city}} HOMEOWNERS — DUCTED A/C SALE",
+          "{{city}}: DUCTED A/C INSTALLED THIS MONTH",
+          "DUCTED A/C SALE — {{city}} ONLY",
+          "{{city}} RESIDENTS — DUCTED A/C ${{per_week_price}}/WEEK",
+          "{{city}} HOMEOWNERS — DUCTED A/C IS EASIER THAN YOU THINK",
+          "{{city}}'S CHEAPEST DUCTED A/C SALE",
+          "{{city}} DUCTED A/C — UP TO {{discount_pct}} OFF"
+        ],
+        "Value stacks": [
+          "10kW Samsung Ducted System | $0 Upfront, Interest-Free Finance Available | Locally Installed by {{city}} Experts",
+          "Premium Daikin System | 7-Year Warranty | Locally Installed | Interest-Free Finance Available",
+          "Whole-Home Comfort | Smart Zoning | $0 Upfront | 5-Year Guarantee",
+          "Comfort All Year | $1,299 Bonuses | Locally Installed by {{city}} Experts",
+          "10kW Premium Ducted System | $0 Upfront | Interest-Free Finance | Locally Installed"
+        ],
+        "CTAs": [
+          "Enquire today",
+          "GET QUOTE",
+          "BOOK FREE QUOTE",
+          "LOCK IN YOUR INSTALL",
+          "{{city}} HOMEOWNERS — CLAIM TODAY",
+          "CLAIM TODAY"
+        ],
+        "Badges": [
+          "ZERO UPFRONT",
+          "{{discount_pct}} OFF",
+          "7-Year Warranty",
+          "LIMITED TIME",
+          "{{city}}-INSTALLED EXPERTS",
+          "LOCALLY OWNED",
+          "$0 UPFRONT"
+        ],
+        "Visual hero options": [
+          "Double-fan ducted condenser (default)",
+          "Indoor ducted unit",
+          "Wall-mounted controller",
+          "Phone with controller app",
+          "House diagram with zones",
+          "Combo: condenser + controller + ducting"
+        ]
+      },
+      "components": [
+        {
+          "slot": "condenser",
+          "usage": "cond_neutral_1 / cond_neutral_2 / brand-matched — hero on right side, ~40% canvas width"
+        },
+        {
+          "slot": "controller",
+          "usage": "ctrl_ipad_airtouch / ctrl_phone_app / ctrl_combo — tech-angle variants"
+        },
+        {
+          "slot": "house diagram",
+          "usage": "house_3d_zones — zoning variant only"
+        }
+      ],
+      "prompt": "[per_week] Square 1080×1080. Aggressive direct-response mood — pick fresh high-contrast colours and bold display fonts per generation. Top small caps banner: '{{city}} HOMEOWNERS'. Headline beneath: {{headline}} in oversized bold uppercase, with key noun ('SALE') in a contrasting accent. Sub-headline: '10kW {{brand_1}} Ducted System' (omit brand if not specified). Right side: attached double-fan condenser ~40% canvas width. Left lower: 'FROM' small caps, {{per_week_price}} oversized bold slanted slightly, '/WEEK' beneath in accent colour. Bottom-left badge with dollar-sign icon: 'ZERO UPFRONT'. Bottom-right badge with location-pin icon: 'LOCALLY INSTALLED BY {{city}} EXPERTS'.\n\n[fixed_price] As per_week BUT replace per-week block with: 'NOW' small caps, {{fixed_price}} oversized bold, 'WAS {{anchor_price}}' struck through. Top-right burst badge: {{discount_pct}} OFF.\n\n[zoning] As per_week BUT replace condenser with attached house-diagram-with-zones. Headline: '{{city}} HOMEOWNERS DUCTED A/C WITH ZONING'."
+    },
+    {
+      "id": 8,
+      "code": "A8",
+      "name": "Localized Clearance",
+      "tagline": "Plain, low-friction city-prefixed clearance ad. Lighter than A7.",
+      "when": "Always — every client gets a clearance-style ad. Used for EOFY, stock clearance, rebate hooks.",
+      "gating": "None — always fires. Layer 2 may choose fixed-price treatment if A8 wins the single fixed-price slot.",
+      "fires": "always",
+      "funnel_stage": "Warm/Hot",
+      "accent": "green",
+      "exemplar": "A16",
+      "variants": [],
+      "reference_ads": [
+        {
+          "id": "A16",
+          "tier": 3,
+          "headline": "PERTH DUCTED A/C SALE — $9,990",
+          "price": "Fixed",
+          "notes": "City-prefixed clearance. Plain."
+        },
+        {
+          "id": "A17",
+          "tier": 3,
+          "headline": "DUCTED A/C CLEARANCE SALE — 30% off",
+          "price": "—",
+          "notes": "Generic clearance positioning."
+        },
+        {
+          "id": "A18",
+          "tier": 3,
+          "headline": "Save $7000 VIC REBATES! — $5,799 Ducted A/C",
+          "price": "Fixed",
+          "notes": "Rebate hook. Replicable for NSW."
+        }
+      ],
+      "rules": [
+        "Lighter, less aggressive than A7. Clean, professional mood — pick fresh palettes per generation.",
+        "Wider visual breathing room than A7.",
+        "Fixed price + city + clearance/rebate framing."
+      ],
+      "variable_inputs": {
+        "Headlines": [
+          "{{city}} DUCTED A/C CLEARANCE SALE!",
+          "{{city}} EOFY DUCTED A/C SALE",
+          "Save {{rebate_amount}} {{state}} REBATES!",
+          "{{state}} REBATES: SAVE {{rebate_amount}}",
+          "{{city}} END OF FINANCIAL YEAR DUCTED A/C",
+          "LAST DAYS — {{city}} DUCTED A/C CLEARANCE",
+          "{{state}} HOMEOWNERS — CLAIM YOUR REBATE",
+          "{{city}} STOCK CLEARANCE — DUCTED A/C",
+          "{{city}} GOVERNMENT REBATES STILL AVAILABLE",
+          "{{city}} DUCTED A/C — UP TO {{discount_pct}} OFF"
+        ],
+        "Value stacks": [
+          "Limited Stock | Locally Installed | Interest-Free Finance Available | 5-Year Guarantee",
+          "{{state}} Rebate Eligible | $0 Upfront | Interest-Free Finance | 5-Year Guarantee",
+          "Final Days, Final Stock | $1,299 Free Bonuses | Locally Installed by {{city}} Experts",
+          "Save Big With Government Rebates | Locally Installed | $0 Upfront"
+        ],
+        "CTAs": [
+          "REQUEST A FREE QUOTE TODAY!",
+          "CLAIM YOUR REBATE",
+          "LOCK IN YOUR INSTALL",
+          "BOOK YOUR FREE QUOTE",
+          "{{state}} HOMEOWNERS — CLAIM TODAY"
+        ],
+        "Badges": [
+          "{{discount_pct}} OFF",
+          "ZERO UPFRONT",
+          "{{state}} REBATE ELIGIBLE",
+          "LIMITED STOCK",
+          "ENDS SOON",
+          "$0 UPFRONT"
+        ]
+      },
+      "components": [
+        {
+          "slot": "house diagram",
+          "usage": "house_3d_blue — centre-left, medium scale"
+        },
+        {
+          "slot": "brand logos",
+          "usage": "bottom strip"
+        }
+      ],
+      "prompt": "Square 1080×1080 plain clearance ad. Clean, professional mood — pick fresh palette and fonts per generation. Top: small location pill with map-pin icon: '{{city}}'. Headline beneath, two stacked lines: {{headline}} in bold uppercase. Centre-left: attached house diagram, medium scale. Centre-right: {{fixed_price}} large bold with sub-text 'Save on your Power Bills' or 'Energy Efficient — Save on electricity'. Bottom-right circular badge: {{discount_pct}} OFF. Bottom strip: brand logos. WIDER VISUAL BREATHING ROOM than archetype A7."
+    },
+    {
+      "id": 9,
+      "code": "A9",
+      "name": "Holiday Event",
+      "tagline": "Calendar-bound urgency: each major Australian retail holiday gets its own ad in the pack from day one. Launch each as the date approaches.",
+      "when": "Always — every major retail holiday gets an ad generated upfront. No date-window gating. Launch the relevant variant as the holiday approaches.",
+      "gating": "None — every variant generated upfront and labeled with launch dates.",
+      "fires": "always",
+      "funnel_stage": "Hot",
+      "accent": "red",
+      "exemplar": "A33",
+      "variants": [
+        {
+          "key": "australia_day",
+          "name": "Australia Day Sale",
+          "tone": "Heavy summer / patriotic",
+          "fires": "Launch dates: Jan 20-26 each year",
+          "ref": "A32"
+        },
+        {
+          "key": "easter_sale",
+          "name": "Easter Sale",
+          "tone": "Clean shoulder-season",
+          "fires": "Launch dates: ~10 days before Good Friday (March/April, varies)",
+          "ref": "A33"
+        },
+        {
+          "key": "mothers_day",
+          "name": "Mother's Day Sale",
+          "tone": "Clean / gift framing",
+          "fires": "Launch dates: 2nd Sunday of May ± 7 days",
+          "ref": "A33"
+        },
+        {
+          "key": "eofy_sale",
+          "name": "EOFY Sale",
+          "tone": "Heavy / fixed-price + tax framing",
+          "fires": "Launch dates: June 1 - June 30 each year",
+          "ref": "A32"
+        },
+        {
+          "key": "fathers_day",
+          "name": "Father's Day Sale",
+          "tone": "Clean / gift framing",
+          "fires": "Launch dates: 1st Sunday of September ± 7 days",
+          "ref": "A33"
+        },
+        {
+          "key": "click_frenzy",
+          "name": "Click Frenzy",
+          "tone": "Heavy / flash sale",
+          "fires": "Launch dates: mid-November each year (varies)",
+          "ref": "A32"
+        },
+        {
+          "key": "black_friday",
+          "name": "Black Friday Sale",
+          "tone": "Heavy / dark high-discount",
+          "fires": "Launch dates: last Friday of November ± 5 days",
+          "ref": "A32"
+        },
+        {
+          "key": "cyber_monday",
+          "name": "Cyber Monday Sale",
+          "tone": "Clean / finance-led",
+          "fires": "Launch dates: Monday after Black Friday",
+          "ref": "A33"
+        },
+        {
+          "key": "boxing_day",
+          "name": "Boxing Day Sale",
+          "tone": "Heavy / summer high-discount",
+          "fires": "Launch dates: Dec 26 - Jan 5",
+          "ref": "A32"
+        },
+        {
+          "key": "new_year_sale",
+          "name": "New Year Sale",
+          "tone": "Clean / fresh-start framing",
+          "fires": "Launch dates: Jan 1 - Jan 14",
+          "ref": "A33"
+        }
+      ],
+      "reference_ads": [
+        {
+          "id": "A32",
+          "tier": 5,
+          "headline": "BLACK FRIDAY — DISCOUNT UP TO 30%",
+          "price": "—",
+          "notes": "Heavy holiday. Tradesman thumbs-up."
+        },
+        {
+          "id": "A33",
+          "tier": 5,
+          "headline": "BLACK FRIDAY SALE — Ducted A/C $140/week",
+          "price": "Per-week",
+          "notes": "Clean per-week holiday variant."
+        }
+      ],
+      "rules": [
+        "Holiday name dominates the visual. Time-bound urgency is the entire point.",
+        "Heavy variant: 1080×1350 portrait, dramatic high-contrast mood. Clean variant: 1080×1080 square, lighter mood. Pick fresh palettes per generation."
+      ],
+      "variable_inputs": {
+        "Headlines": [
+          "BLACK FRIDAY DUCTED A/C SALE",
+          "BOXING DAY DUCTED A/C SALE",
+          "EASTER SALE — DUCTED A/C",
+          "EOFY DUCTED A/C SALE",
+          "NEW YEAR DUCTED A/C SALE",
+          "AUSTRALIA DAY DUCTED A/C SALE",
+          "BLACK FRIDAY: BIGGEST SALE OF THE YEAR",
+          "HOLIDAY SALE — UP TO {{discount_pct}}",
+          "{{holiday_name}} BLOWOUT — DUCTED A/C",
+          "{{holiday_name}} ONLY — UP TO {{discount_pct}} OFF",
+          "{{holiday_name}} SALE — LOWEST PRICES OF THE YEAR"
+        ],
+        "Value stacks": [
+          "Best Pricing of the Year | $0 Upfront | Interest-Free Finance | 5-Year Guarantee",
+          "Holiday Bonuses Worth $1,299 | Locally Installed | $0 Upfront, Interest-Free Finance Available",
+          "Once-A-Year Pricing | Limited Stock | Premium Brands | 7-Year Warranty",
+          "Beat the Summer Rush | $0 Upfront | Interest-Free Finance | 5-Year Guarantee"
+        ],
+        "CTAs": [
+          "GET QUOTE",
+          "CLAIM HOLIDAY DEAL",
+          "BOOK BEFORE IT ENDS",
+          "LOCK IN HOLIDAY PRICE",
+          "CLAIM TODAY"
+        ],
+        "Badges": [
+          "DISCOUNT UP TO {{discount_pct}}",
+          "30% OFF",
+          "50% OFF",
+          "{{holiday_name}} EXCLUSIVE",
+          "BIGGEST SAVINGS OF THE YEAR",
+          "ONCE A YEAR",
+          "ENDS {{holiday_end_date}}"
+        ]
+      },
+      "components": [
+        {
+          "slot": "stock reaction photo",
+          "usage": "react_tradesman — heavy variant, centre-right portrait"
+        },
+        {
+          "slot": "condenser",
+          "usage": "cond_neutral_1 — clean variant, centre"
+        },
+        {
+          "slot": "outlet",
+          "usage": "outlet_round_1 — clean variant accent"
+        }
+      ],
+      "prompt": "Layer 2 picks heavy or clean treatment based on the holiday's tone (heavy = dramatic dark direct-response for high-discount holidays like Black Friday, Boxing Day, Click Frenzy, Australia Day, EOFY; clean = lighter finance-led for gift-giving / shoulder holidays like Mother's Day, Father's Day, Cyber Monday, New Year, Easter).\n\n[heavy] Portrait 1080×1350. Dramatic, high-contrast mood — pick fresh dark palette per generation that matches the holiday (Black Friday = dark; Australia Day = patriotic; Boxing Day = summer-red). Banner across upper third: {{holiday_name}} oversized bold sans-serif — dominant visual. Beneath: 'DUCTED A/C SALE' bold + 'UP TO {{discount_pct}}' high-contrast accent. Centre-right: tradesman-portrait photo (attached) — use AS-IS, do NOT modify. Bottom-left rounded button {{cta}}. Bottom strip: small brand logos.\n\n[clean] Square 1080×1080. Light, finance-led mood — pick fresh lighter palette per generation matched to the holiday's mood. Top banner '{{holiday_name}} SALE' in contrasting accent. Top-left circular badge: {{discount_pct}} OFF. Centre: attached condenser image (locked component). Right of condenser: 'DUCTED A/C INSTALLED FROM' / {{per_week_price}}. Beneath: short urgency line tied to the holiday (e.g. 'GIFT YOURSELF COMFORT THIS MOTHER'S DAY'). Bottom: micro-disclaimer.\n\nFor each holiday variant, lean into that holiday's specific cultural mood — Father's Day = warm/gift, Mother's Day = warm/gift, EOFY = tax-deduction angle, Australia Day = patriotic summer, Boxing Day = post-Christmas value, Black Friday = aggressive dark-deal urgency."
+    },
+    {
+      "id": 10,
+      "code": "A10",
+      "name": "Local Trust",
+      "tagline": "Team / owner / van photo + Google review count (when available). Highest-trust signal in the pack.",
+      "when": "Fires whenever client has at least one of [team_photo, owner_photo, van_photo]. Google reviews badge only appears if review_count ≥ 30 — otherwise the ad still runs but without the review badge.",
+      "gating": "(team_photo OR owner_photo OR van_photo). Review count is NOT a gating factor for the ad firing — it only controls whether the Google review badge is shown.",
+      "fires": "conditional",
+      "funnel_stage": "Cold/Warm",
+      "accent": "green",
+      "exemplar": "A37",
+      "variants": [
+        {
+          "key": "team",
+          "name": "Team photo",
+          "tone": "Established, professional",
+          "fires": "Client has team_photo upload. Review badge shown if ≥30 reviews.",
+          "ref": "A34, A36"
+        },
+        {
+          "key": "owner",
+          "name": "Owner thumbs-up",
+          "tone": "Personal, owner-led",
+          "fires": "Client has owner_photo. Review badge shown if ≥30 reviews.",
+          "ref": "A35"
+        },
+        {
+          "key": "van",
+          "name": "Van + owner",
+          "tone": "Local, mobile, established",
+          "fires": "Client has van_photo. Review badge shown if ≥30 reviews.",
+          "ref": "A37, A38"
+        }
+      ],
+      "reference_ads": [
+        {
+          "id": "A34",
+          "tier": 5,
+          "headline": "NORTHERN MELBOURNE'S DUCTED A/C SPECIALISTS",
+          "price": "—",
+          "notes": "MHI Diamond Dealer. 168 reviews."
+        },
+        {
+          "id": "A35",
+          "tier": 5,
+          "headline": "CARRUM DOWNS DUCTED A/C INSTALLATION EXPERTS",
+          "price": "Per-week",
+          "notes": "Owner thumbs-up portrait."
+        },
+        {
+          "id": "A36",
+          "tier": 5,
+          "headline": "BALLINA · LENNOX HEAD · BYRON BAY — Team",
+          "price": "Per-week",
+          "notes": "Team in front of van."
+        },
+        {
+          "id": "A37",
+          "tier": 5,
+          "headline": "BALLINA · LENNOX HEAD · BYRON BAY — Van",
+          "price": "Per-week",
+          "notes": "Owner with van. 145+ reviews."
+        },
+        {
+          "id": "A38",
+          "tier": 5,
+          "headline": "CENTRAL COAST · NEWCASTLE — Van",
+          "price": "Per-week",
+          "notes": "BORDERLINE: only 29 reviews — under 30-review gate."
+        }
+      ],
+      "rules": [
+        "Client photo (team/owner/van) is used EXACTLY as uploaded — no AI modification of people, vehicle, or setting.",
+        "Google G logo + review count is the second-most prominent element after the photo.",
+        "Top header strip shows the {{region}} or {{city}} location prominently.",
+        "Trust-focused, professional mood — pick fresh palettes per generation, but always feel clean and credible (not flashy)."
+      ],
+      "variable_inputs": {
+        "Headlines": [
+          "{{region}}'S DUCTED A/C SPECIALISTS",
+          "{{region}} DUCTED A/C INSTALLATION EXPERTS",
+          "{{region}}'S #1 DUCTED A/C INSTALLERS",
+          "THE {{region}} TEAM YOU CAN TRUST",
+          "LOCALLY OWNED, LOCALLY OPERATED — {{region}}",
+          "{{region}}'S 5-STAR DUCTED A/C TEAM",
+          "{{region}} HOMEOWNERS' TRUSTED DUCTED A/C INSTALLERS",
+          "THE {{region}} TEAM YOUR NEIGHBOURS RECOMMEND",
+          "{{region}}'S MOST RECOMMENDED DUCTED A/C INSTALLERS",
+          "TRUSTED BY {{google_review_count}}+ {{region}} HOMEOWNERS"
+        ],
+        "Sub-headlines": [
+          "DESIGNED, INSTALLED & TRUSTED LOCALLY",
+          "LOCALLY OWNED & OPERATED",
+          "{{google_review_count}}+ HAPPY {{region}} CUSTOMERS",
+          "TRUSTED BY {{region}} HOMEOWNERS",
+          "FAMILY-RUN, LOCALLY-OWNED"
+        ],
+        "Value stacks": [
+          "Fully Licensed & Insured | Local Install Specialists | 5-Star Rated | Free On-Site Quote",
+          "Same-Day Quotes | Local {{region}} Team | $0 Upfront | 5-Year Workmanship Guarantee",
+          "{{google_review_count}}+ 5-Star Reviews | Free On-Site Quote | Locally Owned | Interest-Free Finance Available",
+          "Locally Owned, Family Run | {{google_review_count}}+ 5-Star Reviews | $0 Upfront | 5-Year Guarantee"
+        ],
+        "CTAs": [
+          "Book Your Free On-Site Quote Today",
+          "Get A Fast Ducted Quote Today",
+          "GET A FREE QUOTE",
+          "BOOK ON-SITE QUOTE",
+          "TALK TO A {{region}} EXPERT"
+        ],
+        "Badges": [
+          "{{google_review_count}}+ 5-STAR GOOGLE REVIEWS",
+          "5.0 RATED",
+          "LOCALLY OWNED",
+          "{{region}} TEAM",
+          "LICENSED & INSURED",
+          "FREE ON-SITE QUOTE",
+          "FAMILY-RUN"
+        ]
+      },
+      "components": [
+        {
+          "slot": "client uploads",
+          "usage": "team_photo / owner_photo / van_photo — USE EXACTLY AS PROVIDED"
+        },
+        {
+          "slot": "trust badge",
+          "usage": "google_5star — top-right corner"
+        },
+        {
+          "slot": "trust badge",
+          "usage": "mhi_diamond — optional, if client is MHI Diamond Dealer"
+        },
+        {
+          "slot": "house diagram",
+          "usage": "house_3d_blue — optional small accent for van variant"
+        }
+      ],
+      "prompt": "[team] Square 1080×1080 trust ad. Clean, credible, professional mood — pick fresh palette and fonts per generation but keep the feel professional (not flashy). Thin header strip at top: {{region}} in small caps centred. Headline beneath: {{headline}} bold uppercase, two stacked lines. Sub-headline: small italic 'Designed, Installed & Trusted Locally'. Centre-left: place client team_photo at ~50% canvas width, full height — USE EXACTLY AS PROVIDED, do not modify the people. Top-right corner: green Google G logo + {{google_review_count}}+ 5-Star Google Reviews. Optional top-right circle 'FROM {{per_week_price}}'. Bottom-left tick-bullets from {{value_stack}}. Bottom-right CTA {{cta}}.\n\n[owner] As team variant but use owner_photo (single subject, thumbs-up pose preferred). 5.0 Rated badge replaces multi-review structure if appropriate.\n\n[van] As team variant but use van_photo. House diagram tucked into lower-left corner as additional trust signal."
+    }
+  ],
+  "globalRules": [
+    {
+      "id": "HR01",
+      "rule": "NEVER include the text \"0% interest\" anywhere on the ad. \"$0 upfront\" and \"interest-free finance available\" are acceptable."
+    },
+    {
+      "id": "HR02",
+      "rule": "All technical components (condensers, outlets, ducting, controllers, house diagrams) MUST come from the Components Library and be supplied to ChatGPT as locked image attachments. AI never invents these from scratch."
+    },
+    {
+      "id": "HR03",
+      "rule": "Condensers shown MUST be the double-fan ducted version. Single-fan = split system, wrong product."
+    },
+    {
+      "id": "HR04",
+      "rule": "NEVER use AI-generated faces. Use only stock photos from the Components Library or client-uploaded photos."
+    },
+    {
+      "id": "HR05",
+      "rule": "Maximum 3 brand logos in the brand strip for direct-response ads. 2 brand logos for premium/trust positioning. Never the agency or client company logo on the creative."
+    },
+    {
+      "id": "HR06",
+      "rule": "PRICING MIX: Per-week pricing is the default (promotes finance, generates the agency's finance-clip revenue). Layer 2 selects ONE archetype per pack to carry the fixed-price treatment (attracts deal-seekers — client must be ready to handle the price-related questions). Some trust-led ads carry NO price. Layer 2 balances this mix when composing the pack."
+    },
+    {
+      "id": "HR07",
+      "rule": "Fixed-price ads can only be composed when {{city}} exists in the Healthy Price Library (the city has a fixed price set)."
+    },
+    {
+      "id": "HR08",
+      "rule": "Google review badge appears ONLY when {{google_review_count}} ≥ 30. Trust ad (A10) still fires below 30 reviews — just without the review badge."
+    },
+    {
+      "id": "HR09",
+      "rule": "Discount % shown on badges MUST match the real promo the client is currently running. Editable per launch."
+    },
+    {
+      "id": "HR10",
+      "rule": "Default output is square 1080×1080 for Meta feed. A9 heavy holiday variant uses 1080×1350 portrait. No other variants override the square ratio."
+    },
+    {
+      "id": "HR11",
+      "rule": "Headline text must be high-contrast, bold, large enough to read at thumbnail size."
+    },
+    {
+      "id": "HR12",
+      "rule": "All copy in Australian English ('colour' not 'color', '$' for AUD)."
+    },
+    {
+      "id": "HR13",
+      "rule": "CLARITY RULE: The product category — 'DUCTED AIR CONDITIONING', 'DUCTED A/C', or 'DUCTED HEATING & COOLING' — MUST appear prominently in the headline or sub-headline. A scroller must know what's being sold within 1 second. Premium aesthetic does not override this."
+    },
+    {
+      "id": "HR14",
+      "rule": "SAFE-ZONE RULE: Maintain ~60px padding inside all four edges. No headlines, badges, CTAs, or critical text within this margin. Brand strip may sit close to but not touching the bottom edge. Protects against Meta's auto-cropping in feed/Stories/Reels."
+    },
+    {
+      "id": "HR15",
+      "rule": "TEXT SIZE RULE: Every text element must be readable at thumbnail size on mobile. Badges, labels, and supporting text are NOT decorative footnotes — they must be sized to be read. If text is decorative-small, it has failed."
+    },
+    {
+      "id": "HR16",
+      "rule": "VISION-BASED COMPOSITION: Layer 2 must analyse all attached asset images visually before composing the prompt. For ads with client photos (A10, A2 lifestyle, A3 lifestyle), palette is dictated by what's visible in the photo (client branding, mood, lighting) — not invented."
+    },
+    {
+      "id": "HR17",
+      "rule": "ALL ARCHETYPES (except A10) ALWAYS FIRE for every client. Holiday variants (A9), seasonal variants (A5, A6), and pricing variants (per-week / fixed / no-price) are all generated upfront from day one. Launch each as the date or season approaches. A10 conditional only on photo availability."
+    }
+  ],
+  "components": [
+    {
+      "category": "Condenser",
+      "key": "cond_neutral_1",
+      "type": "locked",
+      "description": "Double-fan, no brand. Default.",
+      "usedBy": "A7, A8, A9",
+      "imageId": ""
+    },
+    {
+      "category": "Condenser",
+      "key": "cond_neutral_2",
+      "type": "locked",
+      "description": "Double-fan, no brand. Variation.",
+      "usedBy": "A7, A8, A9",
+      "imageId": ""
+    },
+    {
+      "category": "Condenser",
+      "key": "cond_daikin",
+      "type": "locked",
+      "description": "Branded for Daikin clients.",
+      "usedBy": "A7",
+      "imageId": ""
+    },
+    {
+      "category": "Condenser",
+      "key": "cond_mitsubishi",
+      "type": "locked",
+      "description": "Branded for Mitsubishi/MHI.",
+      "usedBy": "A7",
+      "imageId": ""
+    },
+    {
+      "category": "Condenser",
+      "key": "cond_samsung",
+      "type": "locked",
+      "description": "Branded for Samsung.",
+      "usedBy": "A7",
+      "imageId": ""
+    },
+    {
+      "category": "Condenser",
+      "key": "cond_fujitsu",
+      "type": "locked",
+      "description": "Branded for Fujitsu.",
+      "usedBy": "A7",
+      "imageId": ""
+    },
+    {
+      "category": "Condenser",
+      "key": "cond_with_ducting",
+      "type": "locked",
+      "description": "Condenser + curled ducting.",
+      "usedBy": "A7, A8",
+      "imageId": ""
+    },
+    {
+      "category": "Outlet",
+      "key": "outlet_round_1",
+      "type": "locked",
+      "description": "Round ceiling vent.",
+      "usedBy": "A6, A9",
+      "imageId": ""
+    },
+    {
+      "category": "Outlet",
+      "key": "outlet_round_2",
+      "type": "locked",
+      "description": "Round ceiling vent variation.",
+      "usedBy": "A6, A9",
+      "imageId": ""
+    },
+    {
+      "category": "Outlet",
+      "key": "outlet_linear_1",
+      "type": "locked",
+      "description": "Linear bar grille.",
+      "usedBy": "—",
+      "imageId": ""
+    },
+    {
+      "category": "Outlet",
+      "key": "outlet_linear_2",
+      "type": "locked",
+      "description": "Linear bar grille variation.",
+      "usedBy": "—",
+      "imageId": ""
+    },
+    {
+      "category": "Outlet",
+      "key": "outlet_square",
+      "type": "locked",
+      "description": "Square ceiling vent.",
+      "usedBy": "—",
+      "imageId": ""
+    },
+    {
+      "category": "House diagram",
+      "key": "house_3d_blue",
+      "type": "locked",
+      "description": "Standard 3D isometric, blue tones.",
+      "usedBy": "A1, A5, A6, A8, A10",
+      "imageId": ""
+    },
+    {
+      "category": "House diagram",
+      "key": "house_3d_dark",
+      "type": "locked",
+      "description": "Darker 3D isometric for A4 pain ads.",
+      "usedBy": "A4",
+      "imageId": ""
+    },
+    {
+      "category": "House diagram",
+      "key": "house_3d_zones",
+      "type": "locked",
+      "description": "House with zones (red/green/orange).",
+      "usedBy": "A7",
+      "imageId": ""
+    },
+    {
+      "category": "House diagram",
+      "key": "house_outline",
+      "type": "locked",
+      "description": "Simple outline variant.",
+      "usedBy": "—",
+      "imageId": ""
+    },
+    {
+      "category": "Controller",
+      "key": "ctrl_ipad_airtouch",
+      "type": "locked",
+      "description": "AirTouch wall controller.",
+      "usedBy": "A7",
+      "imageId": ""
+    },
+    {
+      "category": "Controller",
+      "key": "ctrl_phone_app",
+      "type": "locked",
+      "description": "Phone with controller app.",
+      "usedBy": "A7",
+      "imageId": ""
+    },
+    {
+      "category": "Controller",
+      "key": "ctrl_combo",
+      "type": "locked",
+      "description": "iPad + phone combo.",
+      "usedBy": "A7",
+      "imageId": ""
+    },
+    {
+      "category": "Ducting",
+      "key": "duct_short",
+      "type": "locked",
+      "description": "Short flexible duct piece.",
+      "usedBy": "A7",
+      "imageId": ""
+    },
+    {
+      "category": "Ducting",
+      "key": "duct_curled",
+      "type": "locked",
+      "description": "Curled-up ducting next to condenser.",
+      "usedBy": "A7",
+      "imageId": ""
+    },
+    {
+      "category": "Stock family",
+      "key": "fam_couch_summer",
+      "type": "stock",
+      "description": "Family on couch, light/airy.",
+      "usedBy": "A3",
+      "imageId": ""
+    },
+    {
+      "category": "Stock family",
+      "key": "fam_couch_winter",
+      "type": "stock",
+      "description": "Family on couch, warm/cozy.",
+      "usedBy": "A3",
+      "imageId": ""
+    },
+    {
+      "category": "Stock family",
+      "key": "fam_piggyback",
+      "type": "stock",
+      "description": "Father piggybacking child.",
+      "usedBy": "A3",
+      "imageId": ""
+    },
+    {
+      "category": "Stock family",
+      "key": "fam_jumping",
+      "type": "stock",
+      "description": "Family jumping in living room.",
+      "usedBy": "A2",
+      "imageId": ""
+    },
+    {
+      "category": "Stock reaction",
+      "key": "react_sweating_man",
+      "type": "stock",
+      "description": "Man sweating, hands up.",
+      "usedBy": "A5, A6",
+      "imageId": ""
+    },
+    {
+      "category": "Stock reaction",
+      "key": "react_freezing_fam",
+      "type": "stock",
+      "description": "Family bundled up, cold.",
+      "usedBy": "A5",
+      "imageId": ""
+    },
+    {
+      "category": "Stock reaction",
+      "key": "react_cold_woman",
+      "type": "stock",
+      "description": "Woman in winter clothes.",
+      "usedBy": "A6",
+      "imageId": ""
+    },
+    {
+      "category": "Stock reaction",
+      "key": "react_pointing_up",
+      "type": "stock",
+      "description": "Woman pointing up at price.",
+      "usedBy": "A6",
+      "imageId": ""
+    },
+    {
+      "category": "Stock reaction",
+      "key": "react_woman_white",
+      "type": "stock",
+      "description": "Woman in white sweater.",
+      "usedBy": "A6",
+      "imageId": ""
+    },
+    {
+      "category": "Stock reaction",
+      "key": "react_tradesman",
+      "type": "stock",
+      "description": "Tradesman thumbs-up portrait.",
+      "usedBy": "A9",
+      "imageId": ""
+    },
+    {
+      "category": "Brand logo",
+      "key": "logo_daikin",
+      "type": "locked",
+      "description": "Daikin",
+      "usedBy": "All",
+      "imageId": ""
+    },
+    {
+      "category": "Brand logo",
+      "key": "logo_mitsubishi",
+      "type": "locked",
+      "description": "Mitsubishi Electric",
+      "usedBy": "All",
+      "imageId": ""
+    },
+    {
+      "category": "Brand logo",
+      "key": "logo_mhi",
+      "type": "locked",
+      "description": "MHI",
+      "usedBy": "All",
+      "imageId": ""
+    },
+    {
+      "category": "Brand logo",
+      "key": "logo_samsung",
+      "type": "locked",
+      "description": "Samsung",
+      "usedBy": "All",
+      "imageId": ""
+    },
+    {
+      "category": "Brand logo",
+      "key": "logo_fujitsu",
+      "type": "locked",
+      "description": "Fujitsu",
+      "usedBy": "All",
+      "imageId": ""
+    },
+    {
+      "category": "Brand logo",
+      "key": "logo_panasonic",
+      "type": "locked",
+      "description": "Panasonic",
+      "usedBy": "All",
+      "imageId": ""
+    },
+    {
+      "category": "Brand logo",
+      "key": "logo_hisense",
+      "type": "locked",
+      "description": "Hisense",
+      "usedBy": "All",
+      "imageId": ""
+    },
+    {
+      "category": "Brand logo",
+      "key": "logo_haier",
+      "type": "locked",
+      "description": "Haier",
+      "usedBy": "All",
+      "imageId": ""
+    },
+    {
+      "category": "Brand logo",
+      "key": "logo_actron",
+      "type": "locked",
+      "description": "Actron Air",
+      "usedBy": "All",
+      "imageId": ""
+    },
+    {
+      "category": "Brand logo",
+      "key": "logo_hitachi",
+      "type": "locked",
+      "description": "Hitachi",
+      "usedBy": "All",
+      "imageId": ""
+    },
+    {
+      "category": "Brand logo",
+      "key": "logo_rinnai",
+      "type": "locked",
+      "description": "Rinnai",
+      "usedBy": "All",
+      "imageId": ""
+    },
+    {
+      "category": "Brand logo",
+      "key": "logo_toshiba",
+      "type": "locked",
+      "description": "Toshiba",
+      "usedBy": "All",
+      "imageId": ""
+    },
+    {
+      "category": "Trust badge",
+      "key": "google_5star",
+      "type": "locked",
+      "description": "Google 5-star with G logo.",
+      "usedBy": "A10",
+      "imageId": ""
+    },
+    {
+      "category": "Trust badge",
+      "key": "mhi_diamond",
+      "type": "locked",
+      "description": "MHI Diamond Dealer badge.",
+      "usedBy": "A10",
+      "imageId": ""
+    }
+  ],
+  "prices": [
+    {
+      "city": "Sydney",
+      "fixed": "",
+      "anchor": "",
+      "perWeek": "$59",
+      "rebate": ""
+    },
+    {
+      "city": "Melbourne",
+      "fixed": "",
+      "anchor": "",
+      "perWeek": "$56",
+      "rebate": ""
+    },
+    {
+      "city": "Brisbane",
+      "fixed": "",
+      "anchor": "",
+      "perWeek": "$54",
+      "rebate": ""
+    },
+    {
+      "city": "Perth",
+      "fixed": "",
+      "anchor": "",
+      "perWeek": "$58",
+      "rebate": ""
+    },
+    {
+      "city": "Adelaide",
+      "fixed": "",
+      "anchor": "",
+      "perWeek": "$53",
+      "rebate": ""
+    },
+    {
+      "city": "Newcastle",
+      "fixed": "",
+      "anchor": "",
+      "perWeek": "$55",
+      "rebate": ""
+    },
+    {
+      "city": "Central Coast",
+      "fixed": "",
+      "anchor": "",
+      "perWeek": "$57",
+      "rebate": ""
+    },
+    {
+      "city": "Hunter Valley",
+      "fixed": "",
+      "anchor": "",
+      "perWeek": "$54",
+      "rebate": ""
+    },
+    {
+      "city": "Wollongong",
+      "fixed": "",
+      "anchor": "",
+      "perWeek": "$56",
+      "rebate": ""
+    },
+    {
+      "city": "Gold Coast",
+      "fixed": "",
+      "anchor": "",
+      "perWeek": "$58",
+      "rebate": ""
+    },
+    {
+      "city": "Sunshine Coast",
+      "fixed": "",
+      "anchor": "",
+      "perWeek": "$55",
+      "rebate": ""
+    },
+    {
+      "city": "Geelong",
+      "fixed": "",
+      "anchor": "",
+      "perWeek": "$52",
+      "rebate": ""
+    },
+    {
+      "city": "Ballarat",
+      "fixed": "",
+      "anchor": "",
+      "perWeek": "$51",
+      "rebate": ""
+    },
+    {
+      "city": "Bendigo",
+      "fixed": "",
+      "anchor": "",
+      "perWeek": "$53",
+      "rebate": ""
+    },
+    {
+      "city": "Northern Melbourne",
+      "fixed": "",
+      "anchor": "",
+      "perWeek": "$56",
+      "rebate": ""
+    },
+    {
+      "city": "Carrum Downs",
+      "fixed": "",
+      "anchor": "",
+      "perWeek": "$57",
+      "rebate": ""
+    },
+    {
+      "city": "Ballina / Lennox Head / Byron Bay",
+      "fixed": "",
+      "anchor": "",
+      "perWeek": "$58",
+      "rebate": ""
+    },
+    {
+      "city": "Far North Coast",
+      "fixed": "",
+      "anchor": "",
+      "perWeek": "$56",
+      "rebate": ""
+    },
+    {
+      "city": "Southern Highlands / Macarthur",
+      "fixed": "",
+      "anchor": "",
+      "perWeek": "$54",
+      "rebate": ""
+    }
+  ]
+}

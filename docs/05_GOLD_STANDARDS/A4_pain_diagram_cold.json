@@ -1,0 +1,42 @@
+{
+  "archetype": "A4",
+  "archetype_name": "Problem/Solution Urgency",
+  "variant": "diagram (cold audience)",
+  "funnel_stage": "Cold/Warm",
+  "tested_outcome": "Production-ready second pass. First diagram attempt was too busy/architectural. Second pass with 'simple/instantly readable' framing landed — diagram explained the product while keeping the dark urgency mood.",
+  "input_context": {
+    "city": "Brisbane",
+    "state": "QLD",
+    "headline": "DREADING YOUR NEXT POWER BILL?",
+    "solution_line": "WHOLE-HOME DUCTED A/C, FULLY INSTALLED",
+    "anchor_price": "$9,990 (struck through)",
+    "fixed_price": "$5,799",
+    "cta": "LOCK IN YOUR PRICE",
+    "badge": "40% OFF",
+    "urgency_line": "Hurry — Limited Slots",
+    "brands": ["Daikin", "Mitsubishi Heavy Industries", "Samsung"]
+  },
+  "assets_attached": [
+    {"type": "ref", "asset": "A04 reference ad", "instruction": "Match style/density/direct-response feel"}
+  ],
+  "key_pivot_from_warm_variant": "The hero swaps from wallet (emotional pain) to house diagram (product explainer). For COLD audiences who don't yet know what ducted A/C is, the diagram does the explainer work alongside the offer.",
+  "composition_choices_that_worked": [
+    "Specified diagram must read as a HOUSE with airflow in HALF A SECOND — not require parsing",
+    "Used 'product illustration' framing (Apple-style diagrams) NOT 'architectural render'",
+    "Said 'minimal interior detail — just enough to communicate rooms, not full furnished interiors'",
+    "Solution line changed from 'DUCTED A/C, FULLY INSTALLED' to 'WHOLE-HOME DUCTED A/C, FULLY INSTALLED' — reinforces what the diagram is showing",
+    "Lime/black palette emerged from the AI — aggressive without being clichéd red/black"
+  ],
+  "what_failed_first_time_and_was_fixed": [
+    "First attempt: 'high-end real-estate render, not engineering schematic' overcorrected into busy architectural visualisation",
+    "Fix: explicitly forbade photorealistic/architectural/cartoon styles, demanded simple-illustration-with-airflow",
+    "Lesson: when describing illustration style, give explicit positive AND negative examples"
+  ],
+  "full_prompt_used": "Use the attached image as a strong style and layout reference. Match its visual energy, density, and direct-response feel — but DO NOT copy its headline, hero visual, or specific colours. Generate fresh ones per the brief below.\n\nCreate a square 1080×1080 social media ad for a residential ducted air conditioning installer in Brisbane, Australia.\n\nFUNNEL CONTEXT\nThis ad is for a colder audience who may not yet fully understand what ducted A/C is. The visual must do explainer work alongside the offer. The hero must clearly and INSTANTLY show ducted A/C as a whole-home system — readable in half a second, not requiring inspection.\n\nMOOD & STYLE\nBold, dark, urgent, problem-led. Choose a fresh dark high-contrast palette of your own with one strong accent colour for the solution/price elements. Aggressive bold display typography for the headline. All text must be unmissable at thumbnail size. Direct-response, slightly aggressive, professional.\n\nLAYOUT (top to bottom)\n\n1. HEADLINE — top third\nTwo parts:\n   - \"DREADING YOUR NEXT\" medium-weight uppercase\n   - \"POWER BILL?\" oversized bold uppercase in a contrasting accent colour — dominant\nStack across two lines.\n\n2. HERO VISUAL — middle, roughly 45% of canvas height\nA clean, simplified, stylised 3D illustration of a single-storey home, viewed at a slight 3/4 angle. The house is rendered as a simplified geometric form — clear walls, clear roof, easily readable at thumbnail size. The front wall is transparent or removed, revealing 3-4 simplified rooms inside. Each room has a visible ceiling vent with a soft coloured airflow arrow pointing down into the room — use cool blue or white arrows for cooling. The style should feel like a premium product illustration (think Apple-style product diagrams or modern infographic illustration) — NOT a photorealistic architectural render, NOT a technical engineering diagram, NOT a cartoon. Clean, minimal interior detail — just enough to communicate \"rooms,\" not full furnished interiors. The whole illustration should read as a single clean object, not a busy scene.\n\n3. SOLUTION PANEL — right side or below the hero\nVertical solid-colour accent panel:\n   - Small uppercase caps: \"THE ANSWER:\"\n   - Medium uppercase: \"WHOLE-HOME DUCTED A/C, FULLY INSTALLED\"\n   - Above the price, smaller, struck through: \"WAS $9,990\"\n   - Oversized bold dominant: \"$5,799\"\n\n4. CTA BUTTON — beneath the solution panel\nRounded pill button reading: \"LOCK IN YOUR PRICE\"\nBold uppercase. High-contrast colour.\n\n5. DISCOUNT BADGE — bottom-left or top-right corner\nCircular burst badge reading: \"40% OFF\"\nBold contrasting colour, slightly tilted.\n\n6. URGENCY LINE — small text under the CTA\nItalic text: \"Hurry — Limited Slots\"\n\n7. BRAND STRIP — very bottom edge\nThin horizontal strip with three brand logos evenly spaced and rendered in their native brand colours: Daikin, Mitsubishi Heavy Industries, Samsung.\n\nHARD RULES\n- 1080×1080 aspect ratio\n- All text readable at thumbnail size\n- The house illustration must be SIMPLE and INSTANTLY READABLE — if a viewer needs more than half a second, the visual has failed\n- Do NOT render furnished interiors in detail\n- Do NOT make the house look like a construction site or technical schematic\n- Maximum 3 brand logos\n- Do NOT include \"0% interest\" or \"interest-free\"\n- Do NOT add people, faces, or hands\n- Anchor price visibly struck through",
+  "lessons_for_layer_2": [
+    "When a single archetype serves both cold and warm audiences, build TWO variants — different visual hero, different solution wording, same offer",
+    "For diagram heroes generated fresh by AI, use 'product illustration' framing not 'render' or 'architectural' — those words push the AI wrong",
+    "Always include explicit negative examples ('NOT photorealistic, NOT architectural render, NOT cartoon') — the AI needs to know what to avoid, not just what to make",
+    "Funnel-stage context at the top of the prompt actually changes how the AI composes — worth keeping there"
+  ]
+}

@@ -1,0 +1,869 @@
+[
+  {
+    "code": "A1",
+    "name": "Energy Bill Hero",
+    "tagline": "Save-on-bills angle. Calm, authoritative, benefit-led. Universal best-performer.",
+    "funnel_stage": "Cold/Warm",
+    "exemplar": "A03",
+    "rules": [
+      "Calm, trustworthy, savings-led mood. Pick fresh colours, palettes and fonts per generation.",
+      "Per-week price OR no price. Never fixed price (use A4 for fixed-price pain ads).",
+      "Headline must reference SAVING, REDUCING, or CUTTING bills \u2014 never pain framing (that belongs to A4).",
+      "Hero is a single component from this archetype's accessible pool, rotated across packs for variety. Common picks: house diagrams (calmest read), savings_graph variants, wallet_coins variants, bill_holder variants. House diagrams keep the no-people calm; people-included shots work when the pack needs an emotional variant \u2014 pick what the pack balance needs.",
+      "Brand logos sit on a strip at the bottom of the canvas (max 3 per HR05)."
+    ],
+    "components": [
+      {
+        "slot": "house diagram",
+        "usage": "house_3d_blue \u2014 hero, ~50% canvas height, centred"
+      },
+      {
+        "slot": "brand logos",
+        "usage": "brand_1, brand_2, brand_3 \u2014 bottom strip, max 3"
+      }
+    ],
+    "variable_inputs": {
+      "Headlines": [
+        "CUT YOUR ENERGY BILLS BY UP TO 30%",
+        "SAVE UP TO 30% ON YOUR POWER BILLS",
+        "LOWER YOUR ENERGY BILLS THIS SEASON",
+        "SLASH YOUR ELECTRICITY BILLS WITH DUCTED A/C",
+        "DUCTED A/C THAT PAYS FOR ITSELF",
+        "THE EASIEST WAY TO LOWER YOUR POWER BILLS",
+        "SAVE $1,000s ON YOUR POWER BILLS",
+        "DROP YOUR POWER BILLS THIS YEAR",
+        "ENERGY EFFICIENT DUCTED A/C \u2014 SAVE BIG",
+        "HOW {{city}} HOMEOWNERS ARE BEATING RISING POWER PRICES",
+        "DUCTED A/C THAT WORKS SMARTER, NOT HARDER",
+        "POWER BILLS DROPPING WITH DUCTED A/C",
+        "MAKE YOUR HOME ENERGY-EFFICIENT",
+        "COMFORT YEAR-ROUND, BILLS DOWN ALL YEAR",
+        "THE SMARTEST WAY TO HEAT & COOL YOUR HOME"
+      ],
+      "Value stacks": [
+        "Silent, Seamless, and Smart Cooling | Zoned Control for Maximum Comfort | 5-Year Workmanship Guarantee | $0 Upfront",
+        "Save up to 30% on bills | $1,299 in FREE Bonuses | $0 Upfront Cost",
+        "Energy-Star Rated System | Whole-Home Comfort | Locally Installed | $0 Upfront",
+        "Smart Zoning Technology | Heat or Cool Just the Rooms You Use | 5-Year Workmanship Guarantee | $0 Upfront",
+        "Premium Daikin / Mitsubishi System | Engineered for Aussie Homes | 5-Year Manufacturer Warranty",
+        "Cuts Energy Use by Up to 30% | $1,200 in Free Bonuses | Locally Licensed & Insured | $0 Upfront",
+        "Smart Controls from Your Phone | Run It Only Where You Need It | 5-Year Guarantee"
+      ],
+      "CTAs": [
+        "REQUEST A FREE QUOTE TODAY!",
+        "GET YOUR FREE QUOTE",
+        "BOOK YOUR FREE QUOTE",
+        "GET PRICING NOW",
+        "SEE IF YOU QUALIFY",
+        "BOOK A FREE ON-SITE QUOTE",
+        "GET A FAST QUOTE",
+        "CHECK YOUR HOME'S PRICE"
+      ],
+      "Badges": [
+        "50% OFF",
+        "LIMITED TIME ONLY",
+        "LIMITED SLOTS",
+        "$1,299 IN BONUSES",
+        "ENERGY STAR RATED",
+        "5-YEAR GUARANTEE"
+      ],
+      "Visual hero options": [
+        "3D house diagram with airflow arrows visualising the system",
+        "Person holding up an electricity bill (no AI faces \u2014 use stock or upload)",
+        "Bill graphic with downward arrow showing savings",
+        "Side-by-side: traditional A/C unit vs full ducted system",
+        "Home exterior with cool/warm air visualisation",
+        "Energy efficiency rating chart or savings graph"
+      ]
+    },
+    "fires": "always",
+    "accent": "blue",
+    "id": 1
+  },
+  {
+    "code": "A2",
+    "name": "Speed Guarantee",
+    "tagline": "Install-time promise + family lifestyle. Plays to the 'I want it now' buyer.",
+    "funnel_stage": "Cold/Warm OR Warm/Hot",
+    "exemplar": "A02",
+    "rules": [
+      "Hero is a family lifestyle photo from this archetype's accessible pool \u2014 pool includes fam_couple_*, fam_jumping_*, fam_couch_*, fam_kids_playing_*, fam_dog_lounge_*, fam_piggyback, fam_mum_kitchen, fam_dinner_table, fam_kid_solo_play, etc. Photo selection drives ~40% of the ad's mood \u2014 pick whichever complements the rest of the pack.",
+      "Apply a tinted overlay (~15-20% opacity) over the photo for headline legibility \u2014 colour can vary per generation.",
+      "Guarantee badge is MANDATORY \u2014 top-right, circular, high-contrast, clearly readable. Without it, the archetype loses its identity.",
+      "Pick fresh colours and fonts per generation. Energetic, family-friendly mood overall \u2014 adjust temperature (brighter daylight vs warmer evening) based on which photo is chosen."
+    ],
+    "components": [
+      {
+        "slot": "stock family photo",
+        "usage": "fam_jumping or similar lifestyle photo \u2014 full-bleed background"
+      },
+      {
+        "slot": "brand logos",
+        "usage": "bottom strip"
+      }
+    ],
+    "variable_inputs": {
+      "Headlines": [
+        "Get your Ducted A/C in just {{install_guarantee_days}}!",
+        "FAST DUCTED A/C INSTALL \u2014 {{install_guarantee_days}} GUARANTEED",
+        "INSTALLED IN {{install_guarantee_days}} OR LESS",
+        "BOOK TODAY, INSTALLED IN {{install_guarantee_days}}",
+        "SKIP THE WAITING LIST \u2014 {{install_guarantee_days}} INSTALL",
+        "YOUR DUCTED A/C, INSTALLED IN A WEEK",
+        "WHY WAIT? GET DUCTED A/C THIS WEEK",
+        "COMFORT YOUR HOME IN UNDER {{install_guarantee_days}}",
+        "NEXT-WEEK DUCTED A/C INSTALL",
+        "FROM QUOTE TO COOL IN {{install_guarantee_days}}",
+        "DUCTED A/C THIS WEEK \u2014 GUARANTEED",
+        "FASTEST DUCTED A/C IN {{city}}"
+      ],
+      "Value stacks": [
+        "Installed within {{install_guarantee_days}} | $0 Upfront | 5-Year Guarantee",
+        "Same-Week Installation | Locally Licensed & Insured | $0 Upfront",
+        "{{install_guarantee_days}} Install Guarantee | No Hidden Fees | $1,299 FREE Bonuses",
+        "We Don't Make You Wait | Premium Brands Only | $0 Upfront | 5-Year Warranty",
+        "Quick On-Site Quote | Locally Installed | $0 Upfront"
+      ],
+      "CTAs": [
+        "Book Now \u2014 Limited Availability",
+        "BOOK YOUR INSTALL TODAY",
+        "GET A FAST QUOTE",
+        "LOCK IN YOUR INSTALL DATE",
+        "GET QUOTE",
+        "BOOK ON-SITE QUOTE TODAY",
+        "CHECK AVAILABILITY"
+      ],
+      "Badges": [
+        "FASTEST INSTALL GUARANTEED",
+        "{{install_guarantee_days}} INSTALL",
+        "SAME-WEEK INSTALL",
+        "LIMITED AVAILABILITY",
+        "BOOK FAST",
+        "5-YEAR GUARANTEE",
+        "$0 UPFRONT"
+      ],
+      "Visual hero options": [
+        "Family enjoying their A/C \u2014 full-bleed lifestyle photo",
+        "Calendar with installation date highlighted",
+        "Stopwatch or speed-themed visual",
+        "Quick before/after split \u2014 uncomfortable home \u2192 comfortable home",
+        "Bright daylight family scene \u2014 couple at laptop OR mum-and-toddler in kitchen, mid-morning light (uses fam_couple_laptop or fam_mum_kitchen). Cold/Warm explainer mood.",
+        "Evening domestic couple on couch with warm interior lighting (uses fam_couple_evening). Warm/Hot direct-response mood."
+      ]
+    },
+    "fires": "always",
+    "accent": "green",
+    "id": 2
+  },
+  {
+    "code": "A3",
+    "name": "Luxury Lifestyle",
+    "tagline": "Premium positioning with lifestyle imagery. Pulls qualified leads, not bargain hunters.",
+    "funnel_stage": "Cold/Warm",
+    "exemplar": "A01",
+    "rules": [
+      "Premium positioning. No urgency, no discount badges. Per-week price OR no price; fixed-price-with-anchor only when client's primary city has a fixed price AND no other ad in the pack uses fixed pricing.",
+      "Two-half layout \u2014 text on the left, photo on the right. NOT split-screen \u2014 the photo bleeds off the right canvas edge for cinematic feel.",
+      "The word 'LUXURY' (or equivalent premium phrase like 'PREMIUM' / 'QUIET LUXURY') is set in an elegant accent typeface \u2014 italic serif works well \u2014 contrasting the bold body type. Visual signature.",
+      "Maximum 2 brand logos (premium positioning per HR05). Even premium ads must satisfy HR13 \u2014 'DUCTED A/C' must remain unmissable.",
+      "Refined, sophisticated mood. Pick a fresh palette per generation \u2014 interiors-magazine, premium-real-estate, modern-home-brand territory. Avoid bargain-bin colour combinations.",
+      "Hero is a single component from this archetype's accessible pool \u2014 common picks: fam_couch_summer, fam_couch_winter, fam_piggyback, fam_couple_evening, outdoor_modern_home_*. Pick the one that fits the pack's mood (warm cosy vs bright airy)."
+    ],
+    "components": [
+      {
+        "slot": "stock family photo",
+        "usage": "fam_couch_summer / fam_couch_winter / fam_piggyback \u2014 right half hero"
+      },
+      {
+        "slot": "font",
+        "usage": "elegant accent typeface for the word 'LUXURY' (italic serif works well)"
+      },
+      {
+        "slot": "brand logos",
+        "usage": "bottom strip"
+      }
+    ],
+    "variable_inputs": {
+      "Headlines": [
+        "LUXURY DUCTED HEATING & COOLING \u2014 EVERY ROOM!",
+        "LUXURY DUCTED A/C FOR EVERY ROOM!",
+        "PREMIUM DUCTED CLIMATE CONTROL FOR EVERY ROOM",
+        "WHOLE-HOME DUCTED A/C \u2014 ROOM BY ROOM",
+        "THE PREMIUM WAY TO HEAT & COOL \u2014 DUCTED A/C",
+        "INVEST IN HOW YOUR HOME FEELS \u2014 PREMIUM DUCTED A/C",
+        "BOOST YOUR HOME'S VALUE \u2014 INSTALL DUCTED A/C",
+        "THE COMFORT UPGRADE YOUR HOME DESERVES \u2014 DUCTED A/C",
+        "TURN YOUR HOUSE INTO A LUXURY HAVEN WITH DUCTED A/C",
+        "ELEVATE YOUR HOME WITH PREMIUM DUCTED A/C",
+        "THE QUIET LUXURY OF WHOLE-HOME DUCTED A/C",
+        "MAKE EVERY ROOM PERFECT \u2014 DUCTED A/C INSTALLED",
+        "FIVE-STAR COMFORT IN EVERY ROOM \u2014 DUCTED A/C",
+        "PREMIUM DUCTED CLIMATE FOR DISCERNING HOMES",
+        "WHOLE-HOME DUCTED HEATING & COOLING, DESIGNED FOR YOUR HOME"
+      ],
+      "Value stacks": [
+        "Silent, Seamless, and Smart Cooling | Zoned Control for Maximum Comfort | 5-Year Workmanship Guarantee | $0 Upfront",
+        "Adds Value to Your Property | Luxury Feature Buyers Look For | $0 Upfront",
+        "Premium Daikin / Mitsubishi System | Whisper-Quiet Operation | Smart Phone Control | 5-Year Manufacturer Warranty",
+        "The Ultimate in Home Comfort | Whole-Home Climate | Boost Resale Value | Free Design Consultation",
+        "Effortless Comfort, Every Room | Zoned Control | 5-Year Workmanship Guarantee",
+        "Engineered for Larger Australian Homes | Whisper-Quiet | Premium Brands Only | $1,299 in Free Bonuses",
+        "Designed Around Your Home | Premium Brands | Free Design Consultation | $0 Upfront"
+      ],
+      "CTAs": [
+        "Upgrade Your Home Today!",
+        "BOOK A DESIGN CONSULTATION",
+        "GET A LUXURY QUOTE",
+        "CLAIM YOUR FREE QUOTE",
+        "SEE IF YOUR HOME QUALIFIES",
+        "BOOK A FREE HOME CONSULT"
+      ],
+      "Badges": [
+        "Limited Time Only",
+        "Limited Slots",
+        "BE WINTER READY",
+        "BE SUMMER READY",
+        "50% OFF (fixed-price variant)",
+        "PREMIUM DESIGN-INSTALL",
+        "$1,299 IN BONUSES",
+        "5-YEAR WARRANTY",
+        "EXCLUSIVE PROMO"
+      ],
+      "Visual hero options": [
+        "Family on couch \u2014 light/airy summer or warm/cosy winter",
+        "Father piggybacking child in living room",
+        "Couple in bedroom relaxing",
+        "Empty luxury living room with airflow visualisation",
+        "Multi-room split showing different rooms with comfort",
+        "Open-plan home with subtle climate visualisation",
+        "Master bedroom with elegant interiors"
+      ]
+    },
+    "fires": "always",
+    "accent": "navy",
+    "id": 3
+  },
+  {
+    "code": "A4",
+    "name": "Problem/Solution Urgency",
+    "tagline": "Pain-led. Urgent, high-contrast. Pain question + solution.",
+    "funnel_stage": "Warm/Hot",
+    "exemplar": "A04",
+    "rules": [
+      "Bold, dark, urgent visual treatment \u2014 communicate threat / problem. Pick fresh high-contrast palette per generation.",
+      "Headline is split into two parts: pain question on top in medium-weight, oversized contrasting accent on the key noun below (e.g. 'DREADING YOUR NEXT' + 'POWER BILL?').",
+      "Fixed price + anchor (RRP struck through) is mandatory \u2014 WAS $X struck through, $Y oversized. ONE PER PACK MAX (per HR06).",
+      "Hero is a single component from this archetype's accessible pool \u2014 common picks: house_3d_dark (technical/explainer feel, no people), wallet_coins variants (emotionally direct, no people), bill_shock_red variants (overdue stamp, immediate pain), bill_holder variants (frustrated reactions). No-people heroes give the cleanest pain framing; reactions work for emotional variants \u2014 pick based on pack balance.",
+      "Strong CTA button + discount badge bottom-right with high-contrast typography."
+    ],
+    "components": [
+      {
+        "slot": "house diagram",
+        "usage": "house_3d_dark \u2014 centre, large"
+      },
+      {
+        "slot": "brand logos",
+        "usage": "bottom strip"
+      }
+    ],
+    "variable_inputs": {
+      "Headlines": [
+        "SICK OF HIGH ENERGY BILLS?",
+        "TIRED OF PAYING TOO MUCH FOR POWER?",
+        "HAD ENOUGH OF HIGH ENERGY BILLS?",
+        "WHY IS YOUR POWER BILL SO HIGH?",
+        "IS YOUR ELECTRICITY BILL DESTROYING YOUR BUDGET?",
+        "DREADING YOUR NEXT POWER BILL?",
+        "PAYING TOO MUCH FOR ENERGY?",
+        "DOES YOUR POWER BILL KEEP CLIMBING?",
+        "BURNT OUT BY HIGH ENERGY BILLS?",
+        "CAN'T AFFORD YOUR ELECTRICITY BILL?",
+        "POWER BILLS GIVING YOU SHOCK?",
+        "YOUR ENERGY BILL'S TOO HIGH",
+        "STOP OVERPAYING FOR POWER"
+      ],
+      "Solution lines": [
+        "THE SOLUTION: DUCTED A/C INSTALLED FOR {{fixed_price}}",
+        "DUCTED A/C INSTALLED FROM {{fixed_price}}",
+        "HERE'S THE FIX \u2014 DUCTED A/C FROM {{fixed_price}}",
+        "THE ANSWER: DUCTED A/C, FULLY INSTALLED, {{fixed_price}}",
+        "STOP OVERPAYING \u2014 DUCTED A/C, {{fixed_price}}",
+        "TIME TO FIX IT: DUCTED A/C, {{fixed_price}}"
+      ],
+      "CTAs": [
+        "REQUEST A FREE QUOTE TODAY!",
+        "Claim This Offer",
+        "LOCK IN YOUR PRICE",
+        "GET QUOTE NOW",
+        "SEE IF YOU QUALIFY",
+        "CLAIM TODAY"
+      ],
+      "Badges": [
+        "{{discount_pct}} OFF",
+        "*Hurry \u2014 Limited Slots*",
+        "LIMITED TIME",
+        "ENDS SOON",
+        "ONLY [X] HOMES PER MONTH",
+        "$0 UPFRONT",
+        "ONCE-A-YEAR PRICING"
+      ],
+      "Visual hero options": [
+        "House diagram (dark/dramatic styling)",
+        "Person looking at bill (shocked/frustrated)",
+        "Bill graphic with '$$$' or upward arrow",
+        "Calculator or receipt scene",
+        "Wallet emptying / coins falling"
+      ]
+    },
+    "fires": "always",
+    "accent": "red",
+    "id": 4
+  },
+  {
+    "code": "A5",
+    "name": "Seasonal Pain",
+    "tagline": "Reaction-face hook. Don't melt / Don't freeze. Emotional pain \u2192 product as solution.",
+    "funnel_stage": "Cold/Warm",
+    "exemplar": "A08",
+    "rules": [
+      "Hero is a seasonally-keyed reaction photo from the accessible pool: sweating/hot shots for summer (react_sweating_*, react_couple_hot_*), freezing/cold shots for winter (react_freezing_fam_*, react_couple_freezing_*, react_cold_*, react_elderly_cold_*). Place left half, edge-to-edge, AS-IS \u2014 no AI modification of people (HR04).",
+      "Hot/cool palette contrast IS the visual story \u2014 heat colours (oranges, reds) dominate for summer with cool colours on the price pill for legibility; vice versa for winter. Pick fresh exact palettes per generation.",
+      "House diagram (locked component \u2014 house_3d_blue / house_outline_*) tucked in the lower-right area as a smaller accent, never larger than the reaction photo.",
+      "Per-week price only \u2014 keeps it cheap-feeling, fast scroll-engagement.",
+      "Visceral grunge typography on the action word (MELT, FREEZE, SWEAT) is a key visual signature."
+    ],
+    "components": [
+      {
+        "slot": "stock reaction photo",
+        "usage": "react_sweating_man (summer) / react_freezing_fam (winter) \u2014 left half hero"
+      },
+      {
+        "slot": "house diagram",
+        "usage": "house_3d_blue \u2014 tucked in lower-right area, smaller"
+      }
+    ],
+    "variable_inputs": {
+      "Headlines (summer)": [
+        "Don't MELT This Summer!",
+        "Don't SWEAT This Heatwave!",
+        "TOO HOT TO SLEEP?",
+        "BEAT THE 40\u00b0C DAYS",
+        "SURVIVING SUMMER WITHOUT DUCTED A/C?",
+        "IS YOUR HOUSE AN OVEN?",
+        "THIS IS WHAT 40\u00b0 FEELS LIKE",
+        "HOT NIGHTS = NO SLEEP",
+        "AUSSIE SUMMER GETTING TO YOU?",
+        "TURN YOUR HOME INTO A COOL OASIS"
+      ],
+      "Headlines (winter)": [
+        "Don't FREEZE This Winter!",
+        "SHIVERING IS NOT NORMAL",
+        "WAKE UP WARM, NOT FROZEN",
+        "COLD HOMES DON'T HAVE TO BE NORMAL",
+        "TIRED OF FREEZING WHEN YOU GET HOME?",
+        "DOES YOUR HOUSE FEEL LIKE A FRIDGE?",
+        "STAY WARM ALL WINTER LONG",
+        "WINTER IS COMING \u2014 IS YOUR HOME READY?",
+        "WAKE UP IN A WARM HOME EVERY DAY"
+      ],
+      "Value stacks": [
+        " $1,299 FREE Bonuses | $0 Upfront",
+        "Whole-Home Comfort, All Season | $0 Upfront | 5-Year Guarantee",
+        "Energy Efficient, Always Comfortable | Smart Zoning | $0 Upfront",
+        "Locally Installed by Experts | $0 Upfront | 5-Year Guarantee",
+        "Banish Summer Heat | Smart Zoning | $0 Upfront | 5-Year Workmanship Guarantee",
+        "End the Winter Cold | Whole-Home Comfort | Locally Installed | $1,299 in Free Bonuses"
+      ],
+      "CTAs": [
+        "REQUEST A FREE QUOTE TODAY!",
+        "BOOK YOUR FREE QUOTE",
+        "GET RELIEF NOW",
+        "BEAT THE HEAT \u2014 GET A QUOTE",
+        "ESCAPE THE COLD \u2014 GET A QUOTE",
+        "CHECK YOUR HOME'S PRICE"
+      ],
+      "Badges": [
+        "50% OFF",
+        "LIMITED TIME",
+        " FINANCE",
+        "$1,299 BONUSES",
+        "$0 UPFRONT"
+      ],
+      "Visual hero options": [
+        "Sweating man with hands up (summer)",
+        "Person fanning themselves (summer)",
+        "Kid melting / overheated (summer)",
+        "Family bundled up freezing (winter)",
+        "Kid shivering in blanket (winter)",
+        "Frosted window from inside (winter)",
+        "Person huddled by tiny heater (winter)"
+      ]
+    },
+    "fires": "always",
+    "accent": "red",
+    "id": 5
+  },
+  {
+    "code": "A6",
+    "name": "Seasonal Sale Event",
+    "tagline": "Discount-led seasonal ad. Reaction-model + condenser/diagram + discount badge.",
+    "funnel_stage": "Warm/Hot",
+    "exemplar": "A13",
+    "rules": [
+      "Discount badge is mandatory and must show {{current_promo_pct}}. If promo % is 0 or null, the whole archetype is skipped (per HR09).",
+      "Reaction model is positioned pointing toward or holding the price block (visual draw).",
+      "Seasonal copy rotates from the matching variable_inputs headline pool: winter_sale, autumn_sale, cool_upgrade, heat_upgrade, heatwave. Pick the pool that matches the time of year / pack context.",
+      "Visual treatment matches the season \u2014 pick fresh palettes and fonts per generation. Hero rotates across the accessible pool: reaction shots (cold/hot), condensers, house diagrams, outlets, outdoor backdrops."
+    ],
+    "components": [
+      {
+        "slot": "stock reaction photo",
+        "usage": "varies by variant: react_cold_woman / react_pointing_up / react_sweating_man / react_freezing_fam / react_woman_white"
+      },
+      {
+        "slot": "house diagram or condenser",
+        "usage": "lower corner accent"
+      },
+      {
+        "slot": "outlet",
+        "usage": "outlet_round_1 / outlet_round_2 \u2014 heatwave variant uses upper-right close-up"
+      }
+    ],
+    "variable_inputs": {
+      "Headlines (winter_sale)": [
+        "WINTER SALE \u2014 DUCTED A/C",
+        "STAY WARM THIS WINTER \u2014 DUCTED A/C SALE",
+        "WINTER WARMTH SALE \u2014 DUCTED HEATING",
+        "WINTER DUCTED HEATING SALE",
+        "WINTER DUCTED A/C \u2014 UP TO {{current_promo_pct}} OFF"
+      ],
+      "Headlines (autumn_sale)": [
+        "AUTUMN SALE \u2014 DUCTED A/C",
+        "AUTUMN DUCTED A/C SALE",
+        "EARLY-SEASON DUCTED A/C SALE",
+        "BEFORE WINTER HITS \u2014 DUCTED A/C SALE"
+      ],
+      "Headlines (cool_upgrade)": [
+        "Upgrade Your Cooling \u2014 DUCTED A/C!",
+        "BEFORE SUMMER HITS \u2014 UPGRADE TO DUCTED A/C",
+        "GET READY FOR SUMMER \u2014 DUCTED A/C INSTALLED",
+        "TIME TO UPGRADE \u2014 WHOLE-HOME DUCTED A/C"
+      ],
+      "Headlines (heat_upgrade)": [
+        "Upgrade Your Heating \u2014 DUCTED A/C!",
+        "BEFORE WINTER HITS \u2014 UPGRADE TO DUCTED A/C",
+        "TIME TO UPGRADE \u2014 WHOLE-HOME DUCTED HEATING",
+        "GET READY FOR WINTER \u2014 DUCTED HEATING INSTALLED"
+      ],
+      "Headlines (heatwave)": [
+        "BEAT THE 40\u00b0 DAYS WITH DUCTED A/C",
+        "HEATWAVE INCOMING \u2014 UPGRADE TO DUCTED A/C NOW",
+        "{{city}} HEATWAVE? GET DUCTED A/C INSTALLED",
+        "BEAT THE EXTREME HEAT \u2014 DUCTED A/C"
+      ],
+      "Value stacks": [
+        "Silent, Seamless, and Smart Cooling | Zoned Control for Maximum Comfort | 5-Year Workmanship Guarantee | $0 Upfront",
+        "Save Big This Season | Free Bonuses Worth $1,299 | $0 Upfront",
+        "Limited Slots This Season | Premium Brands | 5-Year Guarantee | $0 Upfront",
+        "Beat the Rush | Locally Installed | $0 Upfront",
+        "End-of-Season Pricing | $0 Upfront | 5-Year Workmanship Guarantee",
+        "50% OFF This Season Only | Locally Installed | Premium Brands | $1,299 in Free Bonuses"
+      ],
+      "CTAs": [
+        "Claim This Offer",
+        "CHECK IF YOUR HOME QUALIFIES",
+        "BOOK YOUR INSTALL",
+        "GET A QUOTE",
+        "LOCK IN SEASONAL PRICING",
+        "CLAIM TODAY"
+      ],
+      "Badges": [
+        "{{current_promo_pct}} OFF",
+        "SEASONAL DISCOUNT",
+        "ENDS SOON",
+        "LIMITED TIME",
+        "WHILE STOCK LASTS",
+        "$0 UPFRONT"
+      ],
+      "Visual hero options": [
+        "Sweating man (uses existing react_sweating_man) \u2014 left half edge-to-edge, hot palette overlay. Summer / heatwave variants.",
+        "Cold woman (uses existing react_cold_woman) \u2014 left half edge-to-edge, cool palette overlay. Winter sale / cool upgrade variants.",
+        "Freezing family (uses existing react_freezing_fam) \u2014 left half edge-to-edge. Winter sale variant.",
+        "Woman pointing up at price (uses existing react_pointing_up) \u2014 sale-energy direct-response feel.",
+        "Locked condenser from components library (cond_neutral_1 / cond_neutral_2 / brand-matched) \u2014 double-fan ducted only, right side ~40% canvas, prominent discount badge overlay. Direct-response sale variant. AI must not generate or modify the condenser.",
+        "House diagram (locked component house_3d_blue) \u2014 centre-left medium scale, discount overlay. Whole-home upgrade angle.",
+        "Reaction model + locked condenser split-screen \u2014 left half person, right half product (locked component, double-fan ducted, AI never generates the condenser). Strong before/after feel.",
+        "Outdoor heatwave atmospheric (uses outdoor_heatwave_sunset) + reaction model inset bottom-left. Heatwave variant only."
+      ]
+    },
+    "fires": "always",
+    "accent": "blue",
+    "id": 6
+  },
+  {
+    "code": "A7",
+    "name": "Brand Sale",
+    "tagline": "Broad-reach DUCTED A/C SALE. No city anchor. Multi-brand strip beneath the headline is the structural hero \u2014 three logos exactly. Bright clean palette, per-week price, condenser hero. Runs anywhere.",
+    "funnel_stage": "Warm/Hot",
+    "exemplar": "BRAND-SALE-01",
+    "rules": [
+      "Headline MUST NEVER include a city, suburb or region. This is the broad-reach variant \u2014 A8 is the city-anchored version. If a headline drifts city-ward, it is wrong.",
+      "Multi-brand logo strip directly beneath the headline is the structural hero \u2014 without it the archetype loses its identity. Exactly three brand logos (Daikin / Mitsubishi Electric / Samsung by default; substitute the client's three top brands if available). On-canvas equity, not a footer attribution.",
+      "Per-week price only \u2014 never fixed price. Format: 'FROM ${{per_week_price}}/WEEK' with the price as the dominant numeral.",
+      "Bright, clean, optimistic palette \u2014 sky-blue / royal-blue / white / outdoor-grass green is the heritage palette. NOT the dark high-contrast aggressive direct-response of A8. Pick fresh palettes per generation but stay within the bright/optimistic family.",
+      "Footer trust pills are part of the structural identity: three small pill badges (Expert Installation / 5-Year Warranty / Energy Efficient) along the bottom edge, plus a tiny '*T&Cs apply' note. Keep them.",
+      "Hero condenser sits lower-right (~40-50% canvas height), photo-real, on a clean outdoor or neutral backdrop. Pick from the accessible condenser pool \u2014 cond_neutral_1, cond_neutral_2, or brand-matched (cond_daikin, cond_mitsubishi, cond_samsung, etc.) when client emphasises a single brand. No people in the hero.",
+      "Discount % badges and city banners are forbidden \u2014 those belong to A6 / A8 respectively. This ad's pull is brand trust + clean per-week pricing."
+    ],
+    "components": [
+      {
+        "slot": "condenser",
+        "usage": "cond_neutral_1 / cond_neutral_2 \u2014 default hero, lower-right ~40-50% canvas height"
+      },
+      {
+        "slot": "brand condenser",
+        "usage": "cond_daikin / cond_mitsubishi / cond_samsung / cond_fujitsu \u2014 substitute when client emphasises a single brand"
+      },
+      {
+        "slot": "brand logo strip",
+        "usage": "Three brand logos directly beneath the headline. Default: Daikin + Mitsubishi Electric + Samsung. Sub from logo_daikin / logo_mitsubishi / logo_samsung / logo_fujitsu / logo_panasonic / logo_hisense / logo_lg / logo_toshiba based on client's brands_sold."
+      }
+    ],
+    "variable_inputs": {
+      "Headlines": [
+        "DUCTED A/C SALE",
+        "MASSIVE DUCTED A/C SAVINGS",
+        "DUCTED A/C SALE \u2014  FINANCE",
+        "DUCTED A/C \u2014 FROM ${{per_week_price}}/WEEK",
+        "WHOLE-HOME DUCTED A/C ON SALE",
+        "PREMIUM DUCTED A/C \u2014 SALE PRICES",
+        "DUCTED A/C SALE \u2014 LIMITED STOCK",
+        "AUSTRALIA'S TOP BRANDS \u2014 DUCTED A/C SALE",
+        "DUCTED A/C UPGRADE SALE",
+        "BIG SAVINGS ON DUCTED A/C SYSTEMS"
+      ],
+      "Sub-headlines": [
+        "10kW DUCTED A/C SYSTEM",
+        "FULL-HOME DUCTED COMFORT \u2014 INSTALLED",
+        "PREMIUM BRANDS, ONE LOW WEEKLY PRICE",
+        "INSTALLED BY LICENSED EXPERTS"
+      ],
+      "Value stacks": [
+        "Daikin / Mitsubishi Electric / Samsung Available | Expert Installation | 5-Year Warranty | Energy Efficient",
+        "Premium Brand Selection | $0 Upfront | 5-Year Workmanship Guarantee | Locally Licensed & Insured",
+        "Top-Tier Brands Stocked | Per-Week Pricing | Energy Star Rated | 5-Year Workmanship Guarantee",
+        "Choose From 3+ Brands | $0 Upfront | Expert Installation",
+        "Australia's Most Trusted Brands | Per-Week Pricing | 5-Year Workmanship Guarantee | $1,200+ in Bonuses"
+      ],
+      "CTAs": [
+        "GET A FREE QUOTE",
+        "GET PRICING NOW",
+        "BOOK YOUR FREE QUOTE",
+        "CHECK YOUR PRICE",
+        "REQUEST A QUOTE TODAY"
+      ],
+      "Trust pills (footer)": [
+        "Expert Installation",
+        "5-Year Warranty",
+        "Energy Efficient",
+        "Locally Licensed & Insured",
+        "",
+        "$0 Upfront"
+      ],
+      "Visual hero options": [
+        "Double-fan ducted condenser, lower-right ~50% canvas height, outdoor backdrop (sky + grass)",
+        "Brand-matched condenser (Daikin/Mitsubishi Electric/Samsung) \u2014 when client emphasises a single brand",
+        "Condenser on neutral cream/grey backdrop \u2014 premium-feel variant",
+        "Locked condenser (from components library) composited onto a bright sky-blue + green grass outdoor backdrop (uses outdoor_sky_grass). Heritage palette \u2014 optimistic outdoor mood. Condenser shape/fans/branding/proportions unchanged.",
+        "Locked condenser (from components library) on a neutral cream / soft-grey studio backdrop \u2014 premium-feel variant. No outdoor scene. Condenser shape/fans/branding/proportions unchanged."
+      ]
+    },
+    "fires": "always",
+    "accent": "blue",
+    "id": 7
+  },
+  {
+    "code": "A8",
+    "name": "City Massive Sale",
+    "tagline": "City-anchored DUCTED A/C SALE. Headline always names the client's city. Fixed-price, per-week or rebate variant; tone ranges from clearance-clean to aggressive direct-response. The volume-driver of the pack.",
+    "funnel_stage": "Warm/Hot",
+    "exemplar": "A16",
+    "rules": [
+      "Headline MUST include the client's primary city ({{city}}). This is the city-anchored sale variant \u2014 A7 is the no-city version.",
+      "Pack-balance picks the tone: 'aggressive direct-response' (high-contrast palette, bold display fonts, urgent feel) OR 'clearance-clean' (lighter palette, more breathing room). Pick whichever the rest of the pack needs to balance against.",
+      "Pack-balance picks the hero: condenser product shot (right side, ~40% canvas width) OR house diagram (centre-left) OR zoning house diagram (house_3d_zones, when zoning is being highlighted). Don't repeat another ad's hero in the same pack.",
+      "Price treatment is a pack-balance decision: fixed-price OR per-week OR rebate-amount. Don't duplicate another ad's price treatment in the same pack.",
+      "Multi-brand stack right side for trust \u2014 2-3 logos pulled from client's brands_sold. Brand-strip-as-hero (A7's signature) is forbidden here; brands sit as a side stack, not under the headline.",
+      "Geographic anchoring shows up in 2-3 places: headline ({{city}} prefix), value stack ('Locally installed by {{city}} experts'), and optionally a bottom trust pill. If the client services multiple areas (service_areas length > 1), Master AI may list 2-3 area names where it fits the layout.",
+      "Badges may carry {{discount_pct}}, {{state}} rebate text, or stock urgency \u2014 must match real promo / rebate eligibility from the client record. Discount % must equal current_promo_pct."
+    ],
+    "components": [
+      {
+        "slot": "condenser",
+        "usage": "cond_neutral_1 / cond_neutral_2 / brand-matched \u2014 direct-response variant, hero on right side ~40% canvas width"
+      },
+      {
+        "slot": "house diagram",
+        "usage": "house_3d_blue \u2014 clearance-clean variant, centre-left, medium scale"
+      },
+      {
+        "slot": "zoning diagram",
+        "usage": "house_3d_zones \u2014 zoning sub-variant only"
+      },
+      {
+        "slot": "controller",
+        "usage": "ctrl_ipad_airtouch / ctrl_phone_app / ctrl_combo \u2014 tech-angle variants"
+      },
+      {
+        "slot": "ducting",
+        "usage": "duct_short / duct_curled \u2014 accent next to condenser"
+      },
+      {
+        "slot": "brand logos",
+        "usage": "Right-edge stack of 2-3 brand logos. Pull from client's brands_sold."
+      }
+    ],
+    "variable_inputs": {
+      "Headlines": [
+        "{{city}} HOMEOWNERS DUCTED A/C SALE",
+        "{{city}} DUCTED A/C MASSIVE SALE",
+        "{{city}} DUCTED A/C FLASH SALE",
+        "{{city}} DUCTED HEATING SALE",
+        "{{city}} DUCTED A/C WITH ZONING",
+        "ATTENTION {{city}} HOMEOWNERS \u2014 DUCTED A/C SALE",
+        "{{city}}: DUCTED A/C INSTALLED THIS MONTH",
+        "DUCTED A/C SALE \u2014 {{city}} ONLY",
+        "{{city}} RESIDENTS \u2014 DUCTED A/C ${{per_week_price}}/WEEK",
+        "{{city}} HOMEOWNERS \u2014 DUCTED A/C IS EASIER THAN YOU THINK",
+        "{{city}}'S CHEAPEST DUCTED A/C SALE",
+        "{{city}} DUCTED A/C \u2014 UP TO {{discount_pct}} OFF",
+        "{{city}} DUCTED A/C CLEARANCE SALE!",
+        "{{city}} EOFY DUCTED A/C SALE",
+        "Save {{rebate_amount}} \u2014 {{state}} REBATES!",
+        "{{state}} REBATES: SAVE {{rebate_amount}}",
+        "{{city}} END OF FINANCIAL YEAR DUCTED A/C",
+        "LAST DAYS \u2014 {{city}} DUCTED A/C CLEARANCE",
+        "{{state}} HOMEOWNERS \u2014 CLAIM YOUR REBATE",
+        "{{city}} STOCK CLEARANCE \u2014 DUCTED A/C",
+        "{{city}} GOVERNMENT REBATES STILL AVAILABLE"
+      ],
+      "Value stacks": [
+        "10kW Samsung Ducted System | $0 Upfront | Locally Installed by {{city}} Experts",
+        "Premium Daikin System | 5-Year Warranty | Locally Installed",
+        "Whole-Home Comfort | Smart Zoning | $0 Upfront | 5-Year Guarantee",
+        "Comfort All Year | $1,299 Bonuses | Locally Installed by {{city}} Experts",
+        "10kW Premium Ducted System | $0 Upfront | Locally Installed",
+        "Limited Stock | Locally Installed | 5-Year Guarantee",
+        "{{state}} Rebate Eligible | $0 Upfront | 5-Year Guarantee",
+        "Final Days, Final Stock | $1,299 Free Bonuses | Locally Installed by {{city}} Experts",
+        "Save Big With Government Rebates | Locally Installed | $0 Upfront"
+      ],
+      "CTAs": [
+        "REQUEST A FREE QUOTE TODAY!",
+        "Enquire today",
+        "GET QUOTE",
+        "BOOK FREE QUOTE",
+        "BOOK YOUR FREE QUOTE",
+        "LOCK IN YOUR INSTALL",
+        "{{city}} HOMEOWNERS \u2014 CLAIM TODAY",
+        "{{state}} HOMEOWNERS \u2014 CLAIM TODAY",
+        "CLAIM TODAY",
+        "CLAIM YOUR REBATE"
+      ],
+      "Badges": [
+        "$0 UPFRONT",
+        "{{discount_pct}} OFF",
+        "5-Year Warranty",
+        "LIMITED TIME",
+        "{{city}}-INSTALLED EXPERTS",
+        "LOCALLY OWNED",
+        "{{state}} REBATE ELIGIBLE",
+        "LIMITED STOCK",
+        "ENDS SOON"
+      ],
+      "Visual hero options": [
+        "Double-fan ducted condenser (right side, ~40% canvas width) \u2014 direct-response variant",
+        "House diagram (locked component, centre-left, medium scale) \u2014 clearance-clean variant",
+        "Zoning house diagram (locked component) \u2014 zoning sub-variant",
+        "Indoor ducted unit",
+        "Wall-mounted controller",
+        "Phone with controller app",
+        "Combo: condenser + controller + ducting"
+      ]
+    },
+    "fires": "always",
+    "accent": "navy",
+    "id": 8
+  },
+  {
+    "code": "A9",
+    "name": "Holiday Event",
+    "tagline": "Calendar-bound urgency: each major Australian retail holiday gets its own ad in the pack from day one. Launch each as the date approaches.",
+    "funnel_stage": "Hot",
+    "exemplar": "A33",
+    "rules": [
+      "Holiday name dominates the visual \u2014 time-bound urgency is the entire point.",
+      "1080\u00d71080 square output (per HR10).",
+      "Hero rotates across the accessible pool \u2014 common picks: holiday-typed hero (CHRISTMAS / BLACK FRIDAY / BOXING DAY / EASTER / NYE / AUSTRALIA DAY as oversized type-led visual, no photo), locked condenser + festive accent overlay (snowflakes, fireworks, sun rays, pastel), holiday backdrop atmospheric (holiday_xmas_bg / nye_bg / easter_bg / etc.) with type overlay, calendar/countdown urgency device. No-people heroes only \u2014 HR04 forbids AI faces and we don't supply tradesperson stock for this archetype.",
+      "Discount badge mandatory if current_promo_pct > 0 (per HR09).",
+      "Pick fresh palettes per generation that visually code the holiday: Christmas \u2192 red/green/snow/gold; Black Friday \u2192 red/black; Easter \u2192 pastels/spring; Boxing Day \u2192 summer-tropical; NYE \u2192 fireworks/dark; Australia Day \u2192 red/blue/gold."
+    ],
+    "components": [
+      {
+        "slot": "holiday backdrop",
+        "usage": "varies by holiday \u2014 holiday_xmas_bg / holiday_nye_bg / holiday_easter_bg / holiday_boxing_day_bg / holiday_blackfriday_bg / holiday_australia_day_bg"
+      },
+      {
+        "slot": "condenser",
+        "usage": "cond_neutral_1 / cond_neutral_2 \u2014 clean square variant"
+      },
+      {
+        "slot": "outlet",
+        "usage": "outlet_round_1 / outlet_round_2 \u2014 accent"
+      }
+    ],
+    "variable_inputs": {
+      "Headlines": [
+        "BLACK FRIDAY DUCTED A/C SALE",
+        "BOXING DAY DUCTED A/C SALE",
+        "EASTER SALE \u2014 DUCTED A/C",
+        "EOFY DUCTED A/C SALE",
+        "NEW YEAR DUCTED A/C SALE",
+        "AUSTRALIA DAY DUCTED A/C SALE",
+        "BLACK FRIDAY: BIGGEST SALE OF THE YEAR",
+        "HOLIDAY SALE \u2014 UP TO {{discount_pct}}",
+        "{{holiday_name}} BLOWOUT \u2014 DUCTED A/C",
+        "{{holiday_name}} ONLY \u2014 UP TO {{discount_pct}} OFF",
+        "{{holiday_name}} SALE \u2014 LOWEST PRICES OF THE YEAR"
+      ],
+      "Value stacks": [
+        "Best Pricing of the Year | $0 Upfront | 5-Year Guarantee",
+        "Holiday Bonuses Worth $1,299 | Locally Installed | $0 Upfront",
+        "Once-A-Year Pricing | Limited Stock | Premium Brands | 5-Year Warranty",
+        "Beat the Summer Rush | $0 Upfront | 5-Year Guarantee",
+        "Holiday Special Pricing | $0 Upfront | 5-Year Workmanship Guarantee",
+        "Limited Holiday Stock | Premium Brands | Locally Installed | $1,299 in Free Bonuses"
+      ],
+      "CTAs": [
+        "GET QUOTE",
+        "CLAIM HOLIDAY DEAL",
+        "BOOK BEFORE IT ENDS",
+        "LOCK IN HOLIDAY PRICE",
+        "CLAIM TODAY"
+      ],
+      "Badges": [
+        "DISCOUNT UP TO {{discount_pct}}",
+        "50% OFF",
+        "{{holiday_name}} EXCLUSIVE",
+        "BIGGEST SAVINGS OF THE YEAR",
+        "ONCE A YEAR",
+        "ENDS {{holiday_end_date}}"
+      ],
+      "Visual hero options": [
+        "Holiday name as oversized type-led hero (CHRISTMAS / BLACK FRIDAY / BOXING DAY / EASTER / AUSTRALIA DAY / NEW YEAR) \u2014 typography dominates the canvas, no photographic hero. Heavy 1080\u00d71350 portrait variant works well.",
+        "Locked condenser from components library (cond_neutral_1 / cond_neutral_2) ~50% canvas + festive accent (snowflakes / fireworks / sun rays / pastel) overlay. Clean square variant. Condenser shape/fans/branding unchanged \u2014 AI never generates the condenser.",
+        "Holiday backdrop (uses holiday_xmas_bg / holiday_nye_bg / holiday_easter_bg / holiday_boxing_day_bg / holiday_blackfriday_bg / holiday_australia_day_bg) atmospheric \u2014 locked condenser (from components library, double-fan ducted only) inset bottom-right.",
+        "Holiday backdrop alone with prominent type overlay \u2014 no product shot, the backdrop carries the mood.",
+        "Calendar fragment / countdown-timer hero with date overlay \u2014 urgency feel, atmospheric only, no stock people.",
+        "Owner / team / van photo from CLIENT UPLOADS only (when client has uploaded owner_photo, team_photo, or van_photo). Heavy variant. If client has no uploaded photo, this hero option is skipped \u2014 A9 falls back to options 1-5."
+      ]
+    },
+    "fires": "always",
+    "accent": "red",
+    "id": 9
+  },
+  {
+    "code": "A10",
+    "name": "Local Trust",
+    "tagline": "Team / owner / van photo + Google review count (when available). Highest-trust signal in the pack.",
+    "funnel_stage": "Cold/Warm",
+    "exemplar": "A37",
+    "rules": [
+      "Client photo (team / owner / van) is used EXACTLY as uploaded \u2014 no AI modification of people, vehicle, or setting (HR04).",
+      "Photo-led full-canvas composition \u2014 NOT split-screen. The photo IS the hero.",
+      "Vision analysis is essential: the photo's actual visible brand colours (van wraps, polo shirts, signage, building wall colours) MUST drive the ad's palette. Invented colours fail this archetype.",
+      "Google reviews badge: dominant top-right, ~25-30% canvas height, real Google G logo in official colours. Appears ONLY when google_review_count >= 30 (per HR08); A10 still fires below 30 reviews \u2014 just without the badge.",
+      "Top header strip shows location prominently. If client.service_areas has multiple entries, list 2-3 names where it fits (e.g. 'Ballina \u00b7 Lennox Head \u00b7 Byron Bay'); otherwise just the primary {{city}}.",
+      "Maximum 2 brand logos (trust positioning per HR05). NO discount badges, NO urgency.",
+      "Conditional trust badges per HR19: include 'Family Owned & Operated' badge when client.family_owned === true; include 'Australian Owned' badge when client.australian_owned === true. Place as small accent pills along bottom edge or as lower-corner accents that don't compete with the dominant Google reviews badge.",
+      "Trust-focused, professional, credible mood \u2014 pick fresh palettes per generation, but always feel clean and credible (not flashy)."
+    ],
+    "components": [
+      {
+        "slot": "client uploads",
+        "usage": "team_photo / owner_photo / van_photo \u2014 USE EXACTLY AS PROVIDED"
+      },
+      {
+        "slot": "trust badge",
+        "usage": "google_5star \u2014 top-right corner"
+      },
+      {
+        "slot": "house diagram",
+        "usage": "house_3d_blue \u2014 optional small accent for van variant"
+      },
+      {
+        "slot": "trust badge",
+        "usage": "trust_family_owned / trust_family_owned_2 \u2014 conditional, AI-generated when client.family_owned === true (per HR19)"
+      },
+      {
+        "slot": "trust badge",
+        "usage": "trust_aus_owned / trust_aus_owned_2 \u2014 conditional, AI-generated when client.australian_owned === true (per HR19)"
+      }
+    ],
+    "variable_inputs": {
+      "Headlines": [
+        "{{region}}'S DUCTED A/C SPECIALISTS",
+        "{{region}} DUCTED A/C INSTALLATION EXPERTS",
+        "{{region}}'S #1 DUCTED A/C INSTALLERS",
+        "THE {{region}} TEAM YOU CAN TRUST",
+        "LOCALLY OWNED, LOCALLY OPERATED \u2014 {{region}}",
+        "{{region}}'S 5-STAR DUCTED A/C TEAM",
+        "{{region}} HOMEOWNERS' TRUSTED DUCTED A/C INSTALLERS",
+        "THE {{region}} TEAM YOUR NEIGHBOURS RECOMMEND",
+        "{{region}}'S MOST RECOMMENDED DUCTED A/C INSTALLERS",
+        "TRUSTED BY {{google_review_count}}+ {{region}} HOMEOWNERS"
+      ],
+      "Sub-headlines": [
+        "DESIGNED, INSTALLED & TRUSTED LOCALLY",
+        "LOCALLY OWNED & OPERATED",
+        "{{google_review_count}}+ HAPPY {{region}} CUSTOMERS",
+        "TRUSTED BY {{region}} HOMEOWNERS",
+        "FAMILY-RUN, LOCALLY-OWNED"
+      ],
+      "Value stacks": [
+        "Fully Licensed & Insured | Local Install Specialists | 5-Star Rated | Free On-Site Quote",
+        "Same-Day Quotes | Local {{region}} Team | $0 Upfront | 5-Year Workmanship Guarantee",
+        "{{google_review_count}}+ 5-Star Reviews | Free On-Site Quote | Locally Owned",
+        "Locally Owned, Family Run | {{google_review_count}}+ 5-Star Reviews | $0 Upfront | 5-Year Guarantee",
+        "Family Owned & Operated | {{years_in_business}} Years Serving {{region}} | Australian Owned | 5-Year Workmanship Guarantee",
+        "Trusted Locally for {{years_in_business}} Years | {{google_review_count}}+ 5-Star Reviews | Licensed & Insured | Premium Brands"
+      ],
+      "CTAs": [
+        "Book Your Free On-Site Quote Today",
+        "Get A Fast Ducted Quote Today",
+        "GET A FREE QUOTE",
+        "BOOK ON-SITE QUOTE",
+        "TALK TO A {{region}} EXPERT"
+      ],
+      "Badges": [
+        "{{google_review_count}}+ 5-STAR GOOGLE REVIEWS",
+        "5.0 RATED",
+        "LOCALLY OWNED",
+        "{{region}} TEAM",
+        "LICENSED & INSURED",
+        "FREE ON-SITE QUOTE",
+        "FAMILY-RUN"
+      ],
+      "Visual hero options": [
+        "Team-on-van photo (full-canvas, palette derived from photo) \u2014 when client has uploaded a team+van combined photo. Strongest single hero.",
+        "Owner portrait (left-half full-bleed) \u2014 when client has uploaded an owner_photo as their strongest single shot.",
+        "Van photo with team standing alongside (full-canvas environmental) \u2014 when client has uploaded both team_photo and van_photo separately.",
+        "Group team photo in shop / warehouse / depot (full-canvas environmental) \u2014 when team_photo is a workplace-context group shot.",
+        "Single tradesman / installer at work on a job site (full-canvas) \u2014 when client has uploaded a single staff member shot rather than a group."
+      ]
+    },
+    "fires": "conditional: requires at least one of team / owner / van photos uploaded",
+    "accent": "green",
+    "id": 10
+  }
+]

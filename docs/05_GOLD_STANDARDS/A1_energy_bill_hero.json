@@ -1,0 +1,37 @@
+{
+  "archetype": "A1",
+  "archetype_name": "Energy Bill Hero",
+  "variant": null,
+  "funnel_stage": "Cold/Warm",
+  "tested_outcome": "Production-ready first pass. Bill-holder hero landed perfectly, $842.64 on bill sold the angle harder than headline could, brand logos rendered correctly.",
+  "input_context": {
+    "city": "Brisbane",
+    "state": "QLD",
+    "headline": "DUCTED A/C THAT PAYS FOR ITSELF",
+    "visual_hero_choice": "Person holding electricity bill (alternative to default house diagram)",
+    "value_stack": "Smart Zoning Technology | Heat or Cool Just the Rooms You Use | 5-Year Workmanship Guarantee | $0 Upfront, Interest-Free Finance Available",
+    "cta": "GET YOUR FREE QUOTE",
+    "badge": "30% OFF",
+    "per_week_price": "$54",
+    "brands": ["Daikin", "Mitsubishi Heavy Industries", "Samsung"]
+  },
+  "assets_attached": [
+    {"type": "ref", "asset": "A03 reference ad", "instruction": "Match style/density/feel, do NOT copy headline/hero/colours"}
+  ],
+  "composition_choices_that_worked": [
+    "Made the bill amount ($842.64) prominently readable — the dollar amount sells the angle harder than the headline does",
+    "Set hero photo as middle-aged Australian homeowner, mildly frustrated/concerned (not cartoonish, not over-posed)",
+    "Specified 'natural daytime lighting, relatable, not too polished, not too gritty' to land the right tone",
+    "Pill-shaped price panel with three vertical lines: small 'DUCTED A/C INSTALLED FOR' / oversized $54 / small 'PER WEEK'",
+    "Brand strip at very bottom in native colours, evenly spaced",
+    "Did NOT specify colour palette — left to AI ('avoid aggressive reds, this is savings not pain')",
+    "Reference attachment did 80% of the heavy lifting on layout/density"
+  ],
+  "full_prompt_used": "Use the attached image as a strong style and layout reference. Match its visual energy, density, and direct-response feel — but DO NOT copy its headline, hero visual, or specific colours. Generate fresh ones per the brief below.\n\nCreate a square 1080×1080 social media ad for a residential ducted air conditioning installer in Brisbane, Australia.\n\nMOOD & STYLE\nCalm, trustworthy, benefit-led. Choose a fresh modern colour palette of your own — avoid aggressive reds, this is a savings-focused ad, not a pain/urgency ad. Pick clean, modern typography. All text must be high-contrast and readable at thumbnail size. Clean, uncluttered, professional. Don't make it look like a stock template.\n\nLAYOUT (top to bottom)\n\n1. HEADLINE — top third\nOversized bold uppercase text reading exactly: \"DUCTED A/C THAT PAYS FOR ITSELF\"\nSplit across two lines if needed. Dominant element of the top section.\n\n2. HERO VISUAL — middle, roughly 45% of canvas height\nA photo-real middle-aged Australian homeowner standing in a modern home interior, holding up an electricity bill in front of them with a mildly frustrated/concerned expression. The bill should look real and readable but not show specific identifying details — show large dollar amounts on it. Natural daytime lighting. Relatable, not too polished, not too gritty.\n\n3. PRICE PILL — just below the hero\nA horizontal pill-shaped panel containing three lines of text, vertically stacked:\n   - Small uppercase caps: \"DUCTED A/C INSTALLED FOR\"\n   - Oversized bold dominant: \"$54\"\n   - Small uppercase caps: \"PER WEEK\"\n\n4. VALUE STACK — right of (or beneath) the price pill\nFour tick-bullet items, evenly spaced:\n   ✓ Smart Zoning Technology\n   ✓ Heat or Cool Just the Rooms You Use\n   ✓ 5-Year Workmanship Guarantee\n   ✓ $0 Upfront, Interest-Free Finance Available\n\n5. CTA BUTTON — bottom-left\nRounded pill button reading: \"GET YOUR FREE QUOTE\"\nClean uppercase. High-contrast colour that pops against the background.\n\n6. DISCOUNT BADGE — top-right or bottom-right corner\nCircular burst badge reading: \"30% OFF\"\nBold contrasting colour.\n\n7. BRAND STRIP — very bottom edge\nThin horizontal strip with three brand logos evenly spaced and rendered in their native brand colours: Daikin, Mitsubishi Heavy Industries, Samsung. Use the real brand logos.\n\nHARD RULES\n- 1080×1080 aspect ratio (square), nothing else\n- All text must be readable at thumbnail size on a phone\n- Maximum 3 brand logos\n- Do NOT add \"0% interest\" anywhere — interest-free finance is fine\n- Do NOT add a fixed-price installation amount — only the $54/week price shown\n- Do NOT add any people beyond the bill-holder\n- Do NOT add review badges or star ratings to this ad",
+  "lessons_for_layer_2": [
+    "When the visual hero is a 'person holding X' shot, brief the photo with concrete details — age, ethnicity, expression, location, lighting — so the AI doesn't default to generic stock-look",
+    "Make the prop (bill, key object) PROMINENT and READABLE — that's where 50% of the persuasion lives",
+    "The price pill structure 'Small caps / oversized number / small caps' is a reliable hierarchy pattern — reuse for any per-week price ad",
+    "Brand logos at the bottom in native colours is a trust signal — never tint, never invert"
+  ]
+}

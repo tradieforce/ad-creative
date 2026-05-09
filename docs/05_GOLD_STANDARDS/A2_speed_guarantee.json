@@ -1,0 +1,51 @@
+{
+  "archetype": "A2",
+  "archetype_name": "Speed Guarantee",
+  "tested_outcome": "TWO production-ready variants in the library — same archetype, different funnel positions. Demonstrates pack-aware composition: same archetype produces different ads based on which audience the pack needs to cover.",
+  "two_funnel_variants_documented": {
+    "warm_hot_direct_response": {
+      "city": "Gold Coast",
+      "headline": "WHY WAIT? GET DUCTED A/C THIS WEEK",
+      "headline_accent": "THIS WEEK in contrasting yellow",
+      "sub_headline": "Whole-home ducted air conditioning, installed in 7 days flat.",
+      "per_week_price": "$58",
+      "value_stack": "7-Day Install Guarantee | $0 Upfront | Locally Licensed & Insured | 5-Year Workmanship Guarantee",
+      "cta": "BOOK YOUR INSTALL TODAY",
+      "guarantee_badge": "FASTEST INSTALL GUARANTEED (top-right circular, tilted, yellow/navy)",
+      "brands": [
+        "Daikin",
+        "Fujitsu",
+        "Hisense"
+      ],
+      "hero_treatment": "Full-bleed family lifestyle photo (mum + kids on couch, evening domestic scene), navy tinted overlay ~15-20%",
+      "use_when": "Audience already understands ducted A/C and is comparing/deciding. Bottom-funnel closer."
+    },
+    "cold_warm_explainer": {
+      "city": "Gold Coast",
+      "headline": "Get Your DUCTED A/C Installed in Just 7 Days!",
+      "headline_accent": "7 Days! in cyan/light-blue accent. 'Installed in Just' on small accent pill.",
+      "sub_headline": "Enjoy a cool, comfortable home without the wait.",
+      "value_stack_format": "Three stacked detail blocks with mini icons (calendar, card, shield), separated by thin accent dividers: '$58 per week — fully installed' / '$0 upfront, interest-free finance available' / 'Guaranteed installation within 1 week'",
+      "guarantee_badge": "FASTEST INSTALL GUARANTEED (orange/white circular, slightly tilted, with stopwatch icon)",
+      "brands": [
+        "Daikin",
+        "Fujitsu",
+        "Hisense"
+      ],
+      "hero_treatment": "Right-half lifestyle photo of bright daylit modern living room — couple on green couch with laptop, candid researching moment. NO heavy overlay — keep natural brightness intact.",
+      "explainer_device": "Stylised vent fixture at top of right side + curving cyan/light-blue arrows looping from vent down toward the couple — represents airflow visually as graphic device, not photoreal addition. Critical for cold-audience comprehension.",
+      "small_decorative_prop": "Potted plant in lower-left corner — adds organic warmth without competing with text",
+      "use_when": "Audience is learning about ducted A/C or comparing system types. Top-mid funnel."
+    }
+  },
+  "lessons_for_layer_2": [
+    "Photo selection drives ~40% of mood — bright daylight = explainer/cold, evening domestic = direct-response/warm-hot",
+    "When briefing photo treatment, explicitly call out the mood the photo should drive",
+    "Airflow visualisation as a GRAPHIC DEVICE (not photoreal) is the explainer hero — vent at top + curving arrows looping toward family",
+    "Mini-icons in value stack blocks outperform plain text — add visual hierarchy without clutter",
+    "Negative-example endings work: 'if the output reads as moody or evening-lit, it has failed' tells the AI exactly what to avoid",
+    "Pack-aware composition: when A2 fires, check the pack — if pack is heavy on warm/hot, generate cold/warm variant. If pack is heavy on cold/warm, generate warm/hot variant. Photo selection is the primary lever.",
+    "MANDATORY guarantee badge is non-negotiable — top-right corner, circular, tilted, high-contrast, with optional icon"
+  ],
+  "full_prompt_used": "You are being given two attached images:\n\nIMAGE 1 (reference ad): Use this as a strong style and layout reference. Match its energetic family-friendly feel, the bright airy mood, and the position/structure of the guarantee badge — but DO NOT copy its headline, family, or specific colours. Generate fresh ones per the brief below.\n\nIMAGE 2 (lifestyle photo): Use this image AS-IS as the hero. Place it filling the right half (or majority) of the canvas. Apply only a very light tinted overlay (~5-10% opacity) — keep the photo's natural brightness intact. Do not modify the people in the photo. The bright airy daylight feel of this photo should drive the whole ad's mood.\n\nCreate a square 1080×1080 social media ad for a residential ducted air conditioning installer on the Gold Coast, Australia.\n\nFUNNEL CONTEXT\nThis ad is for a cold/warm audience — buyers who may still be learning about ducted A/C and need both education AND the speed promise. The job is to show what's possible quickly: \"your home could feel like this — this week.\" Brighter, more aspirational, more informational than a hard direct-response closer.\n\nCRITICAL CLARITY RULE\nA scroller must understand within ONE SECOND that this ad is for DUCTED AIR CONDITIONING with a fast install promise. Both must be unmissable.\n\nMOOD & STYLE\nBright, airy, optimistic, family-friendly. Light/cool palette — soft blues, whites, with one accent colour for the speed promise. Choose the specific palette and typography fresh per generation. Should feel like a modern home brochure or premium real-estate ad — not a discount retailer flyer, not a moody direct-response ad. Generous breathing room. Clean lines. Aspirational but achievable.\n\nLAYOUT (left half / right half split)\n\nLEFT HALF — text-led, on a clean light background\n\n1. HEADLINE — upper-left\nStacked headline reading exactly: \"Get Your Ducted A/C Installed in Just 7 Days!\"\nMix of weights:\n   - \"Get Your\" in medium-weight regular case\n   - \"Ducted A/C\" oversized bold uppercase — dominant element of the headline\n   - \"Installed in Just\" in medium-weight, smaller, possibly on a small accent colour pill\n   - \"7 Days!\" oversized bold in a contrasting accent colour (cyan/light-blue works well) — the speed promise visual signature\n\n2. SUB-HEADLINE — beneath the headline\nItalic medium-weight: \"Enjoy a cool, comfortable home without the wait.\"\n\n3. VALUE STACK — beneath the sub-headline\nThree stacked detail blocks (not tick-bullets — short paragraphs separated by thin accent dividers), readable at thumbnail size:\n   - \"$58 per week — fully installed\"\n   - \"$0 upfront, interest-free finance available\"\n   - \"Guaranteed installation within 1 week\"\n\n(Note: do NOT write \"0% interest\" — use \"interest-free finance\" instead.)\n\n4. SMALL DECORATIVE PROP — lower-left corner\nA small decorative plant or home accent prop at the lower-left edge, partially cropped, adds organic warmth without competing with the text. Can be a potted plant, woven basket, or similar.\n\nRIGHT HALF — visual hero\n\n5. LIFESTYLE PHOTO + AIRFLOW VISUALISATION\nPlace the attached lifestyle photo as the hero on the right side, full-height. Above and around the family, add a SUBTLE airflow visualisation — think: a thin curving cyan/light-blue arrow or arc that loops down from a ceiling area toward the family, suggesting cool air flowing into the room. Optional: a stylised vent fixture at the very top of the right side (small, simplified — not photorealistic) that the airflow appears to emerge from. The visualisation is a graphic device, not a photoreal addition.\n\n6. GUARANTEE BADGE — top-right corner, MANDATORY\nCircular badge, slightly tilted (5-10 degrees), high-contrast colour. Two-line text inside:\n   - Top arc: \"FASTEST INSTALL\"\n   - Bottom arc: \"GUARANTEED\"\nOptional small percentage in the centre if a promo is active (e.g. \"40% off\"). Sized large enough to read at thumbnail — the archetype's defining element, not a decorative footnote.\n\nBOTTOM STRIP\n\n7. BRAND LOGOS\nThin horizontal strip at the very bottom edge with three brand logos evenly spaced and rendered in their native brand colours: Daikin, Fujitsu, Hisense. Use the real brand logos.\n\nGLOBAL HARD RULES\n- 1080×1080 aspect ratio (square), nothing else\n- Use the lifestyle photo AS PROVIDED — do not modify the people, do not regenerate faces\n- Maintain ~60px safe-zone padding inside all four edges — no headlines, badges, CTAs, or critical text within this margin. Brand strip may sit close to but not touching the bottom edge.\n- All text readable at thumbnail size on mobile — every label and value-stack item must be clearly legible\n- Maximum 3 brand logos\n- Do NOT include the words \"0% interest\" anywhere — \"interest-free finance available\" is the acceptable phrasing\n- Do NOT add review badges or star ratings to this ad\n- Do NOT include any dates, names, or specific identifying details\n- The guarantee badge is MANDATORY — circular, tilted, high-contrast, clearly readable\n- The product category \"DUCTED A/C\" / \"DUCTED AIR CONDITIONING\" must be unmissable in the headline area\n- The airflow visualisation must read as a graphic device, NOT a photoreal addition to the photo\n- Bright airy mood overall — if the output reads as moody or evening-lit, it has failed"
+}

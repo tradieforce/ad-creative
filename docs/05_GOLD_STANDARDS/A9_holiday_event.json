@@ -1,0 +1,11 @@
+{
+  "archetype": "A9",
+  "archetype_name": "Holiday Event",
+  "variant": "TBD \u2014 capture during production",
+  "funnel_stage": "Hot",
+  "tested_outcome": "Not yet captured. Upload an output image here as a starting placeholder; once a real production-tested generation lands well, replace this stub with the full prompt + composition lessons.",
+  "composition_choices_that_worked": [],
+  "full_prompt_used": "",
+  "lessons_for_layer_2": [],
+  "_stub": true
+}

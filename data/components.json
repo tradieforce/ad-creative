@@ -1,0 +1,3596 @@
+[
+  {
+    "category": "Condenser",
+    "key": "cond_neutral_1",
+    "type": "locked",
+    "description": "Double-fan, no brand. Default.",
+    "imageId": "",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_neutral_1.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_neutral_2",
+    "type": "locked",
+    "description": "Double-fan, no brand. Variation.",
+    "imageId": "",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_neutral_2.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_daikin",
+    "type": "locked",
+    "description": "Brand-matched ducted system shot (double-fan condenser + indoor unit, manufacturer branded). Use for DAIKIN clients.",
+    "imageId": "",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_daikin.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_mitsubishi",
+    "type": "locked",
+    "description": "Brand-matched ducted system shot (double-fan condenser + indoor unit, manufacturer branded). Use for MITSUBISHI clients.",
+    "imageId": "",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_mitsubishi.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_samsung",
+    "type": "locked",
+    "description": "Brand-matched ducted system shot (double-fan condenser + indoor unit, manufacturer branded). Use for SAMSUNG clients.",
+    "imageId": "",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_samsung.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_fujitsu",
+    "type": "locked",
+    "description": "Brand-matched ducted system shot (double-fan condenser + indoor unit, manufacturer branded). Use for FUJITSU clients.",
+    "imageId": "",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_fujitsu.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_with_outlets",
+    "type": "locked",
+    "description": "Condenser with stacked round ceiling outlets \u2014 shows the full system context.",
+    "imageId": "cond_with_outlets",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_with_outlets.png"
+  },
+  {
+    "category": "Outlet",
+    "key": "outlet_round_1",
+    "type": "locked",
+    "description": "Round ceiling vent.",
+    "imageId": "",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/outlets/outlet_round_1.png"
+  },
+  {
+    "category": "Outlet",
+    "key": "outlet_round_2",
+    "type": "locked",
+    "description": "Round ceiling vent variation.",
+    "imageId": "",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/outlets/outlet_round_2.png"
+  },
+  {
+    "category": "Outlet",
+    "key": "outlet_round_3",
+    "type": "locked",
+    "description": "Round ceiling vent \u2014 single clean shot, centered, white-on-white minimalist.",
+    "imageId": "",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/outlets/outlet_round_3.png"
+  },
+  {
+    "category": "Outlet",
+    "key": "outlet_round_4",
+    "type": "locked",
+    "description": "Round ceiling vents fanned/stacked together \u2014 multiple-outlets composition variant.",
+    "imageId": "",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/outlets/outlet_round_4.png"
+  },
+  {
+    "category": "Outlet",
+    "key": "outlet_linear_1",
+    "type": "locked",
+    "description": "Linear bar grille.",
+    "imageId": "",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/outlets/outlet_linear_1.png"
+  },
+  {
+    "category": "Outlet",
+    "key": "outlet_multi_overview",
+    "type": "locked",
+    "description": "Composite/overview shot showing multiple outlet types together \u2014 linear bar grilles, round vent, square louvered diffuser. Useful for \"outlets we install\" slot.",
+    "imageId": "",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/outlets/outlet_multi_overview.png"
+  },
+  {
+    "category": "Outlet",
+    "key": "outlet_linear_2",
+    "type": "locked",
+    "description": "Linear bar grille variation \u2014 long thin frame with two parallel slats, minimalist negative-space composition.",
+    "imageId": "",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/outlets/outlet_linear_2.png"
+  },
+  {
+    "category": "Outlet",
+    "key": "outlet_square",
+    "type": "locked",
+    "description": "Square ceiling vent \u2014 louvered/diffuser style.",
+    "imageId": "outlet_square",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/outlets/outlet_square.png"
+  },
+  {
+    "category": "House diagram",
+    "key": "house_3d_blue",
+    "type": "locked",
+    "description": "Standard 3D isometric, blue tones.",
+    "imageId": "house_3d_blue",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A2",
+      "A4",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/house-diagrams/house_3d_blue.png"
+  },
+  {
+    "category": "House diagram",
+    "key": "house_3d_warm",
+    "type": "locked",
+    "description": "3D isometric house with ducting overlay, warm/brown tones \u2014 sunset / pain-ad palette.",
+    "imageId": "house_3d_warm",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A2",
+      "A4",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/house-diagrams/house_3d_warm.png"
+  },
+  {
+    "category": "House diagram",
+    "key": "house_3d_dark",
+    "type": "locked",
+    "description": "3D isometric house with ducting overlay, dark/charcoal tones \u2014 pain-ad palette (A4).",
+    "imageId": "house_3d_dark",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A2",
+      "A4",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/house-diagrams/house_3d_dark.png"
+  },
+  {
+    "category": "House diagram",
+    "key": "house_3d_zones",
+    "type": "locked",
+    "description": "House with zones (red/green/orange).",
+    "imageId": "",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A2",
+      "A4",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/house-diagrams/house_3d_zones.png"
+  },
+  {
+    "category": "House diagram",
+    "key": "house_outline",
+    "type": "locked",
+    "description": "Simple outline variant.",
+    "imageId": "",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A2",
+      "A4",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/house-diagrams/house_outline.png"
+  },
+  {
+    "category": "House diagram",
+    "key": "house_outline_blue",
+    "type": "locked",
+    "description": "Outline-style isometric house with blue/teal floor tiles \u2014 cool palette variant.",
+    "imageId": "house_outline_blue",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A2",
+      "A4",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/house-diagrams/house_outline_blue.png"
+  },
+  {
+    "category": "House diagram",
+    "key": "house_outline_dark",
+    "type": "locked",
+    "description": "Outline-style isometric house in dark slate palette \u2014 pain-ad mood variant.",
+    "imageId": "house_outline_dark",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A2",
+      "A4",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/house-diagrams/house_outline_dark.png"
+  },
+  {
+    "category": "House diagram",
+    "key": "house_outline_sage",
+    "type": "locked",
+    "description": "Outline-style isometric house with sage green floor tiles \u2014 eco / fresh-air / comfort palette.",
+    "imageId": "house_outline_sage",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A2",
+      "A4",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/house-diagrams/house_outline_sage.png"
+  },
+  {
+    "category": "Controller",
+    "key": "ctrl_ipad_airtouch",
+    "type": "locked",
+    "description": "AirTouch 5 wall controller (zoning controller hero shot).",
+    "imageId": "",
+    "usedBy": [
+      "A2",
+      "A3",
+      "A8"
+    ],
+    "imagePath": "/assets/components/controllers/ctrl_ipad_airtouch.png"
+  },
+  {
+    "category": "Controller",
+    "key": "ctrl_phone_app",
+    "type": "locked",
+    "description": "AirTouch app on phone (clean floating-phone shot, white app theme).",
+    "imageId": "",
+    "usedBy": [
+      "A2",
+      "A3",
+      "A8"
+    ],
+    "imagePath": "/assets/components/controllers/ctrl_phone_app.png"
+  },
+  {
+    "category": "Controller",
+    "key": "ctrl_combo",
+    "type": "locked",
+    "description": "Phone + multiple AirTouch consoles fanned out (full system feature).",
+    "imageId": "",
+    "usedBy": [
+      "A2",
+      "A3",
+      "A8"
+    ],
+    "imagePath": "/assets/components/controllers/ctrl_combo.png"
+  },
+  {
+    "category": "Ducting",
+    "key": "duct_short",
+    "type": "locked",
+    "description": "Short straight insulated flexible duct piece.",
+    "imageId": "",
+    "usedBy": [
+      "A7",
+      "A8"
+    ],
+    "imagePath": "/assets/components/ducting/duct_short.png"
+  },
+  {
+    "category": "Ducting",
+    "key": "duct_short_2",
+    "type": "locked",
+    "description": "Short insulated flexible duct piece \u2014 longer/cross-section variant.",
+    "imageId": "",
+    "usedBy": [
+      "A7",
+      "A8"
+    ],
+    "imagePath": "/assets/components/ducting/duct_short_2.png"
+  },
+  {
+    "category": "Ducting",
+    "key": "duct_short_3",
+    "type": "locked",
+    "description": "Short insulated flexible duct piece \u2014 dark cross-section variant.",
+    "imageId": "",
+    "usedBy": [
+      "A7",
+      "A8"
+    ],
+    "imagePath": "/assets/components/ducting/duct_short_3.png"
+  },
+  {
+    "category": "Ducting",
+    "key": "duct_curled",
+    "type": "locked",
+    "description": "Coiled flexible insulated ducting roll \u2014 clean.",
+    "imageId": "",
+    "usedBy": [
+      "A7",
+      "A8"
+    ],
+    "imagePath": "/assets/components/ducting/duct_curled.png"
+  },
+  {
+    "category": "Ducting",
+    "key": "duct_curled_2",
+    "type": "locked",
+    "description": "Coiled flexible insulated ducting roll \u2014 alternate angle.",
+    "imageId": "",
+    "usedBy": [
+      "A7",
+      "A8"
+    ],
+    "imagePath": "/assets/components/ducting/duct_curled_2.png"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_couch_summer",
+    "type": "stock",
+    "description": "Mum + 2 kids on white boucl\u00e9 couch in bright airy white room \u2014 summer / light atmosphere.",
+    "imageId": "fam_couch_summer",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_couch_summer.png"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_couch_summer_2",
+    "type": "stock",
+    "description": "Family of 3 (parents + daughter) on cream sofa in bright modern living room \u2014 light & airy variant.",
+    "imageId": "fam_couch_summer_2",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_couch_summer_2.png"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_couch_winter",
+    "type": "stock",
+    "description": "Family of 4 on cream couch with warm golden light + bare trees through window \u2014 cozy winter atmosphere.",
+    "imageId": "fam_couch_winter",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_couch_winter.png"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_piggyback",
+    "type": "stock",
+    "description": "Dad sitting on couch with two kids riding on his shoulders/back \u2014 piggyback play.",
+    "imageId": "fam_piggyback",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_piggyback.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_jumping",
+    "type": "stock",
+    "description": "Two kids jumping on couch holding hands \u2014 joyful jump action.",
+    "imageId": "fam_jumping",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_jumping.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_jumping_2",
+    "type": "stock",
+    "description": "Family of 3 (parents + daughter) jumping with arms raised, joyful \u2014 blue background.",
+    "imageId": "fam_jumping_2",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_jumping_2.png"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_jumping_3",
+    "type": "stock",
+    "description": "Pillow fight with kids jumping on bed, parents joining \u2014 bedroom playful jump scene.",
+    "imageId": "fam_jumping_3",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_jumping_3.png"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_jumping_4",
+    "type": "stock",
+    "description": "Mum + 2 kids jumping/dancing on couch in bright modern living room \u2014 joyful celebration.",
+    "imageId": "fam_jumping_4",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_jumping_4.png"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_sweating_man",
+    "type": "stock",
+    "description": "Man sweating, hands up.",
+    "imageId": "",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_sweating_man.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_freezing_fam",
+    "type": "stock",
+    "description": "Family bundled up, cold.",
+    "imageId": "react_freezing_fam",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_freezing_fam.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_freezing_fam_2",
+    "type": "stock",
+    "description": "Two adults + child bundled in winter coats on couch \u2014 family cold reaction (variant 2).",
+    "imageId": "react_freezing_fam_2",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_freezing_fam_2.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_freezing_fam_3",
+    "type": "stock",
+    "description": "Two adults + child bundled on couch, family freezing (variant 3).",
+    "imageId": "react_freezing_fam_3",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_freezing_fam_3.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_freezing_fam_4",
+    "type": "stock",
+    "description": "Family with child bundled cold on grey couch (variant 4).",
+    "imageId": "react_freezing_fam_4",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_freezing_fam_4.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_freezing_fam_5",
+    "type": "stock",
+    "description": "Family scene bundled cold on couch with child (variant 5).",
+    "imageId": "react_freezing_fam_5",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_freezing_fam_5.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_cold_woman",
+    "type": "stock",
+    "description": "Solo woman bundled in beanie + grey jacket on couch \u2014 feeling the cold (primary).",
+    "imageId": "react_cold_woman",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_cold_woman.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_cold_woman_2",
+    "type": "stock",
+    "description": "Solo woman in beanie hugging knees on beige couch in bright lounge \u2014 cold home.",
+    "imageId": "react_cold_woman_2",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_cold_woman_2.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_cold_woman_3",
+    "type": "stock",
+    "description": "Solo woman in beanie + cream blanket on lounge couch \u2014 cold reaction.",
+    "imageId": "react_cold_woman_3",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_cold_woman_3.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_cold_man",
+    "type": "stock",
+    "description": "Single bundled man in plaid blanket on yellow couch \u2014 solo cold reaction (counterpart to react_cold_woman).",
+    "imageId": "react_cold_man",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_cold_man.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_cold_man_2",
+    "type": "stock",
+    "description": "Bearded man in winter gear bundled by radiator \u2014 solo cold-man reaction variant.",
+    "imageId": "",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_cold_man_2.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_pointing_up",
+    "type": "stock",
+    "description": "Man in blue shirt pointing up with one finger \u2014 classic CTA gesture (primary).",
+    "imageId": "react_pointing_up",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_pointing_up.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_pointing_up_2",
+    "type": "stock",
+    "description": "Woman in yellow shirt with both hands pointing up \u2014 bold cheerful CTA.",
+    "imageId": "react_pointing_up_2",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_pointing_up_2.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_pointing_up_3",
+    "type": "stock",
+    "description": "Man in striped shirt pointing up on orange background \u2014 bold colour-block CTA.",
+    "imageId": "react_pointing_up_3",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_pointing_up_3.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_pointing_up_4",
+    "type": "stock",
+    "description": "Woman in pale blue sweater + glasses pointing up \u2014 soft professional look.",
+    "imageId": "react_pointing_up_4",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_pointing_up_4.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_pointing_up_7",
+    "type": "stock",
+    "description": "Woman in light sweater pointing sideways/at price \u2014 indicating an offer (variant).",
+    "imageId": "react_pointing_up_7",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_pointing_up_7.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_pointing_up_10",
+    "type": "stock",
+    "description": "Woman in striped shirt + glasses pointing up with both hands, smiling \u2014 transparent style background.",
+    "imageId": "react_pointing_up_10",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_pointing_up_10.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_pointing_up_11",
+    "type": "stock",
+    "description": "Bearded man in denim shirt pointing up, mouth open in surprise \u2014 blue background, lightbulb-moment vibe.",
+    "imageId": "react_pointing_up_11",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_pointing_up_11.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_pointing_up_13",
+    "type": "stock",
+    "description": "Man in glasses + grey jumper pointing up with one finger, looking up \u2014 transparent style background.",
+    "imageId": "react_pointing_up_13",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_pointing_up_13.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_pointing_up_14",
+    "type": "stock",
+    "description": "Man in white t-shirt pointing up with both hands, smiling \u2014 transparent / cut-out style.",
+    "imageId": "react_pointing_up_14",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_pointing_up_14.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_woman_white",
+    "type": "stock",
+    "description": "Woman in white shirt + dark jeans, arms crossed, calm professional pose on grey background.",
+    "imageId": "react_woman_white",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_woman_white.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_woman_white_2",
+    "type": "stock",
+    "description": "Woman in white shirt with arms crossed, confident \u2014 professional / clean styling variant.",
+    "imageId": "react_woman_white_2",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_woman_white_2.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_woman_white_3",
+    "type": "stock",
+    "description": "Solo woman in denim shirt, casual studio portrait \u2014 crossed arms / relaxed pose, not pointing.",
+    "imageId": "",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_woman_white_3.jpg"
+  },
+  {
+    "category": "Brand logo",
+    "key": "logo_daikin",
+    "type": "locked",
+    "description": "Daikin",
+    "imageId": "",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A2",
+      "A3",
+      "A4",
+      "A6",
+      "A7",
+      "A8"
+    ],
+    "imagePath": "/assets/components/brand-logos/logo_daikin.png"
+  },
+  {
+    "category": "Brand logo",
+    "key": "logo_mitsubishi",
+    "type": "locked",
+    "description": "Mitsubishi Electric",
+    "imageId": "",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A2",
+      "A3",
+      "A4",
+      "A6",
+      "A7",
+      "A8"
+    ],
+    "imagePath": "/assets/components/brand-logos/logo_mitsubishi.png"
+  },
+  {
+    "category": "Brand logo",
+    "key": "logo_mhi",
+    "type": "locked",
+    "description": "Mitsubishi Heavy Industries",
+    "imageId": "",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A2",
+      "A3",
+      "A4",
+      "A6",
+      "A7",
+      "A8"
+    ],
+    "imagePath": "/assets/components/brand-logos/logo_mhi.png"
+  },
+  {
+    "category": "Brand logo",
+    "key": "logo_samsung",
+    "type": "locked",
+    "description": "Samsung",
+    "imageId": "",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A2",
+      "A3",
+      "A4",
+      "A6",
+      "A7",
+      "A8"
+    ],
+    "imagePath": "/assets/components/brand-logos/logo_samsung.png"
+  },
+  {
+    "category": "Brand logo",
+    "key": "logo_fujitsu",
+    "type": "locked",
+    "description": "Fujitsu",
+    "imageId": "",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A2",
+      "A3",
+      "A4",
+      "A6",
+      "A7",
+      "A8"
+    ],
+    "imagePath": "/assets/components/brand-logos/logo_fujitsu.png"
+  },
+  {
+    "category": "Brand logo",
+    "key": "logo_panasonic",
+    "type": "locked",
+    "description": "Panasonic",
+    "imageId": "",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A2",
+      "A3",
+      "A4",
+      "A6",
+      "A7",
+      "A8"
+    ],
+    "imagePath": "/assets/components/brand-logos/logo_panasonic.png"
+  },
+  {
+    "category": "Brand logo",
+    "key": "logo_hisense",
+    "type": "locked",
+    "description": "Hisense",
+    "imageId": "",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A2",
+      "A3",
+      "A4",
+      "A6",
+      "A7",
+      "A8"
+    ],
+    "imagePath": "/assets/components/brand-logos/logo_hisense.png"
+  },
+  {
+    "category": "Brand logo",
+    "key": "logo_haier",
+    "type": "locked",
+    "description": "Haier",
+    "imageId": "",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A2",
+      "A3",
+      "A4",
+      "A6",
+      "A7",
+      "A8"
+    ],
+    "imagePath": "/assets/components/brand-logos/logo_haier.png"
+  },
+  {
+    "category": "Brand logo",
+    "key": "logo_actron",
+    "type": "locked",
+    "description": "ActronAir",
+    "imageId": "",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A2",
+      "A3",
+      "A4",
+      "A6",
+      "A7",
+      "A8"
+    ],
+    "imagePath": "/assets/components/brand-logos/logo_actron.png"
+  },
+  {
+    "category": "Brand logo",
+    "key": "logo_hitachi",
+    "type": "locked",
+    "description": "Hitachi",
+    "imageId": "",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A2",
+      "A3",
+      "A4",
+      "A6",
+      "A7",
+      "A8"
+    ],
+    "imagePath": "/assets/components/brand-logos/logo_hitachi.png"
+  },
+  {
+    "category": "Brand logo",
+    "key": "logo_rinnai",
+    "type": "locked",
+    "description": "Rinnai",
+    "imageId": "",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A2",
+      "A3",
+      "A4",
+      "A6",
+      "A7",
+      "A8"
+    ],
+    "imagePath": "/assets/components/brand-logos/logo_rinnai.png"
+  },
+  {
+    "category": "Brand logo",
+    "key": "logo_toshiba",
+    "type": "locked",
+    "description": "Toshiba",
+    "imageId": "",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A2",
+      "A3",
+      "A4",
+      "A6",
+      "A7",
+      "A8"
+    ],
+    "imagePath": "/assets/components/brand-logos/logo_toshiba.png"
+  },
+  {
+    "category": "Trust badge",
+    "key": "google_5star",
+    "type": "locked",
+    "description": "REFERENCE for AI generation: 5-star Google badge. Appears only when google_review_count \u2265 30 (HR08, HR19).",
+    "imageId": "google_5star",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A3",
+      "A6",
+      "A7",
+      "A8"
+    ],
+    "imagePath": "/assets/components/trust-badges/google_5star.png"
+  },
+  {
+    "category": "Trust badge",
+    "key": "google_5star_2",
+    "type": "locked",
+    "description": "REFERENCE: Google Reviews 5.0 with stars (text variant). Same gating as primary.",
+    "imageId": "google_5star_2",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A3",
+      "A6",
+      "A7",
+      "A8"
+    ],
+    "imagePath": "/assets/components/trust-badges/google_5star_2.png"
+  },
+  {
+    "category": "Trust badge",
+    "key": "google_5star_3",
+    "type": "locked",
+    "description": "REFERENCE: Google Reviews + hand pointing (illustrated variant).",
+    "imageId": "google_5star_3",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A3",
+      "A6",
+      "A7",
+      "A8"
+    ],
+    "imagePath": "/assets/components/trust-badges/google_5star_3.png"
+  },
+  {
+    "category": "Trust badge",
+    "key": "google_5star_4",
+    "type": "locked",
+    "description": "REFERENCE: Google My Business badge variant.",
+    "imageId": "google_5star_4",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A3",
+      "A6",
+      "A7",
+      "A8"
+    ],
+    "imagePath": "/assets/components/trust-badges/google_5star_4.png"
+  },
+  {
+    "category": "Trust badge",
+    "key": "google_5star_5",
+    "type": "locked",
+    "description": "REFERENCE: Generic 5-star (no Google branding).",
+    "imageId": "google_5star_5",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A3",
+      "A6",
+      "A7",
+      "A8"
+    ],
+    "imagePath": "/assets/components/trust-badges/google_5star_5.png"
+  },
+  {
+    "category": "Trust badge",
+    "key": "trust_family_owned",
+    "type": "locked",
+    "description": "REFERENCE for AI generation: FAMILY OWNED & OPERATED badge \u2014 circular blue/cream/gold seal with house icon containing family silhouette + heart. Generate when client.family_owned === true (per HR19). Image-gen prompt for ChatGPT Image 2: \"A clean modern circular badge with house icon and stylised family (parents + child) silhouette and red heart inside the house, navy blue circle with cream/gold border, FAMILY OWNED curved across top arc, & OPERATED across bottom arc, transparent background, suitable for compositing.\" GUIDANCE: This image is a STYLE REFERENCE, not a locked asset. ChatGPT Image 2 should (a) embed the reference badge as-is if it composites cleanly into the ad design, OR (b) generate a fresh badge in the same visual style (navy/cream/gold circular seal, matching iconography and lettering) if the reference would clash with the ad's palette, background, or layout. Quality of fit takes priority over literal reuse \u2014 never embed if it would look out of place.",
+    "imageId": "trust_family_owned",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A3",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/trust-badges/trust_family_owned.png"
+  },
+  {
+    "category": "Trust badge",
+    "key": "trust_family_owned_2",
+    "type": "locked",
+    "description": "REFERENCE for AI generation: FAMILY OWNED & OPERATED badge \u2014 same design as trust_family_owned but with a soft yellow/gold glow halo around the seal. Use as alternative reference when ad mood calls for warmer/brighter feel. Same gating per HR19 (client.family_owned === true). GUIDANCE: This image is a STYLE REFERENCE, not a locked asset. ChatGPT Image 2 should (a) embed the reference badge as-is if it composites cleanly into the ad design, OR (b) generate a fresh badge in the same visual style (navy/cream/gold circular seal, matching iconography and lettering) if the reference would clash with the ad's palette, background, or layout. Quality of fit takes priority over literal reuse \u2014 never embed if it would look out of place.",
+    "imageId": "",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A3",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/trust-badges/trust_family_owned_2.png"
+  },
+  {
+    "category": "Trust badge",
+    "key": "trust_aus_owned",
+    "type": "locked",
+    "description": "REFERENCE for AI generation: AUSTRALIAN OWNED badge \u2014 circular blue/cream/gold seal with Australia map silhouette. Generate when client.australian_owned === true (per HR19). Image-gen prompt for ChatGPT Image 2: \"A clean modern circular badge with Australia silhouette in centre, navy blue circle with cream/gold border, AUSTRALIAN curved across top arc, OWNED across bottom arc, subtle gold accent dots at sides, transparent background, suitable for compositing onto ad.\" GUIDANCE: This image is a STYLE REFERENCE, not a locked asset. ChatGPT Image 2 should (a) embed the reference badge as-is if it composites cleanly into the ad design, OR (b) generate a fresh badge in the same visual style (navy/cream/gold circular seal, matching iconography and lettering) if the reference would clash with the ad's palette, background, or layout. Quality of fit takes priority over literal reuse \u2014 never embed if it would look out of place.",
+    "imageId": "trust_aus_owned",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A3",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/trust-badges/trust_aus_owned.png"
+  },
+  {
+    "category": "Trust badge",
+    "key": "trust_aus_owned_2",
+    "type": "locked",
+    "description": "REFERENCE for AI generation: AUSTRALIAN OWNED badge \u2014 same design as trust_aus_owned but with a soft yellow/gold glow halo around the seal. Use as alternative reference when ad mood calls for warmer/brighter feel. Same gating per HR19 (client.australian_owned === true). GUIDANCE: This image is a STYLE REFERENCE, not a locked asset. ChatGPT Image 2 should (a) embed the reference badge as-is if it composites cleanly into the ad design, OR (b) generate a fresh badge in the same visual style (navy/cream/gold circular seal, matching iconography and lettering) if the reference would clash with the ad's palette, background, or layout. Quality of fit takes priority over literal reuse \u2014 never embed if it would look out of place.",
+    "imageId": "",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A3",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/trust-badges/trust_aus_owned_2.png"
+  },
+  {
+    "category": "Brand logo",
+    "key": "logo_gree",
+    "type": "locked",
+    "description": "Gree",
+    "imageId": "logo_gree",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A2",
+      "A3",
+      "A4",
+      "A6",
+      "A7",
+      "A8"
+    ],
+    "imagePath": "/assets/components/brand-logos/logo_gree.png"
+  },
+  {
+    "category": "Brand logo",
+    "key": "logo_lg",
+    "type": "locked",
+    "description": "LG",
+    "imageId": "logo_lg",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A2",
+      "A3",
+      "A4",
+      "A6",
+      "A7",
+      "A8"
+    ],
+    "imagePath": "/assets/components/brand-logos/logo_lg.png"
+  },
+  {
+    "category": "Brand logo",
+    "key": "logo_midea",
+    "type": "locked",
+    "description": "Midea",
+    "imageId": "logo_midea",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A2",
+      "A3",
+      "A4",
+      "A6",
+      "A7",
+      "A8"
+    ],
+    "imagePath": "/assets/components/brand-logos/logo_midea.png"
+  },
+  {
+    "category": "Brand logo",
+    "key": "logo_carrier",
+    "type": "locked",
+    "description": "Carrier",
+    "imageId": "logo_carrier",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A2",
+      "A3",
+      "A4",
+      "A6",
+      "A7",
+      "A8"
+    ],
+    "imagePath": "/assets/components/brand-logos/logo_carrier.png"
+  },
+  {
+    "category": "Brand logo",
+    "key": "logo_braemar",
+    "type": "locked",
+    "description": "Braemar",
+    "imageId": "logo_braemar",
+    "usedBy": [
+      "A1",
+      "A10",
+      "A2",
+      "A3",
+      "A4",
+      "A6",
+      "A7",
+      "A8"
+    ],
+    "imagePath": "/assets/components/brand-logos/logo_braemar.svg"
+  },
+  {
+    "category": "Stock bill/finance",
+    "key": "bill_holder_man",
+    "type": "stock",
+    "description": "Middle-aged man in plaid shirt holding bill, hand on head, mildly concerned \u2014 bright airy background.",
+    "imageId": "bill_holder_man",
+    "usedBy": [
+      "A1",
+      "A4"
+    ],
+    "imagePath": "/assets/components/bill-finance/bill_holder_man.png"
+  },
+  {
+    "category": "Stock bill/finance",
+    "key": "bill_holder_man_2",
+    "type": "stock",
+    "description": "Man in navy polo on couch holding paper, hand on forehead \u2014 classic concerned-bill pose, alt setting.",
+    "imageId": "bill_holder_man_2",
+    "usedBy": [
+      "A1",
+      "A4"
+    ],
+    "imagePath": "/assets/components/bill-finance/bill_holder_man_2.png"
+  },
+  {
+    "category": "Stock bill/finance",
+    "key": "bill_holder_man_3",
+    "type": "stock",
+    "description": "Man in blue shirt holding two bills with laptop nearby \u2014 comparing/confused look, modern home office.",
+    "imageId": "bill_holder_man_3",
+    "usedBy": [
+      "A1",
+      "A4"
+    ],
+    "imagePath": "/assets/components/bill-finance/bill_holder_man_3.png"
+  },
+  {
+    "category": "Stock bill/finance",
+    "key": "bill_holder_woman",
+    "type": "stock",
+    "description": "Middle-aged woman in striped blouse at kitchen table, hand on forehead, looking at bill \u2014 laptop & calculator nearby.",
+    "imageId": "bill_holder_woman",
+    "usedBy": [
+      "A1",
+      "A4"
+    ],
+    "imagePath": "/assets/components/bill-finance/bill_holder_woman.png"
+  },
+  {
+    "category": "Stock bill/finance",
+    "key": "bill_holder_woman_2",
+    "type": "stock",
+    "description": "Woman in yellow sweater, hand over mouth \u2014 shocked/dismayed reaction to bill, brick wall behind.",
+    "imageId": "bill_holder_woman_2",
+    "usedBy": [
+      "A1",
+      "A4"
+    ],
+    "imagePath": "/assets/components/bill-finance/bill_holder_woman_2.png"
+  },
+  {
+    "category": "Stock bill/finance",
+    "key": "bill_holder_woman_3",
+    "type": "stock",
+    "description": "Mature woman in striped sweater at sunlit kitchen table reviewing paper, calm/contemplative.",
+    "imageId": "bill_holder_woman_3",
+    "usedBy": [
+      "A1",
+      "A4"
+    ],
+    "imagePath": "/assets/components/bill-finance/bill_holder_woman_3.png"
+  },
+  {
+    "category": "Stock bill/finance",
+    "key": "wallet_coins",
+    "type": "stock",
+    "description": "Open brown leather wallet on weathered wood, dramatic light beam from above + scattered coins & receipt \u2014 moody / pain palette.",
+    "imageId": "wallet_coins",
+    "usedBy": [
+      "A1",
+      "A4"
+    ],
+    "imagePath": "/assets/components/bill-finance/wallet_coins.png"
+  },
+  {
+    "category": "Stock bill/finance",
+    "key": "wallet_coins_2",
+    "type": "stock",
+    "description": "Open brown wallet on rustic table with golden side-light + coins falling out \u2014 warm dramatic mood.",
+    "imageId": "wallet_coins_2",
+    "usedBy": [
+      "A1",
+      "A4"
+    ],
+    "imagePath": "/assets/components/bill-finance/wallet_coins_2.png"
+  },
+  {
+    "category": "Stock bill/finance",
+    "key": "wallet_coins_3",
+    "type": "stock",
+    "description": "Modern black leather wallet on dark concrete with scattered coins \u2014 contemporary minimalist take.",
+    "imageId": "wallet_coins_3",
+    "usedBy": [
+      "A1",
+      "A4"
+    ],
+    "imagePath": "/assets/components/bill-finance/wallet_coins_3.png"
+  },
+  {
+    "category": "Stock bill/finance",
+    "key": "savings_graph",
+    "type": "stock",
+    "description": "Teal piggy bank + simple downward arrow on purple \u2014 bright illustrated style, optimistic 'bills going down' vibe.",
+    "imageId": "savings_graph",
+    "usedBy": [
+      "A1",
+      "A4"
+    ],
+    "imagePath": "/assets/components/bill-finance/savings_graph.png"
+  },
+  {
+    "category": "Stock bill/finance",
+    "key": "savings_graph_2",
+    "type": "stock",
+    "description": "Pink 3D piggy bank with bandage + red downward arrow \u2014 mixed mood, illustrative.",
+    "imageId": "savings_graph_2",
+    "usedBy": [
+      "A1",
+      "A4"
+    ],
+    "imagePath": "/assets/components/bill-finance/savings_graph_2.png"
+  },
+  {
+    "category": "Stock bill/finance",
+    "key": "savings_graph_3",
+    "type": "stock",
+    "description": "Australian $50 note + chalkboard crash chart (red downward arrow) \u2014 pain/decline mood for problem ads.",
+    "imageId": "savings_graph_3",
+    "usedBy": [
+      "A1",
+      "A4"
+    ],
+    "imagePath": "/assets/components/bill-finance/savings_graph_3.png"
+  },
+  {
+    "category": "Stock bill/finance",
+    "key": "savings_graph_4",
+    "type": "stock",
+    "description": "Australian $10 note + chalkboard crash chart (red downward arrow) \u2014 pain/decline mood variant.",
+    "imageId": "savings_graph_4",
+    "usedBy": [
+      "A1",
+      "A4"
+    ],
+    "imagePath": "/assets/components/bill-finance/savings_graph_4.png"
+  },
+  {
+    "category": "Stock bill/finance",
+    "key": "bill_shock_red",
+    "type": "stock",
+    "description": "Utility bill summary with diagonal red OVERDUE stamp + red highlight bar \u2014 clean, real-looking bill (primary).",
+    "imageId": "bill_shock_red",
+    "usedBy": [
+      "A1",
+      "A4",
+      "A6"
+    ],
+    "imagePath": "/assets/components/bill-finance/bill_shock_red.png"
+  },
+  {
+    "category": "Stock bill/finance",
+    "key": "bill_shock_red_2",
+    "type": "stock",
+    "description": "Utility bill with red OVERDUE stamp + calculator on patterned tablecloth \u2014 implies the math stress.",
+    "imageId": "bill_shock_red_2",
+    "usedBy": [
+      "A1",
+      "A4",
+      "A6"
+    ],
+    "imagePath": "/assets/components/bill-finance/bill_shock_red_2.png"
+  },
+  {
+    "category": "Stock bill/finance",
+    "key": "bill_shock_red_3",
+    "type": "stock",
+    "description": "Person holding utility bills with red OVERDUE stamp visible \u2014 broader scene, real-looking.",
+    "imageId": "bill_shock_red_3",
+    "usedBy": [
+      "A1",
+      "A4",
+      "A6"
+    ],
+    "imagePath": "/assets/components/bill-finance/bill_shock_red_3.png"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_couple_laptop",
+    "type": "stock",
+    "description": "Couple researching with laptop, bright daylight.",
+    "imageId": "fam_couple_laptop",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_couple_laptop.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_couple_evening",
+    "type": "stock",
+    "description": "Couple on couch evening warm light, premium feel.",
+    "imageId": "fam_couple_evening",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_couple_evening.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_dinner_table",
+    "type": "stock",
+    "description": "Family at dinner table with food in modern dining room \u2014 gathered together.",
+    "imageId": "fam_dinner_table",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_dinner_table.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_kids_playing",
+    "type": "stock",
+    "description": "Kids playing in living room.",
+    "imageId": "fam_kids_playing",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_kids_playing.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_couple_reading",
+    "type": "stock",
+    "description": "Couple relaxed reading, quiet luxury.",
+    "imageId": "fam_couple_reading",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_couple_reading.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_mum_kitchen",
+    "type": "stock",
+    "description": "Mum + daughter in modern white kitchen, mum preparing food.",
+    "imageId": "fam_mum_kitchen",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_mum_kitchen.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_dog_lounge",
+    "type": "stock",
+    "description": "Family / couple with dog in lounge.",
+    "imageId": "fam_dog_lounge",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_dog_lounge.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_sweating_woman",
+    "type": "stock",
+    "description": "Woman fanning self, hot, indoor.",
+    "imageId": "react_sweating_woman",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_sweating_woman.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_couple_freezing",
+    "type": "stock",
+    "description": "Couple bundled up under blankets, cold.",
+    "imageId": "react_couple_freezing",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_couple_freezing.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_frustrated_bill",
+    "type": "stock",
+    "description": "Person reacting / shocked at bill.",
+    "imageId": "react_frustrated_bill",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_frustrated_bill.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_frustrated_bill_2",
+    "type": "stock",
+    "description": "Couple in winter clothes on couch reviewing paperwork \u2014 wider shot variant (variant 2).",
+    "imageId": "react_frustrated_bill_2",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_frustrated_bill_2.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_elderly_cold",
+    "type": "stock",
+    "description": "Elderly person uncomfortably cold at home.",
+    "imageId": "react_elderly_cold",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_elderly_cold.webp"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_elderly_hot",
+    "type": "stock",
+    "description": "Elderly woman on couch using hand fan to cool herself \u2014 overheating reaction (counterpart to react_elderly_cold, used by A5 heat ads).",
+    "imageId": "react_elderly_hot",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_elderly_hot.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_elderly_hot_2",
+    "type": "stock",
+    "description": "Elderly woman with electric fan in living room \u2014 older-couple-friendly hot reaction variant.",
+    "imageId": "",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_elderly_hot_2.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_thumbs_up_summer",
+    "type": "stock",
+    "description": "Young woman with thumbs up, smiling, white t-shirt \u2014 positive reaction.",
+    "imageId": "react_thumbs_up_summer",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_thumbs_up_summer.jpg"
+  },
+  {
+    "category": "Holiday backdrop",
+    "key": "holiday_xmas_bg",
+    "type": "locked",
+    "description": "Christmas warm bokeh fairy lights with pine branches, dark navy negative space \u2014 primary backdrop.",
+    "imageId": "holiday_xmas_bg",
+    "usedBy": [
+      "A9"
+    ],
+    "imagePath": "/assets/components/holiday-backdrops/holiday_xmas_bg.png"
+  },
+  {
+    "category": "Holiday backdrop",
+    "key": "holiday_xmas_bg_2",
+    "type": "stock",
+    "description": "Christmas scene \u2014 Christmas tree + fireplace + wooden table foreground, warm cozy.",
+    "imageId": "holiday_xmas_bg_2",
+    "usedBy": [
+      "A9"
+    ],
+    "imagePath": "/assets/components/holiday-backdrops/holiday_xmas_bg_2.png"
+  },
+  {
+    "category": "Holiday backdrop",
+    "key": "holiday_xmas_bg_3",
+    "type": "stock",
+    "description": "Snow-flocked Christmas trees on right + red & gold bokeh \u2014 festive, left-side overlay space.",
+    "imageId": "holiday_xmas_bg_3",
+    "usedBy": [
+      "A9"
+    ],
+    "imagePath": "/assets/components/holiday-backdrops/holiday_xmas_bg_3.png"
+  },
+  {
+    "category": "Holiday backdrop",
+    "key": "holiday_nye_bg",
+    "type": "locked",
+    "description": "Real fireworks photo \u2014 multiple gold/red bursts against starry night sky. Atmospheric & authentic.",
+    "imageId": "holiday_nye_bg",
+    "usedBy": [
+      "A9"
+    ],
+    "imagePath": "/assets/components/holiday-backdrops/holiday_nye_bg.png"
+  },
+  {
+    "category": "Holiday backdrop",
+    "key": "holiday_nye_bg_2",
+    "type": "stock",
+    "description": "Illustration-style fireworks at top of frame, gradient dark sky \u2014 large negative space below for overlay.",
+    "imageId": "holiday_nye_bg_2",
+    "usedBy": [
+      "A9"
+    ],
+    "imagePath": "/assets/components/holiday-backdrops/holiday_nye_bg_2.png"
+  },
+  {
+    "category": "Holiday backdrop",
+    "key": "holiday_nye_bg_3",
+    "type": "stock",
+    "description": "Single golden firework burst on near-black sky \u2014 dramatic, max dark negative space.",
+    "imageId": "holiday_nye_bg_3",
+    "usedBy": [
+      "A9"
+    ],
+    "imagePath": "/assets/components/holiday-backdrops/holiday_nye_bg_3.png"
+  },
+  {
+    "category": "Holiday backdrop",
+    "key": "holiday_nye_bg_4",
+    "type": "stock",
+    "description": "Illustration fireworks in blue palette on deep navy sky \u2014 distinct cool palette variant.",
+    "imageId": "holiday_nye_bg_4",
+    "usedBy": [
+      "A9"
+    ],
+    "imagePath": "/assets/components/holiday-backdrops/holiday_nye_bg_4.png"
+  },
+  {
+    "category": "Holiday backdrop",
+    "key": "holiday_easter_bg",
+    "type": "locked",
+    "description": "Pastel atmospheric \u2014 soft blue-green bokeh, white spring flowers + accent eggs along bottom, large negative space.",
+    "imageId": "holiday_easter_bg",
+    "usedBy": [
+      "A9"
+    ],
+    "imagePath": "/assets/components/holiday-backdrops/holiday_easter_bg.png"
+  },
+  {
+    "category": "Holiday backdrop",
+    "key": "holiday_easter_bg_2",
+    "type": "stock",
+    "description": "Watercolor abstract \u2014 pastel sky-blue + watercolor green grass, very minimal, no eggs.",
+    "imageId": "holiday_easter_bg_2",
+    "usedBy": [
+      "A9"
+    ],
+    "imagePath": "/assets/components/holiday-backdrops/holiday_easter_bg_2.png"
+  },
+  {
+    "category": "Holiday backdrop",
+    "key": "holiday_easter_bg_3",
+    "type": "stock",
+    "description": "Pink minimalist \u2014 soft pink background, baby's-breath flowers on right, max overlay space on left.",
+    "imageId": "holiday_easter_bg_3",
+    "usedBy": [
+      "A9"
+    ],
+    "imagePath": "/assets/components/holiday-backdrops/holiday_easter_bg_3.png"
+  },
+  {
+    "category": "Holiday backdrop",
+    "key": "holiday_easter_bg_4",
+    "type": "stock",
+    "description": "Wooden round platform + scattered eggs in grass + cherry blossoms \u2014 clean composition with sky.",
+    "imageId": "holiday_easter_bg_4",
+    "usedBy": [
+      "A9"
+    ],
+    "imagePath": "/assets/components/holiday-backdrops/holiday_easter_bg_4.png"
+  },
+  {
+    "category": "Holiday backdrop",
+    "key": "holiday_easter_bg_5",
+    "type": "stock",
+    "description": "Eggs on wooden table + cherry blossoms + blue sky \u2014 wider product-stage scene.",
+    "imageId": "holiday_easter_bg_5",
+    "usedBy": [
+      "A9"
+    ],
+    "imagePath": "/assets/components/holiday-backdrops/holiday_easter_bg_5.png"
+  },
+  {
+    "category": "Holiday backdrop",
+    "key": "holiday_boxing_day_bg",
+    "type": "locked",
+    "description": "Empty Australian beach \u2014 clean sand foreground, turquoise ocean, sky with clouds. No people.",
+    "imageId": "holiday_boxing_day_bg",
+    "usedBy": [
+      "A9"
+    ],
+    "imagePath": "/assets/components/holiday-backdrops/holiday_boxing_day_bg.png"
+  },
+  {
+    "category": "Holiday backdrop",
+    "key": "holiday_boxing_day_bg_2",
+    "type": "stock",
+    "description": "Christmas tree with presents on Australian beach \u2014 Aussie summer Christmas vibe, no people.",
+    "imageId": "holiday_boxing_day_bg_2",
+    "usedBy": [
+      "A9"
+    ],
+    "imagePath": "/assets/components/holiday-backdrops/holiday_boxing_day_bg_2.png"
+  },
+  {
+    "category": "Holiday backdrop",
+    "key": "holiday_boxing_day_bg_3",
+    "type": "stock",
+    "description": "Santa relaxing on beach chair on white sand \u2014 themed atmospheric, single small figure mid-frame.",
+    "imageId": "holiday_boxing_day_bg_3",
+    "usedBy": [
+      "A9"
+    ],
+    "imagePath": "/assets/components/holiday-backdrops/holiday_boxing_day_bg_3.png"
+  },
+  {
+    "category": "Holiday backdrop",
+    "key": "holiday_boxing_day_bg_4",
+    "type": "stock",
+    "description": "Christmas tree on beach with sunset / golden hour \u2014 warm Aussie summer Christmas variant.",
+    "imageId": "holiday_boxing_day_bg_4",
+    "usedBy": [
+      "A9"
+    ],
+    "imagePath": "/assets/components/holiday-backdrops/holiday_boxing_day_bg_4.png"
+  },
+  {
+    "category": "Holiday backdrop",
+    "key": "holiday_blackfriday_bg",
+    "type": "locked",
+    "description": "Dark abstract with red wave/streak \u2014 dramatic dark with red accent + lots of negative space.",
+    "imageId": "holiday_blackfriday_bg",
+    "usedBy": [
+      "A9"
+    ],
+    "imagePath": "/assets/components/holiday-backdrops/holiday_blackfriday_bg.png"
+  },
+  {
+    "category": "Holiday backdrop",
+    "key": "holiday_blackfriday_bg_2",
+    "type": "stock",
+    "description": "Abstract red + black paper panels \u2014 split-color minimalist backdrop.",
+    "imageId": "holiday_blackfriday_bg_2",
+    "usedBy": [
+      "A9"
+    ],
+    "imagePath": "/assets/components/holiday-backdrops/holiday_blackfriday_bg_2.png"
+  },
+  {
+    "category": "Holiday backdrop",
+    "key": "holiday_blackfriday_bg_3",
+    "type": "stock",
+    "description": "Red-to-black gradient \u2014 minimalist colour wash, lots of overlay space.",
+    "imageId": "holiday_blackfriday_bg_3",
+    "usedBy": [
+      "A9"
+    ],
+    "imagePath": "/assets/components/holiday-backdrops/holiday_blackfriday_bg_3.png"
+  },
+  {
+    "category": "Holiday backdrop",
+    "key": "holiday_blackfriday_bg_4",
+    "type": "stock",
+    "description": "Black silk/fabric texture \u2014 pure black moody backdrop, no red accent.",
+    "imageId": "holiday_blackfriday_bg_4",
+    "usedBy": [
+      "A9"
+    ],
+    "imagePath": "/assets/components/holiday-backdrops/holiday_blackfriday_bg_4.png"
+  },
+  {
+    "category": "Holiday backdrop",
+    "key": "holiday_australia_day_bg",
+    "type": "locked",
+    "description": "Australian flag on dune above beach with native bushland \u2014 clean photo, generic Aussie outdoor.",
+    "imageId": "holiday_australia_day_bg",
+    "usedBy": [
+      "A9"
+    ],
+    "imagePath": "/assets/components/holiday-backdrops/holiday_australia_day_bg.png"
+  },
+  {
+    "category": "Holiday backdrop",
+    "key": "holiday_australia_day_bg_2",
+    "type": "stock",
+    "description": "Kangaroo holding Australian flag at sunset over beach \u2014 bold themed variant (AI-generated stock).",
+    "imageId": "holiday_australia_day_bg_2",
+    "usedBy": [
+      "A9"
+    ],
+    "imagePath": "/assets/components/holiday-backdrops/holiday_australia_day_bg_2.png"
+  },
+  {
+    "category": "Outdoor backdrop",
+    "key": "outdoor_sky_grass",
+    "type": "locked",
+    "description": "Sky + green grass horizon \u2014 atmospheric backdrop, plenty of negative space.",
+    "imageId": "outdoor_sky_grass",
+    "usedBy": [
+      "A10",
+      "A3",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/outdoor-backdrops/outdoor_sky_grass.png"
+  },
+  {
+    "category": "Outdoor backdrop",
+    "key": "outdoor_sky_grass_2",
+    "type": "stock",
+    "description": "Sky + grass horizon \u2014 bright variant 2 with central cloud and clean perspective.",
+    "imageId": "outdoor_suburban_aus",
+    "usedBy": [
+      "A10",
+      "A3",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/outdoor-backdrops/outdoor_sky_grass_2.png"
+  },
+  {
+    "category": "Outdoor backdrop",
+    "key": "outdoor_sky_grass_3",
+    "type": "stock",
+    "description": "Sky + grass with softer foreground gradient \u2014 bright airy variant.",
+    "imageId": "outdoor_sky_grass_3",
+    "usedBy": [
+      "A10",
+      "A3",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/outdoor-backdrops/outdoor_sky_grass_3.png"
+  },
+  {
+    "category": "Outdoor backdrop",
+    "key": "outdoor_suburban_aus",
+    "type": "locked",
+    "description": "Australian suburban street with home in foreground.",
+    "imageId": "outdoor_suburban_aus",
+    "usedBy": [
+      "A10",
+      "A3",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/outdoor-backdrops/outdoor_suburban_aus.png"
+  },
+  {
+    "category": "Outdoor backdrop",
+    "key": "outdoor_suburban_aus_2",
+    "type": "stock",
+    "description": "Single Australian suburban brick home with green lawn + blue sky \u2014 single-house variant.",
+    "imageId": "outdoor_suburban_aus_2",
+    "usedBy": [
+      "A10",
+      "A3",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/outdoor-backdrops/outdoor_suburban_aus_2.png"
+  },
+  {
+    "category": "Outdoor backdrop",
+    "key": "outdoor_modern_home",
+    "type": "locked",
+    "description": "Australian residential home exterior \u2014 weatherboard / Hampton's-style cottage shot, daylight.",
+    "imageId": "outdoor_modern_home",
+    "usedBy": [
+      "A10",
+      "A3",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/outdoor-backdrops/outdoor_modern_home.webp"
+  },
+  {
+    "category": "Outdoor backdrop",
+    "key": "outdoor_heatwave_sunset",
+    "type": "locked",
+    "description": "Australian heatwave sunset atmospheric.",
+    "imageId": "outdoor_heatwave_sunset",
+    "usedBy": [
+      "A10",
+      "A3",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/outdoor-backdrops/outdoor_heatwave_sunset.jpg"
+  },
+  {
+    "category": "Outdoor backdrop",
+    "key": "outdoor_heatwave_sunset_2",
+    "type": "stock",
+    "description": "Dramatic red-orange sunset over mountains with sun rays \u2014 intense heat dramatic sky.",
+    "imageId": "outdoor_heatwave_sunset_2",
+    "usedBy": [
+      "A10",
+      "A3",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/outdoor-backdrops/outdoor_heatwave_sunset_2.png"
+  },
+  {
+    "category": "Outdoor backdrop",
+    "key": "outdoor_heatwave_sunset_3",
+    "type": "stock",
+    "description": "Large glowing sun in red-orange cloudy sky close-up \u2014 pure heatwave sky negative space.",
+    "imageId": "outdoor_heatwave_sunset_3",
+    "usedBy": [
+      "A10",
+      "A3",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/outdoor-backdrops/outdoor_heatwave_sunset_3.png"
+  },
+  {
+    "category": "Outdoor backdrop",
+    "key": "outdoor_heatwave_sunset_4",
+    "type": "stock",
+    "description": "Cracked red earth + eucalyptus trees in Aussie outback \u2014 drought/heat ground variant.",
+    "imageId": "outdoor_heatwave_sunset_4",
+    "usedBy": [
+      "A10",
+      "A3",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/outdoor-backdrops/outdoor_heatwave_sunset_4.png"
+  },
+  {
+    "category": "Outdoor backdrop",
+    "key": "outdoor_heatwave_sunset_5",
+    "type": "stock",
+    "description": "Desert sand dunes + bare tree at sunset \u2014 minimalist heat/desert mood.",
+    "imageId": "outdoor_heatwave_sunset_5",
+    "usedBy": [
+      "A10",
+      "A3",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/outdoor-backdrops/outdoor_heatwave_sunset_5.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_actron",
+    "type": "locked",
+    "description": "Brand-matched ducted system shot (double-fan condenser + indoor unit, manufacturer branded). Use for ActronAir clients.",
+    "imageId": "cond_actron",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_actron.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_braemar",
+    "type": "locked",
+    "description": "Brand-matched ducted system shot (double-fan condenser + indoor unit, manufacturer branded). Use for Braemar clients.",
+    "imageId": "cond_braemar",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_braemar.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_carrier",
+    "type": "locked",
+    "description": "Brand-matched ducted system shot (double-fan condenser + indoor unit, manufacturer branded). Use for Carrier clients.",
+    "imageId": "cond_carrier",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_carrier.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_gree",
+    "type": "locked",
+    "description": "Brand-matched ducted system shot (double-fan condenser + indoor unit, manufacturer branded). Use for Gree clients.",
+    "imageId": "cond_gree",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_gree.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_haier",
+    "type": "locked",
+    "description": "Brand-matched ducted system shot (double-fan condenser + indoor unit, manufacturer branded). Use for Haier clients.",
+    "imageId": "cond_haier",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_haier.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_hisense",
+    "type": "locked",
+    "description": "Brand-matched ducted system shot (double-fan condenser + indoor unit, manufacturer branded). Use for Hisense clients.",
+    "imageId": "cond_hisense",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_hisense.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_hitachi",
+    "type": "locked",
+    "description": "Brand-matched ducted system shot (double-fan condenser + indoor unit, manufacturer branded). Use for Hitachi clients.",
+    "imageId": "cond_hitachi",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_hitachi.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_lg",
+    "type": "locked",
+    "description": "Brand-matched ducted system shot (double-fan condenser + indoor unit, manufacturer branded). Use for LG clients.",
+    "imageId": "cond_lg",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_lg.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_mhi",
+    "type": "locked",
+    "description": "Brand-matched ducted system shot (double-fan condenser + indoor unit, manufacturer branded). Use for Mitsubishi Heavy Industries clients.",
+    "imageId": "cond_mhi",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_mhi.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_midea",
+    "type": "locked",
+    "description": "Brand-matched ducted system shot (double-fan condenser + indoor unit, manufacturer branded). Use for Midea clients.",
+    "imageId": "cond_midea",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_midea.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_panasonic",
+    "type": "locked",
+    "description": "Brand-matched ducted system shot (double-fan condenser + indoor unit, manufacturer branded). Use for Panasonic clients.",
+    "imageId": "cond_panasonic",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_panasonic.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_rinnai",
+    "type": "locked",
+    "description": "Brand-matched ducted system shot (double-fan condenser + indoor unit, manufacturer branded). Use for Rinnai clients.",
+    "imageId": "cond_rinnai",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_rinnai.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_toshiba",
+    "type": "locked",
+    "description": "Brand-matched ducted system shot (double-fan condenser + indoor unit, manufacturer branded). Use for Toshiba clients.",
+    "imageId": "cond_toshiba",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_toshiba.png"
+  },
+  {
+    "category": "Controller",
+    "key": "ctrl_izone",
+    "type": "locked",
+    "description": "iZone zoning controller hero shot. Alternative to AirTouch for iZone-installed clients.",
+    "imageId": "ctrl_izone",
+    "usedBy": [
+      "A2",
+      "A3",
+      "A8"
+    ],
+    "imagePath": "/assets/components/controllers/ctrl_izone.png"
+  },
+  {
+    "category": "Controller",
+    "key": "ctrl_myair",
+    "type": "locked",
+    "description": "MyAir / MyPlace zoning controller hero shot. Alternative to AirTouch for Advantage Air clients.",
+    "imageId": "ctrl_myair",
+    "usedBy": [
+      "A2",
+      "A3",
+      "A8"
+    ],
+    "imagePath": "/assets/components/controllers/ctrl_myair.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_actron_system",
+    "type": "locked",
+    "description": "Full ducted system shot for ActronAir \u2014 both indoor unit and double-fan condenser visible together. Use when the ad benefits from showing the complete system rather than just the condenser hero.",
+    "imageId": "cond_actron_system",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_actron_system.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_braemar_system",
+    "type": "locked",
+    "description": "Full ducted system shot for Braemar \u2014 both indoor unit and double-fan condenser visible together. Use when the ad benefits from showing the complete system rather than just the condenser hero.",
+    "imageId": "cond_braemar_system",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_braemar_system.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_carrier_system",
+    "type": "locked",
+    "description": "Full ducted system shot for Carrier \u2014 both indoor unit and double-fan condenser visible together. Use when the ad benefits from showing the complete system rather than just the condenser hero.",
+    "imageId": "cond_carrier_system",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_carrier_system.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_daikin_system",
+    "type": "locked",
+    "description": "Full ducted system shot for Daikin \u2014 both indoor unit and double-fan condenser visible together. Use when the ad benefits from showing the complete system rather than just the condenser hero.",
+    "imageId": "cond_daikin_system",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_daikin_system.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_fujitsu_system",
+    "type": "locked",
+    "description": "Full ducted system shot for Fujitsu \u2014 both indoor unit and double-fan condenser visible together. Use when the ad benefits from showing the complete system rather than just the condenser hero.",
+    "imageId": "cond_fujitsu_system",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_fujitsu_system.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_gree_system",
+    "type": "locked",
+    "description": "Full ducted system shot for Gree \u2014 both indoor unit and double-fan condenser visible together. Use when the ad benefits from showing the complete system rather than just the condenser hero.",
+    "imageId": "cond_gree_system",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_gree_system.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_haier_system",
+    "type": "locked",
+    "description": "Full ducted system shot for Haier \u2014 both indoor unit and double-fan condenser visible together. Use when the ad benefits from showing the complete system rather than just the condenser hero.",
+    "imageId": "cond_haier_system",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_haier_system.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_hisense_system",
+    "type": "locked",
+    "description": "Full ducted system shot for Hisense \u2014 both indoor unit and double-fan condenser visible together. Use when the ad benefits from showing the complete system rather than just the condenser hero.",
+    "imageId": "cond_hisense_system",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_hisense_system.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_hitachi_system",
+    "type": "locked",
+    "description": "Full ducted system shot for Hitachi \u2014 both indoor unit and double-fan condenser visible together. Use when the ad benefits from showing the complete system rather than just the condenser hero.",
+    "imageId": "cond_hitachi_system",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_hitachi_system.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_lg_system",
+    "type": "locked",
+    "description": "Full ducted system shot for LG \u2014 both indoor unit and double-fan condenser visible together. Use when the ad benefits from showing the complete system rather than just the condenser hero.",
+    "imageId": "cond_lg_system",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_lg_system.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_mhi_system",
+    "type": "locked",
+    "description": "Full ducted system shot for Mitsubishi Heavy Industries \u2014 both indoor unit and double-fan condenser visible together. Use when the ad benefits from showing the complete system rather than just the condenser hero.",
+    "imageId": "cond_mhi_system",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_mhi_system.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_midea_system",
+    "type": "locked",
+    "description": "Full ducted system shot for Midea \u2014 both indoor unit and double-fan condenser visible together. Use when the ad benefits from showing the complete system rather than just the condenser hero.",
+    "imageId": "cond_midea_system",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_midea_system.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_mitsubishi_system",
+    "type": "locked",
+    "description": "Full ducted system shot for Mitsubishi Electric \u2014 both indoor unit and double-fan condenser visible together. Use when the ad benefits from showing the complete system rather than just the condenser hero.",
+    "imageId": "cond_mitsubishi_system",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_mitsubishi_system.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_panasonic_system",
+    "type": "locked",
+    "description": "Full ducted system shot for Panasonic \u2014 both indoor unit and double-fan condenser visible together. Use when the ad benefits from showing the complete system rather than just the condenser hero.",
+    "imageId": "cond_panasonic_system",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_panasonic_system.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_rinnai_system",
+    "type": "locked",
+    "description": "Full ducted system shot for Rinnai \u2014 both indoor unit and double-fan condenser visible together. Use when the ad benefits from showing the complete system rather than just the condenser hero.",
+    "imageId": "cond_rinnai_system",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_rinnai_system.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_samsung_system",
+    "type": "locked",
+    "description": "Full ducted system shot for Samsung \u2014 both indoor unit and double-fan condenser visible together. Use when the ad benefits from showing the complete system rather than just the condenser hero.",
+    "imageId": "cond_samsung_system",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_samsung_system.png"
+  },
+  {
+    "category": "Condenser",
+    "key": "cond_toshiba_system",
+    "type": "locked",
+    "description": "Full ducted system shot for Toshiba \u2014 both indoor unit and double-fan condenser visible together. Use when the ad benefits from showing the complete system rather than just the condenser hero.",
+    "imageId": "cond_toshiba_system",
+    "usedBy": [
+      "A4",
+      "A6",
+      "A7",
+      "A8",
+      "A9"
+    ],
+    "imagePath": "/assets/components/condensers/cond_toshiba_system.png"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_couple_laptop_2",
+    "type": "stock",
+    "description": "Couple researching with laptop, bright daylight. (variant 2)",
+    "imageId": "fam_couple_laptop_2",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_couple_laptop_2.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_couple_laptop_3",
+    "type": "stock",
+    "description": "Couple researching with laptop, bright daylight. (variant 3)",
+    "imageId": "fam_couple_laptop_3",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_couple_laptop_3.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_couple_evening_2",
+    "type": "stock",
+    "description": "Couple on couch evening warm light, premium feel. (variant 2)",
+    "imageId": "fam_couple_evening_2",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_couple_evening_2.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_couple_evening_3",
+    "type": "stock",
+    "description": "Couple on couch evening warm light, premium feel. (variant 3)",
+    "imageId": "fam_couple_evening_3",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_couple_evening_3.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_couple_reading_2",
+    "type": "stock",
+    "description": "Couple relaxed reading, quiet luxury. (variant 2)",
+    "imageId": "fam_couple_reading_2",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_couple_reading_2.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_couple_reading_3",
+    "type": "stock",
+    "description": "Couple relaxed reading, quiet luxury. (variant 3)",
+    "imageId": "fam_couple_reading_3",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_couple_reading_3.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_kids_playing_3",
+    "type": "stock",
+    "description": "Kids playing in living room. (variant 3)",
+    "imageId": "fam_kids_playing_3",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_kids_playing_3.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_dog_lounge_2",
+    "type": "stock",
+    "description": "Family / couple with dog in lounge. (variant 2)",
+    "imageId": "fam_dog_lounge_2",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_dog_lounge_2.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_dog_lounge_3",
+    "type": "stock",
+    "description": "Family / couple with dog in lounge. (variant 3)",
+    "imageId": "fam_dog_lounge_3",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_dog_lounge_3.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_sweating_woman_2",
+    "type": "stock",
+    "description": "Woman fanning self, hot, indoor. (variant 2)",
+    "imageId": "react_sweating_woman_2",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_sweating_woman_2.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_sweating_woman_3",
+    "type": "stock",
+    "description": "Woman fanning self, hot, indoor. (variant 3)",
+    "imageId": "react_sweating_woman_3",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_sweating_woman_3.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_couple_freezing_2",
+    "type": "stock",
+    "description": "Couple bundled up under blankets, cold. (variant 2)",
+    "imageId": "react_couple_freezing_2",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_couple_freezing_2.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_couple_freezing_3",
+    "type": "stock",
+    "description": "Couple bundled up under blankets, cold. (variant 3)",
+    "imageId": "react_couple_freezing_3",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_couple_freezing_3.jpg"
+  },
+  {
+    "category": "Outdoor backdrop",
+    "key": "outdoor_modern_home_2",
+    "type": "locked",
+    "description": "Australian residential home exterior \u2014 weatherboard / Hampton's-style cottage shot, daylight. (variant 2)",
+    "imageId": "outdoor_modern_home_2",
+    "usedBy": [
+      "A10",
+      "A3",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/outdoor-backdrops/outdoor_modern_home_2.jpg"
+  },
+  {
+    "category": "Outdoor backdrop",
+    "key": "outdoor_modern_home_3",
+    "type": "locked",
+    "description": "Australian residential home exterior \u2014 weatherboard / Hampton's-style cottage shot, daylight. (variant 3)",
+    "imageId": "outdoor_modern_home_3",
+    "usedBy": [
+      "A10",
+      "A3",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/outdoor-backdrops/outdoor_modern_home_3.jpg"
+  },
+  {
+    "category": "Controller",
+    "key": "ctrl_console_themes",
+    "type": "locked",
+    "description": "AirTouch wall console showing theme variations.",
+    "imageId": "ctrl_console_themes",
+    "usedBy": [
+      "A2",
+      "A3",
+      "A8"
+    ],
+    "imagePath": "/assets/components/controllers/ctrl_console_themes.png"
+  },
+  {
+    "category": "Controller",
+    "key": "ctrl_console_themes_2",
+    "type": "locked",
+    "description": "AirTouch wall console \u2014 alternate theme view.",
+    "imageId": "ctrl_console_themes_2",
+    "usedBy": [
+      "A2",
+      "A3",
+      "A8"
+    ],
+    "imagePath": "/assets/components/controllers/ctrl_console_themes_2.png"
+  },
+  {
+    "category": "Controller",
+    "key": "ctrl_app_screens",
+    "type": "locked",
+    "description": "AirTouch 5 phone apps showing AC + zone control screens.",
+    "imageId": "ctrl_app_screens",
+    "usedBy": [
+      "A2",
+      "A3",
+      "A8"
+    ],
+    "imagePath": "/assets/components/controllers/ctrl_app_screens.png"
+  },
+  {
+    "category": "Controller",
+    "key": "ctrl_multi_storey",
+    "type": "locked",
+    "description": "AirTouch multi-storey control diagram.",
+    "imageId": "ctrl_multi_storey",
+    "usedBy": [
+      "A2",
+      "A3",
+      "A8"
+    ],
+    "imagePath": "/assets/components/controllers/ctrl_multi_storey.png"
+  },
+  {
+    "category": "Controller",
+    "key": "ctrl_smart_assistant",
+    "type": "locked",
+    "description": "AirTouch phone + smart-assistant control options.",
+    "imageId": "ctrl_smart_assistant",
+    "usedBy": [
+      "A2",
+      "A3",
+      "A8"
+    ],
+    "imagePath": "/assets/components/controllers/ctrl_smart_assistant.png"
+  },
+  {
+    "category": "Controller",
+    "key": "ctrl_vrf",
+    "type": "locked",
+    "description": "AirTouch VRF option / advanced control.",
+    "imageId": "ctrl_vrf",
+    "usedBy": [
+      "A2",
+      "A3",
+      "A8"
+    ],
+    "imagePath": "/assets/components/controllers/ctrl_vrf.png"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_couple_laptop_4",
+    "type": "stock",
+    "description": "Couple researching with laptop, bright daylight. (variant 4)",
+    "imageId": "fam_couple_laptop_4",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_couple_laptop_4.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_couple_laptop_5",
+    "type": "stock",
+    "description": "Couple researching with laptop, bright daylight. (variant 5)",
+    "imageId": "fam_couple_laptop_5",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_couple_laptop_5.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_couple_evening_4",
+    "type": "stock",
+    "description": "Couple on couch evening warm light, premium feel. (variant 4)",
+    "imageId": "fam_couple_evening_4",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_couple_evening_4.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_couple_evening_5",
+    "type": "stock",
+    "description": "Couple on couch evening warm light, premium feel. (variant 5)",
+    "imageId": "fam_couple_evening_5",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_couple_evening_5.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_couple_evening_6",
+    "type": "stock",
+    "description": "Couple on couch evening warm light, premium feel. (variant 6)",
+    "imageId": "fam_couple_evening_6",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_couple_evening_6.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_couple_evening_7",
+    "type": "stock",
+    "description": "Couple on couch evening warm light, premium feel. (variant 7)",
+    "imageId": "fam_couple_evening_7",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_couple_evening_7.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_kids_playing_4",
+    "type": "stock",
+    "description": "Kids playing in living room. (variant 4)",
+    "imageId": "fam_kids_playing_4",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_kids_playing_4.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_kids_playing_6",
+    "type": "stock",
+    "description": "Kids playing in living room. (variant 6)",
+    "imageId": "fam_kids_playing_6",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_kids_playing_6.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_kids_playing_7",
+    "type": "stock",
+    "description": "Kids playing in living room. (variant 7)",
+    "imageId": "fam_kids_playing_7",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_kids_playing_7.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_kids_playing_8",
+    "type": "stock",
+    "description": "Kids playing in living room. (variant 8)",
+    "imageId": "fam_kids_playing_8",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_kids_playing_8.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_kids_playing_10",
+    "type": "stock",
+    "description": "Two kids dancing/playing in bright modern living room.",
+    "imageId": "fam_kids_playing_10",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_kids_playing_10.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_kid_solo_play",
+    "type": "stock",
+    "description": "Single child alone playing with blocks on the floor in modern lounge.",
+    "imageId": "fam_kid_solo_play",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_kid_solo_play.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_kid_solo_play_2",
+    "type": "stock",
+    "description": "Single child playing alone with toy car on living-room floor \u2014 solo kid play variant.",
+    "imageId": "",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_kid_solo_play_2.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_dog_lounge_4",
+    "type": "stock",
+    "description": "Family / couple with dog in lounge. (variant 4)",
+    "imageId": "fam_dog_lounge_4",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_dog_lounge_4.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_dog_lounge_5",
+    "type": "stock",
+    "description": "Family / couple with dog in lounge. (variant 5)",
+    "imageId": "fam_dog_lounge_5",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_dog_lounge_5.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_dog_lounge_6",
+    "type": "stock",
+    "description": "Family / couple with dog in lounge. (variant 6)",
+    "imageId": "fam_dog_lounge_6",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_dog_lounge_6.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_dog_lounge_7",
+    "type": "stock",
+    "description": "Family / couple with dog in lounge. (variant 7)",
+    "imageId": "fam_dog_lounge_7",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_dog_lounge_7.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_dog_lounge_8",
+    "type": "stock",
+    "description": "Family with golden retriever in modern lounge with fireplace (variant 8).",
+    "imageId": "fam_dog_lounge_8",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_dog_lounge_8.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_dog_lounge_9",
+    "type": "stock",
+    "description": "Chaotic family scene \u2014 kids running, dog, mum amidst chaos (variant 9).",
+    "imageId": "fam_dog_lounge_9",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_dog_lounge_9.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_dog_lounge_10",
+    "type": "stock",
+    "description": "Woman with golden retriever on cream couch \u2014 relaxed living-room moment.",
+    "imageId": "fam_dog_lounge_10",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_dog_lounge_10.jpg"
+  },
+  {
+    "category": "Stock family",
+    "key": "fam_dog_lounge_11",
+    "type": "stock",
+    "description": "Family on couch with child + dog in living-room scene \u2014 couple sitting/reading while kid sits with golden dog in foreground.",
+    "imageId": "",
+    "usedBy": [
+      "A10",
+      "A2",
+      "A3"
+    ],
+    "imagePath": "/assets/components/stock-family/fam_dog_lounge_11.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_sweating_woman_4",
+    "type": "stock",
+    "description": "Woman fanning self, hot, indoor. (variant 4)",
+    "imageId": "react_sweating_woman_4",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_sweating_woman_4.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_sweating_woman_5",
+    "type": "stock",
+    "description": "Woman fanning self, hot, indoor. (variant 5)",
+    "imageId": "react_sweating_woman_5",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_sweating_woman_5.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_sweating_woman_6",
+    "type": "stock",
+    "description": "Woman fanning self, hot, indoor. (variant 6)",
+    "imageId": "react_sweating_woman_6",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_sweating_woman_6.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_sweating_woman_7",
+    "type": "stock",
+    "description": "Woman fanning self, hot, indoor. (variant 7)",
+    "imageId": "react_sweating_woman_7",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_sweating_woman_7.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_sweating_woman_8",
+    "type": "stock",
+    "description": "Woman fanning self, hot, indoor. (variant 8)",
+    "imageId": "react_sweating_woman_8",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_sweating_woman_8.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_sweating_woman_9",
+    "type": "stock",
+    "description": "Woman fanning self, hot, indoor. (variant 9)",
+    "imageId": "react_sweating_woman_9",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_sweating_woman_9.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_sweating_woman_10",
+    "type": "stock",
+    "description": "Woman fanning self, hot, indoor. (variant 10)",
+    "imageId": "react_sweating_woman_10",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_sweating_woman_10.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_sweating_woman_12",
+    "type": "stock",
+    "description": "Woman fanning self, hot, indoor. (variant 12)",
+    "imageId": "react_sweating_woman_12",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_sweating_woman_12.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_sweating_woman_16",
+    "type": "stock",
+    "description": "Woman fanning herself on couch \u2014 frustrated heat (variant 16).",
+    "imageId": "react_sweating_woman_16",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_sweating_woman_16.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_couple_hot",
+    "type": "stock",
+    "description": "Couple lying on couch in summer heat with handheld fan \u2014 couple-hot reaction primary.",
+    "imageId": "",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_couple_hot.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_couple_hot_2",
+    "type": "stock",
+    "description": "Couple on couch in front of electric fan \u2014 both fanning themselves, couple-hot variant.",
+    "imageId": "",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_couple_hot_2.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_couple_hot_3",
+    "type": "stock",
+    "description": "Couple in kitchen during heatwave \u2014 couple-hot variant 3.",
+    "imageId": "",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_couple_hot_3.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_couple_freezing_4",
+    "type": "stock",
+    "description": "Couple bundled up under blankets, cold. (variant 4)",
+    "imageId": "react_couple_freezing_4",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_couple_freezing_4.jpg"
+  },
+  {
+    "category": "Stock reaction",
+    "key": "react_couple_freezing_9",
+    "type": "stock",
+    "description": "Couple bundled up under blankets, cold. (variant 9)",
+    "imageId": "react_couple_freezing_9",
+    "usedBy": [
+      "A4",
+      "A5",
+      "A6",
+      "A9"
+    ],
+    "imagePath": "/assets/components/stock-reaction/react_couple_freezing_9.jpg"
+  },
+  {
+    "category": "Outdoor backdrop",
+    "key": "outdoor_modern_home_4",
+    "type": "locked",
+    "description": "Australian residential home exterior \u2014 weatherboard / Hampton's-style cottage shot, daylight. (variant 4)",
+    "imageId": "outdoor_modern_home_4",
+    "usedBy": [
+      "A10",
+      "A3",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/outdoor-backdrops/outdoor_modern_home_4.jpg"
+  },
+  {
+    "category": "Outdoor backdrop",
+    "key": "outdoor_modern_home_5",
+    "type": "locked",
+    "description": "Australian residential home exterior \u2014 weatherboard / Hampton's-style cottage shot, daylight. (variant 5)",
+    "imageId": "outdoor_modern_home_5",
+    "usedBy": [
+      "A10",
+      "A3",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/outdoor-backdrops/outdoor_modern_home_5.jpg"
+  },
+  {
+    "category": "Outdoor backdrop",
+    "key": "outdoor_modern_home_6",
+    "type": "locked",
+    "description": "Australian residential home exterior \u2014 weatherboard / Hampton's-style cottage shot, daylight. (variant 6)",
+    "imageId": "outdoor_modern_home_6",
+    "usedBy": [
+      "A10",
+      "A3",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/outdoor-backdrops/outdoor_modern_home_6.jpg"
+  },
+  {
+    "category": "Outdoor backdrop",
+    "key": "outdoor_modern_home_7",
+    "type": "locked",
+    "description": "Australian residential home exterior \u2014 weatherboard / Hampton's-style cottage shot, daylight. (variant 7)",
+    "imageId": "outdoor_modern_home_7",
+    "usedBy": [
+      "A10",
+      "A3",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/outdoor-backdrops/outdoor_modern_home_7.jpg"
+  },
+  {
+    "category": "Outdoor backdrop",
+    "key": "outdoor_modern_home_8",
+    "type": "locked",
+    "description": "Australian residential home exterior \u2014 weatherboard / Hampton's-style cottage shot, daylight. (variant 8)",
+    "imageId": "outdoor_modern_home_8",
+    "usedBy": [
+      "A10",
+      "A3",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/outdoor-backdrops/outdoor_modern_home_8.jpg"
+  },
+  {
+    "category": "Outdoor backdrop",
+    "key": "outdoor_modern_home_9",
+    "type": "locked",
+    "description": "Australian residential home exterior \u2014 weatherboard / Hampton's-style cottage shot, daylight. (variant 9)",
+    "imageId": "outdoor_modern_home_9",
+    "usedBy": [
+      "A10",
+      "A3",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/outdoor-backdrops/outdoor_modern_home_9.jpg"
+  },
+  {
+    "category": "Outdoor backdrop",
+    "key": "outdoor_modern_home_10",
+    "type": "locked",
+    "description": "Australian residential home exterior \u2014 weatherboard / Hampton's-style cottage shot, daylight. (variant 10)",
+    "imageId": "outdoor_modern_home_10",
+    "usedBy": [
+      "A10",
+      "A3",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/outdoor-backdrops/outdoor_modern_home_10.jpg"
+  },
+  {
+    "category": "Outdoor backdrop",
+    "key": "outdoor_modern_home_11",
+    "type": "locked",
+    "description": "Australian residential home exterior \u2014 weatherboard / Hampton's-style cottage shot, daylight. (variant 11)",
+    "imageId": "outdoor_modern_home_11",
+    "usedBy": [
+      "A10",
+      "A3",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/outdoor-backdrops/outdoor_modern_home_11.jpg"
+  },
+  {
+    "category": "Outdoor backdrop",
+    "key": "outdoor_modern_home_12",
+    "type": "stock",
+    "description": "Australian heritage cottage with picket fence \u2014 classic weatherboard exterior (variant 12).",
+    "imageId": "outdoor_modern_home_12",
+    "usedBy": [
+      "A10",
+      "A3",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/outdoor-backdrops/outdoor_modern_home_12.jpg"
+  },
+  {
+    "category": "Outdoor backdrop",
+    "key": "outdoor_modern_home_13",
+    "type": "stock",
+    "description": "Australian weatherboard cottage with veranda + gum trees (variant 13).",
+    "imageId": "outdoor_modern_home_13",
+    "usedBy": [
+      "A10",
+      "A3",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/outdoor-backdrops/outdoor_modern_home_13.jpg"
+  },
+  {
+    "category": "Outdoor backdrop",
+    "key": "outdoor_modern_home_14",
+    "type": "stock",
+    "description": "Heritage Australian cottage with sage green door + picket fence (variant 14).",
+    "imageId": "outdoor_modern_home_14",
+    "usedBy": [
+      "A10",
+      "A3",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/outdoor-backdrops/outdoor_modern_home_14.webp"
+  },
+  {
+    "category": "Outdoor backdrop",
+    "key": "outdoor_modern_home_15",
+    "type": "stock",
+    "description": "Heritage Australian cottage with picket fence (variant 15).",
+    "imageId": "outdoor_modern_home_15",
+    "usedBy": [
+      "A10",
+      "A3",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/outdoor-backdrops/outdoor_modern_home_15.webp"
+  },
+  {
+    "category": "Outdoor backdrop",
+    "key": "outdoor_modern_home_16",
+    "type": "stock",
+    "description": "White weatherboard cottage front (variant 16).",
+    "imageId": "outdoor_modern_home_16",
+    "usedBy": [
+      "A10",
+      "A3",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/outdoor-backdrops/outdoor_modern_home_16.webp"
+  },
+  {
+    "category": "Outdoor backdrop",
+    "key": "outdoor_coastal_aus",
+    "type": "stock",
+    "description": "Australian coastal cottage with dune grass in foreground.",
+    "imageId": "outdoor_coastal_aus",
+    "usedBy": [
+      "A10",
+      "A3",
+      "A5",
+      "A6",
+      "A8"
+    ],
+    "imagePath": "/assets/components/outdoor-backdrops/outdoor_coastal_aus.jpg"
+  },
+  {
+    "category": "Controller",
+    "key": "ctrl_menu_icon",
+    "type": "locked",
+    "description": "AirTouch 2 Plus menu/nav icon \u2014 small accent for app-context overlays.",
+    "imageId": "ctrl_menu_icon",
+    "usedBy": [
+      "A2",
+      "A3",
+      "A8"
+    ],
+    "imagePath": "/assets/components/controllers/ctrl_menu_icon.png"
+  }
+]

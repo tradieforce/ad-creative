@@ -1,0 +1,65 @@
+{
+  "archetype": "A10",
+  "archetype_name": "Local Trust",
+  "variant": "team photo (with real client van photo)",
+  "funnel_stage": "Cold/Warm",
+  "tested_outcome": "Production-ready. Validated the most important architectural insight: VISION-BASED PROMPT COMPOSITION. When Claude analyses the actual asset photo before composing the prompt, the design becomes art-directed FOR the photo rather than templated AT it. This is a hard requirement for Layer 2 in production.",
+  "input_context": {
+    "client_name": "Sharp Air Conditioning",
+    "city_or_region": "Central Coast · Newcastle · Hunter Valley",
+    "headline": "HERE'S THE CENTRAL COAST'S TRUSTED DUCTED A/C TEAM",
+    "headline_signature": "TRUSTED in oversized italic serif (cream/white) on the orange wall — visual hero word",
+    "sub_headline": "Designed, installed & trusted locally since 2014.",
+    "google_review_count": "168+",
+    "value_stack": "Locally Owned, Family-Run | $0 Upfront, Interest-Free Finance Available | 5-Year Workmanship Guarantee",
+    "cta": "BOOK YOUR FREE ON-SITE QUOTE (Sharp blue button)",
+    "price_pill": "FROM $55 PER WEEK · FULLY INSTALLED (modest, secondary)",
+    "brands": [
+      "Daikin",
+      "Mitsubishi Heavy Industries"
+    ]
+  },
+  "assets_attached": [
+    {
+      "type": "ref",
+      "asset": "A37 reference ad",
+      "instruction": "Match warm, locally-rooted feel"
+    },
+    {
+      "type": "client_locked",
+      "asset": "Sharp team-on-van photo (real client asset)",
+      "instruction": "Use AS PROVIDED — do not modify people, van, branding, phone number, URL, tagline, or lighting. ANY modification kills the trust signal."
+    }
+  ],
+  "key_architectural_insight_validated": {
+    "name": "Vision-based prompt composition (Layer 2 must analyse asset images before composing)",
+    "what_failed_without_it": "First A10 attempt was generic-corporate — Claude wrote a templated 'split-screen with white text on left, photo on right' brief without seeing the photo. Result: bricky headline, weak palette, no brand cohesion.",
+    "what_worked_with_it": "Once Claude analysed the photo, the brief became art-directed FOR the photo: pulled Sharp's actual brand orange/blue/navy/cream palette into the design, respected the 'That's sharp!' tagline and phone number on the van, placed the headline over the orange wall area where there was no person, used the photo's natural authenticity as the trust signal rather than fighting it.",
+    "production_implication": "Layer 2 in production MUST receive asset images as visual input (not just metadata) and analyse them before composing prompts. This is non-negotiable. Without vision-based composition, A10 ads (and any photo-led ad) drop from production-quality to generic-templated."
+  },
+  "composition_choices_that_worked": [
+    "Palette drawn FROM the photo, not invented — orange/Sharp-blue/navy/cream became the entire ad's palette",
+    "TRUSTED in oversized italic serif (cream on orange) was the elegance signature — single typographic choice that did what 'make it premium' couldn't",
+    "DUCTED A/C in oversized navy bold sat against the orange wall — full clarity, full weight",
+    "Headline placed in upper-left quadrant where the photo's orange wall has no person — used the photo's negative space deliberately",
+    "Google badge dominant in upper-right — felt like a stamp of authority, the second-loudest visual element after the photo",
+    "Cream value-stack panel in lower-left sat over the orange van without competing — gave body copy a clean home, picked up Sharp blue for tick accents",
+    "Sharp-blue CTA button matched the brand — didn't look bolted on",
+    "Phone number '9434 3689' on van preserved and legible — real-world trust signal",
+    "'That's sharp!' tagline on wall preserved — brand voice intact",
+    "Two-brand logo strip (Daikin + MHI) restrained — premium-feeling for trust positioning",
+    "Composition flows top-to-bottom — feels like one ad, not two halves glued together"
+  ],
+  "known_minor_tradeoff": "Top geo banner and bottom-right price pill are slightly small. Sat at the edges of canvas where Meta's auto-cropping protection covers them. Acceptable for production. Re-roll attempt to fix this caused over-correction (price pill became dominant, headline grew too big, hierarchy broke). Lesson: when correcting size issues, give specific size guidance ('increase by 30%') not abstract labels ('meaningful not tiny').",
+  "lessons_for_layer_2": [
+    "VISION-BASED COMPOSITION IS NON-NEGOTIABLE for any photo-led ad. Layer 2 must accept image inputs and analyse them before writing prompts.",
+    "Brand colours visible in the photo must drive the ad's palette — do not invent palettes when the photo's branding gives you one.",
+    "Identify the photo's negative space and place the headline there — never on top of faces.",
+    "Identify branded text/logos in the photo and PRESERVE them — they're authentic trust signals.",
+    "Eye-line direction of subjects matters — if they're looking at the camera (head-on), text can sit beside them. If looking sideways, text should sit in the direction they're looking.",
+    "When briefing modest secondary elements (price in trust ads, geo banners), give specific size guidance not abstract size labels.",
+    "Trust ads break the layout pattern of other archetypes — they're photo-led not split-screen, palette-driven not template-driven, and price-secondary not price-dominant.",
+    "Two brand logos = trust positioning. Three brand logos = direct-response positioning. The choice signals the ad's funnel role visually."
+  ],
+  "full_prompt_used": "You are being given two attached images:\n\nIMAGE 1 (reference ad): Use this as a strong style and layout reference. Match its warm, confident, locally-rooted feel. DO NOT copy its headline, region, or specific palette decisions.\n\nIMAGE 2 (client photo — Sharp Air Conditioning team on van): This is the actual installer team photographed in front of their branded warehouse. Use this image AS PROVIDED. DO NOT modify the people, the van, the visible branding (\"Sharp\", \"9434 3689\", \"sharpairconditioning.com.au\", \"That's sharp!\"), the orange wall background, or the lighting. The authenticity of this real team in their real branded environment IS the entire trust signal.\n\nCreate a square 1080×1080 social media ad for Sharp Air Conditioning, a residential ducted air conditioning installer servicing Central Coast, Newcastle, and Hunter Valley, Australia.\n\nFUNNEL CONTEXT\nCold/warm audience. The job is the strongest local-trust signal in the ad pack — proof of a real local team running a real branded business. This is a \"meet your local installers\" ad, not a price ad and not a feature ad.\n\nCRITICAL CLARITY RULE\nA scroller must understand within ONE SECOND that this is a DUCTED AIR CONDITIONING installer with strong local trust signals. Both the product category AND the geography AND the brand identity must be unmissable.\n\nPALETTE — DRIVEN BY THE PHOTO ITSELF\nThis ad's palette is dictated by Sharp's actual brand identity visible in the photo:\n- VIBRANT ORANGE (dominant — the building wall and van body) — use this as a major design colour, not just background\n- SHARP BLUE (the bright sky-blue/cyan visible in the van's stripe and phone number) — use this as the accent colour for trust badges, CTAs, key callouts\n- NAVY (the team's polo shirts) — use this for typography weight and headline\n- CREAM/OFF-WHITE (the van's body) — use this as a calming neutral\n\nThe ad should feel like an EXTENSION of Sharp's brand, not a generic template with their photo dropped in. Pull the orange across into the design itself. Pull the Sharp blue into accents. The viewer should not be able to tell where Sharp's actual brand ends and the ad design begins — it should all feel unified.\n\nLAYOUT — photo-led, not split-screen\n\nCompose this as a FULL-CANVAS ad where the team photo is the dominant visual layer, with carefully composed text elements integrated into and around it. NOT a split-screen with photo on the right and text on a white panel on the left. The photo should breathe across most of the canvas.\n\nSpecifically:\n\n1. PHOTO TREATMENT\nThe team photo extends full-canvas as the primary visual layer. The orange wall and \"That's sharp!\" tagline visible in the photo are RESPECTED — do not crop them out, do not cover them. The phone number \"9434 3689\" on the van is visible and legible — do not cover it.\n\n2. TOP HEADER STRIP — full canvas width, sitting on top of the photo\nA thin SHARP BLUE strip at the very top, edge-to-edge. Inside it, centred small uppercase caps in white:\n\"CENTRAL COAST · NEWCASTLE · HUNTER VALLEY\"\nThe dot separators are part of the visual signature. The blue echoes Sharp's brand colour.\n\n3. HEADLINE — sits on or near the upper-left, integrated into the photo\nThe headline sits in the upper-left zone of the canvas, on top of (or beside) a portion of the orange wall area where there is no person. Type treatment — flowing rhythm, NOT a chunky stacked block:\n\n   - \"MEET\" or \"HERE'S\" small caps medium-weight in white or navy — sets human framing\n   - \"THE CENTRAL COAST'S\" medium-weight uppercase in white, smaller line\n   - \"TRUSTED\" in oversized italic serif accent OR oversized bold in WHITE on the orange — visual hero word, beautiful treatment\n   - \"DUCTED A/C\" oversized bold uppercase in NAVY — the product clarity element, must be unmissable\n   - \"TEAM\" smaller, completing the line\n\nThe headline should feel like a sentence with rhythm and emphasis, not LOOK like a wall of identically-sized type. It should sit comfortably on the photo, using the orange wall as its background where possible.\n\n4. GOOGLE REVIEWS BADGE — DOMINANT trust element, top-right\nPlace a prominent rectangular trust badge in the upper-right corner area, sitting on or overlapping the photo. Roughly 25-30% of the canvas width. White rectangle with a subtle Sharp-blue border or shadow.\n\nInside the badge, vertically stacked:\n   - Five gold/yellow stars across the top, sized large\n   - Beneath: oversized bold \"168+ 5-STAR REVIEWS\"\n   - Beneath that, smaller, with the Google \"G\" logo: \"VERIFIED ON GOOGLE\"\n\nThe Google G logo MUST be rendered in Google's official multi-colour palette. The badge should feel like a stamp — authoritative, unmissable, the second-loudest visual element after the photo itself.\n\n5. SUB-HEADLINE & VALUE STACK — bottom-left zone\nA semi-opaque white or cream panel in the lower-left of the canvas (over a portion of the photo where the team isn't), containing:\n   - Italic medium-weight, navy: \"Designed, installed & trusted locally since 2014.\"\n   - Three short tick-bullets in Sharp blue ticks:\n     ✓ Locally Owned, Family-Run\n     ✓ $0 Upfront, Interest-Free Finance Available\n     ✓ 5-Year Workmanship Guarantee\n\n(Note: do not write \"0% interest\" — \"interest-free finance available\" is the acceptable phrasing.)\n\n6. CTA BUTTON — bottom-left, beneath the value stack\nRounded pill button in SHARP BLUE with white text: \"BOOK YOUR FREE ON-SITE QUOTE\"\n\n7. PRICE PILL — small, bottom-right zone, on a semi-opaque overlay\nSmall horizontal pill, modest sizing: \"FROM $55 PER WEEK · FULLY INSTALLED\"\nSubdued — trust ad first, price ad second.\n\nBOTTOM STRIP\n\n8. BRAND LOGOS\nThin horizontal strip at the very bottom edge with TWO brand logos evenly spaced, native colours: Daikin, Mitsubishi Heavy Industries.\n\nGLOBAL HARD RULES\n- 1080×1080 aspect ratio\n- Use the team photo (IMAGE 2) AS PROVIDED — do not modify the people, van, branding visible on the van or building, setting, or lighting. Do not regenerate faces. Do not crop out the phone number \"9434 3689\" or the URL \"sharpairconditioning.com.au\" or the \"That's sharp!\" tagline.\n- Maintain ~60px safe-zone padding inside all four edges\n- All text readable at thumbnail size on mobile\n- Maximum 2 brand logos\n- Do NOT include \"0% interest\" — \"interest-free finance available\" is acceptable\n- Do NOT add discount badges, urgency timers, or \"limited time\" language — trust ad, NOT sale ad\n- Do NOT add reaction faces, pain visuals, or aggressive direct-response elements\n- The product category \"DUCTED A/C\" must be unmissable in the headline\n- The Google G logo MUST be rendered in correct official Google colours\n- The PALETTE must be drawn from Sharp's actual brand colours visible in the photo (orange, Sharp blue, navy, cream) — do NOT introduce foreign colours like green, red, purple, or generic corporate blue\n- The ad must feel like an extension of Sharp's brand identity, not a generic template — viewer should not be able to tell where Sharp's brand ends and the ad design begins\n- The headline must have flowing typographic rhythm — different weights/styles across the lines, not a uniform stacked block"
+}

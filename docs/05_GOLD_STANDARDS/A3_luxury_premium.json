@@ -1,0 +1,50 @@
+{
+  "archetype": "A3",
+  "archetype_name": "Luxury Lifestyle",
+  "variant": "premium (no price)",
+  "funnel_stage": "Cold/Warm (premium audience)",
+  "tested_outcome": "Production-ready second pass. First version was beautiful but ambiguous about the product. Second version with clarity rule landed perfectly — premium feel intact, product unmistakeably named.",
+  "input_context": {
+    "city": "Newcastle",
+    "state": "NSW",
+    "headline": "THE QUIET LUXURY OF WHOLE-HOME DUCTED A/C",
+    "headline_accent_phrase": "QUIET LUXURY (in italic serif accent typeface)",
+    "sub_headline": "Whole-home ducted heating & cooling, designed for Newcastle homes.",
+    "value_stack": "Whisper-Quiet Operation | Smart Phone Control | Whole-Home Climate | 7-Year Manufacturer Warranty",
+    "cta": "BOOK A DESIGN CONSULTATION",
+    "badge": "PREMIUM DESIGN-INSTALL",
+    "no_price": true,
+    "brands": ["Daikin", "Mitsubishi Heavy Industries"]
+  },
+  "assets_attached": [
+    {"type": "ref", "asset": "A01 reference ad", "instruction": "Match premium positioning, refined typography, aspirational feel"},
+    {"type": "stock", "asset": "Family lifestyle photo (Australian home interior, candid, faces visible)", "instruction": "Use AS-IS, do not modify people/setting"}
+  ],
+  "key_pivot_from_first_attempt": "First attempt: 'THE QUIET LUXURY EVERY ROOM DESERVES' — too ambiguous, didn't name the product. Bray flagged: scrollers couldn't categorise the ad in the first second. Fix: 'THE QUIET LUXURY OF WHOLE-HOME DUCTED A/C' — kept the elegance/curiosity but added the product name explicitly.",
+  "composition_choices_that_worked": [
+    "Two-half split: text-led left, photo-led right — premium magazine feel",
+    "'QUIET LUXURY' in italic serif, rest in bold sans-serif — typographic contrast does the elegance work",
+    "Sub-headline does double duty: names the product AGAIN (clarity safety net) AND personalises to city",
+    "TWO brand logos only (not three) — fewer logos = more premium",
+    "Subtle airflow vector arrows above ceiling vent in photo — adds product context without clutter",
+    "Cream/navy/soft gold palette emerged from AI — restrained, no bargain colours",
+    "PREMIUM DESIGN-INSTALL badge sized properly (not decorative) — looks intentional",
+    "No price anywhere — the offer is the consultation, not a number",
+    "60px safe-zone padding maintained — CTA, badge, brand strip all properly inside the canvas"
+  ],
+  "what_failed_first_time_and_was_fixed": [
+    "First attempt: 'THE QUIET LUXURY EVERY ROOM DESERVES' — evocative but didn't name product. Confused viewers. Premium aesthetic but unclear what's for sale.",
+    "Fix: added 'OF WHOLE-HOME DUCTED A/C' to headline + named product in sub-headline + made airflow lines slightly more visible",
+    "Lesson: clarity beats cleverness even in premium ads. Big brands can be cryptic because they have brand recognition. Direct-response installers cannot.",
+    "Also: first attempt had 'PREMIUM DESIGN-INSTALL' too small — felt like decorative footnote not meaningful element. Fixed by explicitly briefing 'meaningful element, not decorative footnote'."
+  ],
+  "full_prompt_used": "You are being given two attached images:\n\nIMAGE 1 (reference ad): Use this as a strong style and layout reference. Match its premium positioning, refined typography, and aspirational feel — but DO NOT copy its headline, family photo, or specific colours. Generate fresh ones per the brief below.\n\nIMAGE 2 (lifestyle photo): Use this image AS-IS for the lifestyle hero. Place it in the ad — do not modify the people, the setting, or the lighting. You may apply a very subtle palette adjustment if needed for cohesion, but do not alter what's in the photo.\n\nCreate a square 1080×1080 social media ad for a residential ducted air conditioning installer in Newcastle, Australia.\n\nFUNNEL CONTEXT\nThis ad is for a cold/warm premium audience — buyers in the aspirational mindset, not the bargain mindset. The job is to elevate ducted air conditioning as a desirable home upgrade, not push a discount. No urgency, no aggressive pricing — but the product category must remain instantly clear.\n\nCRITICAL CLARITY RULE\nA scroller must understand within ONE SECOND that this ad is for DUCTED AIR CONDITIONING. The category must be unmissable. Premium aesthetic does not override this — clarity always beats cleverness. The product name must appear clearly in either the headline, the sub-headline, or both.\n\nMOOD & STYLE\nRefined, sophisticated, aspirational. Choose a fresh elegant colour palette of your own — interiors-magazine, premium-real-estate, modern-home-brand territory. Avoid bargain-bin colour combinations. Pick typography that mixes a strong modern sans-serif for the body with one elegant accent typeface (italic serif works well) for one or two key words. Generous breathing room around all elements.\n\nLAYOUT (left half / right half split)\n\nLEFT HALF — text-led\n1. TOP BADGE\nClearly readable badge upper-left: \"PREMIUM DESIGN-INSTALL\" uppercase. Must be large enough to read at thumbnail size — NOT tiny. Meaningful element, not decorative footnote.\n\n2. HEADLINE — left half, vertically centred\nStacked: \"THE QUIET LUXURY OF WHOLE-HOME DUCTED A/C\"\n\"QUIET LUXURY\" set in elegant accent typeface (italic serif works beautifully) — visual signature. Rest in oversized bold sans-serif. Three or four lines stacked. \"DUCTED A/C\" must be clearly visible — do NOT shrink it.\n\n3. SUB-HEADLINE\nItalic accent text, clearly readable: \"Whole-home ducted heating & cooling, designed for Newcastle homes.\"\n\n4. VALUE STACK\nFour refined tick-bullets, generous spacing:\n   ✓ Whisper-Quiet Operation\n   ✓ Smart Phone Control\n   ✓ Whole-Home Climate\n   ✓ 7-Year Manufacturer Warranty\n\n5. CTA BUTTON — bottom-left\nRefined rounded pill: \"BOOK A DESIGN CONSULTATION\"\nMedium uppercase. Understated colour — invitation, not hard sell. Meaningful size, not footer element.\n\nRIGHT HALF — visual hero\n6. LIFESTYLE PHOTO\nAttached photo as hero. Right half, full-height. Cinematic, aspirational. Do NOT modify people or setting.\n\n7. SUBTLE AIRFLOW VECTOR ARROWS\nAbove the people, very subtle thin curving lines suggesting climate flow downward. Barely visible — refined design touch, not heavy graphic.\n\nBOTTOM STRIP\n8. Two brand logos, evenly spaced, native colours: Daikin, Mitsubishi Heavy Industries. Just TWO — premium positioning is built on fewer logos. Sit on contrasting band at bottom edge.\n\nGLOBAL HARD RULES\n- 1080×1080\n- Lifestyle photo AS PROVIDED — do not modify people, do not regenerate faces\n- Do NOT include any pricing — no per-week, no fixed, no \"from $X\". This is no-price premium variant.\n- Do NOT include \"0% interest\" or \"interest-free\" or \"discount\" or \"sale\" or \"off\"\n- Do NOT add discount badges or urgency timers\n- Do NOT add review badges\n- Maximum 2 brand logos\n- Generous breathing room — NOT dense or cluttered\n- \"QUIET LUXURY\" visually distinct from rest of headline (italic serif treatment)\n- \"DUCTED A/C\" clearly visible, sized as meaningful part of headline\n- Maintain 60px safe-zone padding inside all four edges\n- Every text element readable at thumbnail size",
+  "lessons_for_layer_2": [
+    "CLARITY RULE is non-negotiable — premium ads must still name the product. Belt-and-braces: name in headline AND sub-headline.",
+    "Two-half layout (text left, photo right) is the standard premium pattern — avoids the dense direct-response feel",
+    "Italic serif accent on 1-2 key words is the elegance tell — works in any premium ad",
+    "Premium positioning uses FEWER logos (2 not 3), no urgency, no badges with discounts, no prices",
+    "Sub-headline is the safety net — when the headline tries to be evocative, the sub-headline carries the clarity load",
+    "Always size badges/labels as 'meaningful elements not decorative footnotes' — the AI defaults to too small unless told"
+  ]
+}

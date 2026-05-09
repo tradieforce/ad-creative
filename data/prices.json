@@ -1,0 +1,135 @@
+[
+  {
+    "city": "Sydney",
+    "fixed": "$5,999",
+    "anchor": "$7,999",
+    "perWeek": "$59",
+    "rebate": "$1,000 NSW ESS"
+  },
+  {
+    "city": "Melbourne",
+    "fixed": "$5,999",
+    "anchor": "$7,999",
+    "perWeek": "$56",
+    "rebate": "$7,000 VIC heat pump"
+  },
+  {
+    "city": "Brisbane",
+    "fixed": "$9,990",
+    "anchor": "$12,490",
+    "perWeek": "$54",
+    "rebate": ""
+  },
+  {
+    "city": "Perth",
+    "fixed": "$9,990",
+    "anchor": "$12,990",
+    "perWeek": "$58",
+    "rebate": ""
+  },
+  {
+    "city": "Adelaide",
+    "fixed": "$9,490",
+    "anchor": "$11,990",
+    "perWeek": "$53",
+    "rebate": ""
+  },
+  {
+    "city": "Newcastle",
+    "fixed": "$9,990",
+    "anchor": "$12,490",
+    "perWeek": "$55",
+    "rebate": "$1,000 NSW ESS"
+  },
+  {
+    "city": "Central Coast",
+    "fixed": "",
+    "anchor": "",
+    "perWeek": "$57",
+    "rebate": ""
+  },
+  {
+    "city": "Hunter Valley",
+    "fixed": "",
+    "anchor": "",
+    "perWeek": "$54",
+    "rebate": ""
+  },
+  {
+    "city": "Wollongong",
+    "fixed": "",
+    "anchor": "",
+    "perWeek": "$56",
+    "rebate": ""
+  },
+  {
+    "city": "Gold Coast",
+    "fixed": "",
+    "anchor": "",
+    "perWeek": "$58",
+    "rebate": ""
+  },
+  {
+    "city": "Sunshine Coast",
+    "fixed": "",
+    "anchor": "",
+    "perWeek": "$55",
+    "rebate": ""
+  },
+  {
+    "city": "Geelong",
+    "fixed": "",
+    "anchor": "",
+    "perWeek": "$52",
+    "rebate": ""
+  },
+  {
+    "city": "Ballarat",
+    "fixed": "",
+    "anchor": "",
+    "perWeek": "$51",
+    "rebate": ""
+  },
+  {
+    "city": "Bendigo",
+    "fixed": "",
+    "anchor": "",
+    "perWeek": "$53",
+    "rebate": ""
+  },
+  {
+    "city": "Northern Melbourne",
+    "fixed": "",
+    "anchor": "",
+    "perWeek": "$56",
+    "rebate": ""
+  },
+  {
+    "city": "Carrum Downs",
+    "fixed": "",
+    "anchor": "",
+    "perWeek": "$57",
+    "rebate": ""
+  },
+  {
+    "city": "Ballina / Lennox Head / Byron Bay",
+    "fixed": "",
+    "anchor": "",
+    "perWeek": "$58",
+    "rebate": ""
+  },
+  {
+    "city": "Far North Coast",
+    "fixed": "",
+    "anchor": "",
+    "perWeek": "$56",
+    "rebate": ""
+  },
+  {
+    "city": "Southern Highlands / Macarthur",
+    "fixed": "",
+    "anchor": "",
+    "perWeek": "$54",
+    "rebate": ""
+  }
+]

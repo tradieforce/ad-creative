@@ -1,0 +1,63 @@
+{
+  "archetype": "A5",
+  "archetype_name": "Seasonal Pain",
+  "variant": "summer (Don't Melt)",
+  "funnel_stage": "Cold/Warm",
+  "tested_outcome": "Production-ready. Validated the locked-component pattern for house diagrams in production. The diagram-included version is the stronger ad — explainer work matters for cold/warm audiences.",
+  "input_context": {
+    "city": "Sydney",
+    "state": "NSW",
+    "headline": "Don't MELT This Summer!",
+    "headline_accent": "MELT oversized in hot red/orange, with grunge texture",
+    "sub_headline": "Whole-home ducted air conditioning — installed before the next heatwave hits.",
+    "per_week_price": "$59",
+    "value_stack": "Whole-Home Comfort, All Season | $0 Upfront | Smart Zoning Available | 5-Year Guarantee",
+    "cta": "GET RELIEF NOW",
+    "badge": "30% OFF (top-right circular, slightly tilted, yellow)",
+    "brands": [
+      "Daikin",
+      "Mitsubishi Heavy Industries",
+      "Samsung"
+    ]
+  },
+  "assets_attached": [
+    {
+      "type": "ref",
+      "asset": "A08 reference ad",
+      "instruction": "Match style/density/visceral pain feel"
+    },
+    {
+      "type": "stock",
+      "asset": "Reaction photo (older man wiping forehead with tissue, glass of water in hand)",
+      "instruction": "Use AS-IS, do not modify person/expression. Visceral heat-discomfort hook."
+    },
+    {
+      "type": "locked",
+      "asset": "House diagram (existing wedge silhouette)",
+      "instruction": "Use AS PROVIDED in lower-right corner. Subtle palette adjustment for cohesion only — do not redraw structure."
+    }
+  ],
+  "key_pivot_validating_locked_component_pattern": "Originally tested without diagram (Image 2) — clean ad but missed explainer work for cold audiences. Re-tested with locked house diagram component attached (Image 1) — diagram landed properly as tertiary corner accent, AI integrated palette without breaking structure. Validates the locked-component architecture for production: AI never invents technical illustrations, only composites uploaded assets.",
+  "composition_choices_that_worked": [
+    "Hot red/orange right half + cooling pale-blue price pill = visual story of pain → relief in palette",
+    "MELT in oversized grunge yellow/red type — feels visceral, not designed",
+    "AI added sweat detail on the man's face + a small electric fan in the photo area unprompted — both reinforced the heat story",
+    "Diagram in the lower-right at ~15% canvas height — present enough to answer 'what am I buying?' but small enough to not compete with price block",
+    "AI applied subtle cool-blue tint shift to the diagram so it reads as 'the relief' visually — exactly what the prompt asked for",
+    "Yellow CTA button (different colour from the discount badge) — better hierarchy, no two elements fighting for the same attention",
+    "Older man casting was unexpectedly strong — heat discomfort reads as more sympathetic / less performative than younger reaction shots"
+  ],
+  "lessons_for_layer_2": [
+    "LOCKED COMPONENT PATTERN VALIDATED: Diagrams must be uploaded, never generated. AI composites around them faithfully. Same pattern as condensers, brand logos, owner photos.",
+    "For pain-led ads, casting is critical — older or middle-aged subjects often outperform younger ones because the discomfort reads as sympathetic rather than performative",
+    "Hot/cool palette contrast IS the visual story for seasonal pain ads — heat colours on the discomfort side, cool colours on the relief/price side. Bake this into the prompt structure.",
+    "Diagram as tertiary corner accent (15-20% canvas) outperforms diagram as hero or no diagram at all for cold/warm audiences — answers the 'what am I buying' question without competing with price",
+    "When briefing locked components, give explicit permission for palette integration ('subtle tint shift to integrate with mood') WHILE forbidding structural changes. AI handles this distinction well.",
+    "Grunge/textured type treatment on the visceral word ('MELT') makes the pain feel real not designed. Worth requesting explicitly for any visceral-pain archetype."
+  ],
+  "system_layer_implications": {
+    "components_library_priority": "House diagrams are the highest-priority locked component to populate. Used by A1, A4 (cold variant), A5, A6 (some variants), A7 (zoning variant), A8. Cross-cuts most archetypes.",
+    "diagram_palette_variants_useful": "If components library has multiple diagram variants (warm-coloured, cool-coloured, neutral), Layer 2 can pick the one that pre-matches the ad's mood — saves the AI from doing the tint shift."
+  },
+  "full_prompt_used": "You are being given three attached images:\n\nIMAGE 1 (reference ad): Use this as a strong style and layout reference. Match its visceral pain-led feel, the reaction-photo hero treatment, and the price/badge positioning — but DO NOT copy its headline, exact palette, or specific composition. Generate fresh ones per the brief below.\n\nIMAGE 2 (reaction photo — sweating man): Use this image AS-IS as the left-half hero. Place it filling the left half of the canvas, full-height, edge-to-edge with the left side bleeding off canvas. Do not modify the person's face or expression. The visceral heat-discomfort feel of this photo is the entire emotional hook of the ad.\n\nIMAGE 3 (house diagram — locked component): Use this diagram as a small accent in the lower-right corner area. Use it AS PROVIDED — do not modify its shape, ducting, vents, colours, or proportions. You may apply a subtle palette adjustment to integrate it with the ad's mood, but the diagram's structure must remain identical to the source.\n\nCreate a square 1080×1080 social media ad for a residential ducted air conditioning installer in Sydney, Australia.\n\nFUNNEL CONTEXT\nThis ad is for a cold/warm summer-season audience. The job is to create visceral identification with summer discomfort, then deliver ducted A/C as the relief. Emotional pain hit → product as solution. Mid-funnel — assumes some product awareness but uses pain to drive urgency.\n\nCRITICAL CLARITY RULE\nA scroller must understand within ONE SECOND that this ad is for DUCTED AIR CONDITIONING as the relief from summer heat. The product must appear in the headline OR sub-headline unmissably.\n\nMOOD & STYLE\nVisceral. Hot. Uncomfortable, then resolved. Choose a fresh palette of your own that communicates HEAT — warm coral, hot orange, sunset red, peachy tones — paired with cooling whites or pale blues for the relief/price elements. Pick energetic display typography for the headline. Should feel like a scroll-stopping pain ad, not a polished brochure. Slightly aggressive, slightly emotional, scroll-stopping. The contrast between hot/discomfort and cool/relief is the visual story.\n\nLAYOUT (left half / right half split)\n\nLEFT HALF — visual hero\n1. REACTION PHOTO\nThe attached sweating-man photo fills the left half of the canvas, full-height. Bleeds off the left edge. Use AS PROVIDED — do not modify the person, do not regenerate the face. The photo is the emotional anchor of the ad.\n\nRIGHT HALF — text and offer\n\n2. HEADLINE — top-right\nStacked headline reading exactly: \"Don't MELT This Summer!\"\nMix of weights:\n   - \"Don't\" in medium-weight title case\n   - \"MELT\" oversized bold uppercase in a contrasting accent colour — the visceral hit, set in the hottest colour in the palette (deep red, hot orange, or sunset coral)\n   - \"This Summer!\" in medium-weight, smaller, white or light contrast colour\nTwo or three lines stacked.\n\n3. SUB-HEADLINE — beneath the headline\nItalic, clearly readable: \"Whole-home ducted air conditioning — installed before the next heatwave hits.\"\n\n4. PRICE PILL — middle-right area\nA horizontal pill-shaped panel containing three lines of text, vertically stacked, on a cooling/relief background colour (white or pale ice-blue):\n   - Small uppercase caps: \"DUCTED A/C INSTALLED FOR\"\n   - Oversized bold dominant: \"$59\"\n   - Small uppercase caps: \"PER WEEK\"\n\n5. VALUE STACK — beneath or beside the price pill\nFour short tick-bullets, evenly spaced, on the right half:\n   ✓ Whole-Home Comfort, All Season\n   ✓ $0 Upfront\n   ✓ Smart Zoning Available\n   ✓ 5-Year Guarantee\n\n6. CTA BUTTON — bottom-right\nRounded pill button reading: \"GET RELIEF NOW\"\nBold uppercase, high-contrast — should pop as the resolution to the heat pain.\n\n7. DISCOUNT BADGE — top-right corner or bottom-left\nCircular burst badge reading: \"30% OFF\"\nBold contrasting colour, slightly tilted.\n\nOPTIONAL ACCENT\n\n8. SMALL HOUSE DIAGRAM — lower-right area (small accent, NOT hero)\nPlace the attached house diagram (IMAGE 3) as a small accent in the lower-right corner area. Roughly 15-20% of canvas height, secondary to the price block. Use the diagram AS PROVIDED — do not modify its shape, ducting, vents, colours, or proportions. You may apply a subtle palette adjustment to integrate it with the ad's mood (e.g. slight tint shift to cooling blues to read as \"the relief\"), but the diagram's structure must remain identical to the source. It should NOT compete with the reaction photo or the price; it's a tertiary trust/explainer element.\n\nBOTTOM STRIP\n\n9. BRAND LOGOS\nThin horizontal strip at the very bottom edge with three brand logos evenly spaced, native colours: Daikin, Mitsubishi Heavy Industries, Samsung. On a light/contrasting band.\n\nGLOBAL HARD RULES\n- 1080×1080 aspect ratio (square), nothing else\n- Use the reaction photo AS PROVIDED — do not modify the person, do not regenerate the face\n- House diagram (IMAGE 3) must be used AS PROVIDED — do not redraw it, do not regenerate the ducting, do not modify the silhouette. Subtle palette/tint adjustment for cohesion only.\n- Maintain ~60px safe-zone padding inside all four edges\n- All text readable at thumbnail size on mobile — every label legible\n- Maximum 3 brand logos\n- Do NOT include the words \"0% interest\" or \"interest-free\" anywhere\n- Do NOT add review badges or star ratings\n- Do NOT add fixed-price installation amounts — only the $59/week price\n- Per-week price block is NOT optional — must be visible\n- The product category \"DUCTED A/C\" / \"DUCTED AIR CONDITIONING\" must appear unmissable in the headline or sub-headline\n- The HOT/COOL contrast is the visual story — heat colours on the left/headline, cool colours on the price/relief side\n- If the output feels calm or polished, it has failed — this should feel slightly visceral, slightly uncomfortable, then resolved"
+}

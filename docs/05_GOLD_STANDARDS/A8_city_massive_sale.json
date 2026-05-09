@@ -1,0 +1,48 @@
+{
+  "archetype": "A8",
+  "archetype_name": "City Massive Sale",
+  "variant": "per_week (Perth, MHI single-brand premium)",
+  "funnel_stage": "Warm/Hot",
+  "tested_outcome": "Production-ready first pass. Condenser used as-is properly, hierarchy clean, $58/week dominant, 'EASIER THAN YOU THINK' accent did the curiosity-gap work.",
+  "input_context": {
+    "city": "Perth",
+    "state": "WA",
+    "headline": "PERTH HOMEOWNERS \u2014 DUCTED A/C IS EASIER THAN YOU THINK",
+    "headline_accent_phrase": "EASIER THAN YOU THINK (set in contrasting colour for curiosity gap)",
+    "sub_headline": "10kW Mitsubishi Heavy Industries Ducted System",
+    "per_week_price": "$58",
+    "value_stack": "10kW MHI Ducted System | 7-Year Manufacturer Warranty | Locally Installed by Perth Experts | $0 Upfront",
+    "cta": "LOCK IN YOUR INSTALL",
+    "badge": "ZERO UPFRONT (with $ icon)",
+    "trust_pill": "LOCALLY INSTALLED BY PERTH EXPERTS (with location-pin icon)",
+    "single_brand_positioning": "MHI only \u2014 no bottom logo strip, brand established via sub-headline"
+  },
+  "assets_attached": [
+    {
+      "type": "ref",
+      "asset": "A19 reference ad (Sydney massive sale)",
+      "instruction": "Match style/density/aggressive direct-response feel"
+    },
+    {
+      "type": "locked",
+      "asset": "Double-fan condenser product shot",
+      "instruction": "Use AS-IS, do not modify shape/fans/branding/proportions"
+    }
+  ],
+  "composition_choices_that_worked": [
+    "Geographic targeting unmissable \u2014 'PERTH HOMEOWNERS' top banner + 'LOCALLY INSTALLED BY PERTH EXPERTS' bottom pill",
+    "Headline curiosity gap: 'EASIER THAN YOU THINK' as accent colour \u2014 counter-frames common objection that ducted is complex/disruptive",
+    "Single-brand positioning is CLEANER than multi-brand for premium feel \u2014 no logo strip, brand named in sub-headline + value stack",
+    "Condenser as locked component on right ~40% canvas width \u2014 AI added subtle orange backlight glow to integrate without modifying product",
+    "Price block: 'FROM' / oversized $58 / '/WEEK' in accent colour / 'FULLY INSTALLED' \u2014 communicates affordability + completeness",
+    "Aggressive black/orange palette emerged from AI \u2014 direct-response without looking like Harvey Norman flyer"
+  ],
+  "key_pattern": "Locked product hero (condenser) + AI-generated context around it. Same pattern works for any product hero (controllers, vents, etc.) \u2014 upload the real product, brief AI to compose around it, never let AI generate the product itself.",
+  "full_prompt_used": "You are being given two attached images:\n\nIMAGE 1 (reference ad): Use this as a strong style and layout reference. Match its visual energy, density, aggressive direct-response feel, and overall composition \u2014 but DO NOT copy its headline, city, brand, or specific colours. Generate fresh ones per the brief below.\n\nIMAGE 2 (condenser product shot): Use this image AS-IS for the condenser hero. Place it in the ad, do not modify the unit's shape, fan count, branding, or proportions. Recolour or relight only if needed to match the ad's palette \u2014 but the unit's structure must remain identical to the source.\n\nCreate a square 1080\u00d71080 social media ad for a residential ducted air conditioning installer in Perth, Australia.\n\nFUNNEL CONTEXT\nThis ad is for a hot/warm audience \u2014 buyers who already know what ducted A/C is and are deciding between providers. The job is to push them past the line with a clear local offer and aggressive pricing. No explainer work needed.\n\nMOOD & STYLE\nAggressive, direct-response, unmissable. Choose a fresh dark high-contrast palette of your own with one strong accent colour for the offer elements. Bold display typography for the headline. All text must be readable at thumbnail size. This should feel like a volume-driver retail ad \u2014 strong, bold, slightly loud, but professional.\n\nLAYOUT (top to bottom)\n\n1. TOP BANNER STRIP\nSmall uppercase caps across the very top: \"PERTH HOMEOWNERS\"\nThin strip with subtle accent line beneath.\n\n2. HEADLINE \u2014 upper third\nOversized bold uppercase: \"DUCTED A/C IS EASIER THAN YOU THINK\"\nStack across two or three lines. \"EASIER THAN YOU THINK\" set in contrasting accent colour. Dominant element.\n\n3. SUB-HEADLINE\n\"10kW Mitsubishi Heavy Industries Ducted System\" medium-weight uppercase.\n\n4. HERO VISUAL \u2014 centre/right, roughly 40% of canvas width\nPlace the attached condenser product shot as hero. Right side, ~40% canvas width. Use AS PROVIDED \u2014 same shape, fan configuration, proportions. May add soft glow/backdrop for palette integration, do not modify unit itself.\n\n5. PRICE BLOCK \u2014 left side, mid canvas\nStacked left-aligned text:\n   - Small uppercase caps: \"FROM\"\n   - Oversized bold dominant: \"$58\"\n   - Medium accent colour: \"/WEEK\"\n   - Beneath: small caps: \"FULLY INSTALLED\"\n\n6. VALUE STACK \u2014 beneath price block, left side\nFour tick-bullets:\n   \u2713 10kW MHI Ducted System\n   \u2713 7-Year Manufacturer Warranty\n   \u2713 Locally Installed by Perth Experts\n   \u2713 $0 Upfront\n\n7. CTA BUTTON \u2014 bottom-left\nRounded pill: \"LOCK IN YOUR INSTALL\"\n\n8. BADGE \u2014 bottom-right\nBold pill/burst with $ icon: \"ZERO UPFRONT\"\n\n9. LOCATION TRUST PILL \u2014 bottom area\nSmall pill with location-pin icon: \"LOCALLY INSTALLED BY PERTH EXPERTS\"\n\nHARD RULES\n- 1080\u00d71080 square\n- All text readable at thumbnail size\n- Condenser used AS PROVIDED \u2014 no fan changes, no brand mark changes, no re-rendering\n- Do NOT include \"0% interest\" or \"interest-free\"\n- Do NOT add people, faces, hands\n- Do NOT add review badges\n- Single-brand ad \u2014 NO multi-brand logo strip at bottom\n- \"PERTH\" must appear in the top banner",
+  "lessons_for_layer_2": [
+    "Locked component pattern: tell AI what to use AS-IS upfront, what's permitted to change (recolour for palette) and what isn't (shape/proportions/branding)",
+    "Single-brand vs multi-brand is a meaningful positioning lever \u2014 single-brand feels premium, multi-brand feels retail",
+    "Curiosity-gap headline accent ('EASIER THAN YOU THINK') counter-frames objections \u2014 useful pattern for any cold/warm transition ad",
+    "Geographic anchoring belongs in 3 places minimum: top banner, value stack ('Locally installed by X'), bottom trust pill \u2014 Meta uses geo-targeting + the ad must reinforce it"
+  ]
+}
