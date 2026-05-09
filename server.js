@@ -1,3 +1,4 @@
+import { join } from 'node:path';
 import dotenv from 'dotenv';
 // override: true so a stale empty ANTHROPIC_API_KEY in the shell
 // doesn't shadow the real key in .env (we hit this on macOS).
@@ -38,6 +39,12 @@ app.use(cookieParser());
 app.post('/api/auth/login', loginHandler);
 app.post('/api/auth/logout', logoutHandler);
 app.get('/api/health', (_req, res) => res.json({ ok: true, at: new Date().toISOString() }));
+
+// /login → serve the login HTML. Vercel's vercel.json rewrites handle this
+// in prod, but locally Express needs an explicit route.
+app.get('/login', (_req, res, next) => {
+  res.sendFile(join(UI_DIR, 'login.html'), (err) => { if (err) next(err); });
+});
 
 // Everything below this is gated by ADMIN_PASSWORD if set.
 app.use(authMiddleware);
