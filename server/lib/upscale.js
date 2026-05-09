@@ -23,49 +23,62 @@ async function replicateUpscale(buf, scale = 4) {
   const token = process.env.REPLICATE_API_TOKEN;
   if (!token) return null;
 
-  const b64 = buf.toString('base64');
-  const dataUri = 'data:image/png;base64,' + b64;
+  // CRITICAL: every fetch must be try/catched. Network failures (DNS, timeout,
+  // connection refused) throw rather than return a non-ok response. Without
+  // catching, the error propagates up through upscalePipeline → generate.js
+  // and aborts the whole generation.
+  try {
+    const b64 = buf.toString('base64');
+    const dataUri = 'data:image/png;base64,' + b64;
 
-  // POST prediction.
-  const create = await fetch('https://api.replicate.com/v1/predictions', {
-    method: 'POST',
-    headers: {
-      Authorization: `Token ${token}`,
-      'content-type': 'application/json',
-      Prefer: 'wait',  // synchronous wait up to 60s
-    },
-    body: JSON.stringify({
-      version: REPLICATE_VERSION_REAL_ESRGAN,
-      input: { image: dataUri, scale, face_enhance: false },
-    }),
-  });
-  if (!create.ok) {
-    const t = await create.text();
-    console.warn('[upscale] Replicate create failed:', create.status, t.slice(0, 200));
+    const create = await fetch('https://api.replicate.com/v1/predictions', {
+      method: 'POST',
+      headers: {
+        Authorization: `Token ${token}`,
+        'content-type': 'application/json',
+        Prefer: 'wait',
+      },
+      body: JSON.stringify({
+        version: REPLICATE_VERSION_REAL_ESRGAN,
+        input: { image: dataUri, scale, face_enhance: false },
+      }),
+      // Cap individual fetch at 90s so we don't hang indefinitely.
+      signal: AbortSignal.timeout(90_000),
+    });
+    if (!create.ok) {
+      const t = await create.text().catch(() => '');
+      console.warn('[upscale] Replicate create failed:', create.status, t.slice(0, 200));
+      return null;
+    }
+    let pred = await create.json();
+
+    let tries = 0;
+    while (pred.status !== 'succeeded' && pred.status !== 'failed' && pred.status !== 'canceled' && tries < 60) {
+      await new Promise((r) => setTimeout(r, 2000));
+      try {
+        const get = await fetch(pred.urls.get, {
+          headers: { Authorization: `Token ${token}` },
+          signal: AbortSignal.timeout(15_000),
+        });
+        if (!get.ok) break;
+        pred = await get.json();
+      } catch (e) { console.warn('[upscale] poll fetch failed:', e.message); break; }
+      tries++;
+    }
+    if (pred.status !== 'succeeded') {
+      console.warn('[upscale] Replicate did not succeed:', pred.status, pred.error || '');
+      return null;
+    }
+
+    const outUrl = Array.isArray(pred.output) ? pred.output[0] : pred.output;
+    if (!outUrl) return null;
+    const dl = await fetch(outUrl, { signal: AbortSignal.timeout(60_000) });
+    if (!dl.ok) return null;
+    return Buffer.from(await dl.arrayBuffer());
+  } catch (e) {
+    console.warn('[upscale] Replicate threw — falling back to sharp:', e.message);
     return null;
   }
-  let pred = await create.json();
-
-  // If not finished synchronously, poll.
-  let tries = 0;
-  while (pred.status !== 'succeeded' && pred.status !== 'failed' && pred.status !== 'canceled' && tries < 60) {
-    await new Promise((r) => setTimeout(r, 2000));
-    const get = await fetch(pred.urls.get, { headers: { Authorization: `Token ${token}` } });
-    if (!get.ok) break;
-    pred = await get.json();
-    tries++;
-  }
-  if (pred.status !== 'succeeded') {
-    console.warn('[upscale] Replicate prediction did not succeed:', pred.status, pred.error || '');
-    return null;
-  }
-
-  const outUrl = Array.isArray(pred.output) ? pred.output[0] : pred.output;
-  if (!outUrl) return null;
-  const dl = await fetch(outUrl);
-  if (!dl.ok) return null;
-  const out = Buffer.from(await dl.arrayBuffer());
-  return out;
 }
 
 async function sharpUpscale(buf, targetW, targetH) {
