@@ -23,6 +23,8 @@ import { join } from 'node:path';
 import { DATA_DIR, FILES } from './paths.js';
 import { readJSON, writeJSON, patchJSON, readText, writeText } from './store.js';
 
+// (DATA_DIR also referenced inside pathFor for dynamic keys)
+
 const HAS_PG = !!process.env.DATABASE_URL || !!process.env.POSTGRES_URL;
 
 // ── JSON-FILE BACKEND (dev) ───────────────────────────────────────────────
@@ -32,13 +34,11 @@ const fileBackend = {
   async readDoc(key) {
     if (key === 'master-prompt') return await readText(FILES.masterPrompt, '');
     const path = pathFor(key);
-    if (!path) throw new Error('unknown doc key: ' + key);
     return await readJSON(path, defaultFor(key));
   },
   async writeDoc(key, value) {
     if (key === 'master-prompt') return await writeText(FILES.masterPrompt, value);
     const path = pathFor(key);
-    if (!path) throw new Error('unknown doc key: ' + key);
     return await writeJSON(path, value);
   },
   async patchDoc(key, mutator) {
@@ -49,7 +49,6 @@ const fileBackend = {
       return;
     }
     const path = pathFor(key);
-    if (!path) throw new Error('unknown doc key: ' + key);
     return await patchJSON(path, mutator, defaultFor(key));
   },
 
@@ -218,12 +217,15 @@ function pathFor(key) {
     case 'components':    return FILES.components;
     case 'prices':        return FILES.prices;
     case 'ads':           return FILES.ads;
-    default:              return null;
+    default:
+      // Dynamic keys (packs, custom config, etc.) — store under data/<key>.json
+      return join(DATA_DIR, key.replace(/[^a-z0-9_-]/gi, '_') + '.json');
   }
 }
 function defaultFor(key) {
   if (key === 'master-prompt') return '';
-  return [];   // every other doc is an array
+  if (key.startsWith('pack_')) return null;       // packs are objects
+  return [];   // every other top-level doc is an array
 }
 
 export const db = HAS_PG ? pgBackend : fileBackend;

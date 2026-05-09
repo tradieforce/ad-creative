@@ -18,6 +18,13 @@ import { masterPromptRouter } from './server/routes/masterPrompt.js';
 import { goldsRouter } from './server/routes/golds.js';
 import { generateRouter } from './server/routes/generate.js';
 import { editsRouter } from './server/routes/edits.js';
+import { packsRouter } from './server/routes/packs.js';
+import { reviewRouter } from './server/routes/review.js';
+import { cronRouter } from './server/routes/cron.js';
+import { spendRouter } from './server/routes/spend.js';
+import { initSentry, sentryErrorMiddleware } from './server/lib/sentry.js';
+
+await initSentry();
 
 const app = express();
 const PORT = Number(process.env.PORT || 3000);
@@ -45,6 +52,10 @@ app.use('/api/master-prompt', masterPromptRouter);
 app.use('/api/golds', goldsRouter);
 app.use('/api/generate', generateRouter);
 app.use('/api/edits', editsRouter);
+app.use('/api/packs', packsRouter);
+app.use('/api/review', reviewRouter);
+app.use('/api/cron', cronRouter);
+app.use('/api/spend', spendRouter);
 
 // Static assets.
 app.use('/assets', express.static(ASSETS_DIR, {
@@ -61,6 +72,9 @@ app.use('/assets', express.static(ASSETS_DIR, {
 // UI shell — in production Vercel serves /public statically and never reaches here.
 // Locally, this serves the same files for parity.
 app.use(express.static(UI_DIR));
+
+// Sentry error reporter (no-op when SENTRY_DSN unset).
+app.use(sentryErrorMiddleware);
 
 // Final error handler — turn validation errors / lookups into clean JSON.
 app.use((err, _req, res, _next) => {

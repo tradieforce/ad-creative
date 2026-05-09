@@ -1,0 +1,246 @@
+{
+  "pack_id": "pack_moxq5poh",
+  "client_id": "sharp_aircon",
+  "created_at": "2026-05-09T02:28:26.562Z",
+  "skipped": {
+    "A10": "no team/owner/van photo",
+    "A6": null
+  },
+  "pack_balance": {
+    "fixed_price_archetype": "A4",
+    "total_ads": 9,
+    "funnel_distribution": {
+      "Cold/Warm": 3,
+      "Cold/Warm OR Warm/Hot": 1,
+      "Warm/Hot": 4,
+      "Hot": 1
+    }
+  },
+  "entries": [
+    {
+      "pack_id": "pack_moxq5poh",
+      "archetype": "A1",
+      "archetype_name": "Energy Bill Hero",
+      "funnel_stage": "Cold/Warm",
+      "client_id": "sharp_aircon",
+      "picks": {
+        "headline": "SAVE UP TO 30% ON YOUR POWER BILLS",
+        "sub_headline": "",
+        "value_stack": "Cuts Energy Use by Up to 30% | $1,200 in Free Bonuses | Locally Licensed & Insured | $0 Upfront",
+        "cta": "REQUEST A FREE QUOTE TODAY!",
+        "badge": "LIMITED TIME ONLY"
+      },
+      "component_keys": [
+        "house_3d_blue",
+        "house_3d_warm",
+        "house_3d_dark",
+        "house_3d_zones"
+      ],
+      "attach_client_photos": [],
+      "quality": "high",
+      "n_candidates": 3,
+      "price_treatment": "per_week",
+      "pack_position": 1
+    },
+    {
+      "pack_id": "pack_moxq5poh",
+      "archetype": "A2",
+      "archetype_name": "Speed Guarantee",
+      "funnel_stage": "Cold/Warm OR Warm/Hot",
+      "client_id": "sharp_aircon",
+      "picks": {
+        "headline": "FROM QUOTE TO COOL IN {{install_guarantee_days}}",
+        "sub_headline": "",
+        "value_stack": "We Don't Make You Wait | Premium Brands Only | $0 Upfront | 5-Year Warranty",
+        "cta": "GET A FAST QUOTE",
+        "badge": "$0 UPFRONT"
+      },
+      "component_keys": [
+        "house_3d_blue",
+        "house_3d_warm",
+        "house_3d_dark",
+        "house_3d_zones"
+      ],
+      "attach_client_photos": [],
+      "quality": "high",
+      "n_candidates": 3,
+      "price_treatment": "per_week",
+      "pack_position": 2
+    },
+    {
+      "pack_id": "pack_moxq5poh",
+      "archetype": "A3",
+      "archetype_name": "Luxury Lifestyle",
+      "funnel_stage": "Cold/Warm",
+      "client_id": "sharp_aircon",
+      "picks": {
+        "headline": "TURN YOUR HOUSE INTO A LUXURY HAVEN WITH DUCTED A/C",
+        "sub_headline": "",
+        "value_stack": "Premium Daikin / Mitsubishi System | Whisper-Quiet Operation | Smart Phone Control | 5-Year Manufacturer Warranty",
+        "cta": "BOOK A FREE HOME CONSULT",
+        "badge": "EXCLUSIVE PROMO"
+      },
+      "component_keys": [
+        "ctrl_ipad_airtouch",
+        "ctrl_phone_app",
+        "ctrl_combo",
+        "fam_couch_summer"
+      ],
+      "attach_client_photos": [],
+      "quality": "high",
+      "n_candidates": 3,
+      "price_treatment": "no_price",
+      "pack_position": 3
+    },
+    {
+      "pack_id": "pack_moxq5poh",
+      "archetype": "A4",
+      "archetype_name": "Problem/Solution Urgency",
+      "funnel_stage": "Warm/Hot",
+      "client_id": "sharp_aircon",
+      "picks": {
+        "headline": "DOES YOUR POWER BILL KEEP CLIMBING?",
+        "sub_headline": "",
+        "value_stack": "TIME TO FIX IT: DUCTED A/C, {{fixed_price}}",
+        "cta": "LOCK IN YOUR PRICE",
+        "badge": "ONCE-A-YEAR PRICING"
+      },
+      "component_keys": [
+        "cond_neutral_1",
+        "cond_neutral_2",
+        "cond_daikin",
+        "cond_mitsubishi"
+      ],
+      "attach_client_photos": [],
+      "quality": "high",
+      "n_candidates": 3,
+      "price_treatment": "fixed",
+      "pack_position": 4
+    },
+    {
+      "pack_id": "pack_moxq5poh",
+      "archetype": "A5",
+      "archetype_name": "Seasonal Pain",
+      "funnel_stage": "Cold/Warm",
+      "client_id": "sharp_aircon",
+      "picks": {
+        "headline": "THIS IS WHAT 40° FEELS LIKE",
+        "sub_headline": "",
+        "value_stack": "Banish Summer Heat | Smart Zoning | $0 Upfront | 5-Year Workmanship Guarantee",
+        "cta": "BOOK YOUR FREE QUOTE",
+        "badge": " FINANCE"
+      },
+      "component_keys": [
+        "house_3d_blue",
+        "house_3d_warm",
+        "house_3d_dark",
+        "house_3d_zones"
+      ],
+      "attach_client_photos": [],
+      "quality": "high",
+      "n_candidates": 3,
+      "price_treatment": "per_week",
+      "pack_position": 5
+    },
+    {
+      "pack_id": "pack_moxq5poh",
+      "archetype": "A6",
+      "archetype_name": "Seasonal Sale Event",
+      "funnel_stage": "Warm/Hot",
+      "client_id": "sharp_aircon",
+      "picks": {
+        "headline": "WINTER DUCTED HEATING SALE",
+        "sub_headline": "",
+        "value_stack": "Beat the Rush | Locally Installed | $0 Upfront",
+        "cta": "BOOK YOUR INSTALL",
+        "badge": "SEASONAL DISCOUNT"
+      },
+      "component_keys": [
+        "cond_neutral_1",
+        "cond_neutral_2",
+        "cond_daikin",
+        "cond_mitsubishi"
+      ],
+      "attach_client_photos": [],
+      "quality": "high",
+      "n_candidates": 3,
+      "price_treatment": "per_week",
+      "pack_position": 6
+    },
+    {
+      "pack_id": "pack_moxq5poh",
+      "archetype": "A7",
+      "archetype_name": "Brand Sale",
+      "funnel_stage": "Warm/Hot",
+      "client_id": "sharp_aircon",
+      "picks": {
+        "headline": "MASSIVE DUCTED A/C SAVINGS",
+        "sub_headline": "FULL-HOME DUCTED COMFORT — INSTALLED",
+        "value_stack": "Australia's Most Trusted Brands | Per-Week Pricing | 5-Year Workmanship Guarantee | $1,200+ in Bonuses",
+        "cta": "GET PRICING NOW",
+        "badge": ""
+      },
+      "component_keys": [
+        "cond_neutral_1",
+        "cond_neutral_2",
+        "cond_daikin",
+        "cond_mitsubishi"
+      ],
+      "attach_client_photos": [],
+      "quality": "high",
+      "n_candidates": 3,
+      "price_treatment": "per_week",
+      "pack_position": 7
+    },
+    {
+      "pack_id": "pack_moxq5poh",
+      "archetype": "A8",
+      "archetype_name": "City Massive Sale",
+      "funnel_stage": "Warm/Hot",
+      "client_id": "sharp_aircon",
+      "picks": {
+        "headline": "{{city}} DUCTED A/C WITH ZONING",
+        "sub_headline": "",
+        "value_stack": "10kW Premium Ducted System | $0 Upfront | Locally Installed",
+        "cta": "LOCK IN YOUR INSTALL",
+        "badge": "$0 UPFRONT"
+      },
+      "component_keys": [
+        "cond_neutral_1",
+        "cond_neutral_2",
+        "cond_daikin",
+        "cond_mitsubishi"
+      ],
+      "attach_client_photos": [],
+      "quality": "high",
+      "n_candidates": 3,
+      "price_treatment": "per_week",
+      "pack_position": 8
+    },
+    {
+      "pack_id": "pack_moxq5poh",
+      "archetype": "A9",
+      "archetype_name": "Holiday Event",
+      "funnel_stage": "Hot",
+      "client_id": "sharp_aircon",
+      "picks": {
+        "headline": "{{holiday_name}} SALE — LOWEST PRICES OF THE YEAR",
+        "sub_headline": "",
+        "value_stack": "Best Pricing of the Year | $0 Upfront | 5-Year Guarantee",
+        "cta": "CLAIM TODAY",
+        "badge": "ONCE A YEAR"
+      },
+      "component_keys": [
+        "cond_neutral_1",
+        "cond_neutral_2",
+        "cond_daikin",
+        "cond_mitsubishi"
+      ],
+      "attach_client_photos": [],
+      "quality": "high",
+      "n_candidates": 3,
+      "price_treatment": "per_week",
+      "pack_position": 9
+    }
+  ]
+}

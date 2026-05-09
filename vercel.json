@@ -8,6 +8,10 @@
       "maxDuration": 800
     }
   },
+  "crons": [
+    { "path": "/api/cron/backup", "schedule": "0 12 * * *" },
+    { "path": "/api/cron/cost-report", "schedule": "0 13 * * 1" }
+  ],
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/index" },
     { "source": "/login", "destination": "/login.html" }

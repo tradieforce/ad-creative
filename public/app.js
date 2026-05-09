@@ -1216,6 +1216,14 @@ function renderMasterPrompt() {
     </div>
 
     <div class="section">
+      <h2 class="section-h">Spend dashboard</h2>
+      <div class="section-flow">→ live cost telemetry from <code>data/_cache/spend.jsonl</code> (FS) or <code>spend_log</code> table (Postgres)</div>
+      <div id="spend-widget" style="background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:18px;">
+        <span style="font-family:JetBrains Mono,monospace; font-size:11px; color:var(--text-3);">Loading…</span>
+      </div>
+    </div>
+
+    <div class="section">
       <h2 class="section-h">How the system works</h2>
       <p class="section-intro">Visual reference for what plugs into the Master AI Prompt and what comes out the other end. Inputs converge into Master AI, which composes a ChatGPT prompt, which produces the final ad PNG, which is stored to the client file and the global ad database.</p>
       <div style="background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:24px; margin-bottom:24px;">
@@ -1685,8 +1693,46 @@ function render() {
   else if (currentSection === 'components') main.innerHTML = renderComponents();
   else if (currentSection === 'clients') main.innerHTML = renderClients();
   else if (currentSection === 'generate') { main.innerHTML = renderGenerate(); wireGenerate(); }
+  else if (currentSection === 'packs') { main.innerHTML = renderPacks(); wirePacks(); }
+  else if (currentSection === 'review') { main.innerHTML = renderReview(); wireReview(); }
   else if (currentSection === 'addb') main.innerHTML = renderAdDatabase();
-  else if (currentSection === 'masterprompt') main.innerHTML = renderMasterPrompt();
+  else if (currentSection === 'masterprompt') { main.innerHTML = renderMasterPrompt(); loadSpendWidget(); }
+}
+
+async function loadSpendWidget() {
+  const el = document.getElementById('spend-widget');
+  if (!el) return;
+  try {
+    const r = await fetch('/api/spend');
+    const s = await r.json();
+    el.innerHTML = `
+      <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:14px;">
+        ${[['Last 24h', s.last_24h], ['Last 7d', s.last_7d], ['Last 30d', s.last_30d]].map(([label, d]) => `
+          <div>
+            <div style="font-family:JetBrains Mono,monospace; font-size:10px; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-3); margin-bottom:4px;">${label}</div>
+            <div style="font-family:Fraunces,serif; font-size:24px; font-weight:600;">$${(d.usd||0).toFixed(2)}</div>
+            <div style="font-family:JetBrains Mono,monospace; font-size:11px; color:var(--text-3);">${d.calls||0} API calls</div>
+          </div>
+        `).join('')}
+        <div>
+          <div style="font-family:JetBrains Mono,monospace; font-size:10px; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-3); margin-bottom:4px;">Total ads</div>
+          <div style="font-family:Fraunces,serif; font-size:24px; font-weight:600;">${s.total_ads || 0}</div>
+          <div style="font-family:JetBrains Mono,monospace; font-size:11px; color:var(--text-3);">${s.total_calls_logged || 0} log entries</div>
+        </div>
+      </div>
+      ${Object.keys(s.by_archetype_7d||{}).length ? `
+      <div style="margin-top:14px; padding-top:14px; border-top:1px solid var(--surface-2);">
+        <div style="font-family:JetBrains Mono,monospace; font-size:10px; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-3); margin-bottom:6px;">7-day spend by archetype</div>
+        <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap:8px; font-size:12px;">
+          ${Object.entries(s.by_archetype_7d).sort((a,b)=>b[1]-a[1]).map(([a,v]) => `
+            <div style="background:var(--surface-2); padding:6px 10px; border-radius:4px;"><strong>${a}</strong> · $${v.toFixed(2)}</div>
+          `).join('')}
+        </div>
+      </div>` : ''}
+    `;
+  } catch (e) {
+    el.innerHTML = '<span style="color:var(--text-3); font-style:italic;">Couldn\'t load spend.</span>';
+  }
 }
 
 // Expose globals for inline handlers
@@ -3125,3 +3171,230 @@ async function ceSaveFlattened(adId) {
   }
 }
 window.ceSaveFlattened = ceSaveFlattened;
+
+// ============================================================
+// SECTION 8: GENERATE PACK — Layer 1 (pack-manifest engine + sequential firing)
+// Pick a client → see manifest of all 9-10 ads that will fire → confirm →
+// loops through /api/generate one ad at a time, showing live progress.
+// ============================================================
+const PACK = {
+  client_id: '',
+  manifest: null,        // {pack_id, entries:[...], skipped, pack_balance}
+  status: 'idle',        // idle | building | ready | running | done | error
+  progress: { current: 0, total: 0, current_archetype: '', cost_so_far: 0 },
+  results: [],           // [{archetype, ad_id, image_url, error}]
+  errorMsg: '',
+};
+
+function renderPacks() {
+  return `
+    <div class="page-header">
+      <div class="page-eyebrow">Operations · Generate Pack (Layer 1)</div>
+      <h1 class="page-title">Generate Pack</h1>
+      <p class="page-intro">Pick a client → Layer 1 builds a pack manifest (decides which archetypes fire, picks variable inputs deterministically, enforces HR06 max-one-fixed-price, A10/A6 gating) → loops through them sequentially through the full premium pipeline. The future automation entry point — when you onboard a new client, you click here and walk away.</p>
+    </div>
+
+    <div class="form-grid" style="grid-template-columns: 1fr; padding:18px; gap:14px; max-width:520px;">
+      <div class="form-section-h">Target client</div>
+      <div class="form-group">
+        <label>Client</label>
+        <select id="pack-client">
+          <option value="">— pick a client —</option>
+          ${CLIENTS.map(c => `<option value="${c.id}" ${c.id===PACK.client_id?'selected':''}>${htmlEscape(c.business_name)} · ${htmlEscape(c.city)}</option>`).join('')}
+        </select>
+        <div class="help-text">Client must already exist (Clients → + New client).</div>
+      </div>
+      <div class="form-group" style="display:flex; gap:10px;">
+        <button class="btn" id="pack-build-btn" onclick="packBuild()" ${!PACK.client_id?'disabled':''}>1. Build manifest</button>
+        <button class="btn btn-primary" id="pack-run-btn" onclick="packRun()" ${PACK.status!=='ready' ? 'disabled' : ''}>2. Generate all (${PACK.manifest?.entries.length || 0} ads)</button>
+      </div>
+      <div class="form-group">
+        <span id="pack-status" style="font-size:12px; color:var(--text-3);">${packStatusText()}</span>
+      </div>
+    </div>
+
+    ${PACK.manifest ? renderPackManifestTable() : ''}
+
+    ${PACK.results.length ? renderPackResults() : ''}
+  `;
+}
+
+function packStatusText() {
+  if (PACK.status === 'building') return '… building manifest';
+  if (PACK.status === 'ready')    return '✓ manifest ready · click Generate to fire';
+  if (PACK.status === 'running')  return `… generating ad ${PACK.progress.current + 1}/${PACK.progress.total} (${PACK.progress.current_archetype}) · spent $${PACK.progress.cost_so_far.toFixed(2)}`;
+  if (PACK.status === 'done')     return `✓ done · ${PACK.results.filter(r=>!r.error).length}/${PACK.results.length} succeeded · total $${PACK.progress.cost_so_far.toFixed(2)}`;
+  if (PACK.status === 'error')    return `<span style="color:#b91c1c;">${htmlEscape(PACK.errorMsg)}</span>`;
+  return '';
+}
+
+function renderPackManifestTable() {
+  const m = PACK.manifest;
+  const skippedNotes = Object.entries(m.skipped || {}).filter(([,v]) => v).map(([k,v]) => `${k}: ${v}`).join(' · ');
+  return `
+    <div class="section">
+      <h2 class="section-h" style="font-size:18px;">Pack manifest <span style="font-weight:400; color:var(--text-3); font-family:'JetBrains Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.05em;">${m.pack_id}</span></h2>
+      <div class="section-flow">${m.entries.length} ads will fire · fixed-price slot: ${m.pack_balance.fixed_price_archetype || 'none'} · ${skippedNotes ? 'skipped: ' + skippedNotes : 'no archetypes skipped'}</div>
+      <table class="clients-table">
+        <thead><tr><th>#</th><th>Archetype</th><th>Funnel</th><th>Price</th><th>Headline (picked)</th><th>Components</th></tr></thead>
+        <tbody>
+          ${m.entries.map((e, i) => `
+            <tr>
+              <td style="font-family:JetBrains Mono,monospace; color:var(--text-3);">${i + 1}</td>
+              <td><strong>${e.archetype}</strong> ${htmlEscape(e.archetype_name || '')}</td>
+              <td><span class="pill">${htmlEscape(e.funnel_stage || '')}</span></td>
+              <td><span class="pill ${e.price_treatment === 'fixed' ? 'pill-amber' : 'pill-green'}">${e.price_treatment.replace('_',' ')}</span></td>
+              <td style="font-size:12px; max-width:340px;">${htmlEscape((e.picks?.headline || '').substring(0, 80))}${(e.picks?.headline || '').length > 80 ? '…' : ''}</td>
+              <td style="font-family:JetBrains Mono,monospace; font-size:11px; color:var(--text-3);">${e.component_keys.length} attached</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+function renderPackResults() {
+  return `
+    <div class="section">
+      <h2 class="section-h" style="font-size:18px;">Generated ads</h2>
+      <div class="ad-grid">
+        ${PACK.results.map(r => `
+          <div class="ad-card">
+            <div class="ad-thumb-output" style="${r.image_url ? `background-image:url(${r.image_url}?t=${Date.now()}); background-size:cover; background-position:center; aspect-ratio:1;` : ''}">
+              ${r.image_url ? '' : `<div class="ph-icon">${r.error ? '✗' : '⏳'}</div><div class="ph-arch">${r.archetype}</div><div class="ph-headline" style="font-size:11px;">${r.error ? htmlEscape(r.error.slice(0, 100)) : 'pending…'}</div>`}
+            </div>
+            <div class="ad-card-body">
+              <div style="font-weight:600; font-size:13px; margin-bottom:3px">${r.archetype} ${r.image_url ? '✓' : ''}</div>
+              <div class="ad-card-meta">${r.cost_usd ? '$' + r.cost_usd.toFixed(3) : ''} · ${r.elapsed_s ? r.elapsed_s + 's' : ''}</div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function wirePacks() {
+  const sel = document.getElementById('pack-client');
+  if (sel) sel.addEventListener('change', (e) => { PACK.client_id = e.target.value; PACK.manifest = null; PACK.results = []; PACK.status = 'idle'; render(); });
+}
+
+async function packBuild() {
+  if (!PACK.client_id) return;
+  PACK.status = 'building'; PACK.errorMsg = ''; render();
+  try {
+    const r = await fetch('/api/packs', { method: 'POST', headers: {'content-type':'application/json'}, body: JSON.stringify({ client_id: PACK.client_id }) });
+    if (!r.ok) { const j = await r.json().catch(()=>({})); throw new Error(j.error || ('HTTP ' + r.status)); }
+    PACK.manifest = await r.json();
+    PACK.status = 'ready';
+    PACK.progress = { current: 0, total: PACK.manifest.entries.length, current_archetype: '', cost_so_far: 0 };
+  } catch (err) { PACK.status = 'error'; PACK.errorMsg = err.message; }
+  render();
+}
+window.packBuild = packBuild;
+
+async function packRun() {
+  if (!PACK.manifest) return;
+  PACK.status = 'running'; PACK.results = []; render();
+  for (let i = 0; i < PACK.manifest.entries.length; i++) {
+    const e = PACK.manifest.entries[i];
+    PACK.progress.current = i;
+    PACK.progress.current_archetype = e.archetype;
+    render();
+    const t0 = Date.now();
+    try {
+      const r = await fetch('/api/generate', { method: 'POST', headers: {'content-type':'application/json'}, body: JSON.stringify({
+        archetype: e.archetype, client_id: e.client_id, picks: e.picks, component_keys: e.component_keys, attach_client_photos: e.attach_client_photos || [], quality: e.quality, n_candidates: e.n_candidates,
+      }) });
+      if (!r.ok) { const j = await r.json().catch(()=>({})); throw new Error(j.error || ('HTTP ' + r.status)); }
+      const result = await r.json();
+      // Stamp pack_id onto the ad record (best-effort).
+      await fetch('/api/review/' + result.ad_id, { method: 'POST', headers: {'content-type':'application/json'}, body: JSON.stringify({ status: 'pending', notes: 'pack_id=' + PACK.manifest.pack_id }) }).catch(()=>{});
+      const elapsed_s = Math.round((Date.now() - t0) / 1000);
+      PACK.results.push({ archetype: e.archetype, ad_id: result.ad_id, image_url: result.image?.url, cost_usd: result.totalCostUsd, elapsed_s });
+      PACK.progress.cost_so_far += (result.totalCostUsd || 0);
+    } catch (err) {
+      PACK.results.push({ archetype: e.archetype, error: err.message });
+    }
+    render();
+  }
+  PACK.status = 'done';
+  ADS = await api.ads.list();
+  render();
+}
+window.packRun = packRun;
+
+// ============================================================
+// SECTION 9: REVIEW QUEUE — pending/approved/rejected states
+// ============================================================
+const REVIEW = { tab: 'pending', items: [], loading: false };
+
+function renderReview() {
+  return `
+    <div class="page-header">
+      <div class="page-eyebrow">Operations · Review Queue</div>
+      <h1 class="page-title">Review Queue</h1>
+      <p class="page-intro">Generated ads land here for approval before delivery to clients. Approve = ready to ship. Reject = discarded; can regenerate.</p>
+    </div>
+    <div class="client-tabs">
+      <div class="client-tab ${REVIEW.tab==='pending' ?'active':''}" onclick="setReviewTab('pending')">Pending ${REVIEW.tab==='pending' && REVIEW.items.length ? '· ' + REVIEW.items.length : ''}</div>
+      <div class="client-tab ${REVIEW.tab==='approved'?'active':''}" onclick="setReviewTab('approved')">Approved</div>
+      <div class="client-tab ${REVIEW.tab==='rejected'?'active':''}" onclick="setReviewTab('rejected')">Rejected</div>
+    </div>
+    <div id="review-grid">${REVIEW.loading ? '<div class="empty-state">Loading…</div>' : renderReviewGrid()}</div>
+  `;
+}
+
+function renderReviewGrid() {
+  if (REVIEW.items.length === 0) {
+    return '<div class="empty-state">No ads with status <strong>' + REVIEW.tab + '</strong>.</div>';
+  }
+  return `
+    <div class="ad-grid">
+      ${REVIEW.items.map(a => {
+        const arch = STATE.archetypes.find(x => x.code === a.archetype) || {};
+        const client = CLIENTS.find(c => c.id === a.client_id) || {};
+        return `
+          <div class="ad-card" style="cursor:default;">
+            <div class="ad-thumb-output" style="${a.image_url ? `background-image:url(${a.image_url}?t=${Date.now()}); background-size:cover; background-position:center;` : ''} aspect-ratio:1;">
+              ${a.image_url ? '' : `<div class="ph-icon">▢</div><div class="ph-arch">${a.archetype}</div>`}
+            </div>
+            <div class="ad-card-body">
+              <div style="font-weight:600; font-size:13px;">${a.archetype} — ${htmlEscape(arch.name||'')}</div>
+              <div class="ad-card-meta" style="margin-top:3px;">${htmlEscape(client.business_name||a.client_id||'')} · ${htmlEscape(a.city||'')} · ${htmlEscape(a.created||'')}</div>
+              <div class="ad-card-actions" style="border-top:1px solid var(--surface-2); padding-top:8px; margin-top:8px;">
+                ${REVIEW.tab !== 'approved' ? `<button class="btn btn-sm btn-primary" onclick="reviewSet('${a.id}','approved')">Approve</button>` : ''}
+                ${REVIEW.tab !== 'rejected' ? `<button class="btn btn-sm btn-danger" onclick="reviewSet('${a.id}','rejected')">Reject</button>` : ''}
+                ${REVIEW.tab !== 'pending' ? `<button class="btn btn-sm" onclick="reviewSet('${a.id}','pending')">Reset</button>` : ''}
+                <button class="btn btn-sm" onclick="openAdDetail('${a.id}')">View</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('')}
+    </div>
+  `;
+}
+
+function setReviewTab(tab) { REVIEW.tab = tab; loadReview(); }
+window.setReviewTab = setReviewTab;
+
+async function loadReview() {
+  REVIEW.loading = true; render();
+  try {
+    const r = await fetch('/api/review?status=' + REVIEW.tab);
+    REVIEW.items = await r.json();
+  } catch { REVIEW.items = []; }
+  REVIEW.loading = false; render();
+}
+
+function wireReview() { loadReview(); }
+
+async function reviewSet(adId, status) {
+  try {
+    await fetch('/api/review/' + encodeURIComponent(adId), { method: 'POST', headers: {'content-type':'application/json'}, body: JSON.stringify({ status }) });
+    loadReview();
+  } catch (err) { alert('Failed: ' + err.message); }
+}
+window.reviewSet = reviewSet;
