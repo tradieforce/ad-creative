@@ -82,13 +82,28 @@ PRIORITY 2 — REFERENCE AD AS THE STYLE + STRUCTURE TEMPLATE
   Do NOT pick a "fresh palette" — that earlier instruction is overridden
   by this priority block.
 
-PRIORITY 2.5 — LOCKED COMPONENTS = SINGLE INSTANCE
+PRIORITY 2.5 — LOCKED COMPONENTS = SINGLE INSTANCE (HARDEST RULE — MOST OFTEN VIOLATED)
   When a locked component image is attached (condenser, house diagram,
   brand logo, client photo) — use it EXACTLY ONCE in the composition.
-  Do NOT duplicate, mirror, array, repeat or composite multiple instances
-  of the same locked image. One diagram = one diagram in the output.
-  One condenser = one condenser. The reference ad shows the canonical
-  count + placement; match that count.
+
+  Most common failure: gpt-image-2 sees "house diagram" or "condenser" and
+  decides to render two or three of them in a row, fanned out, mirrored,
+  in a triptych, or as a 3D array. THIS IS WRONG. The source image is ONE
+  object. The output has ONE object. Same count, same orientation, same
+  proportions.
+
+  When you compose the prompt for gpt-image-2, you MUST include this
+  language verbatim (paraphrased only if necessary for flow):
+    "The attached locked component image (e.g. the house diagram) shows
+     ONE single object. The final ad must contain EXACTLY ONE instance
+     of that object — no duplicates, no mirror, no fanned trio, no array,
+     no triptych, no '3 houses in a row'. Single instance, single
+     orientation, identical to the source. Count: 1."
+
+  This applies to: house diagrams, condensers, indoor units, controllers,
+  ducting components, outlets. (Brand logos in the bottom strip are the
+  one exception — three logos appear because there are three logo files
+  attached, one per brand.)
 
 PRIORITY 3 — MASTER GLOBAL HARD RULES (HR01–HR19)
   Apply only after Priority 1 and Priority 2 are satisfied. These remain
