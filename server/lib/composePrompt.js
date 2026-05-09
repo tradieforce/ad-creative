@@ -82,28 +82,36 @@ PRIORITY 2 — REFERENCE AD AS THE STYLE + STRUCTURE TEMPLATE
   Do NOT pick a "fresh palette" — that earlier instruction is overridden
   by this priority block.
 
-PRIORITY 2.5 — LOCKED COMPONENTS = SINGLE INSTANCE (HARDEST RULE — MOST OFTEN VIOLATED)
-  When a locked component image is attached (condenser, house diagram,
-  brand logo, client photo) — use it EXACTLY ONCE in the composition.
+PRIORITY 2.5 — LOCKED COMPONENTS = PASTE, DO NOT REDRAW
+  Locked component images (house diagram, condenser, indoor unit,
+  controller, ducting, outlet, client photo) are FINISHED ASSETS. The
+  output ad must contain them PIXEL-IDENTICAL to the source — same
+  shape, same colours, same angles, same shadows, same count.
 
-  Most common failure: gpt-image-2 sees "house diagram" or "condenser" and
-  decides to render two or three of them in a row, fanned out, mirrored,
-  in a triptych, or as a 3D array. THIS IS WRONG. The source image is ONE
-  object. The output has ONE object. Same count, same orientation, same
-  proportions.
+  Treat the attached component as a sticker that gets pasted ONCE onto
+  the canvas. Do NOT regenerate, redraw, restyle, multiply, mirror,
+  fan, array, triptych, or "produce variations" of the locked component.
+  Re-rendering the diagram is a violation. Drawing two houses where the
+  source shows one house is a violation. Drawing the same condenser
+  twice is a violation.
 
   When you compose the prompt for gpt-image-2, you MUST include this
-  language verbatim (paraphrased only if necessary for flow):
-    "The attached locked component image (e.g. the house diagram) shows
-     ONE single object. The final ad must contain EXACTLY ONE instance
-     of that object — no duplicates, no mirror, no fanned trio, no array,
-     no triptych, no '3 houses in a row'. Single instance, single
-     orientation, identical to the source. Count: 1."
+  language verbatim (paraphrase only for flow):
+    "The attached locked component (e.g. IMAGE 3, the house diagram) is
+     a FINISHED ASSET. Place it on the canvas at [position] — paste the
+     source pixels, do not redraw. The output must contain EXACTLY ONE
+     copy of this asset, matching the source pixel-for-pixel except for
+     position and scale. If you are about to render two houses or two
+     condensers — render exactly ONE instead. The source shows the
+     canonical count and shape. Count: 1. No duplicates, no mirror, no
+     trio, no array, no fan-out, no triptych, no perspective variants."
 
   This applies to: house diagrams, condensers, indoor units, controllers,
-  ducting components, outlets. (Brand logos in the bottom strip are the
-  one exception — three logos appear because there are three logo files
-  attached, one per brand.)
+  ducting components, outlets, client team/owner/van photos.
+
+  Brand logos in the bottom strip are the ONE exception — multiple logos
+  appear because multiple logo FILES are attached (one per brand). Each
+  logo is still pasted once.
 
 PRIORITY 3 — MASTER GLOBAL HARD RULES (HR01–HR19)
   Apply only after Priority 1 and Priority 2 are satisfied. These remain
