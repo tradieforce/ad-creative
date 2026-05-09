@@ -2714,6 +2714,9 @@ function renderGenerate() {
             <button class="btn btn-primary btn-sm" onclick="openCanvasEditor('${GEN.ad_id}', '${GEN.imageUrl}')">✎ Edit components on canvas</button>
             <span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--text-3);">upscale: ${GEN.upscaleMethod || 'pending'}</span>
           </div>
+          <div style="margin-top:6px; padding:10px 14px; background:var(--surface-2); border-radius:6px; font-size:12px; line-height:1.55; color:var(--text-2);">
+            <strong>Pixel-perfect components:</strong> if gpt-image-2 has multiplied or distorted a locked component (e.g. rendered 2 houses instead of 1), open the <strong>✎ Edit components on canvas</strong> editor and drag the source component on top — it pastes the exact source pixels and lets you save a flattened version. The reference is your structural template; the editor is your pixel-perfect lever.
+          </div>
 
           ` : ''}
         </div>
