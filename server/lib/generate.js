@@ -60,15 +60,27 @@ function buildUserMessage({ archetype, client, city, picks, components, attach_c
   lines.push(`  Has owner photo: ${!!client.owner_photos_uploaded}`);
   lines.push(`  Has van photo: ${!!client.van_photos_uploaded}`);
   lines.push('');
-  lines.push('PRICE LIBRARY DATA FOR THIS CITY:');
-  if (priceRow) {
-    lines.push(`  Per-week: ${priceRow.perWeek || '(not set)'}`);
-    lines.push(`  Fixed:    ${priceRow.fixed    || '(not set)'}`);
-    lines.push(`  Anchor:   ${priceRow.anchor   || '(not set)'}`);
-    lines.push(`  Rebate:   ${priceRow.rebate   || '(not set)'}`);
-  } else {
-    lines.push('  (no price library row for this city — Per-week defaults apply)');
-  }
+  lines.push('PRICING (client overrides win > city library > "(not set)" → archetype skipped if it needs that price type):');
+  // Resolve each price type with the client-override-first chain.
+  const fmt = (v) => (v === null || v === undefined || v === '') ? '(not set)' : String(v).startsWith('$') ? v : '$' + v;
+  const perWeekResolved = client.default_per_week_price || (priceRow && priceRow.perWeek) || '';
+  const fixedResolved   = client.default_fixed_price    || (priceRow && priceRow.fixed)   || '';
+  const anchorResolved  = client.default_anchor_price   || (priceRow && priceRow.anchor)  || '';
+  const rebateResolved  = (priceRow && priceRow.rebate) || '';   // rebate is city-only
+  const sourceTag = (clientVal, cityVal) => clientVal ? '[client override]' : cityVal ? '[city library]' : '';
+  lines.push(`  Per-week: ${fmt(perWeekResolved)} ${sourceTag(client.default_per_week_price, priceRow?.perWeek)}`);
+  lines.push(`  Fixed:    ${fmt(fixedResolved)} ${sourceTag(client.default_fixed_price, priceRow?.fixed)}`);
+  lines.push(`  Anchor:   ${fmt(anchorResolved)} ${sourceTag(client.default_anchor_price, priceRow?.anchor)}`);
+  lines.push(`  Rebate:   ${fmt(rebateResolved)} ${rebateResolved ? '[city library]' : ''}`);
+  // Pricing-mode constraint — operator-set on the client record. Tells Claude
+  // what's allowed: per-week only, fixed only, or mixed (use whatever fits).
+  const pricingMode = client.pricing_mode || 'per_week_only';
+  const modeNote = {
+    per_week_only: 'PER-WEEK ONLY: use only the Per-week price. Do NOT use Fixed or Anchor pricing in any archetype, regardless of what the archetype suggests. Pricing is operator-controlled at the client level.',
+    fixed_only:    'FIXED ONLY: use only the Fixed price (with Anchor for struck-through "was $X" treatment where appropriate). Do NOT use Per-week pricing in any archetype.',
+    mixed:         'MIXED: pick whichever pricing treatment best fits each archetype.',
+  }[pricingMode] || 'PER-WEEK ONLY (default).';
+  lines.push(`  Pricing mode (client setting): ${pricingMode.toUpperCase()} — ${modeNote}`);
   lines.push('');
   lines.push('PICKED VARIABLES (operator-selected from variable_inputs library):');
   if (picks.headline)      lines.push(`  Headline:      "${picks.headline}"`);

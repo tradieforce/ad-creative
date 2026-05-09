@@ -74,6 +74,14 @@ export const ClientCreateSchema = z.object({
   install_guarantee_days: z.number().int().nonnegative().optional().default(0),
   years_in_business: z.number().int().nonnegative().optional().default(0),
   default_per_week_price: z.union([z.string(), z.number()]).optional().default(''),
+  default_fixed_price: z.union([z.string(), z.number()]).optional().default(''),
+  default_anchor_price: z.union([z.string(), z.number()]).optional().default(''),
+  // Pricing constraint: 'per_week_only' (default), 'fixed_only', 'mixed'.
+  // Hard rule passed to the prompt — flexible archetypes (A6/A7/A8) follow it,
+  // archetypes with their own pricing rules still respect those (now empty
+  // since A1/A3/A4 had their per-archetype pricing rules stripped — pricing
+  // is fully controlled globally per the operator's spec).
+  pricing_mode: z.enum(['per_week_only', 'fixed_only', 'mixed']).optional().default('per_week_only'),
   current_promo_pct: z.number().int().min(0).max(100).optional().default(0),
   team_photos_uploaded: z.boolean().optional().default(false),
   owner_photos_uploaded: z.boolean().optional().default(false),

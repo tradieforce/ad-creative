@@ -422,10 +422,13 @@ function renderAdDetailModal() {
     const promptText = ad.prompt_text || '';
     const isCurrent = current && ad.id === current.id;
 
+    // Display the highest-resolution version available — 4K preferred, then 2K, then 1080.
+    // Lightbox-zoom uses the same src so a click opens the same crisp full-size image.
+    const displayUrl = ad.hd_urls?.['4k'] || ad.hd_urls?.['2k'] || ad.image_url;
     leftPane = `
-      <div class="paired-block-h">Generated ad output</div>
+      <div class="paired-block-h">Generated ad output ${ad.hd_urls?.['4k'] ? '<span style="color:var(--text-3); font-weight:400;">[4K]</span>' : ad.hd_urls?.['2k'] ? '<span style="color:var(--text-3); font-weight:400;">[2K]</span>' : '<span style="color:var(--text-3); font-weight:400;">[1080]</span>'}</div>
       ${ad.image_url
-        ? `<img class="paired-ref-img zoomable" src="${ad.image_url}?t=${Date.now()}" data-caption="${htmlEscape(MODAL_AD.archetype + ' generated ad')}" alt="generated ad" style="display:block; width:100%; height:auto; border-radius:8px;">`
+        ? `<img class="paired-ref-img zoomable" src="${displayUrl}?t=${Date.now()}" data-caption="${htmlEscape(MODAL_AD.archetype + ' generated ad')}" alt="generated ad" style="display:block; width:100%; height:auto; border-radius:8px;">`
         : `<div class="paired-output"><div class="po-icon">▢</div><div class="po-arch">${MODAL_AD.archetype}</div><div class="po-note">[ no image — generation may have failed ]</div></div>`}
       ${ad.image_url ? `
       <div style="display:flex; gap:8px; margin-top:10px; flex-wrap:wrap; align-items:center;">
@@ -533,6 +536,94 @@ async function deleteAdVersion(adId, versionIndex) {
   } catch (err) { alert('Delete failed: ' + err.message); }
 }
 window.deleteAdVersion = deleteAdVersion;
+
+// ============================================================
+// PRICING PAGE — city-level price library editor
+// Per-city: Fixed (full install), Anchor ($X struck-through), Per-week, Rebate.
+// Used as a fallback when a client doesn't have their own override set in
+// the onboarding form.
+// ============================================================
+function renderPricing() {
+  const cities = STATE.prices || [];
+  const rows = cities.map((p) => `
+    <tr data-city="${htmlEscape(p.city)}">
+      <td><strong>${htmlEscape(p.city)}</strong></td>
+      <td><input type="text" value="${htmlEscape(p.fixed   || '')}" placeholder="$9,990" data-field="fixed"   onblur="savePriceCell('${htmlEscape(p.city).replace(/'/g,"\\'")}','fixed',this.value)"   style="width:100%; padding:6px 8px; border:1px solid var(--border-2); border-radius:4px; font-family:inherit; font-size:13px; background:var(--bg);"></td>
+      <td><input type="text" value="${htmlEscape(p.anchor  || '')}" placeholder="$12,490" data-field="anchor"  onblur="savePriceCell('${htmlEscape(p.city).replace(/'/g,"\\'")}','anchor',this.value)"  style="width:100%; padding:6px 8px; border:1px solid var(--border-2); border-radius:4px; font-family:inherit; font-size:13px; background:var(--bg);"></td>
+      <td><input type="text" value="${htmlEscape(p.perWeek || '')}" placeholder="$57" data-field="perWeek" onblur="savePriceCell('${htmlEscape(p.city).replace(/'/g,"\\'")}','perWeek',this.value)" style="width:100%; padding:6px 8px; border:1px solid var(--border-2); border-radius:4px; font-family:inherit; font-size:13px; background:var(--bg);"></td>
+      <td><input type="text" value="${htmlEscape(p.rebate  || '')}" placeholder="$1,000 NSW ESS" data-field="rebate"  onblur="savePriceCell('${htmlEscape(p.city).replace(/'/g,"\\'")}','rebate',this.value)"  style="width:100%; padding:6px 8px; border:1px solid var(--border-2); border-radius:4px; font-family:inherit; font-size:13px; background:var(--bg);"></td>
+      <td><button class="btn btn-sm btn-danger" onclick="deletePriceCity('${htmlEscape(p.city).replace(/'/g,"\\'")}')">Delete</button></td>
+    </tr>
+  `).join('');
+
+  return `
+    <div class="page-header">
+      <div class="page-eyebrow">Configuration · Pricing</div>
+      <h1 class="page-title">Pricing</h1>
+      <p class="page-intro">Per-city price library. These values are used by Master AI when composing each ad, falling back to the city table when a client doesn't have their own override set on their onboarding form. <strong>Resolution order:</strong> client override → city table → "(not set)" → archetype skipped if it requires that price type.</p>
+    </div>
+
+    <div style="margin-bottom:14px;"><button class="btn btn-primary" onclick="addPriceCity()">+ Add city</button> <span style="margin-left:8px; color:var(--text-3); font-size:12px;">Edit any cell, click outside (blur) to save. ${cities.length} cities.</span></div>
+
+    <div style="background:var(--surface); border:1px solid var(--border); border-radius:8px; overflow:hidden;">
+      <table style="width:100%; border-collapse:collapse;">
+        <thead>
+          <tr style="background:var(--surface-2);">
+            <th style="text-align:left; padding:10px 12px; font-family:'JetBrains Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-3); font-weight:600;">City</th>
+            <th style="text-align:left; padding:10px 12px; font-family:'JetBrains Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-3); font-weight:600;">Fixed</th>
+            <th style="text-align:left; padding:10px 12px; font-family:'JetBrains Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-3); font-weight:600;">Anchor (was-X)</th>
+            <th style="text-align:left; padding:10px 12px; font-family:'JetBrains Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-3); font-weight:600;">Per-week</th>
+            <th style="text-align:left; padding:10px 12px; font-family:'JetBrains Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-3); font-weight:600;">Rebate</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>${rows || '<tr><td colspan="6" style="padding:20px; text-align:center; color:var(--text-3);">No cities yet — click + Add city.</td></tr>'}</tbody>
+      </table>
+    </div>
+  `;
+}
+
+async function savePriceCell(city, field, value) {
+  try {
+    const r = await fetch('/api/prices/' + encodeURIComponent(city), {
+      method: 'PATCH',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ [field]: value.trim() }),
+    });
+    if (!r.ok) throw new Error('save failed');
+    // Update local state without re-fetching everything.
+    const row = STATE.prices.find((p) => p.city === city);
+    if (row) row[field] = value.trim();
+  } catch (err) { alert('Save failed: ' + err.message); }
+}
+window.savePriceCell = savePriceCell;
+
+async function addPriceCity() {
+  const name = prompt('City name (must match what you set as a client\'s primary service area):');
+  if (!name || !name.trim()) return;
+  try {
+    const r = await fetch('/api/prices', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ city: name.trim() }),
+    });
+    if (!r.ok) { const j = await r.json().catch(() => ({})); throw new Error(j.error || 'HTTP ' + r.status); }
+    STATE.prices = await api.prices.list();
+    render();
+  } catch (err) { alert('Add city failed: ' + err.message); }
+}
+window.addPriceCity = addPriceCity;
+
+async function deletePriceCity(city) {
+  if (!confirm(`Delete "${city}" from the pricing table? Clients with this as their primary city will fall back to per-client overrides only.`)) return;
+  try {
+    const r = await fetch('/api/prices/' + encodeURIComponent(city), { method: 'DELETE' });
+    if (!r.ok) throw new Error('delete failed');
+    STATE.prices = await api.prices.list();
+    render();
+  } catch (err) { alert('Delete failed: ' + err.message); }
+}
+window.deletePriceCity = deletePriceCity;
 
 // Called from the modal's Regenerate button — keeps the modal open and shows
 // the generation in place. Different code path from the slot-level Retry which
@@ -1392,9 +1483,14 @@ function renderClientDetail(clientId) {
       <div>
         <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px;">
           <h2 style="font-family:Fraunces,serif; font-size:22px; margin:0;">Generated ads (${completedSlots}/${totalSlots})</h2>
-          ${canFire ? `<button class="btn btn-primary" onclick="startPackGeneration('${c.id}')">Generate ${missing.length} missing ad${missing.length>1?'s':''}</button>` : ''}
+          ${canFire ? `<button class="btn btn-primary" onclick="startPackGeneration('${c.id}')">▶ Resume generation (${missing.length} pending)</button>` : ''}
           ${ps.running ? `<span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--accent);">… ${ps.current} in flight (~5–7 min)</span>` : ''}
         </div>
+        ${canFire && completedSlots > 0 ? `
+          <div style="background:var(--warn-bg); border:1px solid var(--warn-border); border-radius:6px; padding:10px 14px; margin-bottom:14px; font-size:13px; color:var(--warn-text); line-height:1.55;">
+            <strong>Pack incomplete — ${missing.length} archetype${missing.length>1?'s':''} pending.</strong>
+            The auto-fire from form submission likely stopped because the browser tab was closed, navigated away, or hit a transient network blip. Click <strong>Resume generation</strong> above to fire the missing archetypes only — already-completed ones won't be re-generated.
+          </div>` : ''}
         <p style="color:var(--text-2); margin:0 0 16px; font-size:14px">Click any card to see its generated ad, the reference used, and the ChatGPT prompt that produced it. ${!hasPhoto ? '<span style="color:var(--warn-text)">A10 Local Trust skipped — needs team/owner/van photo.</span>' : ''}</p>
         <div class="ad-grid">
           ${slots.map((s) => renderArchetypeSlot(s, c)).join('')}
@@ -1520,6 +1616,8 @@ async function startPackGeneration(clientId) {
             quality: entry.quality,
             n_candidates: entry.n_candidates,
           }),
+          // 20-min cap per ad so a single hung call doesn't stall the loop indefinitely.
+          signal: AbortSignal.timeout(1200_000),
         });
         if (!gr.ok) {
           const j = await gr.json().catch(() => ({}));
@@ -2139,6 +2237,7 @@ function render() {
     }
   } else if (currentSection === 'globalrules') main.innerHTML = renderGlobalRules();
   else if (currentSection === 'components') main.innerHTML = renderComponents();
+  else if (currentSection === 'pricing')   main.innerHTML = renderPricing();
   else if (currentSection === 'clients') main.innerHTML = renderClients();
   else if (currentSection === 'masterprompt') { main.innerHTML = renderMasterPrompt(); loadSpendWidget(); }
 }
@@ -2547,6 +2646,9 @@ async function createClientFromForm() {
     google_review_count: parseInt(get('cn-reviews').value, 10) || 0,
     install_guarantee_days: parseInt(get('cn-guarantee').value, 10) || 0,
     default_per_week_price: get('cn-price').value.trim(),
+    default_fixed_price: (get('cn-fixed-price') ? get('cn-fixed-price').value.trim() : ''),
+    default_anchor_price: (get('cn-anchor-price') ? get('cn-anchor-price').value.trim() : ''),
+    pricing_mode: (document.querySelector('input[name="cn-pricing-mode"]:checked')?.value || 'per_week_only'),
     current_promo_pct: parseInt(get('cn-promo').value, 10) || 0,
     family_owned: !!(get('cn-family-owned') && get('cn-family-owned').checked),
     australian_owned: !!(get('cn-aus-owned') && get('cn-aus-owned').checked),
@@ -2614,11 +2716,21 @@ function openEditClient(clientId) {
         <div><label>Google review count</label><input id="ec-reviews" type="number" value="${c.google_review_count || 0}"></div>
         <div><label>Install guarantee (days)</label><input id="ec-guarantee" type="number" value="${c.install_guarantee_days || 0}"></div>
       </div>
-      <div class="form-row" style="display:grid; grid-template-columns: 1fr 1fr; gap:14px;">
-        <div><label>Default per-week price</label><input id="ec-price" type="text" value="${htmlEscape(String(c.default_per_week_price || ''))}"></div>
-        <div><label>Current promo %</label><input id="ec-promo" type="number" value="${c.current_promo_pct || 0}"></div>
+      <div class="form-row" style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:14px;">
+        <div><label>Per-week price</label><input id="ec-price" type="text" value="${htmlEscape(String(c.default_per_week_price || ''))}" placeholder="$/week"></div>
+        <div><label>Fixed price</label><input id="ec-fixed-price" type="text" value="${htmlEscape(String(c.default_fixed_price || ''))}" placeholder="$ install"></div>
+        <div><label>Anchor price</label><input id="ec-anchor-price" type="text" value="${htmlEscape(String(c.default_anchor_price || ''))}" placeholder="$ struck-thru"></div>
       </div>
-      <div class="form-row" style="display:grid; grid-template-columns: 1fr 1fr; gap:14px;">
+      <div class="form-row">
+        <label>Pricing mode</label>
+        <div style="display:flex; gap:14px; flex-wrap:wrap; padding:10px; background:var(--bg); border:1px solid var(--border-2); border-radius:4px;">
+          <label style="display:flex; align-items:center; gap:8px; font-size:13px; font-family:inherit; font-weight:400; text-transform:none; letter-spacing:normal; color:var(--text-1); margin:0; cursor:pointer;"><input type="radio" name="ec-pricing-mode" value="per_week_only" ${(c.pricing_mode||'per_week_only')==='per_week_only'?'checked':''} style="width:auto;"> Per-week only</label>
+          <label style="display:flex; align-items:center; gap:8px; font-size:13px; font-family:inherit; font-weight:400; text-transform:none; letter-spacing:normal; color:var(--text-1); margin:0; cursor:pointer;"><input type="radio" name="ec-pricing-mode" value="fixed_only" ${c.pricing_mode==='fixed_only'?'checked':''} style="width:auto;"> Fixed only</label>
+          <label style="display:flex; align-items:center; gap:8px; font-size:13px; font-family:inherit; font-weight:400; text-transform:none; letter-spacing:normal; color:var(--text-1); margin:0; cursor:pointer;"><input type="radio" name="ec-pricing-mode" value="mixed" ${c.pricing_mode==='mixed'?'checked':''} style="width:auto;"> Mixed (prompt decides)</label>
+        </div>
+      </div>
+      <div class="form-row" style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:14px;">
+        <div><label>Current promo %</label><input id="ec-promo" type="number" value="${c.current_promo_pct || 0}"></div>
         <div><label>Family owned &amp; operated</label><label style="display:flex; align-items:center; gap:8px; font-family:inherit; font-size:14px; color:var(--text-1); font-weight:400; text-transform:none; letter-spacing:normal; cursor:pointer; padding:9px 11px; background:var(--bg); border:1px solid var(--border-2); border-radius:4px;"><input id="ec-family-owned" type="checkbox" ${c.family_owned?'checked':''} style="width:auto;"> Yes</label></div>
         <div><label>Australian owned</label><label style="display:flex; align-items:center; gap:8px; font-family:inherit; font-size:14px; color:var(--text-1); font-weight:400; text-transform:none; letter-spacing:normal; cursor:pointer; padding:9px 11px; background:var(--bg); border:1px solid var(--border-2); border-radius:4px;"><input id="ec-aus-owned" type="checkbox" ${c.australian_owned?'checked':''} style="width:auto;"> Yes</label></div>
       </div>
@@ -2650,6 +2762,9 @@ async function saveEditedClient(clientId) {
     google_review_count: parseInt(get('ec-reviews').value, 10) || 0,
     install_guarantee_days: parseInt(get('ec-guarantee').value, 10) || 0,
     default_per_week_price: get('ec-price').value.trim(),
+    default_fixed_price: (get('ec-fixed-price') ? get('ec-fixed-price').value.trim() : ''),
+    default_anchor_price: (get('ec-anchor-price') ? get('ec-anchor-price').value.trim() : ''),
+    pricing_mode: (document.querySelector('input[name="ec-pricing-mode"]:checked')?.value || 'per_week_only'),
     current_promo_pct: parseInt(get('ec-promo').value, 10) || 0,
     family_owned: get('ec-family-owned').checked,
     australian_owned: get('ec-aus-owned').checked,
@@ -2813,7 +2928,17 @@ function renderClientNew() {
       <div class="form-section-h">Trust &amp; pricing</div>
       <div class="form-group"><label>Google review count</label><input id="cn-reviews" type="number" placeholder="e.g. 168"><div class="help-text">If &lt; 30, review badges are omitted (HR08).</div></div>
       <div class="form-group"><label>Install guarantee (days)</label><input id="cn-guarantee" type="number" placeholder="e.g. 7"></div>
-      <div class="form-group"><label>Default per-week price (override library)</label><input id="cn-price" type="text" placeholder="e.g. $55"><div class="help-text">Leave blank to use Healthy Price Library default for the city.</div></div>
+      <div class="form-group"><label>Per-week price ($/week)</label><input id="cn-price" type="text" placeholder="e.g. $55"><div class="help-text">Leave blank to fall back to the city's Pricing table value.</div></div>
+      <div class="form-group"><label>Fixed price ($ full installation)</label><input id="cn-fixed-price" type="text" placeholder="e.g. $9,990"><div class="help-text">Used by archetypes that show a one-off install price. Leave blank → city table value.</div></div>
+      <div class="form-group"><label>Anchor price ($ struck-through "was X")</label><input id="cn-anchor-price" type="text" placeholder="e.g. $12,490"><div class="help-text">The pre-discount price shown struck through on pain ads. Leave blank → city table.</div></div>
+      <div class="form-group" style="grid-column:1 / -1">
+        <label>Pricing mode (which pricing this client's ads can use)</label>
+        <div style="display:flex; gap:14px; flex-wrap:wrap; padding:10px; background:var(--bg); border:1px solid var(--border-2); border-radius:4px;">
+          <label style="display:flex; align-items:center; gap:8px; font-size:13px; font-family:inherit; font-weight:400; text-transform:none; letter-spacing:normal; color:var(--text-1); margin:0; cursor:pointer;"><input type="radio" name="cn-pricing-mode" value="per_week_only" checked style="width:auto;"> Per-week only <span style="color:var(--text-3); font-size:12px;">(default)</span></label>
+          <label style="display:flex; align-items:center; gap:8px; font-size:13px; font-family:inherit; font-weight:400; text-transform:none; letter-spacing:normal; color:var(--text-1); margin:0; cursor:pointer;"><input type="radio" name="cn-pricing-mode" value="fixed_only" style="width:auto;"> Fixed only</label>
+          <label style="display:flex; align-items:center; gap:8px; font-size:13px; font-family:inherit; font-weight:400; text-transform:none; letter-spacing:normal; color:var(--text-1); margin:0; cursor:pointer;"><input type="radio" name="cn-pricing-mode" value="mixed" style="width:auto;"> Mixed (let prompt decide)</label>
+        </div>
+      </div>
       <div class="form-group"><label>Current promo % (if any)</label><input id="cn-promo" type="number" placeholder="e.g. 30"></div>
       <div class="form-section-h">Trust signals</div>
       <div class="form-group"><label>Family owned &amp; operated</label><label style="display:flex; align-items:center; gap:8px; font-family:inherit; font-size:14px; color:var(--text-1); font-weight:400; text-transform:none; letter-spacing:normal; cursor:pointer; padding:9px 11px; background:var(--bg); border:1px solid var(--border-2); border-radius:4px;"><input id="cn-family-owned" type="checkbox" style="width:auto;"> Yes — display "Family Owned &amp; Operated" badge on ads</label><div class="help-text">AI-generated badge per HR19 — only appears on ads when this is true.</div></div>

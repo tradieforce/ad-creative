@@ -7,7 +7,6 @@
     "exemplar": "A03",
     "rules": [
       "Calm, trustworthy, savings-led mood. Pick fresh colours, palettes and fonts per generation.",
-      "Per-week price OR no price. Never fixed price (use A4 for fixed-price pain ads).",
       "Headline must reference SAVING, REDUCING, or CUTTING bills \u2014 never pain framing (that belongs to A4).",
       "Hero is a single component from this archetype's accessible pool, rotated across packs for variety. Common picks: house diagrams (calmest read), savings_graph variants, wallet_coins variants, bill_holder variants. House diagrams keep the no-people calm; people-included shots work when the pack needs an emotional variant \u2014 pick what the pack balance needs.",
       "Brand logos sit on a strip at the bottom of the canvas (max 3 per HR05)."
@@ -162,7 +161,6 @@
     "funnel_stage": "Cold/Warm",
     "exemplar": "A01",
     "rules": [
-      "Premium positioning. No urgency, no discount badges. Per-week price OR no price; fixed-price-with-anchor only when client's primary city has a fixed price AND no other ad in the pack uses fixed pricing.",
       "Two-half layout \u2014 text on the left, photo on the right. NOT split-screen \u2014 the photo bleeds off the right canvas edge for cinematic feel.",
       "The word 'LUXURY' (or equivalent premium phrase like 'PREMIUM' / 'QUIET LUXURY') is set in an elegant accent typeface \u2014 italic serif works well \u2014 contrasting the bold body type. Visual signature.",
       "Maximum 2 brand logos (premium positioning per HR05). Even premium ads must satisfy HR13 \u2014 'DUCTED A/C' must remain unmissable.",
@@ -252,7 +250,6 @@
     "rules": [
       "Bold, dark, urgent visual treatment \u2014 communicate threat / problem. Pick fresh high-contrast palette per generation.",
       "Headline is split into two parts: pain question on top in medium-weight, oversized contrasting accent on the key noun below (e.g. 'DREADING YOUR NEXT' + 'POWER BILL?').",
-      "Fixed price + anchor (RRP struck through) is mandatory \u2014 WAS $X struck through, $Y oversized. ONE PER PACK MAX (per HR06).",
       "Hero is a single component from this archetype's accessible pool \u2014 common picks: house_3d_dark (technical/explainer feel, no people), wallet_coins variants (emotionally direct, no people), bill_shock_red variants (overdue stamp, immediate pain), bill_holder variants (frustrated reactions). No-people heroes give the cleanest pain framing; reactions work for emotional variants \u2014 pick based on pack balance.",
       "Strong CTA button + discount badge bottom-right with high-contrast typography."
     ],

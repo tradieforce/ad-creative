@@ -1,0 +1,248 @@
+{
+  "pack_id": "pack_moysvbox",
+  "client_id": "bm-heating-cooling",
+  "created_at": "2026-05-09T20:32:06.898Z",
+  "skipped": {
+    "A10": null,
+    "A6": "current_promo_pct = 0"
+  },
+  "pack_balance": {
+    "fixed_price_archetype": "A4",
+    "total_ads": 9,
+    "funnel_distribution": {
+      "Cold/Warm": 4,
+      "Cold/Warm OR Warm/Hot": 1,
+      "Warm/Hot": 3,
+      "Hot": 1
+    }
+  },
+  "entries": [
+    {
+      "pack_id": "pack_moysvbox",
+      "archetype": "A1",
+      "archetype_name": "Energy Bill Hero",
+      "funnel_stage": "Cold/Warm",
+      "client_id": "bm-heating-cooling",
+      "picks": {
+        "headline": "HOW {{city}} HOMEOWNERS ARE BEATING RISING POWER PRICES",
+        "sub_headline": "",
+        "value_stack": "Smart Zoning Technology | Heat or Cool Just the Rooms You Use | 5-Year Workmanship Guarantee | $0 Upfront",
+        "cta": "REQUEST A FREE QUOTE TODAY!",
+        "badge": "$1,299 IN BONUSES"
+      },
+      "component_keys": [
+        "house_3d_blue",
+        "house_3d_warm",
+        "house_3d_dark",
+        "house_3d_zones"
+      ],
+      "attach_client_photos": [],
+      "quality": "high",
+      "n_candidates": 3,
+      "price_treatment": "per_week",
+      "pack_position": 1
+    },
+    {
+      "pack_id": "pack_moysvbox",
+      "archetype": "A2",
+      "archetype_name": "Speed Guarantee",
+      "funnel_stage": "Cold/Warm OR Warm/Hot",
+      "client_id": "bm-heating-cooling",
+      "picks": {
+        "headline": "INSTALLED IN {{install_guarantee_days}} OR LESS",
+        "sub_headline": "",
+        "value_stack": "{{install_guarantee_days}} Install Guarantee | No Hidden Fees | $1,299 FREE Bonuses",
+        "cta": "LOCK IN YOUR INSTALL DATE",
+        "badge": "LIMITED AVAILABILITY"
+      },
+      "component_keys": [
+        "house_3d_blue",
+        "house_3d_warm",
+        "house_3d_dark",
+        "house_3d_zones"
+      ],
+      "attach_client_photos": [],
+      "quality": "high",
+      "n_candidates": 3,
+      "price_treatment": "per_week",
+      "pack_position": 2
+    },
+    {
+      "pack_id": "pack_moysvbox",
+      "archetype": "A3",
+      "archetype_name": "Luxury Lifestyle",
+      "funnel_stage": "Cold/Warm",
+      "client_id": "bm-heating-cooling",
+      "picks": {
+        "headline": "BOOST YOUR HOME'S VALUE — INSTALL DUCTED A/C",
+        "sub_headline": "",
+        "value_stack": "Designed Around Your Home | Premium Brands | Free Design Consultation | $0 Upfront",
+        "cta": "CLAIM YOUR FREE QUOTE",
+        "badge": "50% OFF (fixed-price variant)"
+      },
+      "component_keys": [
+        "ctrl_ipad_airtouch",
+        "ctrl_phone_app",
+        "ctrl_combo",
+        "fam_couch_summer"
+      ],
+      "attach_client_photos": [],
+      "quality": "high",
+      "n_candidates": 3,
+      "price_treatment": "no_price",
+      "pack_position": 3
+    },
+    {
+      "pack_id": "pack_moysvbox",
+      "archetype": "A4",
+      "archetype_name": "Problem/Solution Urgency",
+      "funnel_stage": "Warm/Hot",
+      "client_id": "bm-heating-cooling",
+      "picks": {
+        "headline": "DOES YOUR POWER BILL KEEP CLIMBING?",
+        "sub_headline": "",
+        "value_stack": "THE ANSWER: DUCTED A/C, FULLY INSTALLED, {{fixed_price}}",
+        "cta": "LOCK IN YOUR PRICE",
+        "badge": "$0 UPFRONT"
+      },
+      "component_keys": [
+        "cond_neutral_1",
+        "cond_neutral_2",
+        "cond_daikin",
+        "cond_mitsubishi"
+      ],
+      "attach_client_photos": [],
+      "quality": "high",
+      "n_candidates": 3,
+      "price_treatment": "fixed",
+      "pack_position": 4
+    },
+    {
+      "pack_id": "pack_moysvbox",
+      "archetype": "A5",
+      "archetype_name": "Seasonal Pain",
+      "funnel_stage": "Cold/Warm",
+      "client_id": "bm-heating-cooling",
+      "picks": {
+        "headline": "Don't SWEAT This Heatwave!",
+        "sub_headline": "",
+        "value_stack": "Locally Installed by Experts | $0 Upfront | 5-Year Guarantee",
+        "cta": "GET RELIEF NOW",
+        "badge": "LIMITED TIME"
+      },
+      "component_keys": [
+        "house_3d_blue",
+        "house_3d_warm",
+        "house_3d_dark",
+        "house_3d_zones"
+      ],
+      "attach_client_photos": [],
+      "quality": "high",
+      "n_candidates": 3,
+      "price_treatment": "per_week",
+      "pack_position": 5
+    },
+    {
+      "pack_id": "pack_moysvbox",
+      "archetype": "A7",
+      "archetype_name": "Brand Sale",
+      "funnel_stage": "Warm/Hot",
+      "client_id": "bm-heating-cooling",
+      "picks": {
+        "headline": "MASSIVE DUCTED A/C SAVINGS",
+        "sub_headline": "10kW DUCTED A/C SYSTEM",
+        "value_stack": "Premium Brand Selection | $0 Upfront | 5-Year Workmanship Guarantee | Locally Licensed & Insured",
+        "cta": "CHECK YOUR PRICE",
+        "badge": ""
+      },
+      "component_keys": [
+        "cond_neutral_1",
+        "cond_neutral_2",
+        "cond_daikin",
+        "cond_mitsubishi"
+      ],
+      "attach_client_photos": [],
+      "quality": "high",
+      "n_candidates": 3,
+      "price_treatment": "per_week",
+      "pack_position": 6
+    },
+    {
+      "pack_id": "pack_moysvbox",
+      "archetype": "A8",
+      "archetype_name": "City Massive Sale",
+      "funnel_stage": "Warm/Hot",
+      "client_id": "bm-heating-cooling",
+      "picks": {
+        "headline": "DUCTED A/C SALE — {{city}} ONLY",
+        "sub_headline": "",
+        "value_stack": "Limited Stock | Locally Installed | 5-Year Guarantee",
+        "cta": "LOCK IN YOUR INSTALL",
+        "badge": "LIMITED STOCK"
+      },
+      "component_keys": [
+        "cond_neutral_1",
+        "cond_neutral_2",
+        "cond_daikin",
+        "cond_mitsubishi"
+      ],
+      "attach_client_photos": [],
+      "quality": "high",
+      "n_candidates": 3,
+      "price_treatment": "per_week",
+      "pack_position": 7
+    },
+    {
+      "pack_id": "pack_moysvbox",
+      "archetype": "A9",
+      "archetype_name": "Holiday Event",
+      "funnel_stage": "Hot",
+      "client_id": "bm-heating-cooling",
+      "picks": {
+        "headline": "NEW YEAR DUCTED A/C SALE",
+        "sub_headline": "",
+        "value_stack": "Beat the Summer Rush | $0 Upfront | 5-Year Guarantee",
+        "cta": "LOCK IN HOLIDAY PRICE",
+        "badge": "ENDS {{holiday_end_date}}"
+      },
+      "component_keys": [
+        "cond_neutral_1",
+        "cond_neutral_2",
+        "cond_daikin",
+        "cond_mitsubishi"
+      ],
+      "attach_client_photos": [],
+      "quality": "high",
+      "n_candidates": 3,
+      "price_treatment": "per_week",
+      "pack_position": 8
+    },
+    {
+      "pack_id": "pack_moysvbox",
+      "archetype": "A10",
+      "archetype_name": "Local Trust",
+      "funnel_stage": "Cold/Warm",
+      "client_id": "bm-heating-cooling",
+      "picks": {
+        "headline": "TRUSTED BY {{google_review_count}}+ {{region}} HOMEOWNERS",
+        "sub_headline": "FAMILY-RUN, LOCALLY-OWNED",
+        "value_stack": "Fully Licensed & Insured | Local Install Specialists | 5-Star Rated | Free On-Site Quote",
+        "cta": "BOOK ON-SITE QUOTE",
+        "badge": "{{region}} TEAM"
+      },
+      "component_keys": [
+        "house_3d_blue",
+        "house_3d_warm",
+        "house_3d_dark",
+        "house_3d_zones"
+      ],
+      "attach_client_photos": [
+        "team-1.png"
+      ],
+      "quality": "high",
+      "n_candidates": 3,
+      "price_treatment": "per_week",
+      "pack_position": 9
+    }
+  ]
+}
