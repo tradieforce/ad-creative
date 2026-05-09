@@ -121,17 +121,17 @@ After all set: trigger a redeploy (Deployments → ⋯ → Redeploy on the lates
 | Archetype | Match | What landed | What diverged |
 |---|---|---|---|
 | **A1** Energy Bill Hero | **97%** | Palette (cyan + navy + cream), oversized navy "ENERGY BILLS", cyan "BY UP TO 50%", price block, footer pills, brand strip, corner ribbon — all match | gpt-image-2 renders 2 houses instead of 1 (model limitation across 4 test iterations; even strongest "single instance" prompting can't override) |
-| **A2** Speed Guarantee | **70%** | Headline + subline copy, AC vent illustration top, 3-bullet feature list, corner badge, brand strip | Hero is house diagram instead of family lifestyle photo (sim defaults bug — used `house_3d_blue` instead of `fam_jumping`) |
+| **A2** Speed Guarantee | **70% → 93%** ✓ | First run: wrong hero. **Re-run with `fam_jumping`** brought it up to ~93% — kids bouncing as hero, AC vent top, corner badge, brand strip, CTA all matching | n/a after re-run |
 | **A3** Luxury Lifestyle | **92%** | Italic serif "LUXURY" treatment (key visual signature), family lifestyle photo right-half, two-half layout, premium cream palette, 2-brand strip | Minor — proportions differ slightly |
 | **A4** Problem/Solution | **93%** | Dark navy + purple lightning palette, "SICK OF HIGH ENERGY BILLS?" headline, fixed-price + struck-through anchor, "DUCTED A/C" cyan callout, identical CTA + footer | Hero is condenser instead of house diagram (both valid per A4 spec) |
 | **A5** Seasonal Pain | **96%** ⭐ | Coral red palette, flower border top + bottom, "MELT" cyan italic treatment, sweating-man reaction photo, price block, 50% OFF yellow badge, single house diagram lower-right | Tightest style match in the batch |
-| **A6** Seasonal Sale | **80%** | Cyan winter palette, snowflake bg, navy "WINTER SALE" headline, struck-through anchor, 30% OFF corner badge, 5-year warranty pill | Missing the reaction-pointing-up model (sim defaults gave condenser instead) |
+| **A6** Seasonal Sale | **80% → 85%** | Re-run with `react_pointing_up_1` + `house_3d_blue` improved structure, but gpt-image-2 dropped the reaction model from the hero — kept the house diagram. Palette + headline + price + 30% OFF corner all match | Reaction model attached but not surfaced — needs prompt-level emphasis on placing the person model in the hero zone |
 | **A7** Brand Sale | **95%** ⭐ | Sky-blue palette, oversized navy "DUCTED A/C SALE" headline, brand strip directly under headline (3 logos), condenser hero, identical 3-pill footer + "T&Cs apply" note | Near-perfect |
 | **A8** City Massive Sale | **85%** | "CENTRAL COAST HOMEOWNERS DUCTED A/C SALE" city-anchored headline, condenser hero, brand-stack right side, corner discount badge, "Save on your power bills" footer | Per-week treatment instead of fixed-price (both valid per A8 spec) |
 | **A9** Holiday Event | **88%** | Red + cream split palette, "BLACK FRIDAY" white corner badge, oversized white "BLACK FRIDAY" + italic script "Super Sale", "30% off" + "DUCTED A/C", "GET QUOTE" CTA, brand strip | Hero is condenser instead of house+tablet+reaction model trio |
 | **A10** Local Trust | n/a | Skipped — no team/owner/van photos uploaded for sample client | n/a |
 
-**Average match: ~88%.** Two near-perfect (A5, A7). One weakest (A2 — fixable with proper components).
+**Average match: ~88% → 91% after re-runs.** Three near-perfect (A5 96%, A7 95%, A2 93%). A6 needs one more iteration to surface the reaction model.
 
 ### What this proves
 
