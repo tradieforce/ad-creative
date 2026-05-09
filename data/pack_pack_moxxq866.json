@@ -1,0 +1,246 @@
+{
+  "pack_id": "pack_moxxq866",
+  "client_id": "jonathan-air",
+  "created_at": "2026-05-09T06:00:20.960Z",
+  "skipped": {
+    "A10": "no team/owner/van photo",
+    "A6": null
+  },
+  "pack_balance": {
+    "fixed_price_archetype": "A4",
+    "total_ads": 9,
+    "funnel_distribution": {
+      "Cold/Warm": 3,
+      "Cold/Warm OR Warm/Hot": 1,
+      "Warm/Hot": 4,
+      "Hot": 1
+    }
+  },
+  "entries": [
+    {
+      "pack_id": "pack_moxxq866",
+      "archetype": "A1",
+      "archetype_name": "Energy Bill Hero",
+      "funnel_stage": "Cold/Warm",
+      "client_id": "jonathan-air",
+      "picks": {
+        "headline": "SLASH YOUR ELECTRICITY BILLS WITH DUCTED A/C",
+        "sub_headline": "",
+        "value_stack": "Smart Zoning Technology | Heat or Cool Just the Rooms You Use | 5-Year Workmanship Guarantee | $0 Upfront",
+        "cta": "GET A FAST QUOTE",
+        "badge": "50% OFF"
+      },
+      "component_keys": [
+        "house_3d_blue",
+        "house_3d_warm",
+        "house_3d_dark",
+        "house_3d_zones"
+      ],
+      "attach_client_photos": [],
+      "quality": "high",
+      "n_candidates": 3,
+      "price_treatment": "per_week",
+      "pack_position": 1
+    },
+    {
+      "pack_id": "pack_moxxq866",
+      "archetype": "A2",
+      "archetype_name": "Speed Guarantee",
+      "funnel_stage": "Cold/Warm OR Warm/Hot",
+      "client_id": "jonathan-air",
+      "picks": {
+        "headline": "DUCTED A/C THIS WEEK — GUARANTEED",
+        "sub_headline": "",
+        "value_stack": "Installed within {{install_guarantee_days}} | $0 Upfront | 5-Year Guarantee",
+        "cta": "GET QUOTE",
+        "badge": "$0 UPFRONT"
+      },
+      "component_keys": [
+        "house_3d_blue",
+        "house_3d_warm",
+        "house_3d_dark",
+        "house_3d_zones"
+      ],
+      "attach_client_photos": [],
+      "quality": "high",
+      "n_candidates": 3,
+      "price_treatment": "per_week",
+      "pack_position": 2
+    },
+    {
+      "pack_id": "pack_moxxq866",
+      "archetype": "A3",
+      "archetype_name": "Luxury Lifestyle",
+      "funnel_stage": "Cold/Warm",
+      "client_id": "jonathan-air",
+      "picks": {
+        "headline": "THE COMFORT UPGRADE YOUR HOME DESERVES — DUCTED A/C",
+        "sub_headline": "",
+        "value_stack": "Silent, Seamless, and Smart Cooling | Zoned Control for Maximum Comfort | 5-Year Workmanship Guarantee | $0 Upfront",
+        "cta": "Upgrade Your Home Today!",
+        "badge": "EXCLUSIVE PROMO"
+      },
+      "component_keys": [
+        "ctrl_ipad_airtouch",
+        "ctrl_phone_app",
+        "ctrl_combo",
+        "fam_couch_summer"
+      ],
+      "attach_client_photos": [],
+      "quality": "high",
+      "n_candidates": 3,
+      "price_treatment": "no_price",
+      "pack_position": 3
+    },
+    {
+      "pack_id": "pack_moxxq866",
+      "archetype": "A4",
+      "archetype_name": "Problem/Solution Urgency",
+      "funnel_stage": "Warm/Hot",
+      "client_id": "jonathan-air",
+      "picks": {
+        "headline": "STOP OVERPAYING FOR POWER",
+        "sub_headline": "",
+        "value_stack": "THE SOLUTION: DUCTED A/C INSTALLED FOR {{fixed_price}}",
+        "cta": "Claim This Offer",
+        "badge": "ONCE-A-YEAR PRICING"
+      },
+      "component_keys": [
+        "cond_neutral_1",
+        "cond_neutral_2",
+        "cond_daikin",
+        "cond_mitsubishi"
+      ],
+      "attach_client_photos": [],
+      "quality": "high",
+      "n_candidates": 3,
+      "price_treatment": "fixed",
+      "pack_position": 4
+    },
+    {
+      "pack_id": "pack_moxxq866",
+      "archetype": "A5",
+      "archetype_name": "Seasonal Pain",
+      "funnel_stage": "Cold/Warm",
+      "client_id": "jonathan-air",
+      "picks": {
+        "headline": "AUSSIE SUMMER GETTING TO YOU?",
+        "sub_headline": "",
+        "value_stack": " $1,299 FREE Bonuses | $0 Upfront",
+        "cta": "ESCAPE THE COLD — GET A QUOTE",
+        "badge": "$1,299 BONUSES"
+      },
+      "component_keys": [
+        "house_3d_blue",
+        "house_3d_warm",
+        "house_3d_dark",
+        "house_3d_zones"
+      ],
+      "attach_client_photos": [],
+      "quality": "high",
+      "n_candidates": 3,
+      "price_treatment": "per_week",
+      "pack_position": 5
+    },
+    {
+      "pack_id": "pack_moxxq866",
+      "archetype": "A6",
+      "archetype_name": "Seasonal Sale Event",
+      "funnel_stage": "Warm/Hot",
+      "client_id": "jonathan-air",
+      "picks": {
+        "headline": "STAY WARM THIS WINTER — DUCTED A/C SALE",
+        "sub_headline": "",
+        "value_stack": "50% OFF This Season Only | Locally Installed | Premium Brands | $1,299 in Free Bonuses",
+        "cta": "GET A QUOTE",
+        "badge": "ENDS SOON"
+      },
+      "component_keys": [
+        "cond_neutral_1",
+        "cond_neutral_2",
+        "cond_daikin",
+        "cond_mitsubishi"
+      ],
+      "attach_client_photos": [],
+      "quality": "high",
+      "n_candidates": 3,
+      "price_treatment": "per_week",
+      "pack_position": 6
+    },
+    {
+      "pack_id": "pack_moxxq866",
+      "archetype": "A7",
+      "archetype_name": "Brand Sale",
+      "funnel_stage": "Warm/Hot",
+      "client_id": "jonathan-air",
+      "picks": {
+        "headline": "DUCTED A/C SALE — LIMITED STOCK",
+        "sub_headline": "FULL-HOME DUCTED COMFORT — INSTALLED",
+        "value_stack": "Daikin / Mitsubishi Electric / Samsung Available | Expert Installation | 5-Year Warranty | Energy Efficient",
+        "cta": "CHECK YOUR PRICE",
+        "badge": ""
+      },
+      "component_keys": [
+        "cond_neutral_1",
+        "cond_neutral_2",
+        "cond_daikin",
+        "cond_mitsubishi"
+      ],
+      "attach_client_photos": [],
+      "quality": "high",
+      "n_candidates": 3,
+      "price_treatment": "per_week",
+      "pack_position": 7
+    },
+    {
+      "pack_id": "pack_moxxq866",
+      "archetype": "A8",
+      "archetype_name": "City Massive Sale",
+      "funnel_stage": "Warm/Hot",
+      "client_id": "jonathan-air",
+      "picks": {
+        "headline": "{{city}} DUCTED HEATING SALE",
+        "sub_headline": "",
+        "value_stack": "Save Big With Government Rebates | Locally Installed | $0 Upfront",
+        "cta": "{{city}} HOMEOWNERS — CLAIM TODAY",
+        "badge": "5-Year Warranty"
+      },
+      "component_keys": [
+        "cond_neutral_1",
+        "cond_neutral_2",
+        "cond_daikin",
+        "cond_mitsubishi"
+      ],
+      "attach_client_photos": [],
+      "quality": "high",
+      "n_candidates": 3,
+      "price_treatment": "per_week",
+      "pack_position": 8
+    },
+    {
+      "pack_id": "pack_moxxq866",
+      "archetype": "A9",
+      "archetype_name": "Holiday Event",
+      "funnel_stage": "Hot",
+      "client_id": "jonathan-air",
+      "picks": {
+        "headline": "BOXING DAY DUCTED A/C SALE",
+        "sub_headline": "",
+        "value_stack": "Holiday Bonuses Worth $1,299 | Locally Installed | $0 Upfront",
+        "cta": "CLAIM TODAY",
+        "badge": "50% OFF"
+      },
+      "component_keys": [
+        "cond_neutral_1",
+        "cond_neutral_2",
+        "cond_daikin",
+        "cond_mitsubishi"
+      ],
+      "attach_client_photos": [],
+      "quality": "high",
+      "n_candidates": 3,
+      "price_treatment": "per_week",
+      "pack_position": 9
+    }
+  ]
+}

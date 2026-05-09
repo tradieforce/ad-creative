@@ -1,0 +1,43 @@
+{
+  "pack_id": "pack_moykvpqj",
+  "client_id": "jonathan-air",
+  "created_at": "2026-05-09T16:48:28.176Z",
+  "skipped": {
+    "A10": "no team/owner/van photo",
+    "A6": null
+  },
+  "pack_balance": {
+    "fixed_price_archetype": "A8",
+    "total_ads": 1,
+    "funnel_distribution": {
+      "Warm/Hot": 1
+    }
+  },
+  "entries": [
+    {
+      "pack_id": "pack_moykvpqj",
+      "archetype": "A8",
+      "archetype_name": "City Massive Sale",
+      "funnel_stage": "Warm/Hot",
+      "client_id": "jonathan-air",
+      "picks": {
+        "headline": "{{city}} DUCTED A/C WITH ZONING",
+        "sub_headline": "",
+        "value_stack": "Final Days, Final Stock | $1,299 Free Bonuses | Locally Installed by {{city}} Experts",
+        "cta": "{{city}} HOMEOWNERS — CLAIM TODAY",
+        "badge": "LIMITED TIME"
+      },
+      "component_keys": [
+        "cond_neutral_1",
+        "cond_neutral_2",
+        "cond_daikin",
+        "cond_mitsubishi"
+      ],
+      "attach_client_photos": [],
+      "quality": "high",
+      "n_candidates": 3,
+      "price_treatment": "fixed",
+      "pack_position": 1
+    }
+  ]
+}

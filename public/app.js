@@ -304,66 +304,260 @@ function confirmDelete(label, onConfirm) {
 // ------------------------------------------------------------
 // AD DETAIL MODAL — paired output + prompt + reference
 // ------------------------------------------------------------
+// Modal state for the ad-detail view. Modal stays in sync with this object —
+// any state change calls renderAdDetailModal() to redraw.
+const MODAL_AD = {
+  clientId: null,
+  archetype: null,
+  selectedVersionId: null,   // which version pill is active (or 'generating-new' when in flight)
+  generating: false,         // a regenerate is in flight; generates a virtual pill
+  startedAt: 0,              // for elapsed-time display during generation
+};
+
+// Build the sorted version list for an (clientId, archetype). Returns:
+//   { versions: [...sorted oldest-first], current: ad-with-max-promoted_at }
+//
+// Sort uses created date primary; ad.id as tie-breaker (legacy ads stored
+// only YYYY-MM-DD so date.getTime() ties — id is `ad_<base36-timestamp>_xxxx`
+// which sorts correctly lexicographically because base36 of milliseconds
+// preserves chronological order).
+function getVersions(clientId, archetype) {
+  const all = ADS
+    .filter((a) => a.client_id === clientId && a.archetype === archetype)
+    .map((a) => ({
+      ...a,
+      _promoted: new Date(a.promoted_at || a.created || 0).getTime(),
+      _created:  new Date(a.created || 0).getTime(),
+    }));
+  const versions = all.slice().sort((a, b) => {
+    if (a._created !== b._created) return a._created - b._created;
+    return (a.id || '').localeCompare(b.id || '');   // oldest id → newest id
+  });
+  const current = all.slice().sort((a, b) => {
+    if (a._promoted !== b._promoted) return b._promoted - a._promoted;
+    return (b.id || '').localeCompare(a.id || '');   // newest id → oldest id
+  })[0];
+  return { versions, current };
+}
+
 function openAdDetail(adId) {
-  const ad = ADS.find(a => a.id === adId);
+  const ad = ADS.find((a) => a.id === adId);
   if (!ad) return;
-  const client = CLIENTS.find(c => c.id === ad.client_id);
-  const arch = STATE.archetypes.find(a => a.code === ad.archetype) || {};
-  // Reference image lookup keyed by archetype.code (REF_THUMBS is built that way).
-  const refImg = REF_THUMBS[ad.archetype] || REF_THUMBS[arch.exemplar];
-  const promptText = ad.prompt_text || (ad.use_gold_prompt && GOLDS[ad.use_gold_prompt]?.full_prompt_used) || '';
+  MODAL_AD.clientId = ad.client_id;
+  MODAL_AD.archetype = ad.archetype;
+  MODAL_AD.selectedVersionId = adId;
+  MODAL_AD.generating = false;
+  renderAdDetailModal();
+}
+window.openAdDetail = openAdDetail;
 
-  // Pretty image rendering — actual generated PNG when available, placeholder otherwise.
-  const generatedBlock = ad.image_url
-    ? `<img class="paired-ref-img zoomable" src="${ad.image_url}?t=${Date.now()}" data-caption="${htmlEscape(arch.code + ' generated ad')}" alt="generated ad" style="display:block; width:100%; height:auto; border-radius:8px;">`
-    : `<div class="paired-output">
-         <div class="po-icon">▢</div>
-         <div class="po-arch">${ad.archetype}</div>
-         <div class="po-headline">${htmlEscape(ad.headline || '')}</div>
-         <div class="po-note">[ generation pending — fire from the client page ]</div>
-       </div>`;
+function renderAdDetailModal() {
+  if (!MODAL_AD.clientId || !MODAL_AD.archetype) return;
+  const arch = STATE.archetypes.find((a) => a.code === MODAL_AD.archetype) || {};
+  const client = CLIENTS.find((c) => c.id === MODAL_AD.clientId);
+  const { versions, current } = getVersions(MODAL_AD.clientId, MODAL_AD.archetype);
 
-  // HD download buttons when 2K/4K versions exist.
-  const hdLinks = (ad.hd_urls && (ad.hd_urls['2k'] || ad.hd_urls['4k']))
-    ? `<div style="display:flex; gap:8px; margin-top:10px; flex-wrap:wrap;">
-         <a class="btn btn-sm" href="${ad.image_url}" download>Download 1080</a>
-         ${ad.hd_urls['2k'] ? `<a class="btn btn-sm" href="${ad.hd_urls['2k']}" download>Download 2K HD</a>` : ''}
-         ${ad.hd_urls['4k'] ? `<a class="btn btn-sm" href="${ad.hd_urls['4k']}" download>Download 4K HD</a>` : ''}
-       </div>` : '';
+  // Selected version: explicit selection > current > first.
+  const selectedAd = versions.find((v) => v.id === MODAL_AD.selectedVersionId)
+                  || current
+                  || versions[0]
+                  || null;
+
+  // Pills (oldest → newest, then a virtual ⏳ pill if regen in flight).
+  const totalNonGenerating = versions.length;
+  const pills = versions.map((v, i) => {
+    const isSelected = !MODAL_AD.generating && selectedAd && v.id === selectedAd.id;
+    const isCurrent = current && v.id === current.id;
+    const dt = new Date(v.created);
+    const dtLabel = isNaN(dt) ? '' : `${dt.toLocaleDateString(undefined,{month:'short',day:'numeric'})} ${dt.toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'})}`;
+    return `<button onclick="selectAdVersion('${v.id}')" style="background:${isSelected?'var(--accent)':'var(--surface)'}; color:${isSelected?'#fff':'var(--text-1)'}; border:1px solid ${isSelected?'var(--accent)':'var(--border-2)'}; border-radius:6px; padding:6px 12px; font-family:'JetBrains Mono',monospace; font-size:11px; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">
+      <span style="font-weight:600;">v${i+1}</span>
+      ${isCurrent ? '<span style="color:'+(isSelected?'#fff':'var(--accent)')+';">★</span>' : ''}
+      <span style="opacity:0.75; font-weight:400;">${dtLabel}</span>
+    </button>`;
+  }).join('');
+
+  // Virtual generating pill at the right end of the strip.
+  const elapsed = MODAL_AD.generating ? Math.floor((Date.now() - MODAL_AD.startedAt) / 1000) : 0;
+  const generatingPill = MODAL_AD.generating
+    ? `<button style="background:var(--SP-bg); color:var(--SP); border:1px solid var(--SP); border-radius:6px; padding:6px 12px; font-family:'JetBrains Mono',monospace; font-size:11px; display:inline-flex; align-items:center; gap:6px; cursor:default;">
+         <span style="font-weight:600;">v${totalNonGenerating + 1}</span>
+         <span>⏳ generating…</span>
+         <span style="opacity:0.7;">${elapsed}s</span>
+       </button>`
+    : '';
+
+  // Body content depends on whether we're generating or showing a real version.
+  let leftPane, rightTopPane, rightBottomPane, footer;
+
+  if (MODAL_AD.generating) {
+    leftPane = `
+      <div class="paired-block-h">Generated ad output</div>
+      <div class="paired-output" style="position:relative;">
+        <div class="po-icon">⏳</div>
+        <div class="po-arch">${MODAL_AD.archetype}</div>
+        <div class="po-headline">composing → critiquing → rendering → picking → upscaling</div>
+        <div class="po-note">~5–7 min · elapsed ${elapsed}s</div>
+      </div>
+    `;
+    // For the reference + prompt during generation, show the LIVE reference
+    // (which is what'll be snapshotted for this new version) and "composing…".
+    const liveRef = REF_THUMBS[MODAL_AD.archetype] || REF_THUMBS[arch.exemplar];
+    rightTopPane = `
+      <div class="paired-block-h">Reference being snapshotted (current archetype reference)</div>
+      ${liveRef ? `<img class="paired-ref-img zoomable" src="${liveRef}" alt="reference" data-caption="Reference snapshot">` : '<div class="ref-empty">Reference not found</div>'}
+    `;
+    rightBottomPane = `
+      <div class="paired-block-h">ChatGPT prompt being composed</div>
+      <div class="paired-prompt-block" style="font-style:italic; color:var(--text-3);">[ Claude composing — this fills in once the prompt is returned, then gpt-image-2 starts rendering ]</div>
+    `;
+    footer = `<button class="btn" onclick="closeModal()">Close (generation continues in background)</button>`;
+  } else if (selectedAd) {
+    const ad = selectedAd;
+    const refUrl = ad.reference_url || REF_THUMBS[MODAL_AD.archetype] || REF_THUMBS[arch.exemplar];
+    const promptText = ad.prompt_text || '';
+    const isCurrent = current && ad.id === current.id;
+
+    leftPane = `
+      <div class="paired-block-h">Generated ad output</div>
+      ${ad.image_url
+        ? `<img class="paired-ref-img zoomable" src="${ad.image_url}?t=${Date.now()}" data-caption="${htmlEscape(MODAL_AD.archetype + ' generated ad')}" alt="generated ad" style="display:block; width:100%; height:auto; border-radius:8px;">`
+        : `<div class="paired-output"><div class="po-icon">▢</div><div class="po-arch">${MODAL_AD.archetype}</div><div class="po-note">[ no image — generation may have failed ]</div></div>`}
+      ${ad.image_url ? `
+      <div style="display:flex; gap:8px; margin-top:10px; flex-wrap:wrap; align-items:center;">
+        <a class="btn btn-sm" href="${ad.image_url}" download>Download 1080</a>
+        ${ad.hd_urls?.['2k'] ? `<a class="btn btn-sm" href="${ad.hd_urls['2k']}" download>2K HD</a>` : ''}
+        ${ad.hd_urls?.['4k'] ? `<a class="btn btn-sm" href="${ad.hd_urls['4k']}" download>4K HD</a>` : ''}
+        ${ad.total_cost_usd ? `<span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--text-3);">cost $${Number(ad.total_cost_usd).toFixed(2)}</span>` : ''}
+      </div>` : ''}
+    `;
+    rightTopPane = `
+      <div class="paired-block-h">Reference ad used (attached as IMAGE 1)${ad.reference_url ? '' : ' <span style="color:var(--text-3); font-weight:400;">[live reference — pre-snapshot ad]</span>'}</div>
+      ${refUrl ? `<img class="paired-ref-img zoomable" src="${refUrl}${refUrl.includes('?')?'':'?t='+Date.now()}" alt="reference" data-caption="Reference ad">` : '<div class="ref-empty">Reference not found</div>'}
+    `;
+    rightBottomPane = `
+      <div class="paired-block-h">ChatGPT prompt that produced this</div>
+      <div class="paired-prompt-block">${promptText ? htmlEscape(promptText) : '[ no prompt recorded ]'}</div>
+    `;
+    footer = `
+      <button class="btn" onclick="closeModal()">Close</button>
+      ${!isCurrent && ad.image_url ? `<button class="btn" onclick="promoteAdVersion('${ad.id}')" title="Make this version the one shown on the client page card">★ Promote to current</button>` : ''}
+      ${ad.image_url ? `<button class="btn btn-primary" onclick="regenerateOneAdFromModal()">Regenerate (creates v${totalNonGenerating + 1})</button>` : ''}
+    `;
+  } else {
+    leftPane = '<div class="empty-state">No versions yet for this slot.</div>';
+    rightTopPane = '';
+    rightBottomPane = '';
+    footer = `<button class="btn" onclick="closeModal()">Close</button>`;
+  }
 
   showModal(`
     <div class="modal-header">
       <div>
-        <h3 class="modal-title">${ad.archetype} · ${htmlEscape(arch.name||'')}</h3>
-        <div class="modal-subtitle">${htmlEscape(client?.business_name||'')} · ${htmlEscape(ad.city||'')} · ${htmlEscape(ad.created||'')}</div>
+        <h3 class="modal-title">${MODAL_AD.archetype} · ${htmlEscape(arch.name||'')}</h3>
+        <div class="modal-subtitle">${htmlEscape(client?.business_name||'')} · ${selectedAd ? htmlEscape(selectedAd.city||'') : ''}</div>
       </div>
       <button class="modal-close" onclick="closeModal()">×</button>
     </div>
+    ${versions.length > 1 || MODAL_AD.generating ? `
+      <div style="padding:10px 22px; background:var(--surface-2); border-bottom:1px solid var(--border); display:flex; gap:6px; flex-wrap:wrap; align-items:center;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-3); margin-right:6px;">VERSIONS:</span>
+        ${pills}
+        ${generatingPill}
+        ${current && versions.length > 1 ? `<span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--text-3);">★ = the version shown on the client page</span>` : ''}
+      </div>` : ''}
     <div class="modal-body">
       <div class="paired-grid">
-        <div>
-          <div class="paired-block-h">Generated ad output</div>
-          ${generatedBlock}
-          ${hdLinks}
-        </div>
+        <div>${leftPane}</div>
         <div class="paired-side">
-          <div>
-            <div class="paired-block-h">Reference ad used (attached as IMAGE 1)</div>
-            ${refImg ? `<img class="paired-ref-img zoomable" src="${refImg}" alt="reference" data-caption="Reference ad">` : '<div class="ref-empty">Reference not found</div>'}
-          </div>
-          <div>
-            <div class="paired-block-h">ChatGPT prompt that produced this</div>
-            <div class="paired-prompt-block">${promptText ? htmlEscape(promptText) : '[ no prompt recorded — generation may be pending ]'}</div>
-          </div>
+          <div>${rightTopPane}</div>
+          <div>${rightBottomPane}</div>
         </div>
       </div>
     </div>
-    <div class="modal-footer">
-      <button class="btn" onclick="closeModal()">Close</button>
-      ${ad.image_url ? '<button class="btn" onclick="regenerateOneAd(\'' + ad.client_id + '\',\'' + ad.archetype + '\')">Regenerate</button>' : ''}
-    </div>
-  `, {large: true});
+    <div class="modal-footer">${footer}</div>
+  `, { large: true });
 }
+
+function selectAdVersion(adId) {
+  MODAL_AD.selectedVersionId = adId;
+  renderAdDetailModal();
+}
+window.selectAdVersion = selectAdVersion;
+
+async function promoteAdVersion(adId) {
+  try {
+    const r = await fetch('/api/ads/' + encodeURIComponent(adId) + '/promote', { method: 'POST' });
+    if (!r.ok) { const j = await r.json().catch(() => ({})); throw new Error(j.error || 'HTTP ' + r.status); }
+    ADS = await api.ads.list();
+    MODAL_AD.selectedVersionId = adId;   // stay on the just-promoted version
+    renderAdDetailModal();
+    render();   // refresh the underlying client page so the slot card updates
+  } catch (err) { alert('Promote failed: ' + err.message); }
+}
+window.promoteAdVersion = promoteAdVersion;
+
+// Called from the modal's Regenerate button — keeps the modal open and shows
+// the generation in place. Different code path from the slot-level Retry which
+// is fired from outside the modal.
+async function regenerateOneAdFromModal() {
+  const clientId = MODAL_AD.clientId;
+  const archetypeCode = MODAL_AD.archetype;
+  if (!clientId || !archetypeCode) return;
+
+  // Stamp modal state so renderAdDetailModal shows the generating view.
+  MODAL_AD.generating = true;
+  MODAL_AD.startedAt = Date.now();
+  renderAdDetailModal();
+
+  // Refresh elapsed-time display every second while generating.
+  const ticker = setInterval(() => {
+    if (MODAL_AD.generating) renderAdDetailModal();
+    else clearInterval(ticker);
+  }, 1000);
+
+  // Also use the existing PACK_STATE so the underlying client page slot
+  // card flips into GENERATING state — user can close modal and watch from
+  // the slot if they want.
+  if (!PACK_STATE[clientId]) PACK_STATE[clientId] = { running: false, current: null, done: new Set(), errors: {} };
+  const ps = PACK_STATE[clientId];
+  ps.running = true; ps.current = archetypeCode; delete ps.errors[archetypeCode];
+  render();
+
+  try {
+    const r = await fetch('/api/packs', {
+      method: 'POST', headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ client_id: clientId, archetype_filter: [archetypeCode] }),
+    });
+    const manifest = await r.json();
+    const entry = manifest.entries.find((e) => e.archetype === archetypeCode);
+    if (!entry) throw new Error('manifest had no entry for ' + archetypeCode);
+
+    const gr = await fetch('/api/generate', {
+      method: 'POST', headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        archetype: entry.archetype, client_id: entry.client_id,
+        picks: entry.picks, component_keys: entry.component_keys,
+        attach_client_photos: entry.attach_client_photos || [],
+        quality: entry.quality, n_candidates: entry.n_candidates,
+      }),
+    });
+    if (!gr.ok) { const j = await gr.json().catch(() => ({})); throw new Error(j.error || 'HTTP ' + gr.status); }
+    const result = await gr.json();
+    ADS = await api.ads.list();
+    MODAL_AD.selectedVersionId = result.ad_id;   // jump to the new version when it lands
+  } catch (err) {
+    alert('Regenerate failed: ' + err.message);
+    if (PACK_STATE[clientId]) PACK_STATE[clientId].errors[archetypeCode] = err.message;
+  } finally {
+    clearInterval(ticker);
+    MODAL_AD.generating = false;
+    if (PACK_STATE[clientId]) { PACK_STATE[clientId].running = false; PACK_STATE[clientId].current = null; }
+    renderAdDetailModal();
+    render();
+  }
+}
+window.regenerateOneAdFromModal = regenerateOneAdFromModal;
 
 // ------------------------------------------------------------
 // SECTION 1: ARCHETYPES
@@ -1092,15 +1286,27 @@ function renderClientDetail(clientId) {
 
   // Each archetype in canonical order — A10 only when at least one trust
   // photo is uploaded (matches Layer 1 gating per HR17 / PRODUCT_DIRECTION.md).
+  // For each slot, the "current" version is the one with max promoted_at —
+  // operator can promote an older version via the modal's Promote button.
   const slots = STATE.archetypes
     .slice()
     .sort((a, b) => (parseInt(String(a.code).replace(/\D/g,''),10)||0) - (parseInt(String(b.code).replace(/\D/g,''),10)||0))
     .filter((arch) => arch.code !== 'A10' || hasPhoto)
     .map((arch) => {
-      const ad = clientAds.find((a) => a.archetype === arch.code);
+      // Sort by promoted_at desc with id tie-breaker (newest id wins).
+      const versions = clientAds
+        .filter((a) => a.archetype === arch.code)
+        .sort((a, b) => {
+          const ta = new Date(a.promoted_at || a.created || 0).getTime();
+          const tb = new Date(b.promoted_at || b.created || 0).getTime();
+          if (ta !== tb) return tb - ta;
+          return (b.id || '').localeCompare(a.id || '');
+        });
+      const ad = versions[0] || null;
+      const versionCount = versions.length;
       const generating = ps.running && ps.current === arch.code;
       const error = ps.errors[arch.code];
-      return { arch, ad, generating, error };
+      return { arch, ad, versionCount, generating, error };
     });
 
   const totalSlots = slots.length;
@@ -1161,7 +1367,7 @@ function renderClientDetail(clientId) {
   `;
 }
 
-function renderArchetypeSlot({ arch, ad, generating, error }, client) {
+function renderArchetypeSlot({ arch, ad, versionCount, generating, error }, client) {
   const cardClick = ad ? `onclick="openAdDetail('${ad.id}')"` : '';
   const cursor = ad ? 'cursor:pointer;' : 'cursor:default;';
   // Done state — shows the actual generated PNG.
@@ -1170,10 +1376,11 @@ function renderArchetypeSlot({ arch, ad, generating, error }, client) {
       <div class="ad-card" ${cardClick} style="${cursor}">
         <div class="ad-thumb-output" style="background-image:url('${ad.image_url}?t=${Date.now()}'); background-size:cover; background-position:center; aspect-ratio:1; padding:0;">
           <span style="position:absolute; top:6px; left:6px; background:rgba(0,0,0,0.65); color:#fff; font-family:JetBrains Mono,monospace; font-size:10px; padding:3px 7px; border-radius:3px;">${arch.code}</span>
+          ${versionCount > 1 ? `<span style="position:absolute; top:6px; right:6px; background:var(--accent); color:#fff; font-family:JetBrains Mono,monospace; font-size:10px; padding:3px 7px; border-radius:3px; font-weight:600;" title="${versionCount} versions on file — click to flip between them">${versionCount} versions</span>` : ''}
         </div>
         <div class="ad-card-body">
           <div style="font-weight:600; font-size:13px; margin-bottom:3px">${htmlEscape(arch.name || '')}</div>
-          <div class="ad-card-meta">${htmlEscape(ad.created || '')}</div>
+          <div class="ad-card-meta">${htmlEscape((ad.created || '').slice(0, 10))}${versionCount > 1 ? ' · current is v' + versionCount : ''}</div>
         </div>
       </div>
     `;

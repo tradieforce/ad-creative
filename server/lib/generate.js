@@ -14,7 +14,7 @@
 
 import { basename } from 'node:path';
 import { db } from './db.js';
-import { storage } from './storage.js';
+import { storage, loadBuffer } from './storage.js';
 import { slugForCode } from './archetypeSlug.js';
 import { composePrompt } from './composePrompt.js';
 import { critiquePromptAndRefine } from './critic.js';
@@ -269,6 +269,23 @@ export async function generateAd(input) {
     hdUrls['4k'] = url;
   }
 
+  // Snapshot the reference ad bytes to a per-ad path so version history is
+  // honest — if the operator swaps the archetype's reference next month, this
+  // ad's record still points at the reference that was actually used.
+  let referenceSnapshotUrl = null;
+  if (refKey) {
+    try {
+      const refBuf = await loadBuffer(refKey);
+      const ext = (refKey.toLowerCase().endsWith('.jpg') || refKey.toLowerCase().endsWith('.jpeg')) ? 'jpg'
+                : refKey.toLowerCase().endsWith('.webp') ? 'webp' : 'png';
+      const ct  = ext === 'png' ? 'image/png' : ext === 'webp' ? 'image/webp' : 'image/jpeg';
+      const refSnap = await storage.put(`${baseKey}_reference.${ext}`, refBuf, ct);
+      referenceSnapshotUrl = refSnap.url;
+    } catch (e) {
+      console.warn('[generate] reference snapshot failed:', e.message);
+    }
+  }
+
   // Save EVERY candidate so the operator can manually pick a different one.
   const candidateUrls = [];
   for (let i = 0; i < renderResult.candidates.length; i++) {
@@ -307,18 +324,26 @@ export async function generateAd(input) {
     console.warn('[generate] sidecar JSON save failed:', e.message);
   });
 
-  // Append to ads.
+  // Append to ads. promoted_at controls which version is "current" for the
+  // client-page slot lookup — defaults to created so newest is current; the
+  // /api/ads/:id/promote endpoint bumps it for older-version promotion.
+  const nowFull = nowIso();
   const adRecord = {
     id: ad_id,
     archetype: archetype.code,
     client_id: client.id || null,
     city,
     headline: input.picks?.headline || '',
-    created: nowIso().slice(0, 10),
+    created: nowFull,                      // full ISO so version pills can sort precisely
+    promoted_at: nowFull,                  // newest is current by default
     image_url: bestUrl,
     candidate_urls: candidateUrls,
     hd_urls: hdUrls,
+    reference_url: referenceSnapshotUrl,   // null if snapshot failed; UI falls back to live reference
+    picks_used: input.picks || {},
+    component_keys: components.map((c) => c.key),
     prompt_text: composedFinal.promptText,
+    total_cost_usd: totalCostUsd,
   };
   await db.appendAd(adRecord);
 

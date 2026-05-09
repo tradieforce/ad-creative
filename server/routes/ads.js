@@ -15,3 +15,26 @@ adsRouter.get('/:id', async (req, res, next) => {
     res.json(a);
   } catch (e) { next(e); }
 });
+
+// Mark this ad as the "current" version for its (client_id, archetype) — the
+// one shown on the client page slot card. Bumps promoted_at to NOW so the
+// version-resolution logic picks it. Other versions stay in history (you can
+// flip back at any time from the modal).
+adsRouter.post('/:id/promote', async (req, res, next) => {
+  try {
+    let promoted = null;
+    await db.patchDoc('ads', (list) => {
+      const arr = Array.isArray(list) ? list : [];
+      const i = arr.findIndex((a) => a.id === req.params.id);
+      if (i < 0) { const e = new Error('ad not found'); e.status = 404; throw e; }
+      arr[i] = { ...arr[i], promoted_at: new Date().toISOString() };
+      promoted = arr[i];
+      // Also re-prepend so the FS backend's natural ordering keeps current at index 0.
+      arr.splice(i, 1);
+      arr.unshift(promoted);
+      return arr;
+    });
+    if (!promoted) return res.status(404).json({ error: 'ad not found' });
+    res.json({ ok: true, ad: promoted });
+  } catch (e) { next(e); }
+});
