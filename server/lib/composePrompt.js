@@ -82,36 +82,36 @@ PRIORITY 2 — REFERENCE AD AS THE STYLE + STRUCTURE TEMPLATE
   Do NOT pick a "fresh palette" — that earlier instruction is overridden
   by this priority block.
 
-PRIORITY 2.5 — LOCKED COMPONENTS = PASTE, DO NOT REDRAW
-  Locked component images (house diagram, condenser, indoor unit,
-  controller, ducting, outlet, client photo) are FINISHED ASSETS. The
-  output ad must contain them PIXEL-IDENTICAL to the source — same
-  shape, same colours, same angles, same shadows, same count.
+PRIORITY 2.5 — COUNT MATCHES THE REFERENCE AD, NOT THE SOURCE COMPONENT
+  Locked component images are FINISHED ASSETS. The output must contain
+  them in the SAME COUNT AND ORIENTATION AS SHOWN IN THE REFERENCE AD
+  (IMAGE 1) — not "the model decided to add variety."
 
-  Treat the attached component as a sticker that gets pasted ONCE onto
-  the canvas. Do NOT regenerate, redraw, restyle, multiply, mirror,
-  fan, array, triptych, or "produce variations" of the locked component.
-  Re-rendering the diagram is a violation. Drawing two houses where the
-  source shows one house is a violation. Drawing the same condenser
-  twice is a violation.
+  Open IMAGE 1 (the reference) before composing. Count the visible
+  instances of each component type:
+    • Houses / diagrams in the reference: typically 1
+    • Condensers in the reference: typically 1
+    • Brand logos in the reference: typically 3 (matches the 3 attached logo files)
+    • Reaction photos / client photos in the reference: typically 1
 
-  When you compose the prompt for gpt-image-2, you MUST include this
-  language verbatim (paraphrase only for flow):
-    "The attached locked component (e.g. IMAGE 3, the house diagram) is
-     a FINISHED ASSET. Place it on the canvas at [position] — paste the
-     source pixels, do not redraw. The output must contain EXACTLY ONE
-     copy of this asset, matching the source pixel-for-pixel except for
-     position and scale. If you are about to render two houses or two
-     condensers — render exactly ONE instead. The source shows the
-     canonical count and shape. Count: 1. No duplicates, no mirror, no
-     trio, no array, no fan-out, no triptych, no perspective variants."
+  Whatever count IMAGE 1 shows is the count the OUTPUT must have. If the
+  reference shows ONE house, the output has ONE house — even if you might
+  think two looks more interesting. If the reference shows ONE condenser,
+  the output has ONE condenser. NEVER multiply, mirror, fan, array,
+  triptych, or duplicate.
 
-  This applies to: house diagrams, condensers, indoor units, controllers,
-  ducting components, outlets, client team/owner/van photos.
+  When you compose the prompt for gpt-image-2, INCLUDE THIS LANGUAGE
+  VERBATIM (paraphrase only for flow):
+    "Look at IMAGE 1 (the reference ad). Count the houses [or
+     condensers / diagrams / etc.] visible in it. The output must
+     contain EXACTLY THAT COUNT — matching IMAGE 1's count, not
+     'one more for variety'. If IMAGE 1 shows 1 house, the output
+     has 1 house. The locked component (e.g. IMAGE 3) provides the
+     SHAPE for that single house — paste it ONCE, pixel-identical to
+     the source, matching IMAGE 1's count and rough position."
 
-  Brand logos in the bottom strip are the ONE exception — multiple logos
-  appear because multiple logo FILES are attached (one per brand). Each
-  logo is still pasted once.
+  Brand logos are the one expected exception — they appear in the count
+  matching the number of logo files attached (one per brand).
 
 PRIORITY 3 — MASTER GLOBAL HARD RULES (HR01–HR19)
   Apply only after Priority 1 and Priority 2 are satisfied. These remain
