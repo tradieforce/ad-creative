@@ -309,16 +309,33 @@ function openAdDetail(adId) {
   if (!ad) return;
   const client = CLIENTS.find(c => c.id === ad.client_id);
   const arch = STATE.archetypes.find(a => a.code === ad.archetype) || {};
-  const refImg = REF_THUMBS[ad.ref_ad];
-  const promptText = ad.use_gold_prompt && GOLDS[ad.use_gold_prompt]?.full_prompt_used
-    ? GOLDS[ad.use_gold_prompt].full_prompt_used
-    : `[ Prompt for ${ad.archetype} for ${client?.business_name||''} would appear here. Composed by Master AI from archetype DNA + client onboarding data + variable input picks. ]`;
+  // Reference image lookup keyed by archetype.code (REF_THUMBS is built that way).
+  const refImg = REF_THUMBS[ad.archetype] || REF_THUMBS[arch.exemplar];
+  const promptText = ad.prompt_text || (ad.use_gold_prompt && GOLDS[ad.use_gold_prompt]?.full_prompt_used) || '';
+
+  // Pretty image rendering — actual generated PNG when available, placeholder otherwise.
+  const generatedBlock = ad.image_url
+    ? `<img class="paired-ref-img zoomable" src="${ad.image_url}?t=${Date.now()}" data-caption="${htmlEscape(arch.code + ' generated ad')}" alt="generated ad" style="display:block; width:100%; height:auto; border-radius:8px;">`
+    : `<div class="paired-output">
+         <div class="po-icon">▢</div>
+         <div class="po-arch">${ad.archetype}</div>
+         <div class="po-headline">${htmlEscape(ad.headline || '')}</div>
+         <div class="po-note">[ generation pending — fire from the client page ]</div>
+       </div>`;
+
+  // HD download buttons when 2K/4K versions exist.
+  const hdLinks = (ad.hd_urls && (ad.hd_urls['2k'] || ad.hd_urls['4k']))
+    ? `<div style="display:flex; gap:8px; margin-top:10px; flex-wrap:wrap;">
+         <a class="btn btn-sm" href="${ad.image_url}" download>Download 1080</a>
+         ${ad.hd_urls['2k'] ? `<a class="btn btn-sm" href="${ad.hd_urls['2k']}" download>Download 2K HD</a>` : ''}
+         ${ad.hd_urls['4k'] ? `<a class="btn btn-sm" href="${ad.hd_urls['4k']}" download>Download 4K HD</a>` : ''}
+       </div>` : '';
 
   showModal(`
     <div class="modal-header">
       <div>
         <h3 class="modal-title">${ad.archetype} · ${htmlEscape(arch.name||'')}</h3>
-        <div class="modal-subtitle">${htmlEscape(client?.business_name||'')} · ${htmlEscape(ad.city)} · ${htmlEscape(ad.created)}</div>
+        <div class="modal-subtitle">${htmlEscape(client?.business_name||'')} · ${htmlEscape(ad.city||'')} · ${htmlEscape(ad.created||'')}</div>
       </div>
       <button class="modal-close" onclick="closeModal()">×</button>
     </div>
@@ -326,12 +343,8 @@ function openAdDetail(adId) {
       <div class="paired-grid">
         <div>
           <div class="paired-block-h">Generated ad output</div>
-          <div class="paired-output">
-            <div class="po-icon">▢</div>
-            <div class="po-arch">${ad.archetype}</div>
-            <div class="po-headline">${htmlEscape(ad.headline)}</div>
-            <div class="po-note">[ ChatGPT image output<br>(saved as PNG in production) ]</div>
-          </div>
+          ${generatedBlock}
+          ${hdLinks}
         </div>
         <div class="paired-side">
           <div>
@@ -340,15 +353,14 @@ function openAdDetail(adId) {
           </div>
           <div>
             <div class="paired-block-h">ChatGPT prompt that produced this</div>
-            <div class="paired-prompt-block">${htmlEscape(promptText)}</div>
+            <div class="paired-prompt-block">${promptText ? htmlEscape(promptText) : '[ no prompt recorded — generation may be pending ]'}</div>
           </div>
         </div>
       </div>
     </div>
     <div class="modal-footer">
       <button class="btn" onclick="closeModal()">Close</button>
-      <button class="btn">Regenerate</button>
-      <button class="btn btn-primary">Approve &amp; publish</button>
+      ${ad.image_url ? '<button class="btn" onclick="regenerateOneAd(\'' + ad.client_id + '\',\'' + ad.archetype + '\')">Regenerate</button>' : ''}
     </div>
   `, {large: true});
 }
@@ -1062,17 +1074,48 @@ function renderClientNew() {
   `;
 }
 
+// Pack generation state — keyed by client id. Tracks the sequential per-client
+// loop firing /api/generate one archetype at a time. Survives page navigation
+// since it lives in module scope.
+const PACK_STATE = {};   // { [clientId]: { running, current, done:Set, errors:{} } }
+
+function clientPackState(clientId) {
+  return PACK_STATE[clientId] || { running: false, current: null, done: new Set(), errors: {} };
+}
+
 function renderClientDetail(clientId) {
   const c = CLIENTS.find(x => x.id === clientId);
   if (!c) return '<div class="empty-state">Client not found.</div>';
   const clientAds = ADS.filter(a => a.client_id === clientId);
+  const hasPhoto = !!(c.team_photos_uploaded || c.owner_photos_uploaded || c.van_photos_uploaded);
+  const ps = clientPackState(clientId);
+
+  // Each archetype in canonical order — A10 only when at least one trust
+  // photo is uploaded (matches Layer 1 gating per HR17 / PRODUCT_DIRECTION.md).
+  const slots = STATE.archetypes
+    .slice()
+    .sort((a, b) => (parseInt(String(a.code).replace(/\D/g,''),10)||0) - (parseInt(String(b.code).replace(/\D/g,''),10)||0))
+    .filter((arch) => arch.code !== 'A10' || hasPhoto)
+    .map((arch) => {
+      const ad = clientAds.find((a) => a.archetype === arch.code);
+      const generating = ps.running && ps.current === arch.code;
+      const error = ps.errors[arch.code];
+      return { arch, ad, generating, error };
+    });
+
+  const totalSlots = slots.length;
+  const completedSlots = slots.filter((s) => s.ad).length;
+
+  // "Generate full pack" button shows when there are missing slots and no run is in flight.
+  const missing = slots.filter((s) => !s.ad).map((s) => s.arch.code);
+  const canFire = !ps.running && missing.length > 0;
 
   return `
     <div class="back-link" onclick="goToClientList()">← Back to all clients</div>
     <div class="page-header">
       <div class="page-eyebrow">Operations · Client file</div>
       <h1 class="page-title">${htmlEscape(c.business_name)}</h1>
-      <p class="page-intro">${htmlEscape(c.region)} · onboarded ${htmlEscape(c.onboarded_date)} · ${clientAds.length} ads in pack</p>
+      <p class="page-intro">${htmlEscape(c.region || c.city || '')} · onboarded ${htmlEscape(c.onboarded_date || '')} · ${completedSlots}/${totalSlots} ads in pack ${ps.running ? '· <strong style="color:var(--accent)">generating ' + ps.current + '…</strong>' : ''}</p>
     </div>
     <div class="client-detail-grid">
       <div class="client-summary">
@@ -1090,43 +1133,93 @@ function renderClientDetail(clientId) {
             `</div>`
           ).join('')}
         </div>
-        <div class="meta-row"><span class="meta-label">Years</span><span>${c.years_in_business}</span></div>
-        <div class="meta-row"><span class="meta-label">Reviews</span><span>${c.google_review_count}</span></div>
-        <div class="meta-row"><span class="meta-label">Per-week</span><span>$${c.default_per_week_price}</span></div>
-        <div class="meta-row"><span class="meta-label">Install gtee</span><span>${c.install_guarantee_days} days</span></div>
-        <div class="meta-row"><span class="meta-label">Promo</span><span>${c.current_promo_pct}%</span></div>
-        <div class="meta-row"><span class="meta-label">Brands</span><span style="text-align:right; font-size:12px">${c.brands_sold.join(', ')}</span></div>
+        <div class="meta-row"><span class="meta-label">Years</span><span>${c.years_in_business || 0}</span></div>
+        <div class="meta-row"><span class="meta-label">Reviews</span><span>${c.google_review_count || 0}</span></div>
+        <div class="meta-row"><span class="meta-label">Per-week</span><span>$${c.default_per_week_price || ''}</span></div>
+        <div class="meta-row"><span class="meta-label">Install gtee</span><span>${c.install_guarantee_days || 0} days</span></div>
+        <div class="meta-row"><span class="meta-label">Promo</span><span>${c.current_promo_pct || 0}%</span></div>
+        <div class="meta-row"><span class="meta-label">Brands</span><span style="text-align:right; font-size:12px">${(c.brands_sold||[]).join(', ')}</span></div>
         <div class="meta-row"><span class="meta-label">Team photos</span><span>${c.team_photos_uploaded ? '✓' : '—'}</span></div>
         <div class="meta-row"><span class="meta-label">Owner photos</span><span>${c.owner_photos_uploaded ? '✓' : '—'}</span></div>
         <div class="meta-row"><span class="meta-label">Van photos</span><span>${c.van_photos_uploaded ? '✓' : '—'}</span></div>
         <div class="meta-row"><span class="meta-label">Family owned</span><span>${c.family_owned ? '✓' : '—'}</span></div>
         <div class="meta-row"><span class="meta-label">Aus owned</span><span>${c.australian_owned ? '✓' : '—'}</span></div>
-        <div style="margin-top:14px"><button class="btn btn-sm" onclick="openEditClient('${c.id}')">Edit details</button></div>
+        <div style="margin-top:14px; display:flex; gap:8px;"><button class="btn btn-sm" onclick="openEditClient('${c.id}')">Edit details</button><button class="btn btn-sm btn-danger" onclick="deleteClient('${c.id}')">Delete</button></div>
       </div>
       <div>
-        <h2 style="font-family:Fraunces,serif; font-size:22px; margin:0 0 6px">Generated ads (${clientAds.length})</h2>
-        <p style="color:var(--text-2); margin:0 0 16px; font-size:14px">Click any ad to see its output, the prompt that produced it, and the reference ad used. ${(!c.team_photos_uploaded && !c.owner_photos_uploaded && !c.van_photos_uploaded) ? '<strong style="color:var(--warn-text)">Note: Local Trust (A10) skipped — needs at least one of team / owner / van photos.</strong>' : ''}</p>
-        <div class="ad-grid">
-          ${clientAds.map(a => {
-            const arch = STATE.archetypes.find(x => x.code === a.archetype) || {};
-            return `
-              <div class="ad-card" onclick="openAdDetail('${a.id}')">
-                <div class="ad-thumb-output">
-                  <div class="ph-icon">▢</div>
-                  <div class="ph-arch">${a.archetype}</div>
-                  <div class="ph-headline">${htmlEscape(a.headline.length > 56 ? a.headline.substring(0,56)+'...' : a.headline)}</div>
-                </div>
-                <div class="ad-card-body">
-                  <div style="font-weight:600; font-size:13px; margin-bottom:3px">${htmlEscape(arch.name||'')}</div>
-                  <div class="ad-card-meta">${htmlEscape(a.created)}</div>
-                  <div class="ad-card-actions">
-                    <button class="btn btn-sm" onclick="event.stopPropagation(); openAdDetail('${a.id}')">View output, prompt &amp; reference</button>
-                  </div>
-                </div>
-              </div>
-            `;
-          }).join('') || '<div class="empty-state">No ads generated yet for this client.</div>'}
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px;">
+          <h2 style="font-family:Fraunces,serif; font-size:22px; margin:0;">Generated ads (${completedSlots}/${totalSlots})</h2>
+          ${canFire ? `<button class="btn btn-primary" onclick="startPackGeneration('${c.id}')">Generate ${missing.length} missing ad${missing.length>1?'s':''}</button>` : ''}
+          ${ps.running ? `<span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--accent);">… ${ps.current} in flight (~5–7 min)</span>` : ''}
         </div>
+        <p style="color:var(--text-2); margin:0 0 16px; font-size:14px">Click any card to see its generated ad, the reference used, and the ChatGPT prompt that produced it. ${!hasPhoto ? '<span style="color:var(--warn-text)">A10 Local Trust skipped — needs team/owner/van photo.</span>' : ''}</p>
+        <div class="ad-grid">
+          ${slots.map((s) => renderArchetypeSlot(s, c)).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderArchetypeSlot({ arch, ad, generating, error }, client) {
+  const cardClick = ad ? `onclick="openAdDetail('${ad.id}')"` : '';
+  const cursor = ad ? 'cursor:pointer;' : 'cursor:default;';
+  // Done state — shows the actual generated PNG.
+  if (ad && ad.image_url) {
+    return `
+      <div class="ad-card" ${cardClick} style="${cursor}">
+        <div class="ad-thumb-output" style="background-image:url('${ad.image_url}?t=${Date.now()}'); background-size:cover; background-position:center; aspect-ratio:1; padding:0;">
+          <span style="position:absolute; top:6px; left:6px; background:rgba(0,0,0,0.65); color:#fff; font-family:JetBrains Mono,monospace; font-size:10px; padding:3px 7px; border-radius:3px;">${arch.code}</span>
+        </div>
+        <div class="ad-card-body">
+          <div style="font-weight:600; font-size:13px; margin-bottom:3px">${htmlEscape(arch.name || '')}</div>
+          <div class="ad-card-meta">${htmlEscape(ad.created || '')}</div>
+        </div>
+      </div>
+    `;
+  }
+  // Generating state — pulsing loader.
+  if (generating) {
+    return `
+      <div class="ad-card" style="cursor:default; opacity:0.85;">
+        <div class="ad-thumb-output" style="background:linear-gradient(135deg, var(--SP-bg), #e9d5ff); aspect-ratio:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px;">
+          <div style="font-family:JetBrains Mono,monospace; font-size:11px; color:var(--SP); animation:pulse 1.5s ease-in-out infinite;">… GENERATING</div>
+          <div style="font-family:Fraunces,serif; font-size:18px; font-weight:600; color:var(--SP);">${arch.code}</div>
+          <div style="font-size:10px; color:var(--SP); opacity:0.7;">~5–7 min</div>
+        </div>
+        <div class="ad-card-body">
+          <div style="font-weight:600; font-size:13px; margin-bottom:3px">${htmlEscape(arch.name || '')}</div>
+          <div class="ad-card-meta" style="color:var(--accent);">composing → rendering → upscaling…</div>
+        </div>
+      </div>
+    `;
+  }
+  // Error state — shows the failure with retry option.
+  if (error) {
+    return `
+      <div class="ad-card" style="cursor:default; border-color:#fecaca;">
+        <div class="ad-thumb-output" style="background:#fee2e2; color:#b91c1c; aspect-ratio:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:14px;">
+          <div style="font-family:JetBrains Mono,monospace; font-size:11px;">✗ FAILED</div>
+          <div style="font-family:Fraunces,serif; font-size:18px; font-weight:600;">${arch.code}</div>
+          <div style="font-size:10px; opacity:0.85; text-align:center; line-height:1.3;">${htmlEscape((error || '').slice(0, 60))}</div>
+        </div>
+        <div class="ad-card-body">
+          <div style="font-weight:600; font-size:13px; margin-bottom:3px">${htmlEscape(arch.name || '')}</div>
+          <button class="btn btn-sm" onclick="regenerateOneAd('${client.id}','${arch.code}')">Retry</button>
+        </div>
+      </div>
+    `;
+  }
+  // Pending — not started yet.
+  return `
+    <div class="ad-card" style="cursor:default; opacity:0.65; border-style:dashed;">
+      <div class="ad-thumb-output" style="background:var(--surface-2); aspect-ratio:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px;">
+        <div style="font-family:JetBrains Mono,monospace; font-size:10px; color:var(--text-3);">PENDING</div>
+        <div style="font-family:Fraunces,serif; font-size:18px; font-weight:600; color:var(--text-3);">${arch.code}</div>
+      </div>
+      <div class="ad-card-body">
+        <div style="font-weight:600; font-size:13px; margin-bottom:3px">${htmlEscape(arch.name || '')}</div>
+        <div class="ad-card-meta">queued</div>
       </div>
     </div>
   `;
@@ -1135,6 +1228,117 @@ function renderClientDetail(clientId) {
 function setClientTab(tab) { currentClientTab = tab; currentClientId = null; render(); window.scrollTo(0,0); }
 function openClient(id) { currentClientId = id; render(); window.scrollTo(0,0); }
 function goToClientList() { currentClientId = null; currentClientTab = 'list'; render(); window.scrollTo(0,0); }
+
+// ── Pack generation orchestrator (Layer 1 → Layer 2 → Layer 3) ─────────────
+// Builds the manifest server-side, then fires /api/generate one ad at a time.
+// State lives in PACK_STATE so navigation away/back doesn't lose progress.
+async function startPackGeneration(clientId) {
+  if (!PACK_STATE[clientId]) PACK_STATE[clientId] = { running: false, current: null, done: new Set(), errors: {} };
+  const ps = PACK_STATE[clientId];
+  if (ps.running) return;
+  ps.running = true; ps.current = null; ps.errors = {};
+  render();
+
+  try {
+    // Layer 1 — build the manifest. /api/packs decides which archetypes fire
+    // (skips A10 if no team/owner/van photo, skips A6 if no promo, etc.) and
+    // pre-picks variable inputs deterministically.
+    const r = await fetch('/api/packs', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ client_id: clientId }),
+    });
+    if (!r.ok) {
+      const j = await r.json().catch(() => ({}));
+      throw new Error(j.error || ('manifest HTTP ' + r.status));
+    }
+    const manifest = await r.json();
+
+    // Skip entries that already have a saved ad for this client (idempotent —
+    // safe to call multiple times; only generates what's missing).
+    const existingAds = ADS.filter((a) => a.client_id === clientId);
+    const existingArchetypes = new Set(existingAds.map((a) => a.archetype));
+    const todo = manifest.entries.filter((e) => !existingArchetypes.has(e.archetype));
+
+    for (const entry of todo) {
+      ps.current = entry.archetype;
+      render();
+      try {
+        const gr = await fetch('/api/generate', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({
+            archetype: entry.archetype,
+            client_id: entry.client_id,
+            picks: entry.picks,
+            component_keys: entry.component_keys,
+            attach_client_photos: entry.attach_client_photos || [],
+            quality: entry.quality,
+            n_candidates: entry.n_candidates,
+          }),
+        });
+        if (!gr.ok) {
+          const j = await gr.json().catch(() => ({}));
+          throw new Error(j.error || ('generate HTTP ' + gr.status));
+        }
+        await gr.json();
+        ps.done.add(entry.archetype);
+        // Refresh ads list so the new card shows up.
+        ADS = await api.ads.list();
+      } catch (err) {
+        ps.errors[entry.archetype] = err.message || 'generation failed';
+        console.error('[pack]', entry.archetype, 'failed:', err);
+      }
+      render();
+    }
+  } catch (err) {
+    alert('Pack generation failed to start: ' + err.message);
+  } finally {
+    ps.running = false;
+    ps.current = null;
+    render();
+  }
+}
+window.startPackGeneration = startPackGeneration;
+
+// Regenerate just one archetype for a given client (used by the modal's
+// Regenerate button + the per-card Retry on errors).
+async function regenerateOneAd(clientId, archetypeCode) {
+  if (!PACK_STATE[clientId]) PACK_STATE[clientId] = { running: false, current: null, done: new Set(), errors: {} };
+  const ps = PACK_STATE[clientId];
+  if (ps.running) { alert('Pack is already generating — wait for it to finish.'); return; }
+
+  // Build the manifest again to get the right picks/components for this archetype.
+  ps.running = true; ps.current = archetypeCode; delete ps.errors[archetypeCode];
+  render();
+  try {
+    const r = await fetch('/api/packs', {
+      method: 'POST', headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ client_id: clientId, archetype_filter: [archetypeCode] }),
+    });
+    const manifest = await r.json();
+    const entry = manifest.entries.find((e) => e.archetype === archetypeCode);
+    if (!entry) throw new Error('manifest had no entry for ' + archetypeCode);
+
+    const gr = await fetch('/api/generate', {
+      method: 'POST', headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        archetype: entry.archetype, client_id: entry.client_id,
+        picks: entry.picks, component_keys: entry.component_keys,
+        attach_client_photos: entry.attach_client_photos || [],
+        quality: entry.quality, n_candidates: entry.n_candidates,
+      }),
+    });
+    if (!gr.ok) { const j = await gr.json().catch(() => ({})); throw new Error(j.error || 'HTTP ' + gr.status); }
+    await gr.json();
+    ADS = await api.ads.list();
+  } catch (err) {
+    ps.errors[archetypeCode] = err.message;
+  } finally {
+    ps.running = false; ps.current = null; render();
+  }
+}
+window.regenerateOneAd = regenerateOneAd;
 
 // ------------------------------------------------------------
 // SECTION 5: AD DATABASE
@@ -1692,10 +1896,6 @@ function render() {
   } else if (currentSection === 'globalrules') main.innerHTML = renderGlobalRules();
   else if (currentSection === 'components') main.innerHTML = renderComponents();
   else if (currentSection === 'clients') main.innerHTML = renderClients();
-  else if (currentSection === 'generate') { main.innerHTML = renderGenerate(); wireGenerate(); }
-  else if (currentSection === 'packs') { main.innerHTML = renderPacks(); wirePacks(); }
-  else if (currentSection === 'review') { main.innerHTML = renderReview(); wireReview(); }
-  else if (currentSection === 'addb') main.innerHTML = renderAdDatabase();
   else if (currentSection === 'masterprompt') { main.innerHTML = renderMasterPrompt(); loadSpendWidget(); }
 }
 
@@ -2113,7 +2313,8 @@ async function createClientFromForm() {
   }
   try {
     const created = await api.clients.create(data);
-    // Upload any photos that were attached.
+    // Upload any photos that were attached. Done before generation kicks off
+    // so A10 fires correctly when the user uploaded team/owner/van.
     const photoSlots = ['team', 'owner', 'van'];
     for (const t of photoSlots) {
       const input = document.getElementById('cn-photo-' + t);
@@ -2127,6 +2328,10 @@ async function createClientFromForm() {
     currentClientTab = 'list';
     currentClientId = created.id;
     render(); window.scrollTo(0, 0);
+    // Auto-fire the pack — generation runs in the background; the client
+    // detail page polls PACK_STATE + the ads list and re-renders cards as
+    // each generation lands.
+    startPackGeneration(created.id);
   } catch (err) { reportError(err); }
 }
 

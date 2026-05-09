@@ -42,3 +42,4 @@ _archive/
 .vscode/
 *.swp
 Thumbs.db
+.vercel
