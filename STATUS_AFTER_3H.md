@@ -65,10 +65,23 @@ Re-walked everything (every archetype config, all 19 hard rules, master prompt, 
 
 ## Vercel deploy — current state
 
-- **Project**: `tradie-force/ad-creative`  
-- **Latest URL**: https://ad-creative-iv9ratzgu-tradie-force.vercel.app (auto-deployed from `e03cb74`)
-- **Status**: Building when this doc was written; check `npx vercel ls` for current.
+- **Project**: `tradie-force/ad-creative` (linked locally via `vercel link`)
+- **Multiple Ready deploys**: latest from `ae83666`. Check `npx vercel ls`.
 - **Why the URL won't load yet**: Vercel **Deployment Protection** is on (default for Pro). Every URL returns 401 with an SSO redirect. **You must turn this off** for the live URL to be reachable through your `ADMIN_PASSWORD` gate alone.
+
+### ✅ Already done for you (Vercel CLI)
+- 7 env vars are pre-populated for **Production**:
+  - `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `REPLICATE_API_TOKEN` (your real values)
+  - `OPENAI_IMAGE_MODEL=gpt-image-2`, `ANTHROPIC_MODEL=claude-opus-4-7`
+  - `ADMIN_PASSWORD=tradieforce2026` ← **CHANGE THIS** before sharing the URL
+  - `SESSION_SECRET` (random 32-byte hex)
+- Project linked, ready for `vercel env pull` from this folder
+
+### ❌ You still need to do (Vercel dashboard, ~5 min total)
+- Disable **Deployment Protection** (Settings → Deployment Protection → Disabled)
+- Provision **Postgres** (Storage tab → Postgres → Create) — auto-injects `DATABASE_URL` + `POSTGRES_URL`
+- Provision **Blob** (Storage tab → Blob → Create) — auto-injects `BLOB_READ_WRITE_TOKEN`
+- Trigger redeploy (Deployments → ⋯ → Redeploy)
 
 ### To unblock the live URL
 
