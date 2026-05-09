@@ -22,8 +22,26 @@ import { join } from 'node:path';
 const SERVER = process.env.SIM_SERVER || 'http://localhost:3000';
 const CLIENT_ID = process.env.SIM_CLIENT || 'sharp_aircon';
 
-// Pick reasonable defaults per archetype. Conservative — first-of-pool
-// for variables, archetype's wired components for attachments.
+// Per-archetype hand-picked component defaults. The reference ads dictate
+// what hero each archetype should use — picking the first wired component
+// (the prior crude approach) gave A2 a house diagram instead of a family
+// photo, which broke style match badly. These match each archetype's
+// canonical hero per the reference + master prompt spec.
+const ARCHETYPE_HERO_PICKS = {
+  A1: ['house_3d_blue', 'logo_daikin', 'logo_mitsubishi', 'logo_samsung'],
+  A2: ['fam_jumping', 'logo_daikin', 'logo_mitsubishi', 'logo_samsung'],     // family lifestyle
+  A3: ['fam_couch_summer', 'logo_daikin', 'logo_mitsubishi'],                // premium → 2 logos
+  A4: ['house_3d_dark', 'logo_daikin', 'logo_mitsubishi', 'logo_samsung'],
+  A5: ['react_sweating_man', 'house_3d_blue'],                               // reaction + diagram
+  A6: ['react_pointing_up_1', 'house_3d_blue', 'logo_daikin', 'logo_mitsubishi'], // pointing + diagram
+  A7: ['cond_neutral_1', 'logo_daikin', 'logo_mitsubishi', 'logo_samsung'],  // condenser hero
+  A8: ['cond_neutral_1', 'house_3d_blue', 'logo_daikin', 'logo_mitsubishi'], // condenser + diagram
+  A9: ['holiday_blackfriday_bg', 'cond_neutral_1', 'logo_daikin', 'logo_mitsubishi', 'logo_samsung'],
+  A10: ['logo_daikin', 'logo_mitsubishi'],                                   // photos uploaded separately
+};
+
+// Pick reasonable defaults per archetype. Per-archetype hand-picked component
+// list (above), first-of-pool for variables (operator can override in UI).
 function pickDefaults(arch, allComponents) {
   const v = arch.variable_inputs || {};
   const headlineKey = Object.keys(v).find((k) => k.toLowerCase().startsWith('headline'));
@@ -35,11 +53,14 @@ function pickDefaults(arch, allComponents) {
     cta:          (v['CTAs']  && v['CTAs'][0])  || '',
     badge:        (v['Badges'] && v['Badges'][0]) || '',
   };
-  // Pick 4 components wired to this archetype (stay under 16 image attachments).
-  const componentKeys = (allComponents || [])
-    .filter((c) => Array.isArray(c.usedBy) && c.usedBy.includes(arch.code))
-    .slice(0, 4)
-    .map((c) => c.key);
+  // Hand-picked first; fall back to "first 4 wired" if no curated list.
+  const curated = ARCHETYPE_HERO_PICKS[arch.code];
+  const componentKeys = curated && curated.length
+    ? curated.filter((k) => allComponents.some((c) => c.key === k))
+    : (allComponents || [])
+        .filter((c) => Array.isArray(c.usedBy) && c.usedBy.includes(arch.code))
+        .slice(0, 4)
+        .map((c) => c.key);
   return { picks, component_keys: componentKeys };
 }
 
@@ -61,10 +82,14 @@ async function generateOne(arch, components) {
     skip_critique: false,
   };
   const t0 = Date.now();
+  // 20-min signal timeout — premium pipeline can take 6+ min, default fetch
+  // sometimes drops earlier. Server keeps running either way and saves files,
+  // but we want the client response captured for the cost report.
   const r = await fetch(SERVER + '/api/generate', {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify(body),
+    signal: AbortSignal.timeout(1200_000),
   });
   if (!r.ok) {
     const errText = await r.text();
