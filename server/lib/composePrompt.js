@@ -53,34 +53,55 @@ PRIORITY 1 (HIGHEST) — ARCHETYPE-SPECIFIC RULES
   to satisfy a global rule. Surface the conflict in your composition by
   honouring the archetype-specific rule.
 
-PRIORITY 2 — REFERENCE AD AS THE STYLE + STRUCTURE TEMPLATE
-  IMAGE 1 (the reference ad attached for this archetype) is the GOLD STANDARD
-  for this archetype — both STRUCTURE and STYLE. The operator's directive is
-  to mirror it as closely as possible. Only the picked variable content
-  changes between generations; everything else should match the reference.
+PRIORITY 2 — REFERENCE AD AS GUIDE, NOT TRACING PAPER
+  IMAGE 1 (the reference ad attached for this archetype) is the operator's
+  proven template for this archetype. It shows where things go, how the
+  hierarchy works, what colour family feels right, and what overall vibe
+  the archetype is meant to hit. Treat it as a strong design brief — about
+  how the operator would have done this manually — NOT as a layout to copy
+  pixel-by-pixel.
 
-  Match the reference ad on ALL of these:
-    • Layout — where headline / hero / price / CTA / badges / brand strip sit
-    • Hierarchy — what dominates, what's secondary, what's footer
-    • Zone geometry — split-screen vs full-bleed vs top-to-bottom
-    • Relative sizing of major elements
-    • PALETTE — pull the reference's specific colours (background, accent,
-      headline colour, price-block colour). Do NOT invent a fresh palette.
-      If the reference uses navy + magenta + cream, the generation uses
-      navy + magenta + cream. Subtle tonal variation only.
-    • Typography style — match the weight/family/proportions visible in
-      the reference. Same hierarchy in headline + sub-headline + body.
-    • Footer treatment — pill cards, trust badges, anchors — match.
-    • Corner badges — match position, shape, treatment.
+  Use the reference for these (fairly tightly, but with judgement):
+    • LAYOUT FAMILY — same general zone geometry (split-screen vs full
+      bleed vs top-to-bottom), same approximate placement of headline /
+      hero / price / CTA / badges / brand strip. Variation in exact
+      positions / proportions is fine and preferred over slavish copy.
+    • HIERARCHY — same elements are dominant, same elements are footer.
+      The headline is still the loudest thing; the brand strip still sits
+      quiet at the bottom. Don't invert.
+    • PALETTE FAMILY — stay in the same colour family (e.g. cyan + navy
+      + cream), but pick a fresh exact shade per generation. Don't lift
+      hex codes literally — pick adjacent tones that feel cohesive. A
+      different cyan, a slightly warmer cream, a different navy depth
+      are all fine. Stay out of palettes that aren't in the family at
+      all (no warm reds in a cool blue archetype unless the reference
+      has them).
+    • TYPOGRAPHY DIRECTION — match the broad type direction (heavy
+      bold sans for headline, italic serif for accent words, etc.) but
+      pick a fresh exact face / weight / spacing.
+    • FOOTER + BADGE STYLE — same kind (pill cards vs gradient strip vs
+      circular seal) but treat shape and exact styling with creative
+      latitude.
 
-  What changes per generation (from the picks block):
-    • Headline / sub-headline / value-stack / CTA / badge TEXT (new copy)
-    • The exact hero variant (which condenser, which house, which photo)
-    • The price NUMBER (per the price library)
+  Where to take creative liberty (do this — variety per generation matters):
+    • Exact palette shades and accent intensity
+    • Font choices (match the direction, not the file)
+    • Subtle texture, pattern, illustration accents that aren't on the
+      reference but feel right for the archetype's mood
+    • Composition micro-details (where exactly text sits within a zone,
+      whether a corner is rounded, whether there's a thin divider)
+    • Fresh hero variant from the archetype's component pool
 
-  Do NOT introduce styling decisions that aren't visible in the reference.
-  Do NOT pick a "fresh palette" — that earlier instruction is overridden
-  by this priority block.
+  What stays constant per generation (from the picks block):
+    • Headline / sub-headline / value-stack / CTA / badge TEXT
+    • Locked component PIXELS (paste, do not redraw — see Priority 2.5)
+    • Brand logo PIXELS
+
+  Goal: an ad that feels recognisably from the same family as the
+  reference, but isn't a clone. Slight creative variation in palette,
+  type, and detail is the point — it keeps Meta's algorithm engaged and
+  every ad in a pack feeling distinct. The reference is the "how the
+  operator did it manually"; you are doing it manually-style too.
 
 PRIORITY 2.5 — COUNT MATCHES THE REFERENCE AD, NOT THE SOURCE COMPONENT
   Locked component images are FINISHED ASSETS. The output must contain
