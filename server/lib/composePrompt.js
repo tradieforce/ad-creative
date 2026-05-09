@@ -53,27 +53,42 @@ PRIORITY 1 (HIGHEST) — ARCHETYPE-SPECIFIC RULES
   to satisfy a global rule. Surface the conflict in your composition by
   honouring the archetype-specific rule.
 
-PRIORITY 2 — REFERENCE AD AS STRUCTURAL TEMPLATE (not just "style")
+PRIORITY 2 — REFERENCE AD AS THE STYLE + STRUCTURE TEMPLATE
   IMAGE 1 (the reference ad attached for this archetype) is the GOLD STANDARD
-  STRUCTURE for this archetype. Treat it as the mandatory structural template
-  for layout: where the headline sits, where the hero visual sits, where the
-  price block sits, where the CTA sits, where the brand strip sits, where any
-  badges sit. Mirror the reference ad's composition, hierarchy, and zone
-  geometry. Do NOT invent a different layout. The reference ad is "no other
-  way" — it IS how this archetype is built.
+  for this archetype — both STRUCTURE and STYLE. The operator's directive is
+  to mirror it as closely as possible. Only the picked variable content
+  changes between generations; everything else should match the reference.
 
-  What you DO pick fresh per generation:
-    • palette (unless an A10-style vision pass dictates otherwise)
-    • exact typography weights/families (within the archetype's typography_strategy)
-    • the headline / sub-headline / value-stack / CTA / badge text (from picks)
-    • the hero variant (from accessible component pool)
-    • subtle accent treatments and texture choices
+  Match the reference ad on ALL of these:
+    • Layout — where headline / hero / price / CTA / badges / brand strip sit
+    • Hierarchy — what dominates, what's secondary, what's footer
+    • Zone geometry — split-screen vs full-bleed vs top-to-bottom
+    • Relative sizing of major elements
+    • PALETTE — pull the reference's specific colours (background, accent,
+      headline colour, price-block colour). Do NOT invent a fresh palette.
+      If the reference uses navy + magenta + cream, the generation uses
+      navy + magenta + cream. Subtle tonal variation only.
+    • Typography style — match the weight/family/proportions visible in
+      the reference. Same hierarchy in headline + sub-headline + body.
+    • Footer treatment — pill cards, trust badges, anchors — match.
+    • Corner badges — match position, shape, treatment.
 
-  What you DO NOT change:
-    • the structural layout — that's locked to the reference ad
-    • the hierarchy — what dominates and what's secondary
-    • the zone geometry — split-screen vs full-bleed vs top-to-bottom
-    • the relative sizing of major elements
+  What changes per generation (from the picks block):
+    • Headline / sub-headline / value-stack / CTA / badge TEXT (new copy)
+    • The exact hero variant (which condenser, which house, which photo)
+    • The price NUMBER (per the price library)
+
+  Do NOT introduce styling decisions that aren't visible in the reference.
+  Do NOT pick a "fresh palette" — that earlier instruction is overridden
+  by this priority block.
+
+PRIORITY 2.5 — LOCKED COMPONENTS = SINGLE INSTANCE
+  When a locked component image is attached (condenser, house diagram,
+  brand logo, client photo) — use it EXACTLY ONCE in the composition.
+  Do NOT duplicate, mirror, array, repeat or composite multiple instances
+  of the same locked image. One diagram = one diagram in the output.
+  One condenser = one condenser. The reference ad shows the canonical
+  count + placement; match that count.
 
 PRIORITY 3 — MASTER GLOBAL HARD RULES (HR01–HR19)
   Apply only after Priority 1 and Priority 2 are satisfied. These remain

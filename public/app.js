@@ -2622,11 +2622,22 @@ function renderGenerate() {
 
         ${refUrl ? `
         <div class="section" style="margin:0;">
-          <h2 class="section-h" style="font-size:17px;">Reference ad (attached as IMAGE 1)</h2>
-          <div style="background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:14px; display:grid; grid-template-columns:160px 1fr; gap:14px; align-items:center;">
-            <img class="zoomable" src="${refUrl}" data-caption="${htmlEscape(arch.code + ' reference')}" alt="" style="width:160px; height:160px; object-fit:cover; border:1px solid var(--border); border-radius:4px;">
-            <div style="font-size:13px; color:var(--text-2);">Style guide for this archetype. Master AI is told to match its energy/density but never copy its specifics. Replace it from the <strong>Archetypes → ${arch.code}</strong> page.</div>
+          <h2 class="section-h" style="font-size:17px;">Reference vs generated · side-by-side</h2>
+          <div class="section-flow">→ reference is the gold-standard structure + palette · generation should mirror both</div>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px; background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px;">
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-3); margin-bottom:6px; text-align:center;">REFERENCE</div>
+              <img class="zoomable" src="${refUrl}" data-caption="${htmlEscape(arch.code + ' reference')}" alt="" style="width:100%; aspect-ratio:1; object-fit:cover; border:1px solid var(--border); border-radius:6px;">
+            </div>
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:0.05em; color:${GEN.imageUrl ? 'var(--accent)' : 'var(--text-3)'}; margin-bottom:6px; text-align:center;">${GEN.imageUrl ? 'YOUR GENERATION' : '— not generated yet —'}</div>
+              ${GEN.imageUrl
+                ? `<img class="zoomable" src="${GEN.imageUrl}?t=${Date.now()}" data-caption="latest generation" alt="" style="width:100%; aspect-ratio:1; object-fit:cover; border:1px solid var(--accent); border-radius:6px;">`
+                : `<div style="width:100%; aspect-ratio:1; background:var(--surface-2); border:1px dashed var(--border-2); border-radius:6px; display:flex; align-items:center; justify-content:center; color:var(--text-3); font-family:JetBrains Mono,monospace; font-size:11px;">— compose &amp; render to see —</div>`
+              }
+            </div>
           </div>
+          <div style="font-size:12px; color:var(--text-2); margin-top:8px;">When the generation lands, click either image to fullscreen. Hold cmd/ctrl and click the reference if you want to swap it from the <strong>Archetypes → ${arch.code}</strong> page.</div>
         </div>
         ` : ''}
 
