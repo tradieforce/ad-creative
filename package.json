@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "@vercel/blob": "^2.3.3",
-    "@vercel/postgres": "^0.10.0",
     "cookie-parser": "^1.4.7",
     "dotenv": "^17.4.2",
     "express": "^4.21.2",
@@ -24,5 +23,6 @@
   },
   "devDependencies": {
     "nodemon": "^3.1.7"
-  }
+  },
+  "main": "server.js"
 }

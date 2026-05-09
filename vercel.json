@@ -1,7 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "echo 'no build step'",
-  "outputDirectory": "public",
+  "framework": null,
   "installCommand": "npm install --omit=dev",
   "functions": {
     "api/index.js": {
@@ -10,7 +9,7 @@
     }
   },
   "rewrites": [
-    { "source": "/api/:path*", "destination": "/api/index" },
+    { "source": "/api/(.*)", "destination": "/api/index" },
     { "source": "/login", "destination": "/login.html" }
   ],
   "headers": [
