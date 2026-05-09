@@ -1,10 +1,44 @@
-node_modules/
+# ── Secrets ────────────────────────────────────────────────────
 .env
-.env.local
-.DS_Store
+.env.*
+!.env.example
+*.pem
+*.key
+
+# ── Node / build ───────────────────────────────────────────────
+node_modules/
 *.log
+.DS_Store
+
+# ── Vercel ─────────────────────────────────────────────────────
+.vercel/
+
+# ── Per-operator dynamic data (NEVER commit) ───────────────────
+# Real client records — must live in Postgres in prod, never in git
+data/clients/
+# Operator's running ad list (lives in Postgres in prod)
+data/ads.json
+# Spend / usage telemetry
 data/_cache/
+# Backup snapshots of the master prompt (kept locally, not in repo)
+data/master-prompt.md.backup-*
+
+# ── Generated content (lives in Vercel Blob in prod) ───────────
 assets/generated-ads/*
 !assets/generated-ads/README.md
+assets/client-uploads/*
+!assets/client-uploads/README.md
+
+# ── Originals + archives (large, not needed at runtime) ────────
+assets/components/*/_originals/
+assets/Stock Images/_archive/
+assets/Stock Images/_triage/
+assets/Stock Images/.DS_Store
 _BACKUP_*/
 _archive/
+
+# ── Editor / OS noise ──────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+Thumbs.db
