@@ -364,17 +364,21 @@ function renderAdDetailModal() {
                   || null;
 
   // Pills (oldest → newest, then a virtual ⏳ pill if regen in flight).
+  // Click a pill → auto-promote AND select. Hover reveals × delete button.
   const totalNonGenerating = versions.length;
   const pills = versions.map((v, i) => {
     const isSelected = !MODAL_AD.generating && selectedAd && v.id === selectedAd.id;
     const isCurrent = current && v.id === current.id;
     const dt = new Date(v.created);
     const dtLabel = isNaN(dt) ? '' : `${dt.toLocaleDateString(undefined,{month:'short',day:'numeric'})} ${dt.toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'})}`;
-    return `<button onclick="selectAdVersion('${v.id}')" style="background:${isSelected?'var(--accent)':'var(--surface)'}; color:${isSelected?'#fff':'var(--text-1)'}; border:1px solid ${isSelected?'var(--accent)':'var(--border-2)'}; border-radius:6px; padding:6px 12px; font-family:'JetBrains Mono',monospace; font-size:11px; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">
-      <span style="font-weight:600;">v${i+1}</span>
-      ${isCurrent ? '<span style="color:'+(isSelected?'#fff':'var(--accent)')+';">★</span>' : ''}
-      <span style="opacity:0.75; font-weight:400;">${dtLabel}</span>
-    </button>`;
+    return `<span class="version-pill-wrap" style="position:relative; display:inline-flex;">
+      <button onclick="selectAdVersion('${v.id}')" style="background:${isSelected?'var(--accent)':'var(--surface)'}; color:${isSelected?'#fff':'var(--text-1)'}; border:1px solid ${isSelected?'var(--accent)':'var(--border-2)'}; border-radius:6px; padding:6px 26px 6px 12px; font-family:'JetBrains Mono',monospace; font-size:11px; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">
+        <span style="font-weight:600;">v${i+1}</span>
+        ${isCurrent ? '<span style="color:'+(isSelected?'#fff':'var(--accent)')+';">★</span>' : ''}
+        <span style="opacity:0.75; font-weight:400;">${dtLabel}</span>
+      </button>
+      <button class="version-pill-x" onclick="event.stopPropagation(); deleteAdVersion('${v.id}', ${i+1})" title="Delete v${i+1}" style="position:absolute; top:50%; right:4px; transform:translateY(-50%); background:transparent; border:none; color:${isSelected?'#fff':'var(--text-3)'}; cursor:pointer; padding:2px 4px; font-size:14px; line-height:1; opacity:0; transition:opacity 0.15s;">×</button>
+    </span>`;
   }).join('');
 
   // Virtual generating pill at the right end of the strip.
@@ -439,9 +443,12 @@ function renderAdDetailModal() {
       <div class="paired-block-h">ChatGPT prompt that produced this</div>
       <div class="paired-prompt-block">${promptText ? htmlEscape(promptText) : '[ no prompt recorded ]'}</div>
     `;
+    // Position of this version inside the chronological list (1-indexed) so
+    // the footer can label "Delete v3 of 5" naturally.
+    const idxInVersions = versions.findIndex((v) => v.id === ad.id) + 1;
     footer = `
       <button class="btn" onclick="closeModal()">Close</button>
-      ${!isCurrent && ad.image_url ? `<button class="btn" onclick="promoteAdVersion('${ad.id}')" title="Make this version the one shown on the client page card">★ Promote to current</button>` : ''}
+      ${ad.image_url ? `<button class="btn btn-danger" onclick="deleteAdVersion('${ad.id}', ${idxInVersions})">Delete v${idxInVersions}</button>` : ''}
       ${ad.image_url ? `<button class="btn btn-primary" onclick="regenerateOneAdFromModal()">Regenerate (creates v${totalNonGenerating + 1})</button>` : ''}
     `;
   } else {
@@ -479,23 +486,53 @@ function renderAdDetailModal() {
   `, { large: true });
 }
 
-function selectAdVersion(adId) {
+// Click a pill = view that version AND promote it to current. Operator
+// asked for this UX simplification: "whichever I clicked on last is the
+// one I want shown on the slot card." The modal updates instantly from
+// already-loaded ADS, then the promote API call runs in the background;
+// when it returns, ADS is refreshed so the ★ visually moves.
+async function selectAdVersion(adId) {
   MODAL_AD.selectedVersionId = adId;
   renderAdDetailModal();
-}
-window.selectAdVersion = selectAdVersion;
-
-async function promoteAdVersion(adId) {
   try {
     const r = await fetch('/api/ads/' + encodeURIComponent(adId) + '/promote', { method: 'POST' });
     if (!r.ok) { const j = await r.json().catch(() => ({})); throw new Error(j.error || 'HTTP ' + r.status); }
     ADS = await api.ads.list();
-    MODAL_AD.selectedVersionId = adId;   // stay on the just-promoted version
-    renderAdDetailModal();
-    render();   // refresh the underlying client page so the slot card updates
-  } catch (err) { alert('Promote failed: ' + err.message); }
+    renderAdDetailModal();   // ★ marker now points at the just-clicked version
+    render();                // slot card on client page reflects the new current
+  } catch (err) { console.warn('[selectAdVersion] promote failed:', err.message); }
 }
-window.promoteAdVersion = promoteAdVersion;
+window.selectAdVersion = selectAdVersion;
+
+// Soft-delete a version. Confirms first since regenerations cost ~$2.50 each.
+// Files stay on disk; only the ads.json record is removed. Handles three
+// cases: deleted the selected version, deleted the current, deleted the
+// last remaining version (modal closes).
+async function deleteAdVersion(adId, versionIndex) {
+  if (!confirm(`Delete v${versionIndex}? Files stay on disk but the version disappears from this list. This can't be undone from the UI.`)) return;
+  try {
+    const r = await fetch('/api/ads/' + encodeURIComponent(adId), { method: 'DELETE' });
+    if (!r.ok) { const j = await r.json().catch(() => ({})); throw new Error(j.error || 'HTTP ' + r.status); }
+    ADS = await api.ads.list();
+    // Recompute versions for the same (client, archetype) — pick a sensible
+    // selection: if the just-deleted ad was selected, fall back to current
+    // (next-newest by promoted_at); if no versions remain, close the modal.
+    const { versions: remaining, current: newCurrent } = getVersions(MODAL_AD.clientId, MODAL_AD.archetype);
+    if (remaining.length === 0) {
+      closeModal();
+      MODAL_AD.clientId = null;
+      MODAL_AD.archetype = null;
+      MODAL_AD.selectedVersionId = null;
+    } else if (MODAL_AD.selectedVersionId === adId) {
+      MODAL_AD.selectedVersionId = (newCurrent && newCurrent.id) || remaining[remaining.length - 1].id;
+      renderAdDetailModal();
+    } else {
+      renderAdDetailModal();
+    }
+    render();   // slot card on client page reflects new current (or PENDING)
+  } catch (err) { alert('Delete failed: ' + err.message); }
+}
+window.deleteAdVersion = deleteAdVersion;
 
 // Called from the modal's Regenerate button — keeps the modal open and shows
 // the generation in place. Different code path from the slot-level Retry which
